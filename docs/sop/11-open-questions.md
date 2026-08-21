@@ -8,7 +8,9 @@ Resolved items move to [01-decision-log.md](01-decision-log.md) with their reaso
 
 | # | Question | Blocks | Asked |
 |---|---|---|---|
-| Q-14 | **Which ATS is canonical** — Drew's job-centric `arsan-aios`, or Marianna's mandate-centric AIOS? They share zero tables. See D-019. | Every data-backed page; the AIOS migrations in D-017 | 2026-08-20 |
+| Q-16 | **Portal conflict** — website P3 assumes a candidate portal; AIOS lists portals as an explicit non-goal of its first slice. Who owns candidate-facing data and auth? | P3, and the "For Candidates" nav in the mockups | 2026-08-20 |
+| Q-17 | **Repo topology** — monorepo with AIOS, or two repos against one Supabase project? | Where P1 code lives | 2026-08-20 |
+| ~~Q-14~~ | ~~**Which ATS is canonical**~~ — Drew's job-centric `arsan-aios`, or Marianna's mandate-centric AIOS? **Answered 2026-08-20:** `aios-arsancg` is canonical (D-020). | — | 2026-08-20 |
 | Q-15 | **What does "unify the two" mean** — one monorepo, two repos against one database, or merge the two schemas into one system? | Repo structure | 2026-08-20 |
 
 

@@ -145,3 +145,39 @@ one is named canonical — but P1 (marketing) is unaffected and proceeds (D-018)
 **Correction to earlier note:** `TheContentLabsAI/arsan-aios` was cloned to
 `/Users/imdrewrodriguez/Websites/arsan-aios` on the assumption it was the internal system.
 It is not. Kept for reference pending the canonical-system decision.
+
+### D-020 · 2026-08-20 · Canonical internal system is `shakti936/aios-arsancg` (ARSAN AIOS)
+Cloned to `/Users/imdrewrodriguez/Websites/aios-arsancg`. Drew has collaborator access via
+Marianna. **This supersedes the assumption in D-019** — `TheContentLabsAI/arsan-aios` is an
+earlier, job-centric prototype and is **not** canonical.
+
+**What it contains:**
+- 26 Supabase migrations + 19 pgTAP test files — DB-first, with `arsan_rls`, append-only
+  audit enforcement, a candidate stage machine, activation gates, domain-event contracts,
+  and a delivery worker
+- An internal Next.js app (`web/`): dashboard, clients, searches, search detail, login,
+  bootstrap. Uses `@supabase/ssr`, shadcn + Base UI, `motion`, react-hook-form, Zod
+- A full spec set: 11 numbered docs (product scope, domain model, state machines, roles,
+  AI governance, security/privacy, build-readiness gates, acceptance criteria,
+  architecture decisions, engine architecture, cross-engine handoffs) plus JSON specs for
+  engine catalog, handoff contracts, and a requirements registry
+
+**Two constraints it imposes on this project:**
+1. `01_PRODUCT_SCOPE.md` lists **"Client or candidate portals"** as an *explicit non-goal*
+   of the first slice, and states candidates/clients are external participants "not full
+   internal users in the MVP unless ARSAN later approves portals."
+2. It also lists **"Running migrations before the existing Supabase schema is documented"**
+   as a non-goal — so D-017 (Claude writes migrations in AIOS) must go through that repo's
+   build-readiness gates, not around them.
+
+**Notes for whoever works in that repo:** the source tree sits under a doubled directory
+name (`ARSAN_AI_OS_..._FINAL/ARSAN_AI_OS_..._FINAL/`) which its own npm scripts have to
+path around; and it uses ESLint + shadcn, while this project's standard is Biome.
+
+### D-021 · 2026-08-20 · CONFLICT: website P3 (candidate portal) is an AIOS non-goal
+The website scope approved on 2026-08-20 includes a candidate/client portal, and the
+reference mockups already advertise "View Opportunities," "Submit Your Profile," and "Join
+Our Talent Network." AIOS's own spec excludes portals from its first slice.
+**Unresolved.** Options: AIOS takes on the portal as a scope change through its governance
+process; the website owns candidate-facing data in a separate store; or P3 is deferred.
+See [11-open-questions.md](11-open-questions.md) Q-16.
