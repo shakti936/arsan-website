@@ -3,13 +3,267 @@
     "title": "ARSAN — Executive Search & Manufacturing Talent Advisory",
     "description": "Executive search, Mexico workforce advisory and leadership solutions for manufacturers navigating growth, change and critical people decisions."
   },
+  "brand": {
+    "subtitle": "Executive Search & Manufacturing Talent Advisory"
+  },
+  "nav": {
+    "ariaMain": "Main navigation",
+    "cta": "Discuss a Search",
+    "openMenu": "Open menu",
+    "close": "Close menu",
+    "forClients": {
+      "label": "For Clients",
+      "children": {
+        "executiveSearch": {
+          "label": "Executive & Professional Search",
+          "description": "For critical leadership and professional hiring."
+        },
+        "mexicoAdvisory": {
+          "label": "Mexico Expansion & Workforce Advisory",
+          "description": "For companies entering, launching or expanding in Mexico."
+        },
+        "leadershipSolutions": {
+          "label": "Enterprise Talent & Leadership Solutions",
+          "description": "For leadership development and complex organizational needs."
+        }
+      }
+    },
+    "forCandidates": { "label": "For Candidates", "children": {} },
+    "results": { "label": "Results", "children": {} },
+    "insights": { "label": "Insights", "children": {} },
+    "whyArsan": {
+      "label": "Why ARSAN",
+      "children": {
+        "ourDifference": {
+          "label": "Our Difference",
+          "description": "What sets ARSAN apart."
+        },
+        "ourPeople": {
+          "label": "Our People",
+          "description": "Senior advisors with real-world experience."
+        },
+        "howWeWork": {
+          "label": "How We Work",
+          "description": "A collaborative, tailored approach."
+        }
+      }
+    }
+  },
+  "footer": {
+    "regions": "U.S. · Mexico · Cross-Border",
+    "copyright": "© {year} ARSAN. All rights reserved.",
+    "tagline": "Executive Search & Manufacturing Talent Advisory"
+  },
+  "ctaBand": {
+    "heading": "Have something important you're working through?",
+    "body": "Tell us what's happening. We'll listen, offer perspective and explore how we can help you move forward.",
+    "cta": "Discuss It With Us"
+  },
   "home": {
-    "eyebrow": "U.S. · Mexico · Cross-Border",
-    "headlineLead": "Critical talent decisions.",
-    "headlineEmphasis": "Better",
-    "headlineTail": "business outcomes.",
-    "subhead": "Executive search, Mexico workforce advisory and leadership solutions for manufacturers navigating growth, change and critical people decisions.",
-    "ctaPrimary": "Discuss a Search",
-    "ctaSecondary": "Why ARSAN"
+    "hero": {
+      "headlineLead": "Critical talent decisions.",
+      "headlineEmphasis": "Better",
+      "headlineTail": "business outcomes.",
+      "subhead": "Executive search, Mexico workforce advisory and leadership solutions for manufacturers navigating growth, change and critical people decisions.",
+      "ctaPrimary": "Discuss a Search",
+      "ctaSecondary": "Why ARSAN",
+      "regions": "U.S. · Mexico · Cross-Border"
+    },
+    "chooser": {
+      "heading": "What talent challenge are you facing?",
+      "cards": [
+        {
+          "need": "I need a critical leader.",
+          "service": "Executive & Professional Search",
+          "body": "We identify and attract manufacturing leaders who drive performance, innovation and growth.",
+          "cta": "Explore Executive Search"
+        },
+        {
+          "need": "We're building or expanding in Mexico.",
+          "service": "Mexico Expansion & Workforce Advisory",
+          "body": "We help you build the right teams and workforce foundations to launch and grow with confidence.",
+          "cta": "Explore Mexico Advisory"
+        },
+        {
+          "need": "Our leadership team needs to evolve.",
+          "service": "Enterprise Talent & Leadership Solutions",
+          "body": "We strengthen leadership teams and align talent strategies to support long-term transformation.",
+          "cta": "Explore Leadership Solutions"
+        }
+      ]
+    },
+    "values": {
+      "heading": "We've sat on your side of the table.",
+      "body": "Decades of experience inside HR, manufacturing and organizational leadership give us a different perspective. We understand the pressure behind the decision — not only the position that needs to be filled.",
+      "items": [
+        {
+          "title": "Senior people stay close to the work.",
+          "body": "You work directly with experienced advisors who understand what's at stake."
+        },
+        {
+          "title": "We understand manufacturing environments.",
+          "body": "We know your operations, your constraints and the talent it takes to win."
+        },
+        {
+          "title": "We operate across the U.S. and Mexico.",
+          "body": "Cross-border expertise to support growth, expansion and leadership alignment at every level."
+        }
+      ]
+    },
+    "stories": {
+      "heading": "Work that speaks for itself.",
+      "viewAll": "View All Results",
+      "readStory": "Read the Story",
+      "items": [
+        {
+          "category": "Mexico Expansion",
+          "title": "Building the leadership foundation before the plant opened.",
+          "body": "We helped a global manufacturer build its executive team and workforce strategy to launch a new facility in Mexico."
+        },
+        {
+          "category": "Organizational Transformation",
+          "title": "Rebuilding an executive team following a major merger.",
+          "body": "We placed key leaders across operations, supply chain and finance to realign the organization and accelerate performance."
+        },
+        {
+          "category": "Critical Search",
+          "title": "Solving a high-stakes search in a complex manufacturing environment.",
+          "body": "We identified and secured a transformational leader with the operational depth and cultural fit to drive long-term success."
+        }
+      ]
+    },
+    "quote": {
+      "lead": "We don't present candidates to create activity. We present people we believe",
+      "emphasis": "deserve",
+      "tail": " your time."
+    }
+  },
+  "subpage": {
+    "forClients": {
+      "title": "How can ARSAN help?",
+      "intro": "Whether you are hiring a critical leader, building an operation in Mexico or navigating organizational change, ARSAN brings senior judgment and manufacturing context to the decisions that matter.",
+      "cards": [
+        {
+          "title": "Executive & Professional Search",
+          "body": "When the role is too important for a résumé-driven search. We identify and secure leaders and critical professionals who can lead, operate and deliver in the environment they are entering.",
+          "cta": "Explore Executive Search"
+        },
+        {
+          "title": "Mexico Expansion & Workforce Advisory",
+          "body": "For companies entering, launching or expanding operations in Mexico. Build the organization before the operation depends on it.",
+          "cta": "Explore Mexico Advisory"
+        },
+        {
+          "title": "Enterprise Talent & Leadership Solutions",
+          "body": "Support the people already inside the business when something important is changing — leadership development, transitions and complex organizational needs.",
+          "cta": "Explore Leadership Solutions"
+        }
+      ]
+    },
+    "executiveSearch": {
+      "title": "The right hire changes more than a position.",
+      "intro": "ARSAN helps manufacturers identify and secure executives and critical professionals who can lead, operate and deliver in the environment they are entering — not simply match a job description.",
+      "points": [
+        {
+          "title": "Understand the mandate",
+          "body": "We begin by aligning on the real business challenge, success outcomes and non-negotiables. Clarity up front leads to better decisions later."
+        },
+        {
+          "title": "Know the market",
+          "body": "We map the right talent — active and passive — across industries and borders to understand who can make an impact."
+        },
+        {
+          "title": "Protect the decision",
+          "body": "We evaluate with rigor, manage risk and advise with candor so you can move forward with confidence."
+        }
+      ]
+    },
+    "mexicoAdvisory": {
+      "title": "Your Mexico operation starts long before production does.",
+      "intro": "ARSAN helps manufacturers translate business strategy into the leadership, workforce and organizational foundation required to operate successfully in Mexico.",
+      "points": [
+        {
+          "title": "Where will the talent come from?",
+          "body": "Understand the local labor market, skills availability and realistic pipeline."
+        },
+        {
+          "title": "Who should build it?",
+          "body": "Identify the leaders who will launch, lead and develop the Mexico team."
+        },
+        {
+          "title": "How will two operating cultures work as one?",
+          "body": "Build alignment across expectations, decision-making and ways of working."
+        }
+      ]
+    },
+    "leadershipSolutions": {
+      "title": "Strengthen the team you already have.",
+      "intro": "Leadership development, executive transitions and organizational alignment for manufacturers navigating growth and change.",
+      "points": [
+        {
+          "title": "Leadership team effectiveness",
+          "body": "Align leadership teams around strategy, accountability and ways of working."
+        },
+        {
+          "title": "Executive coaching & mentorship",
+          "body": "One-on-one support for leaders stepping into bigger mandates."
+        },
+        {
+          "title": "Organizational transitions",
+          "body": "Steady the organization through mergers, expansions and leadership change."
+        }
+      ]
+    },
+    "forCandidates": {
+      "title": "Your career deserves thoughtful representation.",
+      "intro": "Career moves are meaningful. We take the time to understand your experience, priorities and potential — then connect you with opportunities where you can lead, grow and make real impact.",
+      "points": [
+        {
+          "title": "Confidential",
+          "body": "Your privacy is our priority at every step of the process."
+        },
+        {
+          "title": "Selective",
+          "body": "We represent you for roles that genuinely fit — not everything that's open."
+        },
+        {
+          "title": "Personal",
+          "body": "You work with senior advisors who understand manufacturing careers on both sides of the border."
+        }
+      ],
+      "ctaNote": "The right opportunity may not be open today. Tell us about your goals and we'll reach out when opportunities align.",
+      "cta": "Start a Confidential Conversation"
+    },
+    "results": {
+      "title": "Work that speaks for itself.",
+      "intro": "Selected stories from searches and advisory work across the U.S. and Mexico. Client names are confidential; outcomes are real."
+    },
+    "insights": {
+      "title": "Perspective for better people decisions.",
+      "intro": "Thinking on manufacturing talent, Mexico workforce strategy and leadership — written for decision-makers.",
+      "comingSoon": "Articles are on their way. In the meantime, tell us what you're working through."
+    },
+    "whyArsan": {
+      "title": "We've sat on your side of the table.",
+      "intro": "We understand your business because we've led it. That perspective drives better conversations — and better results.",
+      "difference": {
+        "heading": "Our Difference",
+        "body": "Deep manufacturing expertise in the U.S., Mexico and cross-border. Access to senior talent others cannot reach. A disciplined process that protects your time and your decision."
+      },
+      "people": {
+        "heading": "Our People",
+        "body": "Senior advisors with real operating experience in HR, manufacturing and organizational leadership across the U.S. and Mexico."
+      },
+      "howWeWork": {
+        "heading": "How We Work",
+        "body": "Collaborative and tailored. We start with the business challenge, align on what success looks like and stay close to the work from first conversation to placement."
+      }
+    },
+    "contact": {
+      "title": "Tell us what you're working through.",
+      "intro": "Start with the business challenge. We'll help you determine whether — and how — ARSAN can help.",
+      "formNote": "The contact form is being connected. For now, reach us directly and we'll respond within one business day.",
+      "cta": "Discuss a Search"
+    }
   }
 }

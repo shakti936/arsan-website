@@ -3,6 +3,8 @@ import { Cormorant_Garamond, Libre_Franklin } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -37,7 +39,10 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "meta" });
 
   return {
-    title: t("title"),
+    title: {
+      default: t("title"),
+      template: "%s — ARSAN",
+    },
     description: t("description"),
   };
 }
@@ -62,7 +67,11 @@ export default async function LocaleLayout({
       className={`${cormorant.variable} ${franklin.variable}`}
     >
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Header />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

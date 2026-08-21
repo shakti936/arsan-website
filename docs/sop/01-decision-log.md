@@ -281,3 +281,15 @@ production from `main`. Local branch renamed `master` → `main` before first pu
 rule: main is production).
 **Noted trade-off (raised with Drew 2026-08-20):** code and hosting ownership sit with
 Marianna, not Drew. Accepted per Drew's call.
+
+### D-034 · 2026-08-20 · P1 component library + all 10 pages built, hand-rolled (no shadcn yet)
+Direction A components: text logo lockup, header with CSS-only mega-nav (hover +
+focus-within, zero JS), client mobile nav, 5-column footer, split hero, chooser cards,
+value props, story cards, quote band, teal CTA band with watermark A, page hero, point
+grid. One shared motion pattern (`Reveal`, motion/react, reduced-motion → static). All
+content through next-intl catalogs — zero hardcoded strings. 10 pages × en/es, all SSG.
+Candidate page deliberately promises no portal (D-023): positioning + confidential
+conversation CTA only.
+**shadcn deferred:** P1 marketing chrome needs almost none of it; its token system would
+need retheming to Direction A. Revisit at the contact form (inputs/toasts) where AIOS
+consistency also argues for it.

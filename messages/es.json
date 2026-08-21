@@ -1,15 +1,269 @@
 {
   "meta": {
     "title": "ARSAN — Búsqueda de Ejecutivos y Asesoría de Talento en Manufactura",
-    "description": "Búsqueda de ejecutivos, asesoría de fuerza laboral en México y soluciones de liderazgo para fabricantes que navegan crecimiento, cambio y decisiones críticas de talento."
+    "description": "Búsqueda de ejecutivos, asesoría de fuerza laboral en México y soluciones de liderazgo para fabricantes que enfrentan crecimiento, cambio y decisiones críticas de talento."
+  },
+  "brand": {
+    "subtitle": "Búsqueda de Ejecutivos y Asesoría de Talento en Manufactura"
+  },
+  "nav": {
+    "ariaMain": "Navegación principal",
+    "cta": "Hablemos de su Búsqueda",
+    "openMenu": "Abrir menú",
+    "close": "Cerrar menú",
+    "forClients": {
+      "label": "Para Empresas",
+      "children": {
+        "executiveSearch": {
+          "label": "Búsqueda de Ejecutivos y Profesionales",
+          "description": "Para contrataciones críticas de liderazgo y posiciones clave."
+        },
+        "mexicoAdvisory": {
+          "label": "Expansión en México y Asesoría Laboral",
+          "description": "Para empresas que llegan, arrancan o crecen en México."
+        },
+        "leadershipSolutions": {
+          "label": "Talento Empresarial y Soluciones de Liderazgo",
+          "description": "Para desarrollo de liderazgo y necesidades organizacionales complejas."
+        }
+      }
+    },
+    "forCandidates": { "label": "Para Candidatos", "children": {} },
+    "results": { "label": "Resultados", "children": {} },
+    "insights": { "label": "Perspectivas", "children": {} },
+    "whyArsan": {
+      "label": "Por qué ARSAN",
+      "children": {
+        "ourDifference": {
+          "label": "Nuestra Diferencia",
+          "description": "Lo que distingue a ARSAN."
+        },
+        "ourPeople": {
+          "label": "Nuestro Equipo",
+          "description": "Asesores senior con experiencia real de operación."
+        },
+        "howWeWork": {
+          "label": "Cómo Trabajamos",
+          "description": "Un enfoque colaborativo y a la medida."
+        }
+      }
+    }
+  },
+  "footer": {
+    "regions": "EE. UU. · México · Transfronterizo",
+    "copyright": "© {year} ARSAN. Todos los derechos reservados.",
+    "tagline": "Búsqueda de Ejecutivos y Asesoría de Talento en Manufactura"
+  },
+  "ctaBand": {
+    "heading": "¿Tiene entre manos una decisión importante?",
+    "body": "Cuéntenos qué está pasando. Escuchamos, aportamos perspectiva y exploramos cómo ayudarle a avanzar.",
+    "cta": "Conversemos"
   },
   "home": {
-    "eyebrow": "EE. UU. · México · Transfronterizo",
-    "headlineLead": "Decisiones críticas de talento.",
-    "headlineEmphasis": "Mejores",
-    "headlineTail": "resultados de negocio.",
-    "subhead": "Búsqueda de ejecutivos, asesoría de fuerza laboral en México y soluciones de liderazgo para fabricantes que navegan crecimiento, cambio y decisiones críticas de talento.",
-    "ctaPrimary": "Hablemos de su Búsqueda",
-    "ctaSecondary": "Por qué ARSAN"
+    "hero": {
+      "headlineLead": "Decisiones críticas de talento.",
+      "headlineEmphasis": "Mejores",
+      "headlineTail": "resultados de negocio.",
+      "subhead": "Búsqueda de ejecutivos, asesoría de fuerza laboral en México y soluciones de liderazgo para fabricantes que enfrentan crecimiento, cambio y decisiones críticas de talento.",
+      "ctaPrimary": "Hablemos de su Búsqueda",
+      "ctaSecondary": "Por qué ARSAN",
+      "regions": "EE. UU. · México · Transfronterizo"
+    },
+    "chooser": {
+      "heading": "¿Qué reto de talento enfrenta hoy?",
+      "cards": [
+        {
+          "need": "Necesito un líder clave.",
+          "service": "Búsqueda de Ejecutivos y Profesionales",
+          "body": "Identificamos y atraemos líderes de manufactura que impulsan desempeño, innovación y crecimiento.",
+          "cta": "Ver Búsqueda de Ejecutivos"
+        },
+        {
+          "need": "Estamos construyendo o creciendo en México.",
+          "service": "Expansión en México y Asesoría Laboral",
+          "body": "Le ayudamos a construir los equipos y la base laboral correcta para arrancar y crecer con confianza.",
+          "cta": "Ver Asesoría México"
+        },
+        {
+          "need": "Nuestro equipo directivo necesita evolucionar.",
+          "service": "Talento Empresarial y Soluciones de Liderazgo",
+          "body": "Fortalecemos equipos directivos y alineamos la estrategia de talento con la transformación de largo plazo.",
+          "cta": "Ver Soluciones de Liderazgo"
+        }
+      ]
+    },
+    "values": {
+      "heading": "Hemos estado de su lado de la mesa.",
+      "body": "Décadas de experiencia dentro de recursos humanos, manufactura y liderazgo organizacional nos dan una perspectiva distinta. Entendemos la presión detrás de la decisión — no solo la vacante por cubrir.",
+      "items": [
+        {
+          "title": "Gente senior, cerca del trabajo.",
+          "body": "Trabaja directamente con asesores experimentados que entienden lo que está en juego."
+        },
+        {
+          "title": "Entendemos los entornos de manufactura.",
+          "body": "Conocemos su operación, sus restricciones y el talento que se necesita para ganar."
+        },
+        {
+          "title": "Operamos en EE. UU. y México.",
+          "body": "Experiencia transfronteriza para respaldar crecimiento, expansión y alineación de liderazgo en todos los niveles."
+        }
+      ]
+    },
+    "stories": {
+      "heading": "Trabajo que habla por sí mismo.",
+      "viewAll": "Ver Todos los Resultados",
+      "readStory": "Leer la Historia",
+      "items": [
+        {
+          "category": "Expansión en México",
+          "title": "Construir la base de liderazgo antes de abrir la planta.",
+          "body": "Ayudamos a un fabricante global a formar su equipo directivo y estrategia laboral para arrancar una nueva planta en México."
+        },
+        {
+          "category": "Transformación Organizacional",
+          "title": "Reconstruir un equipo directivo tras una fusión mayor.",
+          "body": "Colocamos líderes clave en operaciones, cadena de suministro y finanzas para realinear la organización y acelerar el desempeño."
+        },
+        {
+          "category": "Búsqueda Crítica",
+          "title": "Resolver una búsqueda de alto riesgo en un entorno complejo de manufactura.",
+          "body": "Identificamos y aseguramos a un líder transformacional con la profundidad operativa y el ajuste cultural para un éxito duradero."
+        }
+      ]
+    },
+    "quote": {
+      "lead": "No presentamos candidatos para generar actividad. Presentamos personas que creemos que",
+      "emphasis": "merecen",
+      "tail": " su tiempo."
+    }
+  },
+  "subpage": {
+    "forClients": {
+      "title": "¿Cómo puede ayudar ARSAN?",
+      "intro": "Ya sea que esté contratando a un líder clave, construyendo una operación en México o navegando un cambio organizacional, ARSAN aporta criterio senior y contexto de manufactura a las decisiones que importan.",
+      "cards": [
+        {
+          "title": "Búsqueda de Ejecutivos y Profesionales",
+          "body": "Cuando el puesto es demasiado importante para una búsqueda basada en currículums. Identificamos y aseguramos líderes y profesionales clave capaces de dirigir, operar y entregar resultados en el entorno al que llegan.",
+          "cta": "Ver Búsqueda de Ejecutivos"
+        },
+        {
+          "title": "Expansión en México y Asesoría Laboral",
+          "body": "Para empresas que llegan, arrancan o expanden operaciones en México. Construya la organización antes de que la operación dependa de ella.",
+          "cta": "Ver Asesoría México"
+        },
+        {
+          "title": "Talento Empresarial y Soluciones de Liderazgo",
+          "body": "Respalde a las personas que ya están dentro del negocio cuando algo importante está cambiando — desarrollo de liderazgo, transiciones y necesidades organizacionales complejas.",
+          "cta": "Ver Soluciones de Liderazgo"
+        }
+      ]
+    },
+    "executiveSearch": {
+      "title": "La contratación correcta cambia más que una posición.",
+      "intro": "ARSAN ayuda a los fabricantes a identificar y asegurar ejecutivos y profesionales clave capaces de dirigir, operar y entregar resultados en el entorno al que llegan — no solo de coincidir con una descripción de puesto.",
+      "points": [
+        {
+          "title": "Entender el mandato",
+          "body": "Empezamos alineándonos con el reto real de negocio, los resultados esperados y lo no negociable. La claridad al inicio produce mejores decisiones después."
+        },
+        {
+          "title": "Conocer el mercado",
+          "body": "Mapeamos el talento correcto — activo y pasivo — entre industrias y fronteras para saber quién puede generar impacto."
+        },
+        {
+          "title": "Proteger la decisión",
+          "body": "Evaluamos con rigor, gestionamos el riesgo y asesoramos con franqueza para que avance con confianza."
+        }
+      ]
+    },
+    "mexicoAdvisory": {
+      "title": "Su operación en México empieza mucho antes que la producción.",
+      "intro": "ARSAN ayuda a los fabricantes a traducir la estrategia de negocio en el liderazgo, la fuerza laboral y la base organizacional que se requieren para operar con éxito en México.",
+      "points": [
+        {
+          "title": "¿De dónde vendrá el talento?",
+          "body": "Entienda el mercado laboral local, la disponibilidad de habilidades y el pipeline realista."
+        },
+        {
+          "title": "¿Quién debe construirla?",
+          "body": "Identifique a los líderes que arrancarán, dirigirán y desarrollarán el equipo en México."
+        },
+        {
+          "title": "¿Cómo trabajarán dos culturas operativas como una?",
+          "body": "Construya alineación en expectativas, toma de decisiones y formas de trabajar."
+        }
+      ]
+    },
+    "leadershipSolutions": {
+      "title": "Fortalezca al equipo que ya tiene.",
+      "intro": "Desarrollo de liderazgo, transiciones ejecutivas y alineación organizacional para fabricantes en crecimiento y cambio.",
+      "points": [
+        {
+          "title": "Efectividad del equipo directivo",
+          "body": "Alinee a los equipos directivos en estrategia, responsabilidad y formas de trabajar."
+        },
+        {
+          "title": "Coaching ejecutivo y mentoría",
+          "body": "Acompañamiento uno a uno para líderes que asumen mandatos mayores."
+        },
+        {
+          "title": "Transiciones organizacionales",
+          "body": "Dé estabilidad a la organización durante fusiones, expansiones y cambios de liderazgo."
+        }
+      ]
+    },
+    "forCandidates": {
+      "title": "Su carrera merece una representación seria.",
+      "intro": "Los movimientos de carrera importan. Nos tomamos el tiempo de entender su experiencia, prioridades y potencial — y lo conectamos con oportunidades donde pueda dirigir, crecer y generar impacto real.",
+      "points": [
+        {
+          "title": "Confidencial",
+          "body": "Su privacidad es prioridad en cada paso del proceso."
+        },
+        {
+          "title": "Selectivo",
+          "body": "Lo representamos para posiciones que realmente le quedan — no para todo lo que está abierto."
+        },
+        {
+          "title": "Personal",
+          "body": "Trabaja con asesores senior que entienden las carreras de manufactura en ambos lados de la frontera."
+        }
+      ],
+      "ctaNote": "La oportunidad correcta puede no estar abierta hoy. Cuéntenos sus metas y lo contactaremos cuando haya coincidencia.",
+      "cta": "Iniciar una Conversación Confidencial"
+    },
+    "results": {
+      "title": "Trabajo que habla por sí mismo.",
+      "intro": "Historias seleccionadas de búsquedas y asesoría en EE. UU. y México. Los nombres de los clientes son confidenciales; los resultados son reales."
+    },
+    "insights": {
+      "title": "Perspectiva para mejores decisiones de talento.",
+      "intro": "Ideas sobre talento en manufactura, estrategia laboral en México y liderazgo — escritas para quienes deciden.",
+      "comingSoon": "Los artículos vienen en camino. Mientras tanto, cuéntenos qué está resolviendo."
+    },
+    "whyArsan": {
+      "title": "Hemos estado de su lado de la mesa.",
+      "intro": "Entendemos su negocio porque lo hemos dirigido. Esa perspectiva produce mejores conversaciones — y mejores resultados.",
+      "difference": {
+        "heading": "Nuestra Diferencia",
+        "body": "Experiencia profunda en manufactura en EE. UU., México y operaciones transfronterizas. Acceso a talento senior fuera del alcance de otros. Un proceso disciplinado que protege su tiempo y su decisión."
+      },
+      "people": {
+        "heading": "Nuestro Equipo",
+        "body": "Asesores senior con experiencia real de operación en recursos humanos, manufactura y liderazgo organizacional en EE. UU. y México."
+      },
+      "howWeWork": {
+        "heading": "Cómo Trabajamos",
+        "body": "Colaborativo y a la medida. Partimos del reto de negocio, alineamos qué significa el éxito y nos mantenemos cerca del trabajo desde la primera conversación hasta la contratación."
+      }
+    },
+    "contact": {
+      "title": "Cuéntenos qué está resolviendo.",
+      "intro": "Empiece por el reto de negocio. Le ayudamos a determinar si ARSAN puede ayudar — y cómo.",
+      "formNote": "El formulario de contacto está en proceso de conexión. Por ahora, contáctenos directamente y responderemos en un día hábil.",
+      "cta": "Hablemos de su Búsqueda"
+    }
   }
 }
