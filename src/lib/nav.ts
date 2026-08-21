@@ -16,6 +16,12 @@ export type NavFeature = {
   href: string;
   /** "button" renders a solid brass CTA, "link" an arrow link */
   cta: "button" | "link";
+  /**
+   * Photograph for the feature card. refs/dirA-meganav-all-panels.png puts one
+   * on Results and Insights and leaves the other three on their icon; a panel
+   * with an `image` reads its alt from `nav.<key>.feature.imageAlt`.
+   */
+  image?: string;
 };
 
 export type NavSection = {
@@ -84,7 +90,12 @@ export const NAV_SECTIONS: NavSection[] = [
       { key: "outcomes", href: "/results", icon: "chart" },
       { key: "testimonials", href: "/results#testimonials", icon: "chat" },
     ],
-    feature: { icon: "factory", href: "/results", cta: "link" },
+    feature: {
+      icon: "factory",
+      href: "/results",
+      cta: "link",
+      image: "/images/hero-plant-floor.jpg",
+    },
   },
   {
     key: "insights",
@@ -95,7 +106,12 @@ export const NAV_SECTIONS: NavSection[] = [
       { key: "mexico", href: "/insights", icon: "map" },
       { key: "reports", href: "/insights", icon: "document" },
     ],
-    feature: { icon: "chart", href: "/insights", cta: "link" },
+    feature: {
+      icon: "chart",
+      href: "/insights",
+      cta: "link",
+      image: "/images/nav-automation.jpg",
+    },
   },
   {
     key: "whyArsan",

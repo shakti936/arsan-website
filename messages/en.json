@@ -85,7 +85,8 @@
       "feature": {
         "title": "Before the plant opened, the organization had to be built.",
         "body": "How a global manufacturer built its leadership team a year ahead of production.",
-        "cta": "View the Case Study"
+        "cta": "View the Case Study",
+        "imageAlt": "A plant exterior with U.S. and Mexican flags flying at the entrance."
       }
     },
     "insights": {
@@ -112,7 +113,8 @@
       "feature": {
         "title": "What manufacturers need to get right about talent now",
         "body": "The leadership capabilities driving performance and resilience in 2026.",
-        "cta": "Read the Article"
+        "cta": "Read the Article",
+        "imageAlt": "An industrial robot arm working over a fixture table inside a fenced automation cell."
       }
     },
     "whyArsan": {
@@ -159,27 +161,7 @@
       "subhead": "Executive search, Mexico workforce advisory and leadership solutions for manufacturers navigating growth, change and critical people decisions.",
       "ctaPrimary": "Discuss a Search",
       "ctaSecondary": "Why ARSAN",
-      "regions": "U.S. · Mexico · Cross-Border",
-      "plateEyebrow": "Where we work",
-      "practices": [
-        {
-          "name": "Automotive & Mobility",
-          "detail": "OEM, tier one and tier two suppliers"
-        },
-        {
-          "name": "Aerospace & Defense",
-          "detail": "Precision components and assemblies"
-        },
-        {
-          "name": "Medical & Pharmaceutical",
-          "detail": "Regulated manufacturing environments"
-        },
-        {
-          "name": "Industrial & Consumer",
-          "detail": "Electronics, chemicals, food and beverage"
-        }
-      ],
-      "plateAlt": "A manufacturing plant at dusk, its loading docks lit, seen from across the parking lot."
+      "regions": "U.S. · Mexico · Cross-Border"
     },
     "chooser": {
       "heading": "What talent challenge are you facing?",

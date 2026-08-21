@@ -9,13 +9,13 @@ import { cn } from "@/lib/cn";
  * warm brass light — the visual language of an engineering drawing, which is
  * what ARSAN's clients actually work from.
  *
- * Pass `src` and a plate becomes a frame: the photograph sits underneath and
- * the ticks, grid and grain stay on top, so a photographed plate still belongs
- * to the same world as an empty one. Without `src` it renders the pure CSS
- * treatment — no image request, no layout shift.
+ * Pass `src` and the photograph takes over: refs/dirA-home-v2.png and
+ * refs/dirA-meganav-all-panels.png show plain, full-colour photographs in these
+ * slots, so a photographed plate drops the grid, the ticks and all but a
+ * whisper of navy. The drawing treatment is what an *empty* plate renders — it
+ * exists to keep an unphotographed slot from reading as a grey box.
  *
- * `overlay="heavy"` is for plates that carry text (the home hero); it darkens
- * the photograph enough to hold contrast against cream type.
+ * `overlay="heavy"` is for the rare plate that carries type over the image.
  */
 type PlateBase = {
   /** Varies grid scale and light position so repeated plates don't twin. */
@@ -72,7 +72,7 @@ export function Plate({
               background:
                 overlay === "heavy"
                   ? "linear-gradient(150deg, color-mix(in oklab, var(--color-navy-900) 58%, transparent) 0%, color-mix(in oklab, var(--color-navy-950) 80%, transparent) 100%)"
-                  : "linear-gradient(150deg, color-mix(in oklab, var(--color-navy-800) 34%, transparent) 0%, color-mix(in oklab, var(--color-navy-950) 52%, transparent) 100%)",
+                  : "linear-gradient(150deg, color-mix(in oklab, var(--color-navy-800) 6%, transparent) 0%, color-mix(in oklab, var(--color-navy-950) 14%, transparent) 100%)",
             }}
           />
         </>
@@ -86,38 +86,38 @@ export function Plate({
           }}
         />
       )}
-      {/* orthographic grid — recedes over a photograph so it reads as
-          registration, not texture */}
-      <div
-        aria-hidden="true"
-        className={cn(
-          "absolute inset-0",
-          src ? "opacity-[0.07]" : "opacity-[0.18]",
-        )}
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(242,239,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(242,239,236,.5) 1px, transparent 1px)",
-          backgroundSize: `${grid} ${grid}`,
-          maskImage:
-            "radial-gradient(130% 100% at 30% 20%, #000 10%, transparent 82%)",
-        }}
-      />
-      {/* registration ticks — corner marks from engineering drawings */}
-      <div aria-hidden="true" className="absolute inset-0">
-        {[
-          "left-3.5 top-3.5 border-l border-t",
-          "right-3.5 top-3.5 border-r border-t",
-          "bottom-3.5 left-3.5 border-b border-l",
-          "bottom-3.5 right-3.5 border-b border-r",
-        ].map((corner) => (
-          <span
-            key={corner}
-            className={cn("absolute h-5 w-5 border-brass-400/50", corner)}
+      {!src && (
+        <>
+          {/* orthographic grid */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.18]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, rgba(242,239,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(242,239,236,.5) 1px, transparent 1px)",
+              backgroundSize: `${grid} ${grid}`,
+              maskImage:
+                "radial-gradient(130% 100% at 30% 20%, #000 10%, transparent 82%)",
+            }}
           />
-        ))}
-      </div>
-      {/* grain */}
-      <div aria-hidden="true" className="grain absolute inset-0" />
+          {/* registration ticks — corner marks from engineering drawings */}
+          <div aria-hidden="true" className="absolute inset-0">
+            {[
+              "left-3.5 top-3.5 border-l border-t",
+              "right-3.5 top-3.5 border-r border-t",
+              "bottom-3.5 left-3.5 border-b border-l",
+              "bottom-3.5 right-3.5 border-b border-r",
+            ].map((corner) => (
+              <span
+                key={corner}
+                className={cn("absolute h-5 w-5 border-brass-400/50", corner)}
+              />
+            ))}
+          </div>
+          {/* grain */}
+          <div aria-hidden="true" className="grain absolute inset-0" />
+        </>
+      )}
       {children}
     </div>
   );

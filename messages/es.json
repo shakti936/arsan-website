@@ -85,7 +85,8 @@
       "feature": {
         "title": "Antes de abrir la planta, había que construir la organización.",
         "body": "Cómo un fabricante global formó su equipo directivo un año antes de producir.",
-        "cta": "Ver el Caso"
+        "cta": "Ver el Caso",
+        "imageAlt": "El exterior de una planta con las banderas de Estados Unidos y México en la entrada."
       }
     },
     "insights": {
@@ -112,7 +113,8 @@
       "feature": {
         "title": "Lo que la manufactura debe resolver hoy sobre talento",
         "body": "Las capacidades de liderazgo que impulsan desempeño y resiliencia en 2026.",
-        "cta": "Leer el Artículo"
+        "cta": "Leer el Artículo",
+        "imageAlt": "Un brazo robótico industrial trabajando sobre una mesa de sujeción dentro de una celda automatizada."
       }
     },
     "whyArsan": {
@@ -159,27 +161,7 @@
       "subhead": "Búsqueda de ejecutivos, asesoría de fuerza laboral en México y soluciones de liderazgo para fabricantes que enfrentan crecimiento, cambio y decisiones críticas de talento.",
       "ctaPrimary": "Hablemos de su Búsqueda",
       "ctaSecondary": "Por qué ARSAN",
-      "regions": "EE. UU. · México · Transfronterizo",
-      "plateEyebrow": "Dónde trabajamos",
-      "practices": [
-        {
-          "name": "Automotriz y Movilidad",
-          "detail": "OEM y proveedores tier uno y tier dos"
-        },
-        {
-          "name": "Aeroespacial y Defensa",
-          "detail": "Componentes y ensambles de precisión"
-        },
-        {
-          "name": "Médico y Farmacéutico",
-          "detail": "Entornos de manufactura regulada"
-        },
-        {
-          "name": "Industrial y Consumo",
-          "detail": "Electrónicos, químicos, alimentos y bebidas"
-        }
-      ],
-      "plateAlt": "Una planta de manufactura al anochecer, con sus andenes de carga iluminados, vista desde el estacionamiento."
+      "regions": "EE. UU. · México · Transfronterizo"
     },
     "chooser": {
       "heading": "¿Qué reto de talento enfrenta hoy?",

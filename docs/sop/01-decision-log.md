@@ -661,3 +661,46 @@ frame.
 edge at q82 — the widest slot renders at ~460 CSS px, so 1800 covers 2× DPR with room, and
 `next/image` resizes from there per request. 32MB → 3.4MB total. 4K originals kept out of the
 repo in the session scratchpad.
+
+### D-055 · 2026-08-21 · Photographs follow the reference: full-bleed hero, plain plates, photos in the nav
+Drew, against `refs/dirA-home-v2.png`: the images should be full-background, and the "Where
+we work" practice index isn't in the reference.
+
+**He's right — it never was.** The reference hero is one photograph running the full width of
+the band with navy laid over the left where the type sits. The practice index was something I
+invented to fill an empty column back when there were no photographs (D-032 era). It's gone,
+along with its `plateEyebrow`, `practices` and `plateAlt` message keys.
+
+Hero is now a full-bleed `<Image fill>` with **two scrims rather than one**: below `lg` the
+copy crosses the middle of the frame so navy has to cover everything (88%→84% vertical); from
+`lg` up it rakes off to the right (96% → 92% → 62% → transparent at 86%). New image
+`hero-wide.jpg`, prompted with the left third deliberately open so the headline sits on quiet
+ground.
+
+**Photographed plates dropped the drawing treatment.** The reference shows plain, full-colour
+photographs in cards and nav panels — no grid, no registration ticks, no heavy tint. A plate
+with `src` now renders the photograph with a 6%→14% navy whisper for palette cohesion and
+nothing else. The engineering-drawing treatment is what an *empty* plate renders; it exists to
+stop an unphotographed slot reading as a grey box, and that is the only job it now has.
+
+**The mega nav carries photographs too** (`refs/dirA-meganav-all-panels.png`): Results and
+Insights get one beside the feature text, the other three keep their icon. `NavFeature` gained
+an optional `image`; the alt comes from `nav.<key>.feature.imageAlt`. With an image the feature
+title steps down to `display-sm` and the body to `text-sm` — at `[3fr_5fr]` in a ~400px column
+`display-md` wrapped the Insights headline to four lines.
+
+**Two instrument bugs worth recording, since both would have produced false confidence:**
+1. The hero contrast pass first reported two failures. Both were the *checker*: it parsed
+   `lab(...)` colours as if they were RGB, and it hid the CTA's own brass ground before
+   sampling. Rebuilt to resolve any CSS colour through a canvas and to composite translucent
+   text onto its measured ground — 0 real failures, worst case 5.07:1 on the solid CTA and
+   5.22:1 on the headline.
+2. The image sweep reported 44 broken images. They were lazy images that had not loaded,
+   counted because the check read `img.src` (which for a Next `fill` image is the largest
+   srcset candidate) instead of `currentSrc`, and never scrolled. Rebuilt to scroll the page,
+   ignore hidden images and read `currentSrc`: **0 broken, 0 oversized, 0 overflow across 18
+   route/width combinations and 102 displayed images.**
+
+**One real bug did fall out of that sweep:** the mega-panel `sizes` was
+`"(min-width: 1280px) 20vw, 0px"`. A `sizes` that resolves to `0px` makes the browser fetch
+the *largest* candidate — it was requesting a 3840px variant for a 150px slot. Now `"260px"`.

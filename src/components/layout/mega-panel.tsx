@@ -1,13 +1,16 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Icons } from "@/components/ui/icons";
 import { Link } from "@/i18n/navigation";
+import { cn } from "@/lib/cn";
 import type { NavSection } from "@/lib/nav";
 
 /**
  * Full-width mega-menu panel matching refs/dirA-meganav-all-panels.png:
  * left column = icon + title + description rows separated by rules,
- * right column = featured card with illustration, heading, body, CTA.
+ * right column = featured card. Results and Insights carry a photograph beside
+ * the text in the reference; the other three keep their icon.
  * Opens on hover and on keyboard focus (focus-within) — no JS.
  */
 export function MegaPanel({ section }: { section: NavSection }) {
@@ -56,27 +59,60 @@ export function MegaPanel({ section }: { section: NavSection }) {
 
             {/* Right: featured card */}
             {section.feature && FeatureIcon && (
-              <div className="flex flex-col justify-center bg-cream-50 p-8">
-                <FeatureIcon className="h-10 w-10 text-brass-500" />
-                <p className="mt-5 font-display text-display-md font-semibold text-navy-900 text-balance">
-                  {t(`${section.key}.feature.title`)}
-                </p>
-                <p className="mt-3 max-w-[38ch] text-base text-navy-800">
-                  {t(`${section.key}.feature.body`)}
-                </p>
-                <div className="mt-6">
-                  {section.feature.cta === "button" ? (
-                    <Link
-                      href={section.feature.href}
-                      className="eyebrow inline-flex bg-brass-500 px-6 py-3.5 text-navy-950 transition-colors hover:bg-brass-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-400"
-                    >
-                      {t(`${section.key}.feature.cta`)}
-                    </Link>
-                  ) : (
-                    <ArrowLink href={section.feature.href}>
-                      {t(`${section.key}.feature.cta`)}
-                    </ArrowLink>
-                  )}
+              <div
+                className={cn(
+                  "bg-cream-50",
+                  section.feature.image
+                    ? "grid items-center gap-5 p-6 sm:grid-cols-[3fr_5fr]"
+                    : "flex flex-col justify-center p-8",
+                )}
+              >
+                {section.feature.image ? (
+                  <div className="relative aspect-4/3 overflow-hidden">
+                    <Image
+                      src={section.feature.image}
+                      alt={t(`${section.key}.feature.imageAlt`)}
+                      fill
+                      sizes="260px"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <FeatureIcon className="h-10 w-10 text-brass-500" />
+                )}
+                <div>
+                  <p
+                    className={cn(
+                      "font-display font-semibold text-navy-900 text-balance",
+                      section.feature.image
+                        ? "text-display-sm"
+                        : "mt-5 text-display-md",
+                    )}
+                  >
+                    {t(`${section.key}.feature.title`)}
+                  </p>
+                  <p
+                    className={cn(
+                      "mt-3 max-w-[38ch] text-navy-800",
+                      section.feature.image ? "text-sm" : "text-base",
+                    )}
+                  >
+                    {t(`${section.key}.feature.body`)}
+                  </p>
+                  <div className="mt-6">
+                    {section.feature.cta === "button" ? (
+                      <Link
+                        href={section.feature.href}
+                        className="eyebrow inline-flex bg-brass-500 px-6 py-3.5 text-navy-950 transition-colors hover:bg-brass-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-400"
+                      >
+                        {t(`${section.key}.feature.cta`)}
+                      </Link>
+                    ) : (
+                      <ArrowLink href={section.feature.href}>
+                        {t(`${section.key}.feature.cta`)}
+                      </ArrowLink>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
