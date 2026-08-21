@@ -2,13 +2,16 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { NAV_SECTIONS } from "@/lib/nav";
 
 export function MobileNav() {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+  const pathname = usePathname();
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <div className="lg:hidden">
@@ -48,7 +51,12 @@ export function MobileNav() {
                 <Link
                   href={section.href}
                   onClick={close}
-                  className="font-display text-2xl font-medium text-white-warm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300"
+                  aria-current={isActive(section.href) ? "page" : undefined}
+                  className={`font-display text-2xl font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300 ${
+                    isActive(section.href)
+                      ? "border-l-2 border-brass-500 pl-3 text-brass-300"
+                      : "text-white-warm"
+                  }`}
                 >
                   {t(`${section.key}.label`)}
                 </Link>

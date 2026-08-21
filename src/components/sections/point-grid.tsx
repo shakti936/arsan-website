@@ -15,7 +15,7 @@ export function PointGrid({ points }: { points: Point[] }) {
                 <h2 className="font-display text-2xl font-semibold text-navy-900 text-balance">
                   {point.title}
                 </h2>
-                <p className="mt-3 text-sm leading-relaxed text-navy-800">
+                <p className="mt-3 text-base leading-relaxed text-navy-800">
                   {point.body}
                 </p>
               </div>

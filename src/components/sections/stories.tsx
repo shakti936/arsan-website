@@ -5,14 +5,18 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 const STORY_COUNT = 3;
 
-export function Stories() {
+export function Stories({
+  headingOverride,
+}: {
+  headingOverride?: string;
+} = {}) {
   const t = useTranslations("home.stories");
 
   return (
     <section className="bg-white-warm py-20">
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading>{t("heading")}</SectionHeading>
+          <SectionHeading>{headingOverride ?? t("heading")}</SectionHeading>
           <ArrowLink href="/results">{t("viewAll")}</ArrowLink>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -35,7 +39,7 @@ export function Stories() {
                   <h3 className="mt-3 font-display text-2xl font-semibold leading-snug text-navy-900 text-balance">
                     {t(`items.${i}.title`)}
                   </h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-navy-800">
+                  <p className="mt-3 flex-1 text-base leading-relaxed text-navy-800">
                     {t(`items.${i}.body`)}
                   </p>
                   <div className="mt-5">

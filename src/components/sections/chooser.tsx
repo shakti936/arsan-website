@@ -27,7 +27,7 @@ export function Chooser() {
                 <p className="eyebrow mt-3 text-brass-600">
                   {t(`cards.${i}.service`)}
                 </p>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-navy-800">
+                <p className="mt-4 flex-1 text-base leading-relaxed text-navy-800">
                   {t(`cards.${i}.body`)}
                 </p>
                 <div className="mt-6 flex justify-center">

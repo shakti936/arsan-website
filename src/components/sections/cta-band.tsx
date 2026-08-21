@@ -13,7 +13,7 @@ export function CtaBand() {
         A
       </span>
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8 px-6 py-16 sm:px-10 lg:grid-cols-[1.4fr_1fr_auto]">
-        <h2 className="font-display text-display-lg font-semibold leading-tight text-white-warm text-balance">
+        <h2 className="font-display text-display-lg font-semibold text-white-warm text-balance">
           {t("heading")}
         </h2>
         <p className="text-sm leading-relaxed text-cream-100">{t("body")}</p>

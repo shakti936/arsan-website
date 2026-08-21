@@ -13,7 +13,7 @@ export function Hero({ namespace }: { namespace: string }) {
     <section className="bg-navy-900">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-20 sm:px-10 lg:grid-cols-[7fr_5fr] lg:py-28">
         <div className="flex flex-col items-start justify-center">
-          <h1 className="font-display text-display-xl font-semibold leading-[1.05] text-white-warm text-balance">
+          <h1 className="font-display text-display-xl font-semibold text-white-warm text-balance">
             {t("headlineLead")}{" "}
             <em className="font-medium text-brass-400">
               {t("headlineEmphasis")}
@@ -21,7 +21,7 @@ export function Hero({ namespace }: { namespace: string }) {
             {t("headlineTail")}
           </h1>
           <div aria-hidden="true" className="mt-6 h-0.5 w-10 bg-brass-500" />
-          <p className="mt-6 max-w-[52ch] text-base leading-relaxed text-cream-100">
+          <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-cream-100">
             {t("subhead")}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">

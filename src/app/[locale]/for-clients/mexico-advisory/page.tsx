@@ -38,7 +38,7 @@ export default async function Page({ params }: Params) {
           <h2 className="mx-auto max-w-[30ch] text-center font-display text-display-md font-semibold text-navy-900 text-balance">
             {tq("heading")}
           </h2>
-          <p className="mx-auto mt-5 max-w-[62ch] text-center text-sm leading-relaxed text-navy-800">
+          <p className="mx-auto mt-5 max-w-[62ch] text-center text-base leading-relaxed text-navy-800">
             {tq("intro")}
           </p>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -52,7 +52,7 @@ export default async function Page({ params }: Params) {
                   <h3 className="font-display text-2xl font-semibold leading-snug text-navy-900 text-balance">
                     {tq(`items.${i}.title`)}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-navy-800">
+                  <p className="mt-3 text-base leading-relaxed text-navy-800">
                     {tq(`items.${i}.body`)}
                   </p>
                 </div>

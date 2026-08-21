@@ -9,6 +9,7 @@ type IconRowProps = {
   icons: IconName[];
   tone?: "light" | "dark";
   withHeading?: boolean;
+  id?: string;
 };
 
 /** Direction A icon row: outline icons, thin vertical dividers */
@@ -17,12 +18,16 @@ export function IconRow({
   icons,
   tone = "light",
   withHeading,
+  id,
 }: IconRowProps) {
   const t = useTranslations(namespace);
   const dark = tone === "dark";
 
   return (
-    <section className={cn(dark ? "bg-teal-900" : "bg-cream-50", "py-16")}>
+    <section
+      id={id}
+      className={cn(dark ? "bg-teal-900" : "bg-cream-50", "scroll-mt-24 py-16")}
+    >
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         {withHeading && (
           <h2

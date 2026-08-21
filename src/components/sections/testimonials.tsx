@@ -21,7 +21,7 @@ export function Testimonials() {
   const t = useTranslations("testimonials");
 
   return (
-    <section className="bg-cream-50 py-20">
+    <section id="testimonials" className="scroll-mt-24 bg-cream-50 py-20">
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         <SectionHeading>{t("heading")}</SectionHeading>
         <div className="mt-10 flex h-105 justify-center gap-6 overflow-hidden">
@@ -68,7 +68,7 @@ function TestimonialCard({
 
   return (
     <figure className="w-full border border-cream-100 bg-white-warm p-7 shadow-sm shadow-navy-950/5">
-      <blockquote className="text-sm leading-relaxed text-navy-800">
+      <blockquote className="text-base leading-relaxed text-navy-800">
         {quote}
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3">

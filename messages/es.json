@@ -13,6 +13,7 @@
     "close": "Cerrar menú",
     "forClients": {
       "label": "Para Empresas",
+      "exploreAll": "Ver Soluciones para Empresas",
       "children": {
         "executiveSearch": {
           "label": "Búsqueda de Ejecutivos y Profesionales",
@@ -24,24 +25,95 @@
         },
         "leadershipSolutions": {
           "label": "Talento Empresarial y Soluciones de Liderazgo",
-          "description": "Para desarrollo de liderazgo y necesidades organizacionales complejas."
+          "description": "Para desarrollo de liderazgo, transiciones y necesidades organizacionales complejas."
         }
+      },
+      "feature": {
+        "title": "¿Tiene un reto crítico de talento?",
+        "body": "Cuéntenos qué está pasando. Escuchamos, aportamos perspectiva y exploramos cómo ayudar.",
+        "cta": "Conversemos con ARSAN"
       }
     },
     "forCandidates": {
       "label": "Para Candidatos",
-      "children": {}
+      "exploreAll": "Ver Carrera con ARSAN",
+      "children": {
+        "whyWork": {
+          "label": "Por qué Trabajar con ARSAN",
+          "description": "Cómo lo representamos y qué esperar."
+        },
+        "experience": {
+          "label": "Experiencia del Candidato",
+          "description": "Respeto, comunicación, preparación y representación."
+        },
+        "resources": {
+          "label": "Recursos de Carrera",
+          "description": "Contexto y guía para sus decisiones profesionales."
+        },
+        "conversation": {
+          "label": "Iniciar una Conversación Confidencial",
+          "description": "Comparta su trayectoria y sus metas, en privado."
+        }
+      },
+      "feature": {
+        "title": "Su proceso es confidencial.",
+        "body": "Protegemos su privacidad y ofrecemos una experiencia selectiva y respetuosa en cada paso.",
+        "cta": "Conocer Nuestro Proceso"
+      }
     },
     "results": {
       "label": "Resultados",
-      "children": {}
+      "exploreAll": "Ver Resultados",
+      "children": {
+        "caseStudies": {
+          "label": "Casos de Éxito",
+          "description": "Historias a profundidad de nuestro impacto."
+        },
+        "outcomes": {
+          "label": "Resultados para Clientes",
+          "description": "Resultados medibles que impulsan el desempeño."
+        },
+        "testimonials": {
+          "label": "Testimonios",
+          "description": "Lo que dicen nuestros clientes y candidatos."
+        }
+      },
+      "feature": {
+        "title": "Antes de abrir la planta, había que construir la organización.",
+        "body": "Cómo un fabricante global formó su equipo directivo un año antes de producir.",
+        "cta": "Ver el Caso"
+      }
     },
     "insights": {
       "label": "Perspectivas",
-      "children": {}
+      "exploreAll": "Ver Perspectivas",
+      "children": {
+        "latest": {
+          "label": "Últimas Perspectivas",
+          "description": "Ideas oportunas sobre talento y liderazgo."
+        },
+        "manufacturing": {
+          "label": "Talento en Manufactura",
+          "description": "Tendencias que moldean la fuerza laboral industrial."
+        },
+        "mexico": {
+          "label": "Perspectivas de México",
+          "description": "Inteligencia de mercado y panorama de talento."
+        },
+        "reports": {
+          "label": "Reportes y Guías",
+          "description": "Investigación y recursos para quienes deciden."
+        }
+      },
+      "feature": {
+        "title": "Lo que la manufactura debe resolver hoy sobre talento",
+        "body": "Las capacidades de liderazgo que impulsan desempeño y resiliencia en 2026.",
+        "cta": "Leer el Artículo"
+      }
     },
     "whyArsan": {
       "label": "Por qué ARSAN",
+      "exploreAll": "Descubrir ARSAN",
       "children": {
         "ourDifference": {
           "label": "Nuestra Diferencia",
@@ -55,6 +127,11 @@
           "label": "Cómo Trabajamos",
           "description": "Un enfoque colaborativo y a la medida."
         }
+      },
+      "feature": {
+        "title": "Hemos estado de su lado de la mesa.",
+        "body": "Entendemos su negocio porque lo hemos dirigido. Esa perspectiva produce mejores resultados.",
+        "cta": "Conocer al Equipo"
       }
     },
     "ariaLocale": "Idioma",
@@ -601,5 +678,8 @@
     "errorTitle": "Eso no funcionó — y es nuestra responsabilidad.",
     "errorBody": "Un error inesperado interrumpió la página. Intente de nuevo; si persiste, nos gustaría saberlo.",
     "tryAgain": "Intentar de Nuevo"
+  },
+  "resultsPage": {
+    "storiesHeading": "Casos seleccionados"
   }
 }

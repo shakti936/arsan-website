@@ -13,6 +13,7 @@
     "close": "Close menu",
     "forClients": {
       "label": "For Clients",
+      "exploreAll": "Explore Client Solutions",
       "children": {
         "executiveSearch": {
           "label": "Executive & Professional Search",
@@ -24,24 +25,95 @@
         },
         "leadershipSolutions": {
           "label": "Enterprise Talent & Leadership Solutions",
-          "description": "For leadership development and complex organizational needs."
+          "description": "For leadership development, transitions and complex organizational needs."
         }
+      },
+      "feature": {
+        "title": "Have a critical people challenge?",
+        "body": "Tell us what's happening. We'll listen, offer perspective and explore how we can help.",
+        "cta": "Discuss It With ARSAN"
       }
     },
     "forCandidates": {
       "label": "For Candidates",
-      "children": {}
+      "exploreAll": "Explore Careers",
+      "children": {
+        "whyWork": {
+          "label": "Why Work With ARSAN",
+          "description": "How we represent you, and what to expect."
+        },
+        "experience": {
+          "label": "Candidate Experience",
+          "description": "Respect, communication, preparation, representation."
+        },
+        "resources": {
+          "label": "Career Resources",
+          "description": "Insight and guidance for your career decisions."
+        },
+        "conversation": {
+          "label": "Start a Confidential Conversation",
+          "description": "Share your background and goals, privately."
+        }
+      },
+      "feature": {
+        "title": "Your journey is confidential.",
+        "body": "We protect your privacy and deliver a selective, respectful experience at every step.",
+        "cta": "Learn About Our Process"
+      }
     },
     "results": {
       "label": "Results",
-      "children": {}
+      "exploreAll": "Explore Results",
+      "children": {
+        "caseStudies": {
+          "label": "Case Studies",
+          "description": "In-depth stories of our impact."
+        },
+        "outcomes": {
+          "label": "Client Outcomes",
+          "description": "Measurable results that drive performance."
+        },
+        "testimonials": {
+          "label": "Testimonials",
+          "description": "What our clients and candidates say."
+        }
+      },
+      "feature": {
+        "title": "Before the plant opened, the organization had to be built.",
+        "body": "How a global manufacturer built its leadership team a year ahead of production.",
+        "cta": "View the Case Study"
+      }
     },
     "insights": {
       "label": "Insights",
-      "children": {}
+      "exploreAll": "Explore Insights",
+      "children": {
+        "latest": {
+          "label": "Latest Perspectives",
+          "description": "Timely thinking on talent and leadership."
+        },
+        "manufacturing": {
+          "label": "Manufacturing Talent",
+          "description": "Trends shaping the industrial workforce."
+        },
+        "mexico": {
+          "label": "Mexico Insights",
+          "description": "Market intelligence and talent outlook."
+        },
+        "reports": {
+          "label": "Reports & Guides",
+          "description": "Research and resources for decision-makers."
+        }
+      },
+      "feature": {
+        "title": "What manufacturers need to get right about talent now",
+        "body": "The leadership capabilities driving performance and resilience in 2026.",
+        "cta": "Read the Article"
+      }
     },
     "whyArsan": {
       "label": "Why ARSAN",
+      "exploreAll": "Discover ARSAN",
       "children": {
         "ourDifference": {
           "label": "Our Difference",
@@ -49,12 +121,17 @@
         },
         "ourPeople": {
           "label": "Our People",
-          "description": "Senior advisors with real-world experience."
+          "description": "Senior advisors with real operating experience."
         },
         "howWeWork": {
           "label": "How We Work",
           "description": "A collaborative, tailored approach."
         }
+      },
+      "feature": {
+        "title": "We've sat on your side of the table.",
+        "body": "We understand your business because we've led it. That perspective drives better results.",
+        "cta": "Meet Our Team"
       }
     },
     "ariaLocale": "Language",
@@ -601,5 +678,8 @@
     "errorTitle": "That didn't work — and it's on us.",
     "errorBody": "An unexpected error interrupted the page. Try again; if it keeps happening, we'd genuinely like to know.",
     "tryAgain": "Try Again"
+  },
+  "resultsPage": {
+    "storiesHeading": "Selected case studies"
   }
 }

@@ -54,7 +54,7 @@ export default async function Page({ params }: Params) {
                   <h3 className="font-display text-2xl font-semibold text-navy-900">
                     {th(`items.${i}.title`)}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-navy-800">
+                  <p className="mt-3 text-base leading-relaxed text-navy-800">
                     {th(`items.${i}.body`)}
                   </p>
                 </div>
@@ -65,7 +65,7 @@ export default async function Page({ params }: Params) {
       </section>
       <section id="conversation" className="bg-cream-50 py-16">
         <Container>
-          <p className="max-w-[52ch] font-display text-display-md font-medium leading-snug text-navy-900 text-balance">
+          <p className="max-w-[52ch] font-display text-display-md font-medium text-navy-900 text-balance">
             {t("ctaNote")}
           </p>
           <div className="mt-10">

@@ -22,11 +22,12 @@ export default async function Page({ params }: Params) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("subpage.results");
+  const tr = await getTranslations("resultsPage");
 
   return (
     <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
-      <Stories />
+      <Stories headingOverride={tr("storiesHeading")} />
       <Testimonials />
       <CtaBand />
     </main>

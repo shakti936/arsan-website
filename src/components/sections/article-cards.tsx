@@ -50,7 +50,7 @@ export function ArticleCards({
                   <h3 className="mt-3 font-display text-2xl font-semibold leading-snug text-navy-900 text-balance">
                     {t(`items.${i}.title`)}
                   </h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-navy-800">
+                  <p className="mt-3 flex-1 text-base leading-relaxed text-navy-800">
                     {t(`items.${i}.excerpt`)}
                   </p>
                   <p className="eyebrow mt-5 text-navy-700/60">

@@ -41,7 +41,7 @@ export function TeamRow() {
                     <p className="eyebrow mt-1 text-brass-600">
                       {t(`members.${i}.title`)}
                     </p>
-                    <p className="mt-2 text-sm leading-relaxed text-navy-800">
+                    <p className="mt-2 text-base leading-relaxed text-navy-800">
                       {t(`members.${i}.bio`)}
                     </p>
                   </div>

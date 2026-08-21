@@ -332,3 +332,23 @@ localized 404 + catch-all route + error boundary; robots.ts + sitemap.ts (20 URL
 locale alternates); metadataBase + OpenGraph + themeColor. `NEXT_PUBLIC_SITE_URL` env
 (defaults to production domain).
 Verified in built HTML output, not just source. 24 SSG routes.
+
+### D-039 · 2026-08-21 · Type scale rebuilt; mega menus rebuilt to reference; active nav state
+**Root cause of "sizes look off":** `--text-display-*` tokens were declared without paired
+`--text-*--line-height`, so `.text-display-xl` compiled to font-size ONLY and every heading
+inherited whatever leading its component happened to set. Sizes were also ~25-30% oversized
+(hero 72px against a measured ~55px in the mockup).
+**Fixed at the token layer:** hero 36→56px, page hero 30→44px, section 24→32px, each with a
+paired line-height (1.12/1.15/1.2). Per Drew, sizes target *normal readable* rather than
+mockup-exact. Card/section body 14→16px; hero and page-hero intros → 18px. Ad-hoc
+`leading-*` overrides removed so the token owns leading.
+**Mega menus** rebuilt to `refs/dirA-meganav-all-panels.png`: full-viewport-width panels
+(header is `relative`; panels absolute against it), left icon+title+description rows on
+rules, right featured card with illustration/heading/body/CTA, "Explore …" link. Still
+CSS-only — hover + `focus-within`, zero JS.
+**Active page** marked with a brass underline and `aria-current="page"` (desktop) and a
+brass left rule (mobile).
+**Also fixed:** `/results` rendered the same sentence as H1 and section heading — the
+section is now "Selected case studies."
+**D-023 held:** mega-menu candidate items link only to pages that exist. No "View
+Opportunities" / "Submit Your Profile" / "Join Our Talent Network" until the portal is real.
