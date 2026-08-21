@@ -6,7 +6,7 @@ type Point = { title: string; body: string };
 /** Three-up brass-rule points used on service pages */
 export function PointGrid({ points }: { points: Point[] }) {
   return (
-    <section className="bg-white-warm py-16 lg:py-20">
+    <section className="bg-white-warm section-y">
       <Container>
         <div className="grid gap-10 md:grid-cols-3">
           {points.map((point, i) => (

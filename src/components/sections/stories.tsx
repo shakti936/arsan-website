@@ -13,7 +13,7 @@ export function Stories({
   const t = useTranslations("home.stories");
 
   return (
-    <section className="bg-white-warm py-20">
+    <section className="bg-white-warm section-y">
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading>{headingOverride ?? t("heading")}</SectionHeading>
@@ -33,7 +33,7 @@ export function Stories({
                   className="h-40 bg-gradient-to-br from-navy-800 to-navy-950"
                 />
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="eyebrow text-brass-600">
+                  <p className="eyebrow eyebrow-block text-brass-600">
                     {t(`items.${i}.category`)}
                   </p>
                   <h3 className="mt-3 font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">

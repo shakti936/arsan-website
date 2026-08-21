@@ -12,7 +12,7 @@ export function Chooser() {
   const t = useTranslations("home.chooser");
 
   return (
-    <section className="bg-white-warm py-20">
+    <section className="bg-white-warm section-y">
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         <h2 className="text-center font-display text-display-md font-semibold text-navy-900 text-balance">
           {t("heading")}

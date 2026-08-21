@@ -39,7 +39,7 @@ export default async function Page({ params }: Params) {
         icons={["handshake", "chat", "compass", "star"]}
         withHeading
       />
-      <section className="bg-white-warm py-16">
+      <section className="bg-white-warm section-y">
         <Container>
           <h2 className="text-center font-display text-display-md font-semibold text-navy-900 text-balance">
             {th("heading")}
@@ -64,7 +64,7 @@ export default async function Page({ params }: Params) {
           </div>
         </Container>
       </section>
-      <section id="conversation" className="bg-cream-50 py-16">
+      <section id="conversation" className="bg-cream-50 section-y">
         <Container>
           <p className="max-w-[52ch] font-display text-display-md font-medium text-navy-900 text-balance">
             {t("ctaNote")}

@@ -33,7 +33,7 @@ export default async function Page({ params }: Params) {
   return (
     <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
-      <section className="bg-white-warm py-16 lg:py-20">
+      <section className="bg-white-warm section-y">
         <Container>
           <h2 className="mx-auto max-w-[30ch] text-center font-display text-display-md font-semibold text-navy-900 text-balance">
             {tq("heading")}

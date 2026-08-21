@@ -8,7 +8,7 @@ export function ValueProps() {
   const t = useTranslations("home.values");
 
   return (
-    <section className="bg-cream-50 py-20">
+    <section className="bg-cream-50 section-y">
       <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 sm:px-10 lg:grid-cols-[1.1fr_2fr]">
         <Reveal>
           <SectionHeading>{t("heading")}</SectionHeading>

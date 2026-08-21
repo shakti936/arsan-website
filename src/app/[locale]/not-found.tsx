@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <main
       id="main"
-      className="flex min-h-[60dvh] flex-col items-start justify-center bg-white-warm px-6 py-20 sm:px-10"
+      className="flex min-h-[60dvh] flex-col items-start justify-center bg-white-warm px-6 section-y sm:px-10"
     >
       <div className="mx-auto w-full max-w-6xl">
         <p className="eyebrow text-brass-600">404</p>

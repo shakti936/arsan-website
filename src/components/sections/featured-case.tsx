@@ -6,7 +6,7 @@ export function FeaturedCase({ namespace }: { namespace: string }) {
   const t = useTranslations(namespace);
 
   return (
-    <section className="bg-white-warm py-16">
+    <section className="bg-white-warm section-y">
       <Reveal className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         <div className="grid overflow-hidden border border-cream-100 shadow-sm shadow-navy-950/5 lg:grid-cols-[2fr_3fr]">
           {/* Image slot — real facility photography later */}

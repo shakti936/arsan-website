@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 export function PageHero({ title, intro }: { title: string; intro?: string }) {
   return (
     <section className="bg-navy-900">
-      <Container className="py-16 lg:py-20">
+      <Container className="section-y">
         <h1 className="max-w-[22ch] font-display text-display-lg font-semibold text-white-warm text-balance">
           {title}
         </h1>

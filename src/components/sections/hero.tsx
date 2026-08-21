@@ -11,7 +11,7 @@ export function Hero({ namespace }: { namespace: string }) {
 
   return (
     <section className="bg-navy-900">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-20 sm:px-10 lg:grid-cols-[7fr_5fr] lg:py-28">
+      <div className="mx-auto grid w-full max-w-6xl gap-10 section-y px-6 sm:px-10 lg:grid-cols-[7fr_5fr]">
         <div className="flex flex-col items-start justify-center">
           <h1 className="font-display text-display-xl font-semibold text-white-warm text-balance">
             {t("headlineLead")}{" "}
@@ -24,7 +24,7 @@ export function Hero({ namespace }: { namespace: string }) {
           <p className="mt-6 max-w-[52ch] text-lg text-cream-100">
             {t("subhead")}
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
             <ButtonLink href="/contact">{t("ctaPrimary")}</ButtonLink>
             <ButtonLink href="/why-arsan" variant="outline">
               {t("ctaSecondary")}

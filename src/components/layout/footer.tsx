@@ -21,7 +21,7 @@ export function Footer() {
               <div key={section.key}>
                 <Link
                   href={section.href}
-                  className="text-sm font-semibold text-white-warm hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300"
+                  className="inline-flex min-h-9 items-center text-sm font-semibold text-white-warm hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300"
                 >
                   {t(`${section.key}.label`)}
                 </Link>
@@ -31,7 +31,7 @@ export function Footer() {
                       <li key={child.key}>
                         <Link
                           href={child.href}
-                          className="text-sm text-cream-100/80 hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300"
+                          className="inline-flex min-h-9 items-center text-sm text-cream-100/80 hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300"
                         >
                           {t(`${section.key}.children.${child.key}.label`)}
                         </Link>

@@ -431,3 +431,46 @@ the design detector were all green throughout. Static analysis cannot see hit-te
 `@playwright/test` added and `e2e/nav-overlay.spec.ts` written **failing first** (2 of 3 red),
 then green after the fix: CTA reachable · no panel opens below the header · nav hover still
 opens its panel. `bun run test:e2e`.
+
+### D-046 · 2026-08-21 · Layout + adapt pass across five viewports
+Audited 10 routes × 5 viewports (320/390/768/1280/1920) with real browser measurement.
+
+**Fixed:**
+- **WCAG 2.2 AA target-size failures: 551 → 0.** Footer links were 18px tall and arrow
+  links 20px — both below the 24px AA minimum. Footer links now 36px, arrow links 44px,
+  locale switcher 44px, nav links 44px.
+- **Section rhythm unified.** Ad-hoc `py-16`/`py-20`/`lg:py-28` scattered across 18 files
+  replaced with one `.section-y` scale (56px phone → 72px tablet → 96px desktop). Phones
+  were getting desktop-sized whitespace.
+- **Mobile nav rebuilt as a full-screen overlay.** It was `fixed top-[72px]` — a hard-coded
+  header height that drifts every time the type scale changes (it already had). The overlay
+  owns its own top bar, locks background scroll, and closes on Escape.
+- **Hero CTAs stack full-width on phones** instead of wrapping awkwardly; CTA-band watermark
+  hidden below `sm` where it only added noise.
+- **Card rows now align.** A two-line category label ("Organizational Transformation") used
+  to shove its card's title out of line with the row; `.eyebrow-block` reserves two lines.
+  Verified: title offset spread 0px across every row.
+- **Arrow links keep their arrow with the last word** when the label wraps, instead of
+  floating it right of the block.
+
+**Measured clean afterwards:** 0 AA target failures · 0 prose over 78ch (real `ch`
+measurement, not an estimate) · 0 page-level horizontal overflow at any viewport.
+
+**Deliberate:** footer links sit at 36px — comfortably past the 24px AA floor, short of the
+44px AAA guidance, because 44px per link makes a five-column footer enormous on a phone.
+
+### D-047 · 2026-08-21 · Scroll reveal moved from JS to CSS — 65% of each page was invisible without JS
+**Found during the layout pass.** `Reveal` used motion/react with `initial={{opacity: 0}}`,
+which **server-renders `style="opacity:0"` into the HTML**. Measured with JS disabled:
+**51 of 79 text nodes hidden** on the homepage. Any JS failure, or the window before
+hydration, left most of every page blank. The component's own comment claimed content was
+"visible by default" — it wasn't.
+
+**Fix:** CSS scroll-driven animation (`animation-timeline: view()`), guarded by
+`@supports` and `prefers-reduced-motion`. Content is visible by default and the reveal is
+layered on only where supported; unsupported browsers simply show the content. `Reveal` is
+now a **Server Component** — zero client JS.
+
+**Verified:** JS disabled → 0 of 79 hidden (was 51). Every reveal already in the viewport
+renders at full opacity; scrolled content animates to 1.00. `motion` is no longer imported
+anywhere — kept as a dependency for future interactive motion, not currently bundled.

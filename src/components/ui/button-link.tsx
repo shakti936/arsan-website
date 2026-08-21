@@ -18,7 +18,7 @@ export function ButtonLink({
     <Link
       href={href}
       className={cn(
-        "eyebrow inline-flex items-center justify-center px-6 py-3.5 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
+        "eyebrow inline-flex min-h-12 items-center justify-center px-6 py-3.5 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
         variant === "solid" &&
           "bg-brass-500 text-navy-950 hover:bg-brass-400 focus-visible:outline-brass-300",
         variant === "outline" &&

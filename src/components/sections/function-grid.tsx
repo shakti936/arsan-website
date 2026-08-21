@@ -18,7 +18,7 @@ export function FunctionGrid() {
   const t = useTranslations("functionGrid");
 
   return (
-    <section className="bg-cream-50 py-20">
+    <section className="bg-cream-50 section-y">
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         <h2 className="text-center font-display text-display-md font-semibold text-navy-900 text-balance">
           {t("heading")}

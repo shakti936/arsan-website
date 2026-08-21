@@ -1,11 +1,15 @@
-"use client";
-
-import { motion, useReducedMotion } from "motion/react";
+import { cn } from "@/lib/cn";
 
 /**
- * Shared scroll entrance — the single motion pattern for section content
- * (docs/sop/08-design-system.md: one pattern, slow, small, few).
- * Content is visible by default for reduced-motion and no-JS.
+ * Shared scroll entrance — the single motion pattern for section content.
+ *
+ * CSS scroll-driven animation, not JS: content renders visible and the
+ * reveal is added only where `animation-timeline: view()` is supported and
+ * the visitor hasn't asked for reduced motion. Browsers without support (and
+ * anyone with JS disabled) simply see the content, which is the point — the
+ * previous motion/react version shipped `opacity: 0` in the server HTML.
+ *
+ * This is a Server Component: zero client JS.
  */
 export function Reveal({
   children,
@@ -13,24 +17,22 @@ export function Reveal({
   className,
 }: {
   children: React.ReactNode;
+  /** Stagger in seconds; mapped to a scroll-range offset. */
   delay?: number;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
-
-  if (reduce) {
-    return <div className={className}>{children}</div>;
-  }
-
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+    <div
+      className={cn("reveal", className)}
+      style={
+        delay
+          ? ({
+              "--reveal-offset": `${Math.round(delay * 100)}%`,
+            } as React.CSSProperties)
+          : undefined
+      }
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

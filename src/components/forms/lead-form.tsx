@@ -125,7 +125,9 @@ export function LeadForm({ kind }: { kind: "client" | "candidate" }) {
         {pending ? t("submitting") : t(`submit.${kind}`)}
       </button>
       {kind === "candidate" && (
-        <p className="text-sm text-navy-700">{t("confidentialNote")}</p>
+        <p className="max-w-[62ch] text-sm text-navy-700">
+          {t("confidentialNote")}
+        </p>
       )}
     </form>
   );

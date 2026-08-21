@@ -62,6 +62,73 @@
   }
 }
 
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer components {
+  /*
+   * Scroll reveal, CSS-only. Content is VISIBLE by default and the animation
+   * is layered on only where the browser supports scroll-driven timelines —
+   * the previous JS version server-rendered opacity:0, so 65% of every page
+   * was invisible without JS (SOP D-047).
+   */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal-in linear both;
+        animation-timeline: view();
+        animation-range: entry calc(2% + var(--reveal-offset, 0%)) entry
+          calc(48% + var(--reveal-offset, 0%));
+      }
+    }
+  }
+
+  /*
+   * Category label above a card title. Reserves two lines so a wrapped label
+   * ("Organizational Transformation") doesn't shove its card's title out of
+   * alignment with the rest of the row.
+   */
+  .eyebrow-block {
+    min-block-size: calc(2 * 1.6em);
+  }
+
+  /* One section rhythm for the whole site: tighter on phones so a scroll
+     isn't mostly whitespace, generous on desktop. */
+  .section-y {
+    padding-block: 3.5rem;
+  }
+
+  @media (width >= 40rem) {
+    .section-y {
+      padding-block: 4.5rem;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .section-y {
+      padding-block: 6rem;
+    }
+  }
+
+  .section-y-tight {
+    padding-block: 2.5rem;
+  }
+
+  @media (width >= 64rem) {
+    .section-y-tight {
+      padding-block: 3.5rem;
+    }
+  }
+}
+
 @layer utilities {
   /* Direction A letterspaced uppercase eyebrow — Libre Franklin 600 */
   .eyebrow {

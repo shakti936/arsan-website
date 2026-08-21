@@ -34,7 +34,7 @@ export default async function Page({ params }: Params) {
   return (
     <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
-      <section className="bg-white-warm py-16 lg:py-20">
+      <section className="bg-white-warm section-y">
         <Container>
           <div className="grid gap-6 md:grid-cols-3">
             {CARD_HREFS.map((href, i) => (

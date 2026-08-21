@@ -13,7 +13,7 @@ export function TeamRow() {
   const t = useTranslations("team");
 
   return (
-    <section className="bg-white-warm py-20">
+    <section className="bg-white-warm section-y">
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         <SectionHeading>{t("heading")}</SectionHeading>
         <div className="mt-10 grid gap-8 md:grid-cols-3">

@@ -5,7 +5,7 @@ export function QuoteBand({ namespace }: { namespace: string }) {
   const t = useTranslations(namespace);
 
   return (
-    <section className="bg-navy-900 py-16">
+    <section className="bg-navy-900 section-y">
       <Reveal className="mx-auto w-full max-w-4xl px-6 sm:px-10">
         <figure className="border-l-2 border-brass-500 pl-6 sm:pl-10">
           <blockquote className="font-display text-display-md font-medium text-white-warm text-balance">

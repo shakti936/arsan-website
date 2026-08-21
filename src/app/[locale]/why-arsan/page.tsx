@@ -35,7 +35,7 @@ export default async function Page({ params }: Params) {
   return (
     <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
-      <section className="bg-white-warm py-16 lg:py-20">
+      <section className="bg-white-warm section-y">
         <Container className="flex flex-col gap-14">
           {SECTIONS.map((section) => (
             <Reveal key={section.id}>
@@ -44,7 +44,7 @@ export default async function Page({ params }: Params) {
                 className="grid scroll-mt-24 gap-5 lg:grid-cols-[1fr_2fr]"
               >
                 <SectionHeading>{t(`${section.key}.heading`)}</SectionHeading>
-                <p className="max-w-[62ch] text-base text-navy-800">
+                <p className="max-w-[68ch] text-base text-navy-800">
                   {t(`${section.key}.body`)}
                 </p>
               </div>

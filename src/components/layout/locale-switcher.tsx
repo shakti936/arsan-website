@@ -22,7 +22,7 @@ export function LocaleSwitcher() {
             locale={target}
             aria-current={target === locale ? "true" : undefined}
             className={cn(
-              "eyebrow py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-300",
+              "eyebrow inline-flex min-h-11 items-center px-1 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-300",
               target === locale
                 ? "text-brass-400"
                 : "text-cream-100/70 hover:text-cream-50",

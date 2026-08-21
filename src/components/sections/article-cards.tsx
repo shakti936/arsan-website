@@ -22,7 +22,7 @@ export function ArticleCards({
   const t = useTranslations(namespace);
 
   return (
-    <section className={cn("bg-white-warm py-20", className)}>
+    <section className={cn("bg-white-warm section-y", className)}>
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading>{t("heading")}</SectionHeading>
@@ -44,7 +44,7 @@ export function ArticleCards({
                   className="h-36 bg-gradient-to-br from-teal-900 to-navy-950"
                 />
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="eyebrow text-brass-600">
+                  <p className="eyebrow eyebrow-block text-brass-600">
                     {t(`items.${i}.category`)}
                   </p>
                   <h3 className="mt-3 font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">

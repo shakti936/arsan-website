@@ -35,7 +35,7 @@ export default async function Page({ params }: Params) {
   return (
     <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
-      <section className="bg-white-warm py-16 lg:py-20">
+      <section className="bg-white-warm section-y">
         <Container>
           <div className="mx-auto flex max-w-2xl flex-col items-center border border-cream-100 bg-cream-50 p-10 text-center">
             <Icons.compass className="h-10 w-10 text-brass-500" />
