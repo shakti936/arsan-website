@@ -25,7 +25,7 @@ records only what's specific to this build or worth restating because it bites.
 ## Styling
 
 - Tailwind utilities only. Custom CSS only where Tailwind provably can't do it.
-- Design tokens live in the Tailwind config. **No hardcoded hex in components.**
+- Design tokens live in `@theme inline` in `globals.css` — **Tailwind 4 is CSS-first, there is no JS config.** No hardcoded hex in components.
 - `cn()` for conditional classes. No inline `style`.
 - Fluid type via `clamp()`. Mobile-first. `dvh`/`svh` over `vh`.
 

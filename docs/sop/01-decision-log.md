@@ -205,3 +205,38 @@ that change is approved. P1 must not promise a portal it can't deliver.
 ### D-024 · 2026-08-20 · Read all 11 AIOS spec docs before writing the P1 design
 **Why:** P2/P3 integration decisions get made once instead of twice, and the security/privacy
 and build-readiness constraints are binding on this project.
+
+### D-025 · 2026-08-20 · Stack corrected to match AIOS ADR-011 — Tailwind 4 is CSS-first
+`02-stack.md` previously said tokens live in `tailwind.config.ts`. **That was wrong for
+Tailwind 4**, which is CSS-first: `@import "tailwindcss"` + `@theme inline` in `globals.css`,
+with no JS config file. Also corrected: `middleware.ts` → `proxy.ts` in Next 16 (fails
+silently if wrong), route props are generated types, and Framer Motion's package is now
+`motion`. Versions aligned to AIOS: Next 16.3 · React 19.2 · Tailwind 4.3 · Zod · TS 5.x.
+next-intl routing verified against current docs the same day.
+
+### D-026 · 2026-08-20 · The website is the Revenue Engine's public surface
+`10_AIOS_ENGINE_ARCHITECTURE.md` assigns "sales, demand creation, commercial agreements,
+testimonials" to the **Revenue Engine**, which has only 3 requirements in the current slice
+and is explicitly not yet documented ("build those engines later from their own approved
+process discovery").
+
+**This reframes every gap found so far.** AIOS has no job postings, no candidate intake, and
+no portal not because they were overlooked, but because the engine that owns the public
+surface has not been specified. The website is not a client bolted onto Delivery — it is the
+Revenue Engine's first surface.
+
+**The seam already exists:** contract **HC-003 `search_request_registered`** is produced by
+the Revenue Engine and Client Experience Engine, and consumed by Delivery and Operations.
+A "Discuss a Search" submission on the website is exactly that event. The website's primary
+conversion action has a defined home in the architecture.
+
+### D-027 · 2026-08-20 · Website writes must respect ADR-013 — no service-role key in app code
+AIOS rejects holding an RLS-bypassing credential in application code. The website therefore
+uses the **anon key, server-side only**, with RLS as the enforcing boundary (ADR-004: "UI
+hiding is never authorization"). Server-only is defense in depth, not the control.
+**This refines D-016** — the credential is the anon key, not the service role key.
+
+**Also binding, from ADR-014:** every migration, route, and test must trace to an approved
+requirement ID in `specs/requirements_registry.json`. A website-driven migration cannot be
+written until its requirement is approved — which is precisely the governance path D-023
+commits to.

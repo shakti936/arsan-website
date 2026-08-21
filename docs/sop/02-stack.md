@@ -8,15 +8,34 @@ in at scaffold time from the actual lockfile — do not guess them here.
 | Runtime / package manager | **Bun** | House default. `bun install`, `bun run`, `bun add`, `bun test`. Never npm or yarn. |
 | Framework | **Next.js — App Router** | Server Components by default = near-zero JS on marketing pages. File-based routing suits the locale + job-detail dynamic routes coming in P2. |
 | Language | **TypeScript, strict** | No `any`, no `@ts-ignore`. `unknown` + narrowing at boundaries. |
-| Styling | **Tailwind CSS** | Utility-first. Tokens extended in config — never hardcoded hex in components. `cn()` (clsx + tailwind-merge) for conditional classes. |
-| Animation | **Framer Motion** | Client-side motion where it earns its place. Every animation gates on `prefers-reduced-motion`. |
+| Styling | **Tailwind CSS 4** | **CSS-first — there is no `tailwind.config.js`.** Tokens are declared with `@import "tailwindcss"` + `@theme inline` in `globals.css`. Adding a JS config file has no effect. `cn()` (clsx + tailwind-merge) for conditional classes. |
+| Animation | **`motion`** | Framer Motion's current package name. Matches AIOS. Every animation gates on `prefers-reduced-motion`. |
 | UI primitives | **Radix UI** | Accessible dialogs/dropdowns/menus without rebuilding focus traps and keyboard handling. |
 | Lint / format | **Biome** | Single source of truth. Not ESLint + Prettier. |
 | Validation | **Zod** | Every external input — form handlers, API routes, webhooks — validated before use. |
 | Product data | **Supabase** | Postgres + Storage (resumes) + Auth. RLS policies required before any table ships. Service role key stays server-side. |
 | CRM | **GoHighLevel** | Contact record, pipelines, and ALL lead communication. Server-side API calls only. |
-| i18n | **next-intl** *(provisional)* | Locale routing + message catalogs for EN/ES. Marked provisional until verified against current Next.js App Router docs at scaffold time. |
+| i18n | **next-intl** | Locale routing + message catalogs for EN/ES. **Verified against current docs 2026-08-20** — `defineRouting`, `[locale]` segment, `setRequestLocale`, `generateStaticParams`, `localePrefix: 'as-needed'`. |
 | Hosting | **Vercel** | Preview per branch, production promotes from `main`. |
+
+## Version alignment with AIOS
+
+The internal system pins its stack in `09_ARCHITECTURE_DECISIONS.md` (ADR-011, implemented
+2026-08-04). This project matches it so shared database types and developer context stay
+portable: **Next 16.3 · React 19.2 · Tailwind 4.3 · shadcn/Radix · `motion` · Zod · TS 5.x**.
+
+**Three Next 16 conventions that break older material** — quoted from ADR-011 because each
+one fails silently:
+
+1. **`middleware.ts` is deprecated and renamed `proxy.ts`**, with the export renamed
+   `middleware` → `proxy`. Supabase's published session-refresh recipe still says
+   `middleware.ts`, which Next 16 **silently never calls**.
+2. **Tailwind 4 is CSS-first.** `@import "tailwindcss"` + `@theme inline` in `globals.css`.
+   No `tailwind.config.js`; adding one has no effect.
+3. **Route props are generated types**: `LayoutProps<"/[locale]">`, `PageProps<"/login">`.
+
+**Divergence from AIOS, on purpose:** this repo uses **Biome**; AIOS uses ESLint. Separate
+repos (D-022), so the tooling does not have to match — and Biome is the house standard.
 
 ## Hard rules carried into this build
 
