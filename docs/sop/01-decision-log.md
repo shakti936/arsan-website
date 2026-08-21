@@ -181,3 +181,27 @@ Our Talent Network." AIOS's own spec excludes portals from its first slice.
 **Unresolved.** Options: AIOS takes on the portal as a scope change through its governance
 process; the website owns candidate-facing data in a separate store; or P3 is deferred.
 See [11-open-questions.md](11-open-questions.md) Q-16.
+
+### D-022 · 2026-08-20 · Two repos, one database
+`arsan-website` (public) and `aios-arsancg` (internal) stay separate repos, both against the
+AIOS Supabase project, with server-only credentials from the website (D-016). Generated DB
+types are committed into this repo.
+**Why:** the marketing site needs to ship fast; AIOS is deliberately gated by build-readiness
+and approval processes. Putting a marketing site inside that governance slows it for no
+benefit, and the shared-types problem is solved by committing generated types.
+**Alternatives rejected:** monorepo under `aios-arsancg` (marketing inherits AIOS governance,
+ESLint/shadcn tooling, and the doubled directory name); pulling AIOS into this repo (AIOS is
+the mature system — it shouldn't be the one that moves); deferring the decision to P2.
+
+### D-023 · 2026-08-20 · Candidate intake goes through AIOS governance as a scope change
+Rather than the website building a parallel candidate store, candidate intake is raised as a
+formal AIOS scope change so there is one source of truth for candidate data.
+**Why:** a second candidate store means an eventual reconciliation against a system that
+already enforces append-only audit, consent status, and a stage machine. Not worth it.
+**Cost accepted:** this is Marianna's spec and their gate process — not a unilateral call,
+and not fast. **Consequence:** the "For Candidates" nav in the mockups cannot be built until
+that change is approved. P1 must not promise a portal it can't deliver.
+
+### D-024 · 2026-08-20 · Read all 11 AIOS spec docs before writing the P1 design
+**Why:** P2/P3 integration decisions get made once instead of twice, and the security/privacy
+and build-readiness constraints are binding on this project.
