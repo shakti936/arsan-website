@@ -13,7 +13,7 @@ test.describe("hero photograph", () => {
     const img = page.locator("main section img").first();
     await expect(img).toBeVisible();
     expect(await img.evaluate((i: HTMLImageElement) => i.currentSrc)).toContain(
-      "hero-wide",
+      "hero-executives",
     );
 
     const section = page.locator("main section").first();
@@ -70,7 +70,11 @@ test.describe("mega panel photographs", () => {
         .getByRole("link", { name: section, exact: true })
         .first()
         .hover();
-      const img = page.locator(`nav ul li:has-text("${section}") img`).first();
+      const img = page
+        .locator("header nav[aria-label] > ul > li")
+        .filter({ has: page.getByRole("link", { name: section, exact: true }) })
+        .locator("img")
+        .first();
       await expect(img).toBeVisible();
       const box = await img.boundingBox();
       expect(box?.width ?? 0).toBeGreaterThan(80);

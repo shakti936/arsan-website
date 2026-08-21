@@ -12,6 +12,22 @@ import type { NavSection } from "@/lib/nav";
  * right column = featured card. Results and Insights carry a photograph beside
  * the text in the reference; the other three keep their icon.
  * Opens on hover and on keyboard focus (focus-within) — no JS.
+ *
+ * Two things make it survive the trip from the nav item to the panel:
+ *
+ * 1. A **bridge** over the strip of header padding between the bottom of the
+ *    `li` and the top of the panel — 24px that belonged to neither, so crossing
+ *    it dropped `group-hover` and closed the panel before the pointer arrived.
+ *    The bridge lives inside the group, so hovering it keeps `li:hover` true.
+ *    It is only interactive while the group is hovered, which is what stops it
+ *    becoming the invisible curtain that e2e/nav-overlay.spec.ts guards against.
+ * 2. Nothing else. A close delay was tried on top and removed: the bridge
+ *    alone passes e2e/mega-menu-travel.spec.ts, and holding a panel open on
+ *    the way out made two full-width panels overlap for the duration when
+ *    moving right-to-left along the nav.
+ *
+ * Dismissal on click lives in NavItem — a pointer parked on the item you just
+ * clicked would otherwise keep its panel open over the page you asked for.
  */
 export function MegaPanel({ section }: { section: NavSection }) {
   const t = useTranslations("nav");
@@ -19,8 +35,11 @@ export function MegaPanel({ section }: { section: NavSection }) {
   const FeatureIcon = section.feature ? Icons[section.feature.icon] : null;
 
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-full z-40 hidden xl:block">
+    <div className="pointer-events-none absolute inset-x-0 top-full z-40 hidden group-data-[suppressed=true]:!hidden xl:block">
       <div className="invisible translate-y-1 opacity-0 transition-[opacity,transform,visibility] duration-200 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:transition-none">
+        {/* the bridge — see the note above. Interactive only while the group is
+            hovered, and the nav link outranks it in the hit test. */}
+        <span aria-hidden="true" className="absolute inset-x-0 -top-6 h-6" />
         <div className="border-t-2 border-brass-500 bg-white-warm shadow-xl shadow-navy-950/25">
           <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-9 sm:px-10 lg:grid-cols-[1.15fr_1fr]">
             {/* Left: item list */}

@@ -5,6 +5,7 @@ import { NAV_SECTIONS } from "@/lib/nav";
 import { LocaleSwitcher } from "./locale-switcher";
 import { MegaPanel } from "./mega-panel";
 import { MobileNav } from "./mobile-nav";
+import { NavItem } from "./nav-item";
 import { NavLink } from "./nav-link";
 
 /**
@@ -30,12 +31,12 @@ export function Header() {
         <nav aria-label={t("ariaMain")} className="hidden xl:block">
           <ul className="flex items-center gap-5 xl:gap-6">
             {NAV_SECTIONS.map((section) => (
-              <li key={section.key} className="group">
+              <NavItem key={section.key}>
                 <NavLink href={section.href}>
                   {t(`${section.key}.label`)}
                 </NavLink>
                 <MegaPanel section={section} />
-              </li>
+              </NavItem>
             ))}
           </ul>
         </nav>

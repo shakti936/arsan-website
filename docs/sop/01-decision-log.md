@@ -704,3 +704,65 @@ title steps down to `display-sm` and the body to `text-sm` — at `[3fr_5fr]` in
 **One real bug did fall out of that sweep:** the mega-panel `sizes` was
 `"(min-width: 1280px) 20vw, 0px"`. A `sizes` that resolves to `0px` makes the browser fetch
 the *largest* candidate — it was requesting a 3840px variant for a 150px slot. Now `"260px"`.
+
+### D-056 · 2026-08-21 · Hero carries the reference's two executives
+Drew: make the hero look like the reference. `refs/dirA-home-v2.png` has two executives on a
+plant floor filling the right of the frame. Three candidates generated and culled; the chosen
+one has both subjects right of centre, mid-conversation, plant soft behind them. Checked at
+1:1 before committing — hands have the right number of fingers and real tendon detail, faces
+have pores and asymmetry. The two runners-up are kept out of the repo.
+
+**These are synthetic people and that is a different thing from the team section.** Nobody
+real is depicted, nothing is passed off as ARSAN's own staff or premises. The line I am not
+crossing is inventing faces for the *named* people on the site or for testimonials — that
+misrepresents real individuals. An anonymous hero photograph is ordinary commercial practice.
+Worth confirming with Marianna that she is comfortable shipping a generated hero at all.
+
+**Gradient retuned to the reference**, which cuts from navy to photograph much harder than my
+first pass: 98% → 95% at 44% → 58% at 55% → clear by 68%.
+
+**A real contrast failure fell out of that.** Tightening the gradient pulled the fade left,
+and the subhead's right end landed on a light pixel of the walkway: **3.63:1**, under AA. Fixed
+by narrowing the copy column `36rem → 32rem` and the subhead `46ch → 40ch` so the text stops
+before the fade — now **8.53:1**, with the headline at 10.73:1. Not fixed by darkening further,
+which would have cost the photograph.
+
+**Mobile gets the photograph as atmosphere, not as subject.** A 390px portrait band cannot both
+feature two people and carry five lines of copy over them; the first attempt left a half-lit
+face at the right edge that read as an accident. Flat 86%/88% scrim. The reference only
+specifies desktop.
+
+`hero-plate.jpg` and `hero-wide.jpg` are now unreferenced and were removed from `public/images`
+(originals kept in the session scratchpad). An orphan check runs over the folder.
+
+### D-057 · 2026-08-21 · The mega panel was unreachable with a mouse
+Drew: hovering the nav then moving toward the panel closes it.
+
+**Measured before touching anything.** The `li` that owns `:hover` ends at the link, at
+y=67.9. The panel is anchored to the header's bottom edge at y=91.8. Between them sits
+**27.9px of header padding belonging to neither element** — `elementFromPoint` in that strip
+returns `header.site-header`, not the `li`. Crossing it dropped `group-hover` and closed the
+panel before the pointer could arrive. Reproduced as three failing tests first
+(`e2e/mega-menu-travel.spec.ts` walks the pointer down 3px at a time and asserts the panel
+survives every step).
+
+**Fix: a bridge inside the group** covering the gap, interactive *only* while the group is
+hovered — which is precisely what stops it becoming the invisible curtain that
+`e2e/nav-overlay.spec.ts` guards against. The nav link takes `z-50` so it always outranks the
+bridge in the hit test, even when the condensed header shrinks the gap under the bridge's
+height.
+
+**A 150ms close delay was added on top, then removed.** The bridge alone passes every travel
+test, and holding a panel open on the way out made two full-width panels overlap when moving
+right-to-left along the nav. A second guard on a fixed root cause is a band-aid; it went.
+
+**Click dismissal (`NavItem`, the header's only client component).** After clicking through,
+the pointer is still parked on the item, so a pure `:hover` panel stays open over the page you
+just asked for. Clicking suppresses the panel until the pointer leaves; Escape does the same.
+
+**Two test-locator bugs found and fixed along the way**, both from `li` matching inside the
+panels: `hasText: "Insights"` matched the *For Candidates* item, whose feature copy reads
+"Career Resources — Insights and guidance for your career journey." Locators are now scoped to
+`header nav[aria-label] > ul > li`. The second was self-inflicted: a blind string-replace
+no-opped because Biome had reformatted the line since I wrote it — the same trap logged four
+times before. Read the file first.
