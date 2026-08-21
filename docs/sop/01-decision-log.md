@@ -263,3 +263,13 @@ refs/, .env.local). Manual scaffold also gives exact control over the three Next
 conventions from ADR-011. Verified: `bun run build`, `tsc --noEmit`, `biome check` all
 green; `/en` and `/es` prerender static. Resolved versions: Next 16.3.1 · React 19.2.8 ·
 Tailwind 4.3.3 · next-intl 4.13.7 · motion 13.1.1 · Zod 4.4.3 · TS 7.0.2 · Biome 2.5.9.
+
+### D-032 · 2026-08-20 · Logo lockup is rendered as real text, not an image
+The lockup is pure type — letterspaced serif caps over a letterspaced subtitle — which
+Cormorant Garamond reproduces natively. Code version: recolorable per surface (white on
+navy, navy on cream), crisp at any DPI, zero image bytes in the header, localizable
+subtitle, screen-reader native. `refs/dirA-logo-lockup.png` is kept as a
+proportion/spacing reference only.
+**Caution that motivated this:** the first generated logo file was misspelled "ARSON."
+Generator output is not a source of truth for brand-critical strings — the corrected file
+was verified letter-by-letter, and the code version keeps the spelling reviewable in git.

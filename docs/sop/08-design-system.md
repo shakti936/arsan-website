@@ -21,6 +21,7 @@ Renamed 2026-08-20 for legibility (Drew's request):
 | `dirA-for-candidates-landing.png` | For Candidates landing | Candidate-side landing; trust strip; 4-card chooser. *P2+ surface (D-023 gate)* |
 | `dirA-job-board.png` | Job board with search/filters/alerts | The P2 job-board spec in visual form. *Gated on AIOS scope change* |
 | `dirB-home-rejected.png` | Homepage, Direction B | **Rejected 2026-08-20.** Kept as record of the decision |
+| `dirA-logo-lockup.png` | ARSAN wordmark + subtitle | **Proportion/spacing reference only — the production lockup is built in code** (D-032). First version was misspelled "ARSON"; Drew supplied the corrected file, spelling verified 2026-08-20 |
 
 ## The two directions
 
