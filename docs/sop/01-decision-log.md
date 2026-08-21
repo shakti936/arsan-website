@@ -387,3 +387,25 @@ build fails with the exact key named. Currently: 61 nav keys, 204 total, 2 local
 **Process note:** third time this session a Biome reformat has silently broken a blind
 string-replace. Re-read a file before editing it if any formatter has run since it was
 written — the SOP's Edit read-state rule applies to script-driven edits too.
+
+### D-043 · 2026-08-21 · `cn()` was silently deleting every custom font size
+**Bug:** section headings rendered at inherited body size sitewide. Drew reported "all the
+text feels small."
+**Root cause — not taste, not the tokens.** `tailwind-merge` only knows Tailwind's built-in
+font-size scale. Custom `text-display-*` classes fell into its *text-color* group, so
+`cn("text-display-md", "text-navy-900")` resolved them as conflicting and **dropped the
+size**. Verified directly: `twMerge("text-display-md","text-navy-900")` → `"text-navy-900"`,
+while `twMerge("text-2xl","text-navy-900")` keeps both. Affected every component that
+combined a display size with a colour through `cn()` — SectionHeading (used on nearly every
+section), IconRow, ArticleCards.
+**Fix (at the cn() layer, not the call sites):** `extendTailwindMerge` registers the four
+`display-*` values as font sizes. Verified sizes now survive a colour merge and still
+dedupe against each other.
+**Lesson:** a custom Tailwind token needs a matching tailwind-merge class-group, or `cn()`
+eats it silently — no error, no lint, no build failure.
+
+### D-044 · 2026-08-21 · Body scale up one step, leading opened up
+`--text-base` 16→**17px**/1.7, `--text-sm` 14→**15px**/1.65, `--text-lg` 18→**19px**,
+`--text-xl` 20→**21px**; display leading 1.18/1.22/1.3/1.35. All ad-hoc `leading-relaxed`
+overrides removed so the tokens own leading in one place. At a 1000px window: hero 44 ·
+page hero 36 · section 28 · card 22 · body 17.

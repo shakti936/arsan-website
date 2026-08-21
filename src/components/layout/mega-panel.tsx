@@ -61,7 +61,7 @@ export function MegaPanel({ section }: { section: NavSection }) {
                 <p className="mt-5 font-display text-display-md font-semibold text-navy-900 text-balance">
                   {t(`${section.key}.feature.title`)}
                 </p>
-                <p className="mt-3 max-w-[38ch] text-base leading-relaxed text-navy-800">
+                <p className="mt-3 max-w-[38ch] text-base text-navy-800">
                   {t(`${section.key}.feature.body`)}
                 </p>
                 <div className="mt-6">

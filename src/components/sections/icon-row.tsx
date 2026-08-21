@@ -72,7 +72,7 @@ export function IconRow({
                   </h3>
                   <p
                     className={cn(
-                      "text-sm leading-relaxed",
+                      "text-sm",
                       dark ? "text-cream-100/85" : "text-navy-800",
                     )}
                   >

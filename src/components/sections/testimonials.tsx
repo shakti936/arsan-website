@@ -68,9 +68,7 @@ function TestimonialCard({
 
   return (
     <figure className="w-full border border-cream-100 bg-white-warm p-7 shadow-sm shadow-navy-950/5">
-      <blockquote className="text-base leading-relaxed text-navy-800">
-        {quote}
-      </blockquote>
+      <blockquote className="text-base text-navy-800">{quote}</blockquote>
       <figcaption className="mt-5 flex items-center gap-3">
         <span
           aria-hidden="true"

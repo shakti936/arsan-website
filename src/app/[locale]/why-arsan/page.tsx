@@ -44,7 +44,7 @@ export default async function Page({ params }: Params) {
                 className="grid scroll-mt-24 gap-5 lg:grid-cols-[1fr_2fr]"
               >
                 <SectionHeading>{t(`${section.key}.heading`)}</SectionHeading>
-                <p className="max-w-[62ch] text-base leading-relaxed text-navy-800">
+                <p className="max-w-[62ch] text-base text-navy-800">
                   {t(`${section.key}.body`)}
                 </p>
               </div>

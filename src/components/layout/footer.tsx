@@ -31,7 +31,7 @@ export function Footer() {
                       <li key={child.key}>
                         <Link
                           href={child.href}
-                          className="text-xs leading-relaxed text-cream-100/80 hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300"
+                          className="text-xs text-cream-100/80 hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300"
                         >
                           {t(`${section.key}.children.${child.key}.label`)}
                         </Link>

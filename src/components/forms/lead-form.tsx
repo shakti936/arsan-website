@@ -33,7 +33,7 @@ export function LeadForm({ kind }: { kind: "client" | "candidate" }) {
         <p className="font-display text-display-md font-semibold text-navy-900">
           {t("success.heading")}
         </p>
-        <p className="mt-3 max-w-[52ch] text-base leading-relaxed text-navy-800">
+        <p className="mt-3 max-w-[52ch] text-base text-navy-800">
           {t(`success.${kind}Body`)}
         </p>
       </div>
@@ -125,9 +125,7 @@ export function LeadForm({ kind }: { kind: "client" | "candidate" }) {
         {pending ? t("submitting") : t(`submit.${kind}`)}
       </button>
       {kind === "candidate" && (
-        <p className="text-xs leading-relaxed text-navy-700">
-          {t("confidentialNote")}
-        </p>
+        <p className="text-xs text-navy-700">{t("confidentialNote")}</p>
       )}
     </form>
   );

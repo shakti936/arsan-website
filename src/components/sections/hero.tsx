@@ -21,7 +21,7 @@ export function Hero({ namespace }: { namespace: string }) {
             {t("headlineTail")}
           </h1>
           <div aria-hidden="true" className="mt-6 h-0.5 w-10 bg-brass-500" />
-          <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-cream-100">
+          <p className="mt-6 max-w-[52ch] text-lg text-cream-100">
             {t("subhead")}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">

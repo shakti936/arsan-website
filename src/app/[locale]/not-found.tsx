@@ -14,7 +14,7 @@ export default function NotFound() {
         <h1 className="mt-4 max-w-[22ch] font-display text-display-lg font-semibold text-navy-900 text-balance">
           {t("notFoundTitle")}
         </h1>
-        <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-navy-800">
+        <p className="mt-5 max-w-[52ch] text-base text-navy-800">
           {t("notFoundBody")}
         </p>
         <div className="mt-8">

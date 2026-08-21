@@ -19,7 +19,7 @@ export function FeaturedCase({ namespace }: { namespace: string }) {
             <h2 className="mt-3 font-display text-display-md font-semibold text-navy-900 text-balance">
               {t("title")}
             </h2>
-            <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-navy-800">
+            <p className="mt-4 max-w-[58ch] text-base text-navy-800">
               {t("body")}
             </p>
             <dl className="mt-7 flex flex-wrap gap-x-10 gap-y-4 border-t border-cream-100 pt-6">

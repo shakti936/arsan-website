@@ -38,9 +38,7 @@ export function FunctionGrid() {
                 <h3 className="text-sm font-semibold text-navy-900">
                   {t(`items.${i}.title`)}
                 </h3>
-                <p className="text-xs leading-relaxed text-navy-800">
-                  {t(`items.${i}.body`)}
-                </p>
+                <p className="text-xs text-navy-800">{t(`items.${i}.body`)}</p>
               </div>
             </Reveal>
           ))}

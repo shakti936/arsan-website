@@ -42,7 +42,7 @@ export default async function Page({ params }: Params) {
             <h2 className="mt-5 font-display text-display-md font-semibold text-navy-900 text-balance">
               {t("emptyHeading")}
             </h2>
-            <p className="mt-4 max-w-[52ch] text-base leading-relaxed text-navy-800">
+            <p className="mt-4 max-w-[52ch] text-base text-navy-800">
               {t("emptyBody")}
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-6">

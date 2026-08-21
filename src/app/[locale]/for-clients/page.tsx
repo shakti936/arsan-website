@@ -43,7 +43,7 @@ export default async function Page({ params }: Params) {
                   <h2 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
                     {t(`cards.${i}.title`)}
                   </h2>
-                  <p className="mt-4 flex-1 text-base leading-relaxed text-navy-800">
+                  <p className="mt-4 flex-1 text-base text-navy-800">
                     {t(`cards.${i}.body`)}
                   </p>
                   <div className="mt-6">

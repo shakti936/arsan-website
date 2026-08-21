@@ -10,9 +10,7 @@ export function PageHero({ title, intro }: { title: string; intro?: string }) {
         </h1>
         <div aria-hidden="true" className="mt-5 h-0.5 w-10 bg-brass-500" />
         {intro && (
-          <p className="mt-6 max-w-[58ch] text-lg leading-relaxed text-cream-100">
-            {intro}
-          </p>
+          <p className="mt-6 max-w-[58ch] text-lg text-cream-100">{intro}</p>
         )}
       </Container>
     </section>

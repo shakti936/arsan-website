@@ -55,7 +55,7 @@ export default async function Page({ params }: Params) {
                   <h3 className="font-display text-display-sm font-semibold text-navy-900">
                     {th(`items.${i}.title`)}
                   </h3>
-                  <p className="mt-3 text-base leading-relaxed text-navy-800">
+                  <p className="mt-3 text-base text-navy-800">
                     {th(`items.${i}.body`)}
                   </p>
                 </div>

@@ -12,7 +12,7 @@ export function ValueProps() {
       <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 sm:px-10 lg:grid-cols-[1.1fr_2fr]">
         <Reveal>
           <SectionHeading>{t("heading")}</SectionHeading>
-          <p className="mt-5 max-w-[48ch] text-base leading-relaxed text-navy-800">
+          <p className="mt-5 max-w-[48ch] text-base text-navy-800">
             {t("body")}
           </p>
         </Reveal>
@@ -23,7 +23,7 @@ export function ValueProps() {
                 <h3 className="text-sm font-semibold text-navy-900">
                   {t(`items.${i}.title`)}
                 </h3>
-                <p className="mt-2 text-base leading-relaxed text-navy-800">
+                <p className="mt-2 text-base text-navy-800">
                   {t(`items.${i}.body`)}
                 </p>
               </div>

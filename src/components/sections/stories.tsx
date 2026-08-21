@@ -39,7 +39,7 @@ export function Stories({
                   <h3 className="mt-3 font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
                     {t(`items.${i}.title`)}
                   </h3>
-                  <p className="mt-3 flex-1 text-base leading-relaxed text-navy-800">
+                  <p className="mt-3 flex-1 text-base text-navy-800">
                     {t(`items.${i}.body`)}
                   </p>
                   <div className="mt-5">

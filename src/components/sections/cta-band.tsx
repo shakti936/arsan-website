@@ -16,7 +16,7 @@ export function CtaBand() {
         <h2 className="font-display text-display-lg font-semibold text-white-warm text-balance">
           {t("heading")}
         </h2>
-        <p className="text-sm leading-relaxed text-cream-100">{t("body")}</p>
+        <p className="text-sm text-cream-100">{t("body")}</p>
         <ButtonLink href="/contact">{t("cta")}</ButtonLink>
       </div>
     </section>
