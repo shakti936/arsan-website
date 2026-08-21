@@ -8,6 +8,12 @@ Resolved items move to [01-decision-log.md](01-decision-log.md) with their reaso
 
 | # | Question | Blocks | Asked |
 |---|---|---|---|
+| Q-14 | **Which ATS is canonical** — Drew's job-centric `arsan-aios`, or Marianna's mandate-centric AIOS? They share zero tables. See D-019. | Every data-backed page; the AIOS migrations in D-017 | 2026-08-20 |
+| Q-15 | **What does "unify the two" mean** — one monorepo, two repos against one database, or merge the two schemas into one system? | Repo structure | 2026-08-20 |
+
+
+| # | Question | Blocks | Asked |
+|---|---|---|---|
 | Q-01 | ~~Internal system repo~~ — **partially answered 2026-08-20** by direct inspection of the AIOS Supabase project. Still want the repo itself for server-side logic, migrations, and the requirements doc behind `arsan_requirements`. | P2/P3 detail | 2026-08-20 |
 | Q-10 | **Integration boundary decision** — does the site read AIOS via server-only credentials, hold a browser anon key, or run its own Supabase project fed by AIOS domain events? | All data-backed pages | 2026-08-20 |
 | Q-11 | **Where do website submissions land?** AIOS has no inbound-application model. Needs a write-only landing table in AIOS that internal triage promotes to `candidates`. | Resume upload, apply flow | 2026-08-20 |

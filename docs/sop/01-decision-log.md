@@ -123,3 +123,25 @@ and a migration-ordering problem the first time both change something.
 ### D-018 · 2026-08-20 · P1 starts now, in parallel with the boundary work
 The marketing site needs zero AIOS data. Scaffold and build proceeds while schema and
 integration questions resolve.
+
+### D-019 · 2026-08-20 · There are TWO ATS systems, not one — canonical system undecided
+Discovered while looking for the internal repo.
+
+| | **`TheContentLabsAI/arsan-aios`** (Drew's) | **AIOS Supabase project** `aqonwletymrrukybyfzy` (Marianna's) |
+|---|---|---|
+| Last activity | 2026-07-30 | created 2026-08-04 |
+| Model | Job-centric ATS | Mandate-centric search OS |
+| Tables | `jobs`, `applications`, `application_notes`, `candidates`, `clients`, `contacts`, `locations`, `onboarding_tasks`, `vendor_registrations` | 40 objects: `searches`, `search_candidates`, `search_agreements`, `aios_engines`, `arsan_requirements`, `domain_events`, `approvals`, `audit_events`, … |
+| Overlap | **none** — zero shared table names | |
+
+Drew's repo **has** the `jobs` and `applications` tables the website needs. Marianna's has
+neither, but has the governance/event architecture. They model the domain incompatibly:
+a `job` is a public posting; a `search` is a confidential client mandate.
+
+**Status:** unresolved. Drew is obtaining collaborator access to Marianna's repo
+(`aios-arsancg`, not on his account). The website cannot build any data-backed page until
+one is named canonical — but P1 (marketing) is unaffected and proceeds (D-018).
+
+**Correction to earlier note:** `TheContentLabsAI/arsan-aios` was cloned to
+`/Users/imdrewrodriguez/Websites/arsan-aios` on the assumption it was the internal system.
+It is not. Kept for reference pending the canonical-system decision.
