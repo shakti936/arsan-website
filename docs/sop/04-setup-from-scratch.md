@@ -85,3 +85,4 @@ _Anything that cost more than five minutes goes here, with the fix._
 | 2026-08-20 | Biome flagged `@theme` as a CSS parse error | `css.parser.tailwindDirectives: true` in biome.json |
 | 2026-08-20 | Biome 2.5 deprecated `files.includes` negation patterns for ignores | Rely on `vcs.useIgnoreFile: true` + `.gitignore` instead |
 | 2026-08-20 | `next build` rewrote tsconfig (`jsx: react-jsx`) | Expected — commit the rewrite |
+| 2026-08-20 | First Vercel deploy failed: `No Output Directory named "public" found` — the imported project's Framework Preset wasn't Next.js | Pin `vercel.json` with `"framework": "nextjs"` so the setting is versioned and survives re-imports; don't rely on dashboard detection |
