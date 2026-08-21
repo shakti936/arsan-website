@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { LeadForm } from "@/components/forms/lead-form";
 import { PageHero } from "@/components/sections/page-hero";
 import { PointGrid } from "@/components/sections/point-grid";
-import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 
 type Params = { params: Promise<{ locale: string }> };
@@ -29,12 +29,14 @@ export default async function Page({ params }: Params) {
     <main>
       <PageHero title={t("title")} intro={t("intro")} />
       <PointGrid points={points} />
-      <section className="bg-cream-50 py-16">
-        <Container className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <section id="conversation" className="bg-cream-50 py-16">
+        <Container>
           <p className="max-w-[52ch] font-display text-display-md font-medium leading-snug text-navy-900 text-balance">
             {t("ctaNote")}
           </p>
-          <ButtonLink href="/contact">{t("cta")}</ButtonLink>
+          <div className="mt-10">
+            <LeadForm kind="candidate" />
+          </div>
         </Container>
       </section>
     </main>

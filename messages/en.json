@@ -274,7 +274,6 @@
     "contact": {
       "title": "Tell us what you're working through.",
       "intro": "Start with the business challenge. We'll help you determine whether — and how — ARSAN can help.",
-      "formNote": "The contact form is being connected. For now, reach us directly and we'll respond within one business day.",
       "cta": "Discuss a Search"
     }
   },
@@ -312,5 +311,44 @@
         "role": "Director of Engineering, Texas"
       }
     ]
+  },
+  "forms": {
+    "optional": "(optional)",
+    "submitting": "Sending…",
+    "labels": {
+      "name": "Full name",
+      "email": "Work email",
+      "phone": "Phone",
+      "company": "Company",
+      "currentTitle": "Current title",
+      "service": "What do you need help with?",
+      "clientMessage": "Tell us what you're working through",
+      "candidateMessage": "Tell us about your goals"
+    },
+    "services": {
+      "executive-search": "Executive & Professional Search",
+      "mexico-advisory": "Mexico Expansion & Workforce Advisory",
+      "leadership-solutions": "Enterprise Talent & Leadership Solutions",
+      "other": "Something else"
+    },
+    "submit": {
+      "client": "Discuss a Search",
+      "candidate": "Start a Confidential Conversation"
+    },
+    "confidentialNote": "Your information is treated as confidential. We never share your details with an employer without speaking with you first.",
+    "errors": {
+      "name": "Enter your full name.",
+      "email": "Enter a valid email address.",
+      "phone": "Enter a valid phone number.",
+      "company": "Enter your company name.",
+      "currentTitle": "Enter your current title.",
+      "service": "Choose an option.",
+      "message": "Give us a few sentences so we can respond well."
+    },
+    "success": {
+      "heading": "Thank you — we've got it.",
+      "clientBody": "We'll review your note and respond within one business day. If it's urgent, mention that in a reply to our confirmation and we'll prioritize it.",
+      "candidateBody": "We'll review your note with care and respond within one business day. Your information stays confidential."
+    }
   }
 }

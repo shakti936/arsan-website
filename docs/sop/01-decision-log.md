@@ -299,3 +299,12 @@ Logo wall (fictional placeholder wordmarks, pending Q-06 logo permissions) on Ho
 testimonial columns (mock quotes, pending AIOS gate D-018 consent) on Results. Both run on
 one rewritten server-component Marquee. Zero new dependencies. Adaptation details in
 [06-prompts.md](06-prompts.md) P1.5.
+
+### D-036 · 2026-08-21 · Forms ship UI-first; GHL wiring deferred pending Marianna review
+Drew's call. Both forms (client `/contact`, candidate `/for-candidates`) built with full
+validation, localized errors, success states, and spam gates (honeypot + min-time) — but
+the server actions stop at validation. No GHL fields/values are created, no n8n workflow
+built. The full wiring design (grilled + self-reviewed 2026-08-20, Codex unavailable) is
+recorded in this log and in chat; it activates unchanged once Drew + Marianna approve the
+forms. Launch gate stands: published AI workflows in the ARSAN location get paused before
+any GHL wiring goes live.

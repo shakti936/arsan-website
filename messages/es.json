@@ -274,7 +274,6 @@
     "contact": {
       "title": "Cuéntenos qué está resolviendo.",
       "intro": "Empiece por el reto de negocio. Le ayudamos a determinar si ARSAN puede ayudar — y cómo.",
-      "formNote": "El formulario de contacto está en proceso de conexión. Por ahora, contáctenos directamente y responderemos en un día hábil.",
       "cta": "Hablemos de su Búsqueda"
     }
   },
@@ -312,5 +311,44 @@
         "role": "Director de Ingeniería, Texas"
       }
     ]
+  },
+  "forms": {
+    "optional": "(opcional)",
+    "submitting": "Enviando…",
+    "labels": {
+      "name": "Nombre completo",
+      "email": "Correo de trabajo",
+      "phone": "Teléfono",
+      "company": "Empresa",
+      "currentTitle": "Puesto actual",
+      "service": "¿En qué necesita ayuda?",
+      "clientMessage": "Cuéntenos qué está resolviendo",
+      "candidateMessage": "Cuéntenos sobre sus metas"
+    },
+    "services": {
+      "executive-search": "Búsqueda de Ejecutivos y Profesionales",
+      "mexico-advisory": "Expansión en México y Asesoría Laboral",
+      "leadership-solutions": "Talento Empresarial y Soluciones de Liderazgo",
+      "other": "Otro tema"
+    },
+    "submit": {
+      "client": "Hablemos de su Búsqueda",
+      "candidate": "Iniciar una Conversación Confidencial"
+    },
+    "confidentialNote": "Su información se trata como confidencial. Nunca compartimos sus datos con un empleador sin hablar antes con usted.",
+    "errors": {
+      "name": "Escriba su nombre completo.",
+      "email": "Escriba un correo válido.",
+      "phone": "Escriba un teléfono válido.",
+      "company": "Escriba el nombre de su empresa.",
+      "currentTitle": "Escriba su puesto actual.",
+      "service": "Elija una opción.",
+      "message": "Escríbanos unas líneas para poder responderle bien."
+    },
+    "success": {
+      "heading": "Gracias — lo recibimos.",
+      "clientBody": "Revisaremos su mensaje y responderemos en un día hábil. Si es urgente, indíquelo al responder nuestra confirmación y lo priorizamos.",
+      "candidateBody": "Revisaremos su mensaje con cuidado y responderemos en un día hábil. Su información permanece confidencial."
+    }
   }
 }
