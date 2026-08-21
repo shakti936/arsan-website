@@ -371,3 +371,19 @@ Drew's call: the site should look like the final version for review. "View Oppor
   and converts to the profile/network CTAs
 **What D-023 still governs:** no real job data, no candidate auth, no application records
 until the AIOS scope change lands. The routes are the shell; the portal is not live.
+
+### D-042 · 2026-08-21 · Message-key validator added as a prebuild gate
+**Bug:** the mega menu threw at runtime — `nav.ts` still referenced `whyWork`/`conversation`
+while the catalogs had moved to `opportunities`/`submitProfile`/`talentNetwork`.
+**Root cause:** Biome reformatted `nav.ts` (wrapping object literals multiline) after it was
+written, so a later string-replace silently matched nothing and the file kept the old keys.
+The deeper problem: **nothing validated that message keys resolve.** next-intl falls back
+silently in production and throws only in dev, so the mismatch passed `tsc`, Biome, and a
+green `next build`.
+**Fix (structural, not a patch):** `scripts/validate-messages.mjs`, wired as `prebuild`.
+It fails the build when (1) `nav.ts` references a key no catalog defines, or (2) the locale
+catalogs drift apart in either direction. Verified by deliberately deleting a key — the
+build fails with the exact key named. Currently: 61 nav keys, 204 total, 2 locales in sync.
+**Process note:** third time this session a Biome reformat has silently broken a blind
+string-replace. Re-read a file before editing it if any formatter has run since it was
+written — the SOP's Edit read-state rule applies to script-driven edits too.
