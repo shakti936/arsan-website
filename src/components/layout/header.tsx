@@ -25,7 +25,7 @@ export function Header() {
       </a>
 
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 sm:px-10 xl:gap-8">
-        <Logo />
+        <Logo withSubtitle={false} />
 
         <nav aria-label={t("ariaMain")} className="hidden lg:block">
           <ul className="flex items-center gap-6 xl:gap-8">

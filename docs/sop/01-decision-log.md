@@ -528,3 +528,45 @@ The header condensed correctly while scrolling away, so it *looked* like it work
 `relative` fixed it; `sticky` is itself a positioned element, so the mega panels still anchor
 to the header. Covered by an e2e test asserting `y === 0` after scroll.
 Anchor targets moved to `scroll-mt-28` to clear the condensed bar.
+
+### D-052 · 2026-08-21 · The nav wordmark stays live text — Cormorant, not a PNG
+**Question raised:** "should we use the logo actually — in the nav?"
+
+**Measured first, decided second.** An earlier read of `refs/dirA-logo-lockup.png` called it a
+Didone and concluded it was a different typeface from ours. That was wrong. Rendering
+Cormorant Garamond against the lockup at matched width shows the same skeleton — flat-serifed
+`A` apex, straight flaring `R` leg, same `S` spine and `N`. The apparent difference was
+**weight and tracking**, not family:
+
+| | reference lockup | site before | site now |
+|---|---|---|---|
+| aspect ratio at 1200px wide | 1200×198 | 1200×240 (8% off) | 1200×196 |
+| tracking | ~0.18em (solved numerically) | 0.26em | **0.18em** |
+| ink coverage at matched geometry | 0.161 | 0.175 (wt 500) | 0.175 (wt 500) |
+
+Weight stays at 500 even though the lockup measures ~430 (between Cormorant 400 at 0.152 and
+500 at 0.175). The lockup is a 1370px black-on-white artwork; the nav is 28px reversed out of
+navy, where light-on-dark optically thins strokes. One step more weight is the standard
+compensation, not a mismatch.
+
+**So no image.** Live text recolors via `currentColor` for the light/dark `tone` prop, stays
+crisp at any DPI, costs zero bytes and zero requests, is selectable and readable by screen
+readers, and needs no separate asset per locale. A PNG buys nothing the type doesn't already
+give us, and the first supplied version was misspelled "ARSON" — evidence it was generated,
+not drawn.
+
+**Subtitle removed from the header and the mobile overlay** (`withSubtitle={false}`); it stays
+in the footer. At header widths it wrapped to **three** lines and drove the bar to 109px on
+desktop against 76px on mobile. The header is now **77.5px at every breakpoint** and the
+wordmark reads as a mark rather than a stack of text. The descriptor still appears in the
+footer lockup and the footer bottom bar. Subtitle `max-w` widened 13.5rem → 15.5rem so the
+footer lockup breaks to **two** lines, matching the reference. `scroll-mt-28` → `scroll-mt-24`
+to track the shorter condensed bar.
+
+**Still open — a brand decision, not a code one (Q-18).** ARSAN's *live* site uses a different
+mark entirely: a four-square icon with figures, plus "ARSAN **INTERNATIONAL** CONSULTING GROUP"
+in navy/blue/gray. Saved as `refs/arsan-current-live-logo.png`. Direction A discards both the
+icon and the "International Consulting Group" descriptor in favour of "Executive Search &
+Manufacturing Talent Advisory". Marianna and Armida have to confirm that's intended — it is a
+change of legal-ish name presentation and of the icon, not a styling preference. Note the
+icon's palette (bright blue, teal, gray) does not sit in the navy/brass system.

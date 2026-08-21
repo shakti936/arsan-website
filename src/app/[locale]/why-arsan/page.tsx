@@ -41,7 +41,7 @@ export default async function Page({ params }: Params) {
             <Reveal key={section.id}>
               <div
                 id={section.id}
-                className="grid scroll-mt-28 gap-5 lg:grid-cols-[1fr_2fr]"
+                className="grid scroll-mt-24 gap-5 lg:grid-cols-[1fr_2fr]"
               >
                 <SectionHeading>{t(`${section.key}.heading`)}</SectionHeading>
                 <p className="max-w-[68ch] text-base text-navy-800">

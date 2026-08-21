@@ -28,7 +28,7 @@ export function IconRow({
       id={id}
       className={cn(
         dark ? "bg-teal-900" : "bg-cream-50",
-        "scroll-mt-28 section-y",
+        "scroll-mt-24 section-y",
       )}
     >
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">

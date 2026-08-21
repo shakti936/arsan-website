@@ -31,6 +31,7 @@ Resolved items move to [01-decision-log.md](01-decision-log.md) with their reaso
 | Q-04 | **Copy** — port existing copy as-is, or rewrite? Rewrite requires research context (offer, audience, competitors, voice samples) per house rules. | Content build | 2026-08-20 |
 | Q-05 | **Spanish copy timing** — does ES launch with EN, or does the architecture ship with EN-only content first? Architecture is identical either way. | Launch scope | 2026-08-20 |
 | Q-06 | **Proof points** — are the 30+ years / 99% / 100+ stats substantiated, and are there named client logos, case studies, or reviews we can use? Current site has very little. | Copy credibility | 2026-08-20 |
+| Q-18 | **Which mark is ARSAN's?** The live site uses an icon + "ARSAN INTERNATIONAL CONSULTING GROUP" (`refs/arsan-current-live-logo.png`). Direction A drops the icon and the "International Consulting Group" descriptor for "Executive Search & Manufacturing Talent Advisory". Marianna/Armida must confirm — that is a name-presentation change, not styling. Icon palette also sits outside the navy/brass system. | Header, footer, favicon, OG image | 2026-08-21 |
 
 ## Deferred
 

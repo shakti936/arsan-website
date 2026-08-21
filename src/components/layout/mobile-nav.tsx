@@ -34,9 +34,11 @@ export function MobileNav() {
   // Open the section you're currently in, so the menu reflects where you are.
   useEffect(() => {
     if (!open) return;
-    setExpanded(NAV_SECTIONS.find((s) => isActive(s.href))?.key ?? null);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+    const match = NAV_SECTIONS.find(
+      (s) => pathname === s.href || pathname.startsWith(`${s.href}/`),
+    );
+    setExpanded(match?.key ?? null);
+  }, [open, pathname]);
 
   // Scroll lock, Escape to close, and focus moved into the overlay.
   useEffect(() => {
@@ -106,7 +108,7 @@ export function MobileNav() {
           className="fixed inset-0 z-100 flex h-dvh flex-col bg-navy-900"
         >
           <div className="flex shrink-0 items-center justify-between border-b border-navy-800 px-6 py-4">
-            <Logo />
+            <Logo withSubtitle={false} />
             <button
               ref={closeButtonRef}
               type="button"
