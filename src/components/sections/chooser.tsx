@@ -20,7 +20,7 @@ export function Chooser() {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {CARD_HREFS.map((href, i) => (
             <Reveal key={href} delay={i * 0.08} className="h-full">
-              <article className="flex h-full flex-col border border-cream-100 bg-white-warm p-8 text-center shadow-sm shadow-navy-950/5">
+              <article className="flex h-full flex-col border border-cream-100 bg-white-warm p-8 text-center shadow-[0_1px_2px_rgba(6,30,57,.06)] transition-shadow duration-300 hover:shadow-[0_10px_28px_-12px_rgba(6,30,57,.28)] motion-reduce:transition-none">
                 <h3 className="font-display text-display-sm font-semibold text-navy-900 text-balance">
                   {t(`cards.${i}.need`)}
                 </h3>

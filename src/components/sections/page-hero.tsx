@@ -3,8 +3,9 @@ import { Container } from "@/components/ui/container";
 /** Compact navy hero for subpages */
 export function PageHero({ title, intro }: { title: string; intro?: string }) {
   return (
-    <section className="bg-navy-900">
-      <Container className="section-y">
+    <section className="relative overflow-hidden bg-navy-900">
+      <div aria-hidden="true" className="grain absolute inset-0" />
+      <Container className="relative section-y">
         <h1 className="max-w-[22ch] font-display text-display-lg font-semibold text-white-warm text-balance">
           {title}
         </h1>

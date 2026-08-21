@@ -23,7 +23,7 @@ export function LogoWall() {
     <section className="border-b border-cream-100 bg-cream-50 py-10">
       <p className="eyebrow px-6 text-center text-navy-700">{t("eyebrow")}</p>
       <div className="mx-auto mt-7 max-w-6xl px-6 sm:px-10">
-        <Marquee duration={40} pauseOnHover>
+        <Marquee duration={40} pauseOnHover fadeAmount={16}>
           {PLACEHOLDER_MARKS.map((mark) => (
             <span
               key={mark}

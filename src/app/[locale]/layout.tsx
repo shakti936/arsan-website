@@ -12,7 +12,7 @@ import "../globals.css";
 // Display only — never below ~24px, weights 500+ (docs/sop/08-design-system.md)
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",

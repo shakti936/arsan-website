@@ -24,11 +24,11 @@ export function Header() {
         {t("skipToContent")}
       </a>
 
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4 sm:px-10">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4 sm:px-10 xl:gap-8">
         <Logo />
 
         <nav aria-label={t("ariaMain")} className="hidden lg:block">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-6 xl:gap-8">
             {NAV_SECTIONS.map((section) => (
               <li key={section.key} className="group">
                 <NavLink href={section.href}>
@@ -44,7 +44,7 @@ export function Header() {
           <LocaleSwitcher />
           <Link
             href="/contact"
-            className="eyebrow hidden border border-brass-500 px-5 py-3 text-brass-400 transition-colors hover:border-brass-300 hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-300 sm:inline-flex"
+            className="eyebrow hidden whitespace-nowrap border border-brass-500 px-5 py-3 text-brass-400 transition-colors hover:border-brass-300 hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-300 sm:inline-flex"
           >
             {t("cta")}
           </Link>

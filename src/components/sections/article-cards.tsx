@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { ArrowLink } from "@/components/ui/arrow-link";
+import { Plate } from "@/components/ui/plate";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/lib/cn";
@@ -37,11 +38,10 @@ export function ArticleCards({
               delay={(i % 3) * 0.08}
               className="h-full"
             >
-              <article className="flex h-full flex-col border border-cream-100 bg-white-warm shadow-sm shadow-navy-950/5">
-                {/* Image slot — real article imagery later */}
-                <div
-                  aria-hidden="true"
-                  className="h-36 bg-gradient-to-br from-teal-900 to-navy-950"
+              <article className="flex h-full flex-col border border-cream-100 bg-white-warm shadow-[0_1px_2px_rgba(6,30,57,.06)] transition-shadow duration-300 hover:shadow-[0_10px_28px_-12px_rgba(6,30,57,.28)] motion-reduce:transition-none">
+                <Plate
+                  variant={(["b", "c", "a"] as const)[i % 3]}
+                  className="h-40"
                 />
                 <div className="flex flex-1 flex-col p-6">
                   <p className="eyebrow eyebrow-block text-brass-600">

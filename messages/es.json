@@ -159,7 +159,26 @@
       "subhead": "Búsqueda de ejecutivos, asesoría de fuerza laboral en México y soluciones de liderazgo para fabricantes que enfrentan crecimiento, cambio y decisiones críticas de talento.",
       "ctaPrimary": "Hablemos de su Búsqueda",
       "ctaSecondary": "Por qué ARSAN",
-      "regions": "EE. UU. · México · Transfronterizo"
+      "regions": "EE. UU. · México · Transfronterizo",
+      "plateEyebrow": "Dónde trabajamos",
+      "practices": [
+        {
+          "name": "Automotriz y Movilidad",
+          "detail": "OEM y proveedores tier uno y tier dos"
+        },
+        {
+          "name": "Aeroespacial y Defensa",
+          "detail": "Componentes y ensambles de precisión"
+        },
+        {
+          "name": "Médico y Farmacéutico",
+          "detail": "Entornos de manufactura regulada"
+        },
+        {
+          "name": "Industrial y Consumo",
+          "detail": "Electrónicos, químicos, alimentos y bebidas"
+        }
+      ]
     },
     "chooser": {
       "heading": "¿Qué reto de talento enfrenta hoy?",

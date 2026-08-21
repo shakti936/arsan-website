@@ -100,6 +100,17 @@
     min-block-size: calc(2 * 1.6em);
   }
 
+  /*
+   * Film grain. Flat navy fills read as plastic at large sizes; a trace of
+   * noise makes them read as printed ink. One inline SVG, no network request.
+   */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
   /* One section rhythm for the whole site: tighter on phones so a scroll
      isn't mostly whitespace, generous on desktop. */
   .section-y {

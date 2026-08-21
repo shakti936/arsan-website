@@ -474,3 +474,37 @@ now a **Server Component** — zero client JS.
 **Verified:** JS disabled → 0 of 79 hidden (was 51). Every reveal already in the viewport
 renders at full opacity; scrolled content animates to 1.00. `motion` is no longer imported
 anywhere — kept as a dependency for future interactive motion, not currently bundled.
+
+### D-048 · 2026-08-21 · Visual system: the "Plate" media treatment replaces empty placeholders
+**Problem:** the hero's right column was literally `<div aria-hidden className="hidden lg:block" />`
+— half the primary viewport was empty — and every card carried a flat navy gradient. The site
+read as a template awaiting assets.
+
+**`Plate`** (`src/components/ui/plate.tsx`) is now the treatment for every media surface:
+deep navy ground, fine orthographic grid, corner registration ticks, warm brass light, film
+grain. The language is an engineering drawing — what ARSAN's clients actually work from —
+so a slot without a photograph reads as designed rather than missing. Pure CSS/SVG: no image
+requests, no layout shift, three variants so repeated plates don't twin.
+**When photography arrives, a plate becomes the frame:** drop `<Image fill>` inside and keep
+the ticks and grain over it. No layout changes needed.
+
+**Hero right column** now carries the practice index (automotive, aerospace, medical,
+industrial) inside a plate — real content from ARSAN's business, not decoration.
+
+**Also:** film grain on all navy surfaces (one inline SVG, no request) so large flat fills
+read as printed ink; card hover elevation with real offset+blur; header wrapping fixed
+(logo subtitle was a long ribbon pushing nav items to two lines — now capped and hidden
+below `sm`, nav set to `whitespace-nowrap`); marquee fade widened so no word is hard-cut.
+
+### D-049 · 2026-08-21 · Mobile navigation rebuilt as a single-open accordion
+The desktop mega menu shows every section's children at once because there's room; the same
+content on a phone was ~20 stacked links. Now: full-screen overlay, five top-level rows,
+**one section open at a time**, each opened section mirroring the mega panel's icon + label +
+description so both navigations read as one system. The section you're currently on opens
+automatically. Pinned CTA and locale switcher at the base with `env(safe-area-inset-bottom)`.
+Proper dialog semantics: `role="dialog"`, `aria-modal`, focus moved in, **focus trapped**,
+Escape closes, background scroll locked.
+
+### D-050 · 2026-08-21 · Font payload halved
+Cormorant weight 700 was loaded and never used (audit: 25 × `font-semibold`, 6 × `font-medium`,
+0 × `font-bold`). Dropping it took the font set from 30 files / 768K to 15 files / 384K on disk.

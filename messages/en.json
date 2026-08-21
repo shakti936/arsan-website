@@ -159,7 +159,26 @@
       "subhead": "Executive search, Mexico workforce advisory and leadership solutions for manufacturers navigating growth, change and critical people decisions.",
       "ctaPrimary": "Discuss a Search",
       "ctaSecondary": "Why ARSAN",
-      "regions": "U.S. · Mexico · Cross-Border"
+      "regions": "U.S. · Mexico · Cross-Border",
+      "plateEyebrow": "Where we work",
+      "practices": [
+        {
+          "name": "Automotive & Mobility",
+          "detail": "OEM, tier one and tier two suppliers"
+        },
+        {
+          "name": "Aerospace & Defense",
+          "detail": "Precision components and assemblies"
+        },
+        {
+          "name": "Medical & Pharmaceutical",
+          "detail": "Regulated manufacturing environments"
+        },
+        {
+          "name": "Industrial & Consumer",
+          "detail": "Electronics, chemicals, food and beverage"
+        }
+      ]
     },
     "chooser": {
       "heading": "What talent challenge are you facing?",
