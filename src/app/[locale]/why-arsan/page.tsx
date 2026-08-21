@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { QuoteBand } from "@/components/sections/quote-band";
+import { TeamRow } from "@/components/sections/team-row";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -46,6 +47,7 @@ export default async function Page({ params }: Params) {
           ))}
         </Container>
       </section>
+      <TeamRow />
       <QuoteBand namespace="home.quote" />
       <CtaBand />
     </main>

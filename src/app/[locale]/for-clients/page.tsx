@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/sections/cta-band";
+import { IconRow } from "@/components/sections/icon-row";
 import { PageHero } from "@/components/sections/page-hero";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Container } from "@/components/ui/container";
@@ -49,6 +50,11 @@ export default async function Page({ params }: Params) {
           </div>
         </Container>
       </section>
+      <IconRow
+        namespace="whyCall"
+        icons={["shield", "target", "map", "users"]}
+        withHeading
+      />
       <CtaBand />
     </main>
   );

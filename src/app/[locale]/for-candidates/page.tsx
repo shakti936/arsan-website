@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LeadForm } from "@/components/forms/lead-form";
+import { IconRow } from "@/components/sections/icon-row";
 import { PageHero } from "@/components/sections/page-hero";
-import { PointGrid } from "@/components/sections/point-grid";
+import { TrustStrip } from "@/components/sections/trust-strip";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -20,15 +22,42 @@ export default async function Page({ params }: Params) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("subpage.forCandidates");
-  const points = [0, 1, 2].map((i) => ({
-    title: t(`points.${i}.title`),
-    body: t(`points.${i}.body`),
-  }));
+  const th = await getTranslations("candidateHelp");
 
   return (
     <main>
       <PageHero title={t("title")} intro={t("intro")} />
-      <PointGrid points={points} />
+      <TrustStrip namespace="candidateTrust" />
+      <IconRow
+        namespace="candidateValues"
+        icons={["handshake", "chat", "compass", "star"]}
+        withHeading
+      />
+      <section className="bg-white-warm py-16">
+        <Container>
+          <h2 className="text-center font-display text-display-md font-semibold text-navy-900 text-balance">
+            {th("heading")}
+          </h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[0, 1, 2].map((i) => (
+              <Reveal
+                key={th(`items.${i}.title`)}
+                delay={i * 0.06}
+                className="h-full"
+              >
+                <div className="h-full border border-cream-100 bg-white-warm p-7 text-center shadow-sm shadow-navy-950/5">
+                  <h3 className="font-display text-xl font-semibold text-navy-900">
+                    {th(`items.${i}.title`)}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-navy-800">
+                    {th(`items.${i}.body`)}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
       <section id="conversation" className="bg-cream-50 py-16">
         <Container>
           <p className="max-w-[52ch] font-display text-display-md font-medium leading-snug text-navy-900 text-balance">

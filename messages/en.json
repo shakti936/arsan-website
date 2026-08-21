@@ -350,5 +350,244 @@
       "clientBody": "We'll review your note and respond within one business day. If it's urgent, mention that in a reply to our confirmation and we'll prioritize it.",
       "candidateBody": "We'll review your note with care and respond within one business day. Your information stays confidential."
     }
+  },
+  "team": {
+    "heading": "Senior people. Senior work.",
+    "members": [
+      {
+        "name": "Armida Sánchez",
+        "title": "Founder & CEO",
+        "bio": "Executive search and leadership advisory for manufacturing and industrial organizations, built on 30+ years on the hiring side."
+      },
+      {
+        "name": "Marianna Duran",
+        "title": "Partner, Mexico Practice",
+        "bio": "Mexico expansion, workforce advisory and cross-border talent solutions."
+      },
+      {
+        "name": "Manuel Chavez",
+        "title": "Partner",
+        "bio": "Leadership advisory and organizational effectiveness for manufacturers."
+      }
+    ]
+  },
+  "insightsRow": {
+    "heading": "Perspective for better people decisions.",
+    "viewAll": "Explore All Insights",
+    "comingSoon": "Article coming soon",
+    "items": [
+      {
+        "category": "Talent Strategy",
+        "title": "The C-suite skills manufacturers need most in 2026",
+        "excerpt": "The leadership capabilities driving performance and resilience — and how to hire for them."
+      },
+      {
+        "category": "Mexico Expansion",
+        "title": "What to get right before you expand to Mexico",
+        "excerpt": "A practical guide to building your leadership and workforce foundation."
+      },
+      {
+        "category": "Leadership",
+        "title": "Building stronger leadership teams in times of change",
+        "excerpt": "How aligned leadership teams create clarity, culture and results."
+      },
+      {
+        "category": "Compensation",
+        "title": "Why compensation benchmarks alone don't tell the whole story",
+        "excerpt": "What the numbers miss about attracting senior manufacturing talent across borders."
+      },
+      {
+        "category": "Hiring Process",
+        "title": "What U.S. manufacturers underestimate when hiring in Mexico",
+        "excerpt": "The assumptions that quietly derail cross-border hires — and what to do instead."
+      },
+      {
+        "category": "Career Strategy",
+        "title": "How to evaluate the right leadership move",
+        "excerpt": "Key factors when assessing opportunity, culture and long-term fit."
+      }
+    ]
+  },
+  "whyCall": {
+    "heading": "Why organizations call ARSAN",
+    "items": [
+      {
+        "title": "A critical role is too important to get wrong.",
+        "body": "The cost of a wrong senior hire compounds monthly. We protect the decision."
+      },
+      {
+        "title": "A search is not producing the right candidates.",
+        "body": "When the pipeline is full but the fit is missing, the search strategy is the problem."
+      },
+      {
+        "title": "An operation in Mexico must be built thoughtfully.",
+        "body": "People strategy before production strategy — that order matters."
+      },
+      {
+        "title": "A leadership team needs to evolve.",
+        "body": "Growth, mergers and transitions demand different leadership than yesterday."
+      }
+    ]
+  },
+  "whyChoose": {
+    "heading": "Why clients choose ARSAN",
+    "items": [
+      {
+        "title": "Deep manufacturing expertise",
+        "body": "In the U.S., Mexico and cross-border operations."
+      },
+      {
+        "title": "Access others cannot reach",
+        "body": "Senior talent networks built over decades, on both sides of the border."
+      },
+      {
+        "title": "A disciplined process",
+        "body": "That protects your time and your decision."
+      },
+      {
+        "title": "Proven results",
+        "body": "Placements that drive performance and stay."
+      }
+    ]
+  },
+  "candidateValues": {
+    "heading": "You deserve to know where you stand.",
+    "items": [
+      {
+        "title": "Respect",
+        "body": "Your confidentiality is always our priority, from the first conversation."
+      },
+      {
+        "title": "Communication",
+        "body": "Timely updates and honest feedback at every step of the process."
+      },
+      {
+        "title": "Preparation",
+        "body": "We help you put your best foot forward with insight, guidance and market perspective."
+      },
+      {
+        "title": "Representation",
+        "body": "We advocate for you and negotiate your strengths so they reach the next level."
+      }
+    ]
+  },
+  "candidateTrust": {
+    "items": ["Confidential", "Selective", "Personal", "Focused on Fit"]
+  },
+  "candidateHelp": {
+    "heading": "How can ARSAN help?",
+    "items": [
+      {
+        "title": "Submit your profile",
+        "body": "Share your background confidentially. Your profile helps our consultants consider you for roles that may not be publicly listed."
+      },
+      {
+        "title": "Candidate experience",
+        "body": "A clear, professional process built on respect, transparency and consistent communication."
+      },
+      {
+        "title": "Career guidance",
+        "body": "Insight and market perspective for your next move, from advisors who know manufacturing careers."
+      }
+    ]
+  },
+  "functionGrid": {
+    "heading": "We help you hire leaders and critical professionals across functions.",
+    "items": [
+      {
+        "title": "Executive Leadership",
+        "body": "CEOs, presidents, general managers and enterprise leaders."
+      },
+      {
+        "title": "Operations",
+        "body": "Plant leadership, continuous improvement and production."
+      },
+      {
+        "title": "Engineering",
+        "body": "Design, product, process and industrial engineering."
+      },
+      {
+        "title": "Quality",
+        "body": "Quality leaders, compliance and continuous quality."
+      },
+      {
+        "title": "Supply Chain",
+        "body": "Supply chain, planning, logistics and procurement."
+      },
+      {
+        "title": "Sales & Commercial",
+        "body": "Commercial leaders, business development and key accounts."
+      },
+      {
+        "title": "Human Resources",
+        "body": "HR leadership, talent strategy and organizational development."
+      },
+      {
+        "title": "Finance",
+        "body": "CFOs, FP&A, controllers and finance leaders."
+      }
+    ]
+  },
+  "mexicoQuestions": {
+    "heading": "A U.S. operating model cannot simply be copied and pasted into Mexico.",
+    "intro": "Successful Mexico operations begin with the right people strategy. Before the first job is posted, leaders must answer the questions that shape culture, performance and long-term results.",
+    "items": [
+      {
+        "title": "Where will the talent come from?",
+        "body": "Understand the local labor market, skills availability and realistic pipeline."
+      },
+      {
+        "title": "What organization needs to exist?",
+        "body": "Design the structure, functions and roles required to run and scale the operation."
+      },
+      {
+        "title": "Who should build it?",
+        "body": "Identify the leaders who will launch, lead and develop the Mexico team."
+      },
+      {
+        "title": "How will two operating cultures work as one?",
+        "body": "Build alignment across expectations, decision-making and ways of working."
+      }
+    ]
+  },
+  "mexicoEarly": {
+    "heading": "Why organizations involve ARSAN early",
+    "items": [
+      {
+        "title": "Reduce ramp-up risk",
+        "body": "The right team in place earlier accelerates readiness and launch."
+      },
+      {
+        "title": "Strengthen retention",
+        "body": "Thoughtful design and leadership lower early turnover and disruption."
+      },
+      {
+        "title": "Build a scalable culture",
+        "body": "Establish values, ways of working and talent practices from day one."
+      },
+      {
+        "title": "Bridge two markets",
+        "body": "Create a unified leadership approach across the U.S. and Mexico."
+      }
+    ]
+  },
+  "mexicoCase": {
+    "eyebrow": "Featured case study",
+    "title": "Before the plant opened, the organization had to be built.",
+    "body": "A U.S. manufacturer preparing to build in Mexico needed the right leaders and structure in place a year in advance.",
+    "stats": [
+      {
+        "label": "Head start",
+        "value": "~1 year"
+      },
+      {
+        "label": "Foundational hires",
+        "value": "~10"
+      },
+      {
+        "label": "Functions built",
+        "value": "4"
+      }
+    ]
   }
 }

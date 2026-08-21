@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/sections/cta-band";
+import { FunctionGrid } from "@/components/sections/function-grid";
+import { IconRow } from "@/components/sections/icon-row";
 import { PageHero } from "@/components/sections/page-hero";
 import { PointGrid } from "@/components/sections/point-grid";
+import { QuoteBand } from "@/components/sections/quote-band";
+import { Stories } from "@/components/sections/stories";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -28,6 +32,14 @@ export default async function Page({ params }: Params) {
     <main>
       <PageHero title={t("title")} intro={t("intro")} />
       <PointGrid points={points} />
+      <QuoteBand namespace="home.quote" />
+      <FunctionGrid />
+      <Stories />
+      <IconRow
+        namespace="whyChoose"
+        icons={["factory", "globe", "shield", "chart"]}
+        withHeading
+      />
       <CtaBand />
     </main>
   );

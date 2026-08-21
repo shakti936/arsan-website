@@ -350,5 +350,244 @@
       "clientBody": "Revisaremos su mensaje y responderemos en un día hábil. Si es urgente, indíquelo al responder nuestra confirmación y lo priorizamos.",
       "candidateBody": "Revisaremos su mensaje con cuidado y responderemos en un día hábil. Su información permanece confidencial."
     }
+  },
+  "team": {
+    "heading": "Gente senior. Trabajo senior.",
+    "members": [
+      {
+        "name": "Armida Sánchez",
+        "title": "Fundadora y CEO",
+        "bio": "Búsqueda de ejecutivos y asesoría de liderazgo para organizaciones de manufactura e industriales, con más de 30 años del lado contratante."
+      },
+      {
+        "name": "Marianna Duran",
+        "title": "Socia, Práctica México",
+        "bio": "Expansión en México, asesoría laboral y soluciones de talento transfronterizo."
+      },
+      {
+        "name": "Manuel Chavez",
+        "title": "Socio",
+        "bio": "Asesoría de liderazgo y efectividad organizacional para fabricantes."
+      }
+    ]
+  },
+  "insightsRow": {
+    "heading": "Perspectiva para mejores decisiones de talento.",
+    "viewAll": "Ver Todas las Perspectivas",
+    "comingSoon": "Artículo próximamente",
+    "items": [
+      {
+        "category": "Estrategia de Talento",
+        "title": "Las habilidades directivas que la manufactura más necesita en 2026",
+        "excerpt": "Las capacidades de liderazgo que impulsan desempeño y resiliencia — y cómo contratarlas."
+      },
+      {
+        "category": "Expansión en México",
+        "title": "Qué resolver antes de expandirse a México",
+        "excerpt": "Una guía práctica para construir su base de liderazgo y fuerza laboral."
+      },
+      {
+        "category": "Liderazgo",
+        "title": "Equipos directivos más fuertes en tiempos de cambio",
+        "excerpt": "Cómo los equipos alineados crean claridad, cultura y resultados."
+      },
+      {
+        "category": "Compensación",
+        "title": "Por qué los benchmarks de compensación no cuentan toda la historia",
+        "excerpt": "Lo que los números omiten al atraer talento senior de manufactura entre fronteras."
+      },
+      {
+        "category": "Proceso de Contratación",
+        "title": "Lo que los fabricantes de EE. UU. subestiman al contratar en México",
+        "excerpt": "Los supuestos que descarrilan contrataciones transfronterizas — y qué hacer en su lugar."
+      },
+      {
+        "category": "Estrategia de Carrera",
+        "title": "Cómo evaluar el movimiento de liderazgo correcto",
+        "excerpt": "Factores clave al valorar oportunidad, cultura y ajuste de largo plazo."
+      }
+    ]
+  },
+  "whyCall": {
+    "heading": "Por qué las organizaciones llaman a ARSAN",
+    "items": [
+      {
+        "title": "Un puesto crítico es demasiado importante para fallar.",
+        "body": "El costo de una mala contratación senior se acumula cada mes. Protegemos la decisión."
+      },
+      {
+        "title": "Una búsqueda no produce los candidatos correctos.",
+        "body": "Cuando el pipeline está lleno pero falta el ajuste, el problema es la estrategia de búsqueda."
+      },
+      {
+        "title": "Una operación en México debe construirse con cuidado.",
+        "body": "Estrategia de personas antes que estrategia de producción — ese orden importa."
+      },
+      {
+        "title": "Un equipo directivo necesita evolucionar.",
+        "body": "Crecimiento, fusiones y transiciones exigen un liderazgo distinto al de ayer."
+      }
+    ]
+  },
+  "whyChoose": {
+    "heading": "Por qué los clientes eligen a ARSAN",
+    "items": [
+      {
+        "title": "Experiencia profunda en manufactura",
+        "body": "En EE. UU., México y operaciones transfronterizas."
+      },
+      {
+        "title": "Acceso fuera del alcance de otros",
+        "body": "Redes de talento senior construidas por décadas, en ambos lados de la frontera."
+      },
+      {
+        "title": "Un proceso disciplinado",
+        "body": "Que protege su tiempo y su decisión."
+      },
+      {
+        "title": "Resultados comprobados",
+        "body": "Contrataciones que impulsan el desempeño y permanecen."
+      }
+    ]
+  },
+  "candidateValues": {
+    "heading": "Usted merece saber dónde está parado.",
+    "items": [
+      {
+        "title": "Respeto",
+        "body": "Su confidencialidad es siempre nuestra prioridad, desde la primera conversación."
+      },
+      {
+        "title": "Comunicación",
+        "body": "Actualizaciones oportunas y retroalimentación honesta en cada paso del proceso."
+      },
+      {
+        "title": "Preparación",
+        "body": "Le ayudamos a presentarse de la mejor manera con contexto, guía y perspectiva de mercado."
+      },
+      {
+        "title": "Representación",
+        "body": "Abogamos por usted y negociamos sus fortalezas para que lleguen al siguiente nivel."
+      }
+    ]
+  },
+  "candidateTrust": {
+    "items": ["Confidencial", "Selectivo", "Personal", "Enfocado en el Ajuste"]
+  },
+  "candidateHelp": {
+    "heading": "¿Cómo puede ayudar ARSAN?",
+    "items": [
+      {
+        "title": "Comparta su perfil",
+        "body": "Comparta su trayectoria de forma confidencial. Su perfil permite a nuestros consultores considerarlo para posiciones que quizá no estén publicadas."
+      },
+      {
+        "title": "Experiencia del candidato",
+        "body": "Un proceso claro y profesional basado en respeto, transparencia y comunicación constante."
+      },
+      {
+        "title": "Guía de carrera",
+        "body": "Contexto y perspectiva de mercado para su siguiente paso, de asesores que conocen las carreras de manufactura."
+      }
+    ]
+  },
+  "functionGrid": {
+    "heading": "Le ayudamos a contratar líderes y profesionales clave en todas las funciones.",
+    "items": [
+      {
+        "title": "Dirección Ejecutiva",
+        "body": "CEOs, presidentes, gerentes generales y líderes corporativos."
+      },
+      {
+        "title": "Operaciones",
+        "body": "Liderazgo de planta, mejora continua y producción."
+      },
+      {
+        "title": "Ingeniería",
+        "body": "Ingeniería de diseño, producto, procesos e industrial."
+      },
+      {
+        "title": "Calidad",
+        "body": "Líderes de calidad, cumplimiento y calidad continua."
+      },
+      {
+        "title": "Cadena de Suministro",
+        "body": "Cadena de suministro, planeación, logística y compras."
+      },
+      {
+        "title": "Ventas y Comercial",
+        "body": "Líderes comerciales, desarrollo de negocio y cuentas clave."
+      },
+      {
+        "title": "Recursos Humanos",
+        "body": "Liderazgo de RH, estrategia de talento y desarrollo organizacional."
+      },
+      {
+        "title": "Finanzas",
+        "body": "CFOs, FP&A, contralores y líderes de finanzas."
+      }
+    ]
+  },
+  "mexicoQuestions": {
+    "heading": "Un modelo operativo de EE. UU. no puede copiarse y pegarse en México.",
+    "intro": "Las operaciones exitosas en México empiezan con la estrategia de personas correcta. Antes de publicar la primera vacante, los líderes deben responder las preguntas que definen cultura, desempeño y resultados de largo plazo.",
+    "items": [
+      {
+        "title": "¿De dónde vendrá el talento?",
+        "body": "Entienda el mercado laboral local, la disponibilidad de habilidades y el pipeline realista."
+      },
+      {
+        "title": "¿Qué organización debe existir?",
+        "body": "Diseñe la estructura, funciones y puestos necesarios para operar y escalar."
+      },
+      {
+        "title": "¿Quién debe construirla?",
+        "body": "Identifique a los líderes que arrancarán, dirigirán y desarrollarán el equipo en México."
+      },
+      {
+        "title": "¿Cómo trabajarán dos culturas operativas como una?",
+        "body": "Construya alineación en expectativas, toma de decisiones y formas de trabajar."
+      }
+    ]
+  },
+  "mexicoEarly": {
+    "heading": "Por qué las organizaciones involucran a ARSAN temprano",
+    "items": [
+      {
+        "title": "Reducir el riesgo de arranque",
+        "body": "El equipo correcto desde antes acelera la preparación y el lanzamiento."
+      },
+      {
+        "title": "Fortalecer la retención",
+        "body": "Un diseño y liderazgo cuidadosos reducen la rotación temprana y las interrupciones."
+      },
+      {
+        "title": "Construir una cultura escalable",
+        "body": "Establezca valores, formas de trabajar y prácticas de talento desde el día uno."
+      },
+      {
+        "title": "Unir dos mercados",
+        "body": "Cree un enfoque de liderazgo unificado entre EE. UU. y México."
+      }
+    ]
+  },
+  "mexicoCase": {
+    "eyebrow": "Caso destacado",
+    "title": "Antes de abrir la planta, había que construir la organización.",
+    "body": "Un fabricante de EE. UU. que se preparaba para construir en México necesitaba a los líderes y la estructura correctos con un año de anticipación.",
+    "stats": [
+      {
+        "label": "Anticipación",
+        "value": "~1 año"
+      },
+      {
+        "label": "Contrataciones fundacionales",
+        "value": "~10"
+      },
+      {
+        "label": "Funciones construidas",
+        "value": "4"
+      }
+    ]
   }
 }

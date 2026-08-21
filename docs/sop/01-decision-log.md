@@ -308,3 +308,15 @@ built. The full wiring design (grilled + self-reviewed 2026-08-20, Codex unavail
 recorded in this log and in chat; it activates unchanged once Drew + Marianna approve the
 forms. Launch gate stands: published AI workflows in the ARSAN location get paused before
 any GHL wiring goes live.
+
+### D-037 · 2026-08-21 · Full Direction A page build-out complete (mock content)
+Every page now carries its mockup's full section set. New shared components: icon system
+(16 authored line icons, one stroke weight), IconRow, TeamRow, ArticleCards, FunctionGrid,
+FeaturedCase, TrustStrip. Home gained team + insights rows; Executive Search gained quote
+band, 8-function grid, stories, why-choose row; Mexico Advisory gained the 4-question
+grid, featured case with stat row, involve-early row, insights; For Candidates gained
+trust strip, values row, help cards; Insights is a 6-card article grid; Why ARSAN gained
+the team section.
+**Mock-content flags:** team names/titles from mockups (unverified — Q-06); article cards
+render "coming soon," unlinked (no detail pages yet); case-study stats invented; job-board
+surfaces still excluded (D-023).

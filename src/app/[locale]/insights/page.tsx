@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { ArticleCards } from "@/components/sections/article-cards";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
-import { Container } from "@/components/ui/container";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -20,13 +20,7 @@ export default async function Page({ params }: Params) {
   return (
     <main>
       <PageHero title={t("title")} intro={t("intro")} />
-      <section className="bg-white-warm py-16">
-        <Container>
-          <p className="max-w-[58ch] text-base leading-relaxed text-navy-800">
-            {t("comingSoon")}
-          </p>
-        </Container>
-      </section>
+      <ArticleCards namespace="insightsRow" count={6} />
       <CtaBand />
     </main>
   );
