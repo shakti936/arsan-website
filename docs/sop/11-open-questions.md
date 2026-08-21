@@ -8,7 +8,11 @@ Resolved items move to [01-decision-log.md](01-decision-log.md) with their reaso
 
 | # | Question | Blocks | Asked |
 |---|---|---|---|
-| Q-01 | **Internal system repo** — local path or GitHub URL. Needed to determine schema ownership, whether it exposes an API, where auth lives, and whether canonical jobs/applications tables exist. | Integration boundary; all of P2/P3 | 2026-08-20 |
+| Q-01 | ~~Internal system repo~~ — **partially answered 2026-08-20** by direct inspection of the AIOS Supabase project. Still want the repo itself for server-side logic, migrations, and the requirements doc behind `arsan_requirements`. | P2/P3 detail | 2026-08-20 |
+| Q-10 | **Integration boundary decision** — does the site read AIOS via server-only credentials, hold a browser anon key, or run its own Supabase project fed by AIOS domain events? | All data-backed pages | 2026-08-20 |
+| Q-11 | **Where do website submissions land?** AIOS has no inbound-application model. Needs a write-only landing table in AIOS that internal triage promotes to `candidates`. | Resume upload, apply flow | 2026-08-20 |
+| Q-12 | **Candidate-facing auth doesn't exist in AIOS** (`profiles`/`memberships` are staff-only). Does P3 add candidate auth to AIOS, or does the site own it separately? | P3 portal | 2026-08-20 |
+| Q-13 | **The requirements doc** behind the `arsan_requirements` table — phases, human checkpoints, accountable owners. Likely answers several questions above. | Phase planning | 2026-08-20 |
 | Q-02 | **Reference images** for visual direction, plus one line each on what to take from them (layout / type / color / motion / vibe). | Design system; P1 build | 2026-08-20 |
 
 ## Non-blocking (needed before P1 ships)

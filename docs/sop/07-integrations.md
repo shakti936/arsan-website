@@ -26,20 +26,56 @@ communication — SMS, email, calls — goes through GHL.
 
 ---
 
-## Internal system (separate repo)
+## Internal system — "AIOS"
 
-**Status: BLOCKING for P2+. Repo not yet provided.**
+**Supabase project:** `AIOS` · ref `aqonwletymrrukybyfzy` · us-east-2 · Postgres 17 ·
+created 2026-08-04. Inspected read-only via PostgREST on 2026-08-20.
 
-Questions to answer on first read of that repo:
+**State: schema built, zero rows.** Greenfield.
 
-1. Does it own the Supabase project and schema, or will this site have its own?
-2. Does it expose an API this site calls, or do both hit Supabase directly with RLS?
-3. Where does auth live — one shared Supabase project (SSO across both) or separate?
-4. Do canonical `jobs` / `applications` tables already exist?
-5. Who writes candidate records — this site, the internal system, or both?
+### What it is
 
-Until answered, P1 is built with the data layer behind a thin adapter so the boundary can
-be swapped without touching UI code.
+A multi-tenant executive-search operating system — every table carries
+`organization_id`. It is not a CRM and not a job board; it models the full search
+lifecycle: `clients` → `search_agreements` → `searches` → `search_criteria` →
+`search_candidates` (staged pipeline) → `interviews` → `offers` → `placements` →
+`finance_handoffs`.
+
+Around that sits a governance layer: `aios_engines`, `arsan_requirements`
+(phase/requirement/human-checkpoint definitions), `approvals`, `human_decisions`,
+`ai_action_runs`, `audit_events`, and an event bus — `domain_events`,
+`handoff_contract_definitions`, `domain_event_deliveries`, plus a
+`domain_event_delivery_health` view.
+
+40 objects total. Full list captured at inspection time; regenerate with
+`supabase gen types` once the site is linked.
+
+### The three findings that shape the website
+
+1. **There is no public job-postings model.** `searches` are *client mandates*, carrying
+   `confidential`, `selective_client_path`, and fee terms in `search_agreements`.
+   Publishing them directly would leak client engagements. A search is not a job posting.
+2. **There is no inbound-application model.** `search_candidates` requires a `search_id`
+   and represents internally-sourced pipeline. The website's "Submit My Resume" and
+   "apply to this job" have nowhere to land.
+3. **Auth is internal-staff only.** `profiles` + `memberships` (role, active) — no
+   candidate-facing auth concept exists.
+
+### Consequences
+
+- The website **cannot** be a direct reader of `searches`.
+- Publishing a job must be a **deliberate, human-approved act** producing a public-safe
+  record — which fits the system's existing approval / human-checkpoint pattern.
+- Both additions belong in the **AIOS repo**, not this one. This repo does not define
+  the canonical schema (D-008).
+
+### RLS status: UNVERIFIED
+
+Anon-key reads on `candidates`, `searches`, `clients`, `placements`, `documents`, and
+`organizations` all returned `200 []`. **That is not proof RLS works — the tables are
+empty.** Re-test with seeded data before anything ships. Given this schema holds candidate
+PII, `candidate_compensation` (with legal disclosure gates), and client fee terms, RLS
+verification is a launch blocker, not a nicety.
 
 ## Supabase
 

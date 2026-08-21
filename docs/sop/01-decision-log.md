@@ -81,3 +81,18 @@ everything verbatim; keep only distilled patterns with no context.
 Not written as a reusable client-build template.
 **Why:** extract the general playbook after one build actually finishes and we know which
 parts held up. Generalizing before that is guessing.
+
+### D-014 · 2026-08-20 · Internal system identified: Supabase project "AIOS"
+Ref `aqonwletymrrukybyfzy`. Multi-tenant executive-search operating system, 40 objects,
+schema complete and zero rows. Inspected read-only via PostgREST. Details and the three
+findings that shape the website in [07-integrations.md](07-integrations.md).
+
+### D-015 · 2026-08-20 · A `search` is not a job posting — publication must be an explicit act
+AIOS `searches` are confidential client mandates carrying fee terms. The website will
+never read them directly. Publishing a role to the public site requires a separate,
+human-approved, public-safe record.
+**Why:** publishing a search directly leaks client engagements and violates the
+`confidential` / `selective_client_path` flags the schema already defines.
+**Where it's built:** the AIOS repo owns the schema addition, not this one.
+**Alternatives rejected:** filter `searches` by `confidential = false` on read (one
+misconfigured row or policy publishes a client engagement — wrong layer for the guard).
