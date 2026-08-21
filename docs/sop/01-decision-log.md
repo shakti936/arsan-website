@@ -240,3 +240,19 @@ hiding is never authorization"). Server-only is defense in depth, not the contro
 requirement ID in `specs/requirements_registry.json`. A website-driven migration cannot be
 written until its requirement is approved — which is precisely the governance path D-023
 commits to.
+
+### D-028 · 2026-08-20 · Direction A approved; all mockup content confirmed as mock data
+Drew's call. Direction B kept in refs as `dirB-home-rejected.png`. Team names, client
+logos, stats, and job listings in the mockups are placeholders — real content comes later
+(Q-06 still open for the real proof points).
+
+### D-029 · 2026-08-20 · Type system: Cormorant Garamond display + Libre Franklin everything else
+Cormorant pinned by Drew; pairing chosen via /impeccable typeset. Cormorant is display-only
+(hairline strokes collapse at body sizes) — 500+ weights, ≥24px, heavier on navy. Libre
+Franklin carries body, UI, and the letterspaced eyebrow labels. Details in
+[08-design-system.md](08-design-system.md).
+
+### D-030 · 2026-08-20 · Palette sampled from dirA-home-v2.png, contrast-verified
+navy #061E39 · brass #A2865A · teal #003439 · cream #F9F7F6, sampled with ImageMagick and
+WCAG-checked. **Binding constraint found: brass on cream is 3.23:1 — large/bold text only,
+never body or small links.** Brass-on-navy and navy-on-brass both pass AA at 4.87.

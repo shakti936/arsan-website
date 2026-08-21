@@ -1,7 +1,7 @@
 # 08 — Design System
 
-**Last updated:** 2026-08-20 · **Status:** references received (6 full-page mockups).
-Direction not yet chosen — the references contain **two different visual systems**.
+**Last updated:** 2026-08-20 · **Status:** **Direction A approved by Drew.** All mockup
+content (names, logos, stats, job listings) confirmed as mock data — visual direction only.
 
 ## Reference images
 
@@ -9,14 +9,18 @@ All in `refs/`, tracked in git. These are AI-generated mockups, so **the visual 
 is signal and the written content is placeholder** — names, titles, client logos, and stats
 in them are invented and must not be trusted (see Conflicts below).
 
+Renamed 2026-08-20 for legibility (Drew's request):
+
 | File | Shows | Taking from it |
 |---|---|---|
-| `Home1.png` | Homepage, **Direction A** | Full homepage section order; hero split; logo wall; 3-card "talent challenge" chooser; team row; insights row |
-| `clients main page.png` | For Clients landing, Direction A | Landing-page pattern for a top-level section |
-| `ChatGPT ... 06_10_41 PM (1).png` | Executive Search service page, Direction A | Service-page template: process cards, pull-quote band, function grid, story cards |
-| `ChatGPT ... 06_10_41 PM (2).png` | Mexico Advisory service page, Direction A | Second service-page variant; featured case study with stat row |
-| `ChatGPT ... 05_56_21 PM.png` | All five mega-menu panels | **The information architecture** — this is the most valuable of the six |
-| `ChatGPT ... 06_11_19 PM.png` | Homepage, **Direction B** | Alternative palette and nav treatment |
+| `dirA-home-v2.png` | Homepage, **Direction A** | Full homepage section order; hero split; logo wall; 3-card chooser; team row; insights row. **Palette + type sampled from this file.** |
+| `dirA-for-clients-landing.png` | For Clients landing | Landing-page pattern for a top-level section |
+| `dirA-service-executive-search.png` | Executive Search service page | Service-page template: process cards, pull-quote band, function grid |
+| `dirA-service-mexico-advisory.png` | Mexico Advisory service page | Second service-page variant; featured case study with stat row |
+| `dirA-meganav-all-panels.png` | All five mega-menu panels | **The information architecture** — most valuable reference |
+| `dirA-for-candidates-landing.png` | For Candidates landing | Candidate-side landing; trust strip; 4-card chooser. *P2+ surface (D-023 gate)* |
+| `dirA-job-board.png` | Job board with search/filters/alerts | The P2 job-board spec in visual form. *Gated on AIOS scope change* |
+| `dirB-home-rejected.png` | Homepage, Direction B | **Rejected 2026-08-20.** Kept as record of the decision |
 
 ## The two directions
 
@@ -32,8 +36,19 @@ uppercase eyebrows/buttons, generous whitespace, card grids, thin rule under hea
 | Logo lock-up | "EXECUTIVE SEARCH & MANUFACTURING TALENT ADVISORY" | "TALENT ADVISORS TO MANUFACTURING LEADERSHIP" |
 | Feel | Warmer, older-money, closer to Korn Ferry / Egon Zehnder | Cooler, more contemporary/tech-adjacent |
 
-**Exact hex values are sampled from the chosen mockup at build time, then contrast-checked
-against WCAG 2.2 AA before being written into the Tailwind config.** Not eyeballed.
+## Palette — sampled from `dirA-home-v2.png` with ImageMagick, 2026-08-20
+
+| Token | Hex | Sampled from | Contrast notes (WCAG 2.2) |
+|---|---|---|---|
+| `navy-900` | `#061E39` | Hero/nav background | White on it: 16.77 ✓ |
+| `navy-950` | `#001A36` | Footer | — |
+| `brass-500` | `#A2865A` | Buttons, italic display words | On navy 4.87 ✓ AA · **on cream 3.23 — large/bold text only, never body** |
+| `teal-900` | `#003439` | CTA band | White on it: 13.55 ✓ |
+| `cream-50` | `#F9F7F6` | Warm section background | Navy on it: 15.70 ✓ |
+| `white-warm` | `#FEFEFA` | Page background | — |
+
+Button text: navy-on-brass 4.87 ✓. Full scale (tints/shades) derived at token time in
+`globals.css` `@theme` — **Tailwind 4 CSS-first, no JS config.**
 
 ## Information architecture (from the mega-menu mockup)
 
