@@ -37,7 +37,15 @@ export function Hero({ namespace }: { namespace: string }) {
           <p className="eyebrow mt-10 text-cream-100/70">{t("regions")}</p>
         </div>
 
-        <Plate variant="a" className="hidden aspect-4/5 max-h-[30rem] lg:block">
+        <Plate
+          variant="a"
+          src="/images/hero-plate.jpg"
+          alt={t("plateAlt")}
+          overlay="heavy"
+          priority
+          sizes="(min-width: 1024px) 34vw, 0px"
+          className="hidden aspect-4/5 max-h-[30rem] lg:block"
+        >
           <div className="relative flex h-full flex-col justify-between p-8">
             <p className="eyebrow text-brass-300">{t("plateEyebrow")}</p>
             <ul className="mt-6 flex flex-col">

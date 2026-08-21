@@ -38,3 +38,11 @@ Biome, next build, design detector) could have caught it. Run with `bun run test
 | Package | Date | Why it's not here |
 |---|---|---|
 | `@radix-ui/react-avatar` | 2026-08-20 | 21st.dev testimonials wanted it for photo avatars; mock testimonials use monogram initials. Revisit when real testimonial photos exist (gate D-018). |
+
+## Build-time scripts (not runtime dependencies)
+
+| Script | Source | Why it's here |
+|---|---|---|
+| `scripts/generate-image.ts` + `scripts/lib/kie-client.ts` | copied from `local-service-template` | KIE.ai image generation CLI (nano-banana-pro / Gemini 3 Pro Image). Run with `bun --env-file=.env.local scripts/generate-image.ts`. Not imported by the app and not in the Next build — but it *is* covered by `tsc --noEmit` and Biome, so it was patched to satisfy `noUncheckedIndexedAccess` (two index accesses narrowed, four non-null assertions replaced with a `process.exit` guard that TypeScript can narrow through). |
+
+**New env var: `KIE_API_KEY`** — source: the KIE.ai account, copied from `local-service-template/.env.local`. Value lives only in `.env.local` (gitignored). Not needed by Vercel; images are generated locally and committed as static files under `public/images/`.

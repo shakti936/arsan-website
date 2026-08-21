@@ -5,6 +5,16 @@ import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/lib/cn";
 
+/** One photograph per insight, in the order the copy lists them. */
+const INSIGHT_IMAGES = [
+  "insight-csuite-skills",
+  "insight-mexico-expansion",
+  "insight-leadership-teams",
+  "insight-compensation",
+  "insight-hiring-mexico",
+  "insight-career-move",
+] as const;
+
 type ArticleCardsProps = {
   /** Namespace with heading, viewAll?, items.N.{category,title,excerpt} */
   namespace: string;
@@ -41,6 +51,9 @@ export function ArticleCards({
               <article className="flex h-full flex-col border border-cream-100 bg-white-warm shadow-[0_1px_2px_rgba(6,30,57,.06)] transition-shadow duration-300 hover:shadow-[0_10px_28px_-12px_rgba(6,30,57,.28)] motion-reduce:transition-none">
                 <Plate
                   variant={(["b", "c", "a"] as const)[i % 3]}
+                  src={`/images/${INSIGHT_IMAGES[i % INSIGHT_IMAGES.length]}.jpg`}
+                  alt={t(`items.${i}.imageAlt`)}
+                  sizes="(min-width: 768px) 33vw, 100vw"
                   className="h-40"
                 />
                 <div className="flex flex-1 flex-col p-6">

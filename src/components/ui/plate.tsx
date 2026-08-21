@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/cn";
 
 /**
@@ -8,22 +9,39 @@ import { cn } from "@/lib/cn";
  * warm brass light — the visual language of an engineering drawing, which is
  * what ARSAN's clients actually work from.
  *
- * It exists because real photography hasn't been supplied yet (SOP Q-06) and a
- * grey box reads as unfinished. When photos arrive, a plate becomes the frame:
- * drop `<Image fill>` inside and keep the ticks and grain on top.
+ * Pass `src` and a plate becomes a frame: the photograph sits underneath and
+ * the ticks, grid and grain stay on top, so a photographed plate still belongs
+ * to the same world as an empty one. Without `src` it renders the pure CSS
+ * treatment — no image request, no layout shift.
  *
- * Pure CSS/SVG — no image requests, no layout shift, nothing to optimise later.
+ * `overlay="heavy"` is for plates that carry text (the home hero); it darkens
+ * the photograph enough to hold contrast against cream type.
  */
-export function Plate({
-  variant = "a",
-  className,
-  children,
-}: {
+type PlateBase = {
   /** Varies grid scale and light position so repeated plates don't twin. */
   variant?: "a" | "b" | "c";
+  /** How far the navy scrim is pushed. "heavy" when type sits on the plate. */
+  overlay?: "light" | "heavy";
   className?: string;
   children?: React.ReactNode;
-}) {
+};
+
+type PlateProps = PlateBase &
+  (
+    | { src: string; alt: string; priority?: boolean; sizes?: string }
+    | { src?: never; alt?: never; priority?: never; sizes?: never }
+  );
+
+export function Plate({
+  variant = "a",
+  overlay = "light",
+  src,
+  alt,
+  priority,
+  sizes = "(min-width: 768px) 33vw, 100vw",
+  className,
+  children,
+}: PlateProps) {
   const grid = { a: "28px", b: "22px", c: "34px" }[variant];
   const light = {
     a: "at 22% 18%",
@@ -35,18 +53,47 @@ export function Plate({
     <div
       className={cn("relative isolate overflow-hidden bg-navy-900", className)}
     >
-      {/* warm light */}
+      {src ? (
+        <>
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            priority={priority}
+            sizes={sizes}
+            className="object-cover"
+          />
+          {/* navy scrim — keeps photographs inside the palette, and holds
+              contrast for any type the plate carries */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background:
+                overlay === "heavy"
+                  ? "linear-gradient(150deg, color-mix(in oklab, var(--color-navy-900) 58%, transparent) 0%, color-mix(in oklab, var(--color-navy-950) 80%, transparent) 100%)"
+                  : "linear-gradient(150deg, color-mix(in oklab, var(--color-navy-800) 34%, transparent) 0%, color-mix(in oklab, var(--color-navy-950) 52%, transparent) 100%)",
+            }}
+          />
+        </>
+      ) : (
+        /* warm light — the empty plate's own ground */
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background: `radial-gradient(120% 90% ${light}, color-mix(in oklab, var(--color-brass-500) 26%, transparent) 0%, transparent 58%), linear-gradient(150deg, var(--color-navy-800) 0%, var(--color-navy-950) 78%)`,
+          }}
+        />
+      )}
+      {/* orthographic grid — recedes over a photograph so it reads as
+          registration, not texture */}
       <div
         aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          background: `radial-gradient(120% 90% ${light}, color-mix(in oklab, var(--color-brass-500) 26%, transparent) 0%, transparent 58%), linear-gradient(150deg, var(--color-navy-800) 0%, var(--color-navy-950) 78%)`,
-        }}
-      />
-      {/* orthographic grid */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.18]"
+        className={cn(
+          "absolute inset-0",
+          src ? "opacity-[0.07]" : "opacity-[0.18]",
+        )}
         style={{
           backgroundImage:
             "linear-gradient(to right, rgba(242,239,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(242,239,236,.5) 1px, transparent 1px)",

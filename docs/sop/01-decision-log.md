@@ -617,3 +617,47 @@ free. Logo and H1 now both land at 184.
 ADVISORY", 203.6px) stays inside the wordmark's 208.9px, so the descriptor can never widen the
 logo block. Tested 10px/0.08em (208.5px — 0.4px of margin, too tight) and 9px (legibility for
 no gain). `max-w-[13.25rem]`.
+
+### D-054 · 2026-08-21 · Site photography generated with KIE / nano-banana-pro
+Eleven photographs generated with KIE.ai's `nano-banana-pro` (Gemini 3 Pro Image) via the
+CLI copied in from `local-service-template`. This closes the "photography hasn't been
+supplied" note that `plate.tsx` was written against.
+
+**What was generated — and what deliberately was not.** ARSAN is an executive search firm
+with named people on the site. Every image is environmental: plant floors, an empty
+industrial shell, a stamping line at night, a shift-change corridor, a Bajío industrial park
+from the air, a border truck queue, an empty executive office, a desk of printed
+spreadsheets. Where people appear they are distant and turned away — no invented faces.
+
+**Not generated, and not to be:** headshots for the team section, faces for testimonials, or
+any frame that could read as a named client's facility. Synthetic portraits of real named
+people are misrepresentation, and the AIOS threat model names public leakage of confidential
+client identity as a risk. Those slots need real photography (Q-06).
+
+**Prompting followed the `/gen-images` v3 corrections:** one flowing 55–110-word paragraph
+each, **no negative/AVOID block** (this model binds to concrete nouns regardless of "no", so
+naming a failure summons it), real capture-device physics, and deliberately varied light
+across slots — hard morning side-light, broken overcast, harsh night work lighting, blue
+pre-dawn, dusk. The aerial specifies a level gimbal horizon and "distance softened only by
+atmospheric haze, not blur".
+
+**Plate became a frame rather than being replaced.** `plate.tsx` now takes `src`/`alt`: the
+photograph sits underneath, a navy scrim holds it inside the palette, and the orthographic
+grid drops from 0.18 to 0.07 opacity so it reads as registration rather than competing
+texture. Corner ticks and grain stay on top. A plate with no `src` renders exactly as before.
+
+**Scrim strength was measured, not eyeballed.** `overlay="heavy"` (the home hero plate, which
+carries nine lines of type) started at 78%/88% and buried the photograph completely. At
+58%/80% the plant reads and **all nine text runs still pass WCAG AA against the lightest
+pixel in their own band** — worst case 4.71:1 on the brass eyebrow, best 12.98:1. Card plates
+use `light` (34%/52%) since nothing sits on them.
+
+**Alt text is localized** — 11 new keys per locale, sitting beside the copy they describe
+(`home.hero.plateAlt`, `home.stories.items[N].imageAlt`, `insightsRow.items[N].imageAlt`,
+`mexicoCase.imageAlt`). These are content images, not decoration; each alt describes the
+frame.
+
+**Originals are 4K and 3–10MB each; committed files are not.** Downscaled to 1800px longest
+edge at q82 — the widest slot renders at ~460 CSS px, so 1800 covers 2× DPR with room, and
+`next/image` resizes from there per request. 32MB → 3.4MB total. 4K originals kept out of the
+repo in the session scratchpad.

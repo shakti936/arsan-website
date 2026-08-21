@@ -178,7 +178,8 @@
           "name": "Industrial & Consumer",
           "detail": "Electronics, chemicals, food and beverage"
         }
-      ]
+      ],
+      "plateAlt": "A manufacturing plant at dusk, its loading docks lit, seen from across the parking lot."
     },
     "chooser": {
       "heading": "What talent challenge are you facing?",
@@ -229,17 +230,20 @@
         {
           "category": "Mexico Expansion",
           "title": "Building the leadership foundation before the plant opened.",
-          "body": "We helped a global manufacturer build its executive team and workforce strategy to launch a new facility in Mexico."
+          "body": "We helped a global manufacturer build its executive team and workforce strategy to launch a new facility in Mexico.",
+          "imageAlt": "The bare concrete floor of a newly completed industrial building, bay doors open to morning sun."
         },
         {
           "category": "Organizational Transformation",
           "title": "Rebuilding an executive team following a major merger.",
-          "body": "We placed key leaders across operations, supply chain and finance to realign the organization and accelerate performance."
+          "body": "We placed key leaders across operations, supply chain and finance to realign the organization and accelerate performance.",
+          "imageAlt": "An empty glass-walled meeting room overlooking a plant yard, chairs left at angles."
         },
         {
           "category": "Critical Search",
           "title": "Solving a high-stakes search in a complex manufacturing environment.",
-          "body": "We identified and secured a transformational leader with the operational depth and cultural fit to drive long-term success."
+          "body": "We identified and secured a transformational leader with the operational depth and cultural fit to drive long-term success.",
+          "imageAlt": "A metal stamping press line running a night shift, coolant mist in the air."
         }
       ]
     },
@@ -499,32 +503,38 @@
       {
         "category": "Talent Strategy",
         "title": "The C-suite skills manufacturers need most in 2026",
-        "excerpt": "The leadership capabilities driving performance and resilience — and how to hire for them."
+        "excerpt": "The leadership capabilities driving performance and resilience — and how to hire for them.",
+        "imageAlt": "An empty executive office at dusk, its window looking out over a plant yard."
       },
       {
         "category": "Mexico Expansion",
         "title": "What to get right before you expand to Mexico",
-        "excerpt": "A practical guide to building your leadership and workforce foundation."
+        "excerpt": "A practical guide to building your leadership and workforce foundation.",
+        "imageAlt": "An aerial view of an industrial park in the Bajío, plants and truck yards laid out to the mountains."
       },
       {
         "category": "Leadership",
         "title": "Building stronger leadership teams in times of change",
-        "excerpt": "How aligned leadership teams create clarity, culture and results."
+        "excerpt": "How aligned leadership teams create clarity, culture and results.",
+        "imageAlt": "Workers walking away down a locker-lined corridor toward a bright doorway at shift change."
       },
       {
         "category": "Compensation",
         "title": "Why compensation benchmarks alone don't tell the whole story",
-        "excerpt": "What the numbers miss about attracting senior manufacturing talent across borders."
+        "excerpt": "What the numbers miss about attracting senior manufacturing talent across borders.",
+        "imageAlt": "Printed spreadsheet pages fanned across a desk with a pencil and reading glasses."
       },
       {
         "category": "Hiring Process",
         "title": "What U.S. manufacturers underestimate when hiring in Mexico",
-        "excerpt": "The assumptions that quietly derail cross-border hires — and what to do instead."
+        "excerpt": "The assumptions that quietly derail cross-border hires — and what to do instead.",
+        "imageAlt": "A queue of freight trailers waiting at a commercial border crossing before dawn."
       },
       {
         "category": "Career Strategy",
         "title": "How to evaluate the right leadership move",
-        "excerpt": "Key factors when assessing opportunity, culture and long-term fit."
+        "excerpt": "Key factors when assessing opportunity, culture and long-term fit.",
+        "imageAlt": "A highway at dawn seen through a windscreen, plant silhouettes on the horizon."
       }
     ]
   },
@@ -708,7 +718,8 @@
         "label": "Functions built",
         "value": "4"
       }
-    ]
+    ],
+    "imageAlt": "An assembly line running the length of a plant floor, seen from a mezzanine walkway."
   },
   "errors": {
     "notFoundTitle": "We couldn't find that page.",
