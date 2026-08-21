@@ -4,6 +4,7 @@ import { LeadForm } from "@/components/forms/lead-form";
 import { IconRow } from "@/components/sections/icon-row";
 import { PageHero } from "@/components/sections/page-hero";
 import { TrustStrip } from "@/components/sections/trust-strip";
+import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { alternatesFor } from "@/lib/site";
@@ -51,7 +52,7 @@ export default async function Page({ params }: Params) {
                 className="h-full"
               >
                 <div className="h-full border border-cream-100 bg-white-warm p-7 text-center shadow-sm shadow-navy-950/5">
-                  <h3 className="font-display text-2xl font-semibold text-navy-900">
+                  <h3 className="font-display text-display-sm font-semibold text-navy-900">
                     {th(`items.${i}.title`)}
                   </h3>
                   <p className="mt-3 text-base leading-relaxed text-navy-800">
@@ -68,7 +69,18 @@ export default async function Page({ params }: Params) {
           <p className="max-w-[52ch] font-display text-display-md font-medium text-navy-900 text-balance">
             {t("ctaNote")}
           </p>
-          <div className="mt-10">
+          <div className="mt-8 flex flex-wrap gap-4">
+            <ButtonLink href="/for-candidates/opportunities">
+              {t("ctaOpportunities")}
+            </ButtonLink>
+            <ButtonLink
+              href="/for-candidates/submit-profile"
+              variant="outline-dark"
+            >
+              {t("cta")}
+            </ButtonLink>
+          </div>
+          <div className="mt-12">
             <LeadForm kind="candidate" />
           </div>
         </Container>

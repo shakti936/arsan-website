@@ -40,7 +40,7 @@ export default async function Page({ params }: Params) {
             {CARD_HREFS.map((href, i) => (
               <Reveal key={href} delay={i * 0.08} className="h-full">
                 <article className="flex h-full flex-col border border-cream-100 bg-white-warm p-8 shadow-sm shadow-navy-950/5">
-                  <h2 className="font-display text-2xl font-semibold leading-snug text-navy-900 text-balance">
+                  <h2 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
                     {t(`cards.${i}.title`)}
                   </h2>
                   <p className="mt-4 flex-1 text-base leading-relaxed text-navy-800">

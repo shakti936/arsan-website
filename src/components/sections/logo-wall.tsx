@@ -27,7 +27,7 @@ export function LogoWall() {
           {PLACEHOLDER_MARKS.map((mark) => (
             <span
               key={mark}
-              className="font-display text-2xl font-semibold uppercase tracking-[0.12em] text-navy-700/60"
+              className="font-display text-display-sm font-semibold uppercase tracking-[0.12em] text-navy-700/60"
             >
               {mark}
             </span>

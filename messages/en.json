@@ -38,21 +38,25 @@
       "label": "For Candidates",
       "exploreAll": "Explore Careers",
       "children": {
-        "whyWork": {
-          "label": "Why Work With ARSAN",
-          "description": "How we represent you, and what to expect."
+        "opportunities": {
+          "label": "View Opportunities",
+          "description": "Explore current leadership opportunities."
+        },
+        "submitProfile": {
+          "label": "Submit Your Profile",
+          "description": "Share your background confidentially."
         },
         "experience": {
           "label": "Candidate Experience",
-          "description": "Respect, communication, preparation, representation."
+          "description": "What to expect when partnering with ARSAN."
+        },
+        "talentNetwork": {
+          "label": "Join Our Talent Network",
+          "description": "Stay connected to relevant opportunities."
         },
         "resources": {
           "label": "Career Resources",
-          "description": "Insight and guidance for your career decisions."
-        },
-        "conversation": {
-          "label": "Start a Confidential Conversation",
-          "description": "Share your background and goals, privately."
+          "description": "Insights and guidance for your career journey."
         }
       },
       "feature": {
@@ -323,7 +327,8 @@
         }
       ],
       "ctaNote": "The right opportunity may not be open today. Tell us about your goals and we'll reach out when opportunities align.",
-      "cta": "Start a Confidential Conversation"
+      "cta": "Start a Confidential Conversation",
+      "ctaOpportunities": "View Opportunities"
     },
     "results": {
       "title": "Work that speaks for itself.",
@@ -354,6 +359,22 @@
       "title": "Tell us what you're working through.",
       "intro": "Start with the business challenge. We'll help you determine whether — and how — ARSAN can help.",
       "cta": "Discuss a Search"
+    },
+    "opportunities": {
+      "title": "Find the opportunity that moves your career forward.",
+      "intro": "Explore curated opportunities with leading manufacturers across the U.S. and Mexico. We connect exceptional talent with roles that drive impact.",
+      "emptyHeading": "Most of our searches never get posted.",
+      "emptyBody": "A large share of ARSAN's work is confidential, so the strongest opportunities reach candidates directly rather than through a listing. Share your profile and we'll contact you when a role genuinely fits.",
+      "emptyCtaNetwork": "Join the Talent Network",
+      "emptyCtaProfile": "Submit Your Profile"
+    },
+    "submitProfile": {
+      "title": "Submit your profile, confidentially.",
+      "intro": "Share your background and goals. Your profile helps our consultants consider you for roles that may never be publicly listed — including confidential searches."
+    },
+    "talentNetwork": {
+      "title": "Join our talent network.",
+      "intro": "The right opportunity may not be open today. Stay connected and we'll reach out when a search matches your experience and goals."
     }
   },
   "testimonials": {

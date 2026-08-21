@@ -4,8 +4,10 @@ import type { IconName } from "@/components/ui/icons";
  * Navigation model. All labels/descriptions resolve through the "nav"
  * message namespace by key — no user-facing strings here.
  *
- * D-023: no candidate-portal surfaces (job listings, profile submission,
- * talent network). Every href below resolves to a page that exists.
+ * Every href resolves to a page that exists. The candidate-portal items
+ * (opportunities, profile, talent network) ship as real routes ahead of the
+ * job board (D-040) — opportunities carries an honest empty state rather
+ * than invented listings.
  */
 export type NavChild = { key: string; href: string; icon: IconName };
 

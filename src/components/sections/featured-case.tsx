@@ -28,7 +28,7 @@ export function FeaturedCase({ namespace }: { namespace: string }) {
                   <dt className="eyebrow text-navy-700/70">
                     {t(`stats.${i}.label`)}
                   </dt>
-                  <dd className="mt-1 font-display text-2xl font-semibold text-teal-900">
+                  <dd className="mt-1 font-display text-display-sm font-semibold text-teal-900">
                     {t(`stats.${i}.value`)}
                   </dd>
                 </div>

@@ -352,3 +352,22 @@ brass left rule (mobile).
 section is now "Selected case studies."
 **D-023 held:** mega-menu candidate items link only to pages that exist. No "View
 Opportunities" / "Submit Your Profile" / "Join Our Talent Network" until the portal is real.
+
+### D-040 · 2026-08-21 · Type scale normalized to conventional web sizes
+Sizes now target ordinary readable web values rather than the mockups (Drew's call, twice).
+Mobile → desktop: hero **32→48**, page hero **28→40**, section **24→30**, card title **22**
+(fixed), body **16**, intros **18**, eyebrow/label **13** (was 12). All paired with
+line-heights at the token layer; card titles moved from `text-2xl` to a `display-sm` token
+so one value governs them.
+
+### D-041 · 2026-08-21 · Candidate-portal nav items ship now as real routes — supersedes D-023 exclusion
+Drew's call: the site should look like the final version for review. "View Opportunities,"
+"Submit Your Profile," and "Join Our Talent Network" are back in the mega menu, each as a
+**real route** — nothing 404s.
+- `/for-candidates/submit-profile` and `/for-candidates/talent-network` carry the working
+  candidate form (validation live, delivery still stubbed per D-036)
+- `/for-candidates/opportunities` carries an **honest empty state**, not invented listings:
+  "Most of our searches never get posted" — which is true of confidential executive search
+  and converts to the profile/network CTAs
+**What D-023 still governs:** no real job data, no candidate auth, no application records
+until the AIOS scope change lands. The routes are the shell; the portal is not live.

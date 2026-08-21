@@ -12,7 +12,7 @@ export function PointGrid({ points }: { points: Point[] }) {
           {points.map((point, i) => (
             <Reveal key={point.title} delay={i * 0.08}>
               <div className="border-t border-brass-500/40 pt-5">
-                <h2 className="font-display text-2xl font-semibold text-navy-900 text-balance">
+                <h2 className="font-display text-display-sm font-semibold text-navy-900 text-balance">
                   {point.title}
                 </h2>
                 <p className="mt-3 text-base leading-relaxed text-navy-800">

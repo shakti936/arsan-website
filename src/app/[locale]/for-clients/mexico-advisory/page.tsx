@@ -49,7 +49,7 @@ export default async function Page({ params }: Params) {
                 className="h-full"
               >
                 <div className="h-full border border-cream-100 bg-white-warm p-6 shadow-sm shadow-navy-950/5">
-                  <h3 className="font-display text-2xl font-semibold leading-snug text-navy-900 text-balance">
+                  <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
                     {tq(`items.${i}.title`)}
                   </h3>
                   <p className="mt-3 text-base leading-relaxed text-navy-800">
