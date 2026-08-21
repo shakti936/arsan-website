@@ -101,3 +101,26 @@ test("clicking a nav item does not leave its panel open over the new page", asyn
     .hover();
   await expect(panel).toBeVisible();
 });
+
+test("clicking a link inside the panel closes it too", async ({ page }) => {
+  await page.goto("/");
+  const li = page
+    .locator("header nav[aria-label] > ul > li")
+    .filter({ has: page.getByRole("link", { name: "Results", exact: true }) })
+    .first();
+  const panel = li.locator("div.absolute").first();
+
+  await page
+    .getByRole("link", { name: "Results", exact: true })
+    .first()
+    .hover();
+  await expect(panel).toBeVisible();
+
+  await panel.getByRole("link", { name: "Case Studies" }).first().click();
+  await page.waitForURL(/results/);
+  // hiding the panel yanks it out from under the pointer, which fires
+  // pointerleave on the item — the panel must not come back because of it
+  await expect(panel).toBeHidden();
+  await page.waitForTimeout(400);
+  await expect(panel).toBeHidden();
+});

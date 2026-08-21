@@ -766,3 +766,35 @@ panels: `hasText: "Insights"` matched the *For Candidates* item, whose feature c
 `header nav[aria-label] > ul > li`. The second was self-inflicted: a blind string-replace
 no-opped because Biome had reformatted the line since I wrote it — the same trap logged four
 times before. Read the file first.
+
+### D-058 · 2026-08-21 · Dismissing the panel needs `pointermove`, not `pointerleave`
+Drew: clicking a **submenu** item still leaves the panel open on the page you land on. D-057's
+click dismissal worked for the top-level link and not for the children. A MutationObserver on
+the item showed exactly why:
+
+```
+attr data-suppressed=true   ← the click suppressed it
+click
+pointerleave                ← hiding the panel yanked it out from under the pointer
+attr data-suppressed=null   ← my own reset undid the suppression
+```
+
+**The reset was cancelling the thing it was meant to outlive.** Suppressing hides the panel;
+hiding it moves the pointer's hit target; that fires `pointerleave` on the item; the handler
+clears the flag; the panel returns *under the cursor*; `:hover` latches it open again. A
+stable loop that always settles open.
+
+`pointerover` has the same defect — hiding the panel raises one on whatever was underneath.
+Any reset keyed to "the pointer is now outside" is unstable, because clearing the flag
+re-creates the condition that puts the pointer back inside.
+
+**`pointermove` is the signal that works.** It only fires when the pointer actually moves;
+layout changing beneath a stationary cursor does not produce one. So the synthetic events after
+a click are ignored, and the panel is released the moment the user genuinely moves off the
+item. Verified against the original repro: `wrapDisplay: none`, `suppressed: "true"` after
+clicking a submenu link.
+
+**The CSS was never the problem** and I checked before assuming: the compiled rule
+`.group-data-[suppressed=true]:!hidden:is(:where(.group)[data-suppressed="true"] *)` is in the
+served stylesheet, and forcing the attribute by hand flips computed `display` from `block` to
+`none`.
