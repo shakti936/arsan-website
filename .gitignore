@@ -36,5 +36,7 @@ yarn-debug.log*
 yarn-error.log*
 .bun/
 
-# reference images (large binaries — keep local unless we decide otherwise)
-# refs/
+# supabase CLI scratch
+supabase/.temp/
+
+# reference images are tracked on purpose — design direction is project history
