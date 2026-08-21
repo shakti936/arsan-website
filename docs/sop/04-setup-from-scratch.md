@@ -15,22 +15,41 @@ running dev server and a green build, without asking questions.
 - Supabase project access *(needed from P2; see [07-integrations.md](07-integrations.md))*
 - GHL API access for the location *(P1 forms)*
 
-## 1. Scaffold
+## 1. Scaffold — as run 2026-08-20
 
-_To be filled in when run. Record the exact command, the prompts it asks, and the answers
-given._
+`create-next-app` refuses non-empty directories (this repo already held docs/, refs/,
+CLAUDE.md), so the scaffold is manual:
 
+```bash
+# package.json written by hand with scripts (dev/build/start/lint/format/typecheck), then:
+bun add next@latest react@latest react-dom@latest next-intl@latest   motion@latest zod@latest clsx@latest tailwind-merge@latest
+bun add -d typescript@latest @types/react@latest @types/node@latest   @types/react-dom@latest tailwindcss@latest @tailwindcss/postcss@latest @biomejs/biome@latest
 ```
-# TBD
-```
 
-## 2. Tooling config
+Resolved versions live in [03-packages.md](03-packages.md) and `bun.lock`.
 
-_Biome config, TypeScript strict settings, path aliases (`@/`), Tailwind token setup._
+## 2. Tooling config — as run
 
-```
-# TBD
-```
+Files written by hand (all at repo root unless noted):
+
+- `tsconfig.json` — strict, `noUncheckedIndexedAccess`, `@/*` → `src/*`. **Next build
+  auto-rewrites `jsx` to `react-jsx`** — expect that diff after first build.
+- `next.config.ts` — wraps config in `createNextIntlPlugin()`
+- `postcss.config.mjs` — `@tailwindcss/postcss` only (Tailwind 4 has no JS config file)
+- `biome.json` — schema 2.5.9. Two non-defaults: `css.parser.tailwindDirectives: true`
+  (else `@theme` is a parse error) and `complexity.noImportantStyles: off` (the
+  `prefers-reduced-motion` global reset legitimately uses `!important`)
+- `src/app/globals.css` — `@import "tailwindcss"` + `@theme inline` tokens (palette from
+  [08-design-system.md](08-design-system.md)), `.eyebrow` utility, reduced-motion reset
+- `src/proxy.ts` — **NOT `middleware.ts`** (Next 16 renamed it; old name silently ignored).
+  Wraps `next-intl/middleware` with an api/_next/file-extension matcher
+- `src/i18n/routing.ts` (`defineRouting`, en/es, `localePrefix: "as-needed"`),
+  `src/i18n/request.ts` (`getRequestConfig` + `hasLocale` fallback),
+  `src/i18n/navigation.ts` (`createNavigation` wrappers — use these, not `next/link`)
+- `src/app/[locale]/layout.tsx` — `next/font/google` (Cormorant Garamond 500–700 +
+  italics; Libre Franklin variable), `generateStaticParams`, `setRequestLocale`,
+  `NextIntlClientProvider`
+- `messages/en.json`, `messages/es.json` — placeholder hero copy
 
 ## 3. Environment
 
@@ -42,12 +61,13 @@ docs or commits.**
 
 ```
 bun run dev          # dev server
-tsc --noEmit         # type check
+bunx tsc --noEmit    # type check
 bunx biome check .   # lint + format
 bun run build        # production build
 ```
 
-All four must pass before opening a PR.
+All four must pass before opening a PR. **Verified green 2026-08-20** — `/en` and `/es`
+both prerender as SSG, proxy registered.
 
 ## 5. Deploy
 
@@ -61,4 +81,7 @@ _Anything that cost more than five minutes goes here, with the fix._
 
 | Date | What happened | Fix |
 |---|---|---|
-| _(none yet)_ | | |
+| 2026-08-20 | First `bun add` timed out at 2min in the sandbox | Run installs with `run_in_background` (or outside sandbox); completed in ~1s once free |
+| 2026-08-20 | Biome flagged `@theme` as a CSS parse error | `css.parser.tailwindDirectives: true` in biome.json |
+| 2026-08-20 | Biome 2.5 deprecated `files.includes` negation patterns for ignores | Rely on `vcs.useIgnoreFile: true` + `.gitignore` instead |
+| 2026-08-20 | `next build` rewrote tsconfig (`jsx: react-jsx`) | Expected — commit the rewrite |

@@ -256,3 +256,10 @@ Franklin carries body, UI, and the letterspaced eyebrow labels. Details in
 navy #061E39 · brass #A2865A · teal #003439 · cream #F9F7F6, sampled with ImageMagick and
 WCAG-checked. **Binding constraint found: brass on cream is 3.23:1 — large/bold text only,
 never body or small links.** Brass-on-navy and navy-on-brass both pass AA at 4.87.
+
+### D-031 · 2026-08-20 · Framework scaffolded manually, not via create-next-app
+`create-next-app` refuses directories containing files outside its whitelist (CLAUDE.md,
+refs/, .env.local). Manual scaffold also gives exact control over the three Next 16
+conventions from ADR-011. Verified: `bun run build`, `tsc --noEmit`, `biome check` all
+green; `/en` and `/es` prerender static. Resolved versions: Next 16.3.1 · React 19.2.8 ·
+Tailwind 4.3.3 · next-intl 4.13.7 · motion 13.1.1 · Zod 4.4.3 · TS 7.0.2 · Biome 2.5.9.

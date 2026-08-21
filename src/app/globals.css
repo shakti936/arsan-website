@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Fonts — variables injected by next/font in the locale layout */
+  --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans:
+    var(--font-franklin), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Palette — sampled from refs/dirA-home-v2.png (docs/sop/08-design-system.md).
+     Brass on cream is 3.23:1 — large/bold text only, never body copy. */
+  --color-navy-950: #001a36;
+  --color-navy-900: #061e39;
+  --color-navy-800: #0d2a4d;
+  --color-navy-700: #163a63;
+  --color-brass-600: #8f7448;
+  --color-brass-500: #a2865a;
+  --color-brass-400: #b89d73;
+  --color-brass-300: #cdb794;
+  --color-teal-900: #003439;
+  --color-teal-800: #0a4a4f;
+  --color-cream-100: #f2efec;
+  --color-cream-50: #f9f7f6;
+  --color-white-warm: #fefefa;
+
+  /* Fluid display scale — Cormorant never renders below 24px */
+  --text-display-xl: clamp(2.5rem, 1.6rem + 3.8vw, 4.5rem);
+  --text-display-lg: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  --text-display-md: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-white-warm);
+    color: var(--color-navy-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-brass-300);
+    color: var(--color-navy-950);
+  }
+}
+
+@layer utilities {
+  /* Direction A letterspaced uppercase eyebrow — Libre Franklin 600 */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
