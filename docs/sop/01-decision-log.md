@@ -570,3 +570,50 @@ icon and the "International Consulting Group" descriptor in favour of "Executive
 Manufacturing Talent Advisory". Marianna and Armida have to confirm that's intended — it is a
 change of legal-ish name presentation and of the icon, not a styling preference. Note the
 icon's palette (bright blue, teal, gray) does not sit in the navy/brass system.
+
+### D-053 · 2026-08-21 · The descriptor stays in the header — and the header row was over-subscribed all along
+Drew: keep the slogan under the wordmark. Restoring it exposed a real defect that had been
+hiding behind it.
+
+**What was actually wrong.** The logo was a flex item with default `min-width: auto`, so the
+header row was *compressing it* whenever the row ran out of space. Measured natural vs.
+available width of the three header children:
+
+| | available | logo · nav · right | needed | slack |
+|---|---|---|---|---|
+| EN 1024 (before) | 944 | 145 · 471 · 296 | 944 | 0 — logo squeezed from 209 to **145** |
+| EN 1280/1440 (before) | 1072 | 209 · 503 · 296 | 1072 | 0 |
+| **ES 1280/1440 (before)** | 1072 | 212 · 627 · 376 | **1279** | **−207 — spilled off-screen** |
+
+So the Spanish header never fit, at any width; below ~1600px it visibly overflowed the
+viewport. The subtitle was not the cause — it costs 3px — it just removed the slack that was
+masking it.
+
+**Fixes, at the layer each belongs to:**
+- `shrink-0` on the logo. The wordmark is a brand mark; it does not get compressed to make
+  room for chrome. This is what turned a silent squeeze into a visible overflow we could fix.
+- **Desktop nav moves `lg` → `xl`.** At 1024 the row needed every pixel it had; the nav and
+  the logo were fighting. 1024–1279 now gets the overlay nav, which has room to spare.
+  `mega-panel` and `mobile-nav` moved with it so the three stay in lockstep.
+- Row gap `xl:gap-8` → `xl:gap-6`, nav gap `gap-6 xl:gap-8` → `gap-5 xl:gap-6`, CTA `px-5` →
+  `px-4`. Header CTA `sm:` → `md:inline-flex` — at 640 it did not fit in either language, and
+  the overlay already pins a CTA.
+- **ES nav copy tightened:** "Para Empresas" → "Empresas", "Para Candidatos" → "Candidatos",
+  CTA "Hablemos de su Búsqueda" → "Hablemos". Spanish runs ~23% longer than English and this
+  header has five mega-nav items plus a CTA; the labels had to carry that. Flag for the Q-05
+  native review — these are the shortest idiomatic forms, not a translation shortcut.
+
+**Result:** EN +53px slack, ES +69px, zero page overflow at 390/640/768/1024/1280/1440/1920 in
+both locales. Header 91.8px in EN (2-line descriptor) and 103.6px in ES (3 lines — Spanish is
+longer and the height is allowed to follow it rather than being reserved).
+
+**Rejected: `xl:max-w-7xl` on the header.** It fits everything comfortably, but the header
+container then runs 128px wider than the `max-w-6xl` page content, putting the logo 64px left
+of the H1 on every page. Measured `logoLeft:120` vs `h1Left:184`. Alignment with the content
+grid is worth more than the slack; shortening two Spanish nav labels bought the same room for
+free. Logo and H1 now both land at 184.
+
+**Subtitle sizing.** `0.59375rem`/`0.1em` — solved so the longest line ("MANUFACTURING TALENT
+ADVISORY", 203.6px) stays inside the wordmark's 208.9px, so the descriptor can never widen the
+logo block. Tested 10px/0.08em (208.5px — 0.4px of margin, too tight) and 9px (legibility for
+no gain). `max-w-[13.25rem]`.

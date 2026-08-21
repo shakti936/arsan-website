@@ -34,7 +34,7 @@ export function Logo({
       {withSubtitle && (
         <span
           className={cn(
-            "mt-2 hidden max-w-[15.5rem] text-[0.6875rem] font-medium uppercase leading-tight tracking-[0.12em] sm:block",
+            "mt-2 hidden max-w-[13.25rem] text-[0.59375rem] font-medium uppercase leading-tight tracking-[0.1em] sm:block",
             tone === "light" ? "text-cream-100/80" : "text-navy-700",
           )}
         >

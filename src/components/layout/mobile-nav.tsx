@@ -77,7 +77,7 @@ export function MobileNav() {
   }, [open]);
 
   return (
-    <div className="lg:hidden">
+    <div className="xl:hidden">
       <button
         type="button"
         aria-expanded={open}
@@ -108,7 +108,7 @@ export function MobileNav() {
           className="fixed inset-0 z-100 flex h-dvh flex-col bg-navy-900"
         >
           <div className="flex shrink-0 items-center justify-between border-b border-navy-800 px-6 py-4">
-            <Logo withSubtitle={false} />
+            <Logo />
             <button
               ref={closeButtonRef}
               type="button"

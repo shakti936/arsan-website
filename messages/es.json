@@ -8,11 +8,11 @@
   },
   "nav": {
     "ariaMain": "Navegación principal",
-    "cta": "Hablemos de su Búsqueda",
+    "cta": "Hablemos",
     "openMenu": "Abrir menú",
     "close": "Cerrar menú",
     "forClients": {
-      "label": "Para Empresas",
+      "label": "Empresas",
       "exploreAll": "Ver Soluciones para Empresas",
       "children": {
         "executiveSearch": {
@@ -35,7 +35,7 @@
       }
     },
     "forCandidates": {
-      "label": "Para Candidatos",
+      "label": "Candidatos",
       "exploreAll": "Ver Carrera con ARSAN",
       "children": {
         "opportunities": {
@@ -592,7 +592,12 @@
     ]
   },
   "candidateTrust": {
-    "items": ["Confidencial", "Selectivo", "Personal", "Enfocado en el Ajuste"]
+    "items": [
+      "Confidencial",
+      "Selectivo",
+      "Personal",
+      "Enfocado en el Ajuste"
+    ]
   },
   "candidateHelp": {
     "heading": "¿Cómo puede ayudar ARSAN?",
