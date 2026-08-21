@@ -293,3 +293,9 @@ conversation CTA only.
 **shadcn deferred:** P1 marketing chrome needs almost none of it; its token system would
 need retheming to Direction A. Revisit at the contact form (inputs/toasts) where AIOS
 consistency also argues for it.
+
+### D-035 · 2026-08-20 · 21st.dev marquee + testimonials integrated — adapted, not pasted
+Logo wall (fictional placeholder wordmarks, pending Q-06 logo permissions) on Home;
+testimonial columns (mock quotes, pending AIOS gate D-018 consent) on Results. Both run on
+one rewritten server-component Marquee. Zero new dependencies. Adaptation details in
+[06-prompts.md](06-prompts.md) P1.5.

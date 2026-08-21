@@ -97,6 +97,25 @@ one, before asking how to model it.
    saved a scaffold.
 4. **Ask about ownership before modeling.** "Does another system already own this data?"
 
+### P1.5 — 21st.dev component paste (2026-08-20)
+
+Drew pasted two 21st.dev component prompts (Marquee; TestimonialsSection + shadcn Avatar).
+**Neither was integrated verbatim.** What the paste got wrong, for next time:
+
+1. The marquee injected an unscoped `<style>` tag per instance — two marquees on one page
+   overwrite each other's duration. Rewritten: keyframes in `globals.css`, per-instance CSS
+   vars, CSS hover-pause (drops `"use client"` entirely), `aria-hidden` duplicate copy,
+   reduced-motion disable.
+2. The testimonials component imported `@/components/ui/infinite-slider` — **not included
+   in the paste**; it would not have compiled. Rebuilt on our Marquee (vertical).
+3. Demo data was joke quotes from real public figures with hotlinked avatars
+   (unavatar/GitHub) — external images + real names on fake quotes. Replaced with neutral
+   mock quotes in the message catalogs, monogram initials, no external requests, and the
+   `@radix-ui/react-avatar` dependency dropped (zero packages added).
+
+**Lesson:** 21st.dev pastes are starting points. Check for missing dependencies, unscoped
+styles, reduced-motion, and content liabilities before integrating.
+
 ## Prompts that failed
 
 _None yet. When one does, it goes here with what it produced and what fixed it._

@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { Stories } from "@/components/sections/stories";
+import { Testimonials } from "@/components/sections/testimonials";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -21,6 +22,7 @@ export default async function Page({ params }: Params) {
     <main>
       <PageHero title={t("title")} intro={t("intro")} />
       <Stories />
+      <Testimonials />
       <CtaBand />
     </main>
   );

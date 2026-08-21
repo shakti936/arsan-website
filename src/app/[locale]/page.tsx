@@ -3,6 +3,7 @@ import { use } from "react";
 import { Chooser } from "@/components/sections/chooser";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Hero } from "@/components/sections/hero";
+import { LogoWall } from "@/components/sections/logo-wall";
 import { QuoteBand } from "@/components/sections/quote-band";
 import { Stories } from "@/components/sections/stories";
 import { ValueProps } from "@/components/sections/value-props";
@@ -18,6 +19,7 @@ export default function HomePage({
   return (
     <main>
       <Hero namespace="home.hero" />
+      <LogoWall />
       <Chooser />
       <ValueProps />
       <QuoteBand namespace="home.quote" />

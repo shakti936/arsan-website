@@ -28,9 +28,18 @@
         }
       }
     },
-    "forCandidates": { "label": "For Candidates", "children": {} },
-    "results": { "label": "Results", "children": {} },
-    "insights": { "label": "Insights", "children": {} },
+    "forCandidates": {
+      "label": "For Candidates",
+      "children": {}
+    },
+    "results": {
+      "label": "Results",
+      "children": {}
+    },
+    "insights": {
+      "label": "Insights",
+      "children": {}
+    },
     "whyArsan": {
       "label": "Why ARSAN",
       "children": {
@@ -136,6 +145,9 @@
       "lead": "We don't present candidates to create activity. We present people we believe",
       "emphasis": "deserve",
       "tail": " your time."
+    },
+    "logoWall": {
+      "eyebrow": "Trusted by manufacturing organizations across North America"
     }
   },
   "subpage": {
@@ -265,5 +277,40 @@
       "formNote": "The contact form is being connected. For now, reach us directly and we'll respond within one business day.",
       "cta": "Discuss a Search"
     }
+  },
+  "testimonials": {
+    "heading": "What clients and candidates say.",
+    "items": [
+      {
+        "quote": "They understood the operating reality of our plants before proposing a single name. The finalist slate was small, and every person on it was credible.",
+        "name": "Operations Executive",
+        "role": "Global automotive supplier"
+      },
+      {
+        "quote": "We were building in Mexico for the first time. ARSAN pushed us to define the organization before the org chart — that advice alone paid for the search.",
+        "name": "General Manager",
+        "role": "U.S. industrial manufacturer"
+      },
+      {
+        "quote": "The process respected my time. Honest about the role, honest about the risks, and available at every step.",
+        "name": "Placed Candidate",
+        "role": "Plant Director, Northern Mexico"
+      },
+      {
+        "quote": "They told us a hire we wanted to make was the wrong one — and they were right. That candor is why we keep coming back.",
+        "name": "VP Human Resources",
+        "role": "Aerospace components group"
+      },
+      {
+        "quote": "Cross-border searches usually mean two firms and two stories. With ARSAN it was one team on both sides of the border.",
+        "name": "Chief Operating Officer",
+        "role": "Food & beverage manufacturer"
+      },
+      {
+        "quote": "From first call to signed offer in nine weeks, without ever feeling rushed. The preparation before each interview was exceptional.",
+        "name": "Placed Candidate",
+        "role": "Director of Engineering, Texas"
+      }
+    ]
   }
 }

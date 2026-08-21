@@ -33,4 +33,4 @@ check whether the project already has something that does the job.
 
 | Package | Date | Why it's not here |
 |---|---|---|
-| _(none yet)_ | | |
+| `@radix-ui/react-avatar` | 2026-08-20 | 21st.dev testimonials wanted it for photo avatars; mock testimonials use monogram initials. Revisit when real testimonial photos exist (gate D-018). |

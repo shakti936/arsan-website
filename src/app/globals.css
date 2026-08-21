@@ -53,6 +53,31 @@
   }
 }
 
+/* Marquee — driven by src/components/ui/marquee.tsx via CSS vars */
+@keyframes marquee-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-y {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@layer components {
+  .marquee-track {
+    animation: var(--marquee-anim, marquee-x) var(--marquee-duration, 30s)
+      linear infinite;
+    animation-direction: var(--marquee-dir, normal);
+  }
+
+  .marquee-hover-pause:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
