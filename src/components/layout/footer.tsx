@@ -31,7 +31,7 @@ export function Footer() {
                       <li key={child.key}>
                         <Link
                           href={child.href}
-                          className="text-xs text-cream-100/80 hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300"
+                          className="text-sm text-cream-100/80 hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-300"
                         >
                           {t(`${section.key}.children.${child.key}.label`)}
                         </Link>
@@ -44,7 +44,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col justify-between gap-3 border-t border-navy-800 pt-6 text-xs text-cream-100/60 sm:flex-row">
+        <div className="mt-12 flex flex-col justify-between gap-3 border-t border-navy-800 pt-6 text-sm text-cream-100/60 sm:flex-row">
           <p>{tf("copyright", { year: new Date().getFullYear() })}</p>
           <p>{tf("tagline")}</p>
         </div>

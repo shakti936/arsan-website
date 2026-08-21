@@ -16,8 +16,8 @@ export function MegaPanel({ section }: { section: NavSection }) {
   const FeatureIcon = section.feature ? Icons[section.feature.icon] : null;
 
   return (
-    <div className="absolute inset-x-0 top-full z-40 hidden pt-0 lg:block">
-      <div className="invisible translate-y-1 opacity-0 transition-[opacity,transform,visibility] duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 motion-reduce:transition-none">
+    <div className="pointer-events-none absolute inset-x-0 top-full z-40 hidden lg:block">
+      <div className="invisible translate-y-1 opacity-0 transition-[opacity,transform,visibility] duration-200 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:transition-none">
         <div className="border-t-2 border-brass-500 bg-white-warm shadow-xl shadow-navy-950/25">
           <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-9 sm:px-10 lg:grid-cols-[1.15fr_1fr]">
             {/* Left: item list */}

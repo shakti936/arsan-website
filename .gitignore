@@ -40,3 +40,9 @@ yarn-error.log*
 supabase/.temp/
 
 # reference images are tracked on purpose — design direction is project history
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

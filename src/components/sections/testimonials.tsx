@@ -80,7 +80,7 @@ function TestimonialCard({
           <cite className="text-sm font-semibold not-italic text-navy-900">
             {name}
           </cite>
-          <span className="text-xs text-navy-700">{role}</span>
+          <span className="text-sm text-navy-700">{role}</span>
         </span>
       </figcaption>
     </figure>

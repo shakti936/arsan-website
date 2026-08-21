@@ -36,6 +36,8 @@
 
   /* Body scale — one step up from Tailwind's defaults, with roomier
      leading. This is a marketing site read at arm's length, not a dense app. */
+  --text-xs: 0.84375rem;
+  --text-xs--line-height: 1.6;
   --text-sm: 0.9375rem;
   --text-sm--line-height: 1.65;
   --text-base: 1.0625rem;

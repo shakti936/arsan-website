@@ -409,3 +409,25 @@ eats it silently — no error, no lint, no build failure.
 `--text-xl` 20→**21px**; display leading 1.18/1.22/1.3/1.35. All ad-hoc `leading-relaxed`
 overrides removed so the tokens own leading in one place. At a 1000px window: hero 44 ·
 page hero 36 · section 28 · card 22 · body 17.
+
+### D-045 · 2026-08-21 · Mega-menu wrapper was an invisible full-page curtain — hero CTA was unclickable
+**Reported symptom:** hovering nowhere near the navbar opened the mega menu.
+**Actual severity: worse.** The same defect made the hero's primary CTA ("Discuss a Search")
+impossible to click — the site's main conversion action was dead on every page.
+
+**Root cause.** The panel wrapper `div.absolute.inset-x-0.top-full` is always mounted and
+spans the full viewport width. Its open/closed state used `visibility: hidden` on the inner
+panel — and **hidden elements still occupy layout space**, so the wrapper stayed ~450px tall.
+The wrapper itself was visible with default `pointer-events: auto`, so it hit-tested first
+across the entire top of every page. Being inside `li.group`, hovering it also fired
+`group-hover` and opened a menu. Proven by `document.elementFromPoint` returning the wrapper
+at every probe from 20px to 450px below the header, and at the CTA's own centre point.
+
+**Fix (one change, at the wrapper):** `pointer-events-none` on the always-mounted wrapper;
+`pointer-events-auto` restored on the inner panel only under `group-hover` / `group-focus-within`.
+
+**Why this needed a browser to catch:** tsc, Biome, the message validator, `next build`, and
+the design detector were all green throughout. Static analysis cannot see hit-testing.
+`@playwright/test` added and `e2e/nav-overlay.spec.ts` written **failing first** (2 of 3 red),
+then green after the fix: CTA reachable · no panel opens below the header · nav hover still
+opens its panel. `bun run test:e2e`.

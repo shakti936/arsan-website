@@ -24,6 +24,10 @@ check whether the project already has something that does the job.
 | `tailwindcss` | `^4.3.3` | ✓ | Styling — v4, CSS-first | No styles |
 | `typescript` | `^7.0.2` | ✓ | Type checking (TS 7 — Go-based tsc) | No gate |
 
+**Added 2026-08-21:** `@playwright/test` (dev) — browser-level regression tests. Justified
+by D-045: an invisible overlay made the hero CTA unclickable, and no static check (tsc,
+Biome, next build, design detector) could have caught it. Run with `bun run test:e2e`.
+
 ## Planned (approved, not yet installed)
 
 - `@supabase/supabase-js`, `@supabase/ssr` — P2+, when AIOS reads begin

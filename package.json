@@ -10,7 +10,8 @@
     "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
     "validate:messages": "node scripts/validate-messages.mjs",
-    "prebuild": "node scripts/validate-messages.mjs"
+    "prebuild": "node scripts/validate-messages.mjs",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.9",
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",

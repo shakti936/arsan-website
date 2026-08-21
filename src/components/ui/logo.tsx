@@ -28,13 +28,13 @@ export function Logo({
         className,
       )}
     >
-      <span className="font-display text-[1.625rem] font-medium uppercase leading-none tracking-[0.28em]">
+      <span className="font-display text-[1.75rem] font-medium uppercase leading-none tracking-[0.26em]">
         Arsan
       </span>
       {withSubtitle && (
         <span
           className={cn(
-            "mt-1.5 text-[0.5rem] font-medium uppercase leading-snug tracking-[0.14em]",
+            "mt-2 text-[0.6875rem] font-medium uppercase leading-tight tracking-[0.12em]",
             tone === "light" ? "text-cream-100/80" : "text-navy-700",
           )}
         >
