@@ -96,3 +96,30 @@ human-approved, public-safe record.
 **Where it's built:** the AIOS repo owns the schema addition, not this one.
 **Alternatives rejected:** filter `searches` by `confidential = false` on read (one
 misconfigured row or policy publishes a client engagement — wrong layer for the guard).
+
+### D-016 · 2026-08-20 · Site reaches AIOS through server-only credentials — no browser Supabase key
+Server Components and server actions read/write AIOS with a server-only key. **No Supabase
+credential is ever shipped to the browser.**
+**Why:** AIOS holds candidate PII, `candidate_compensation` with legal disclosure gates,
+and client fee terms across 40 tables. A browser anon key makes every RLS policy on every
+table a public attack surface; one misconfiguration exposes the ATS. Server-only keeps one
+source of truth without putting a credential on the public internet.
+**Alternatives rejected:** browser anon key + RLS (blast radius); separate Supabase project
+fed by domain events (strongest isolation, but a second project and a sync consumer to
+build and monitor — revisit if the site ever needs data AIOS won't expose); build-time
+static fetch (stale postings, deploy per publish).
+**Note:** RLS is still required on every table regardless — this is defense in depth, not a
+replacement.
+
+### D-017 · 2026-08-20 · Website-driven schema additions are written as migrations in the AIOS repo
+Claude writes them, in the AIOS repo, following that repo's existing migration and RLS
+conventions. Two additions needed: a public-safe job-postings table (published by explicit
+human approval from a `search`) and a write-only inbound intake table that triage promotes
+to `candidates`.
+**Why:** AIOS stays the sole owner of its schema. Two repos writing one schema means drift
+and a migration-ordering problem the first time both change something.
+**Blocked on:** the AIOS repo path. See [11-open-questions.md](11-open-questions.md) Q-01.
+
+### D-018 · 2026-08-20 · P1 starts now, in parallel with the boundary work
+The marketing site needs zero AIOS data. Scaffold and build proceeds while schema and
+integration questions resolve.
