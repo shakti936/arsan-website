@@ -1,0 +1,40 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# next.js
+.next/
+out/
+build/
+next-env.d.ts
+
+# env — never commit
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# claude code harness artifacts
+.claude/.cc-writes/
+**/.claude/.cc-writes/
+
+# os
+.DS_Store
+Thumbs.db
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.bun/
+
+# reference images (large binaries — keep local unless we decide otherwise)
+# refs/
