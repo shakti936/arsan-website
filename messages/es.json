@@ -56,7 +56,9 @@
           "description": "Un enfoque colaborativo y a la medida."
         }
       }
-    }
+    },
+    "ariaLocale": "Idioma",
+    "skipToContent": "Saltar al contenido"
   },
   "footer": {
     "regions": "EE. UU. · México · Transfronterizo",
@@ -349,7 +351,8 @@
       "heading": "Gracias — lo recibimos.",
       "clientBody": "Revisaremos su mensaje y responderemos en un día hábil. Si es urgente, indíquelo al responder nuestra confirmación y lo priorizamos.",
       "candidateBody": "Revisaremos su mensaje con cuidado y responderemos en un día hábil. Su información permanece confidencial."
-    }
+    },
+    "selectPlaceholder": "Elija una opción…"
   },
   "team": {
     "heading": "Gente senior. Trabajo senior.",
@@ -589,5 +592,14 @@
         "value": "4"
       }
     ]
+  },
+  "errors": {
+    "notFoundTitle": "No encontramos esa página.",
+    "notFoundBody": "La página pudo haberse movido, o la dirección tiene un error. Desde el inicio llega a todo en dos clics.",
+    "backHome": "Volver al Inicio",
+    "errorEyebrow": "Algo salió mal",
+    "errorTitle": "Eso no funcionó — y es nuestra responsabilidad.",
+    "errorBody": "Un error inesperado interrumpió la página. Intente de nuevo; si persiste, nos gustaría saberlo.",
+    "tryAgain": "Intentar de Nuevo"
   }
 }

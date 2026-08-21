@@ -35,7 +35,7 @@ export function TeamRow() {
                     {initials}
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-navy-900">
+                    <h3 className="font-display text-2xl font-semibold text-navy-900">
                       {name}
                     </h3>
                     <p className="eyebrow mt-1 text-brass-600">

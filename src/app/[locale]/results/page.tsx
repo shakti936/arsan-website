@@ -4,13 +4,18 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { Stories } from "@/components/sections/stories";
 import { Testimonials } from "@/components/sections/testimonials";
+import { alternatesFor } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "subpage.results" });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: alternatesFor(locale, "/results"),
+  };
 }
 
 export default async function Page({ params }: Params) {
@@ -19,7 +24,7 @@ export default async function Page({ params }: Params) {
   const t = await getTranslations("subpage.results");
 
   return (
-    <main>
+    <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
       <Stories />
       <Testimonials />

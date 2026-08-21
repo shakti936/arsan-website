@@ -10,6 +10,7 @@ type CommonProps = {
   error?: string;
   required?: boolean;
   autoComplete?: string;
+  maxLength?: number;
 };
 
 function FieldShell({
@@ -52,6 +53,7 @@ export function TextField({
         name={props.name}
         type={type}
         required={props.required}
+        maxLength={props.maxLength}
         autoComplete={props.autoComplete}
         aria-invalid={props.error ? true : undefined}
         aria-describedby={props.error ? `${props.name}-error` : undefined}
@@ -69,6 +71,7 @@ export function TextAreaField(props: CommonProps) {
         name={props.name}
         rows={5}
         required={props.required}
+        maxLength={4000}
         aria-invalid={props.error ? true : undefined}
         aria-describedby={props.error ? `${props.name}-error` : undefined}
         className={cn(inputClasses, "resize-y")}
@@ -79,26 +82,44 @@ export function TextAreaField(props: CommonProps) {
 
 export function SelectField({
   options,
+  placeholder,
   ...props
-}: CommonProps & { options: { value: string; label: string }[] }) {
+}: CommonProps & {
+  options: { value: string; label: string }[];
+  placeholder: string;
+}) {
   return (
     <FieldShell {...props}>
-      <select
-        id={props.name}
-        name={props.name}
-        required={props.required}
-        defaultValue=""
-        aria-invalid={props.error ? true : undefined}
-        aria-describedby={props.error ? `${props.name}-error` : undefined}
-        className={cn(inputClasses, "appearance-none")}
-      >
-        <option value="" disabled hidden />
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+      <div className="relative">
+        <select
+          id={props.name}
+          name={props.name}
+          required={props.required}
+          defaultValue=""
+          aria-invalid={props.error ? true : undefined}
+          aria-describedby={props.error ? `${props.name}-error` : undefined}
+          className={cn(inputClasses, "appearance-none pr-11")}
+        >
+          <option value="" disabled>
+            {placeholder}
           </option>
-        ))}
-      </select>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 16 16"
+          className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-700"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path d="m3.5 6 4.5 4.5L12.5 6" strokeLinecap="square" />
+        </svg>
+      </div>
     </FieldShell>
   );
 }

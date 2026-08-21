@@ -7,6 +7,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { PointGrid } from "@/components/sections/point-grid";
 import { QuoteBand } from "@/components/sections/quote-band";
 import { Stories } from "@/components/sections/stories";
+import { alternatesFor } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -16,7 +17,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     locale,
     namespace: "subpage.executiveSearch",
   });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: alternatesFor(locale, "/for-clients/executive-search"),
+  };
 }
 
 export default async function Page({ params }: Params) {
@@ -29,7 +34,7 @@ export default async function Page({ params }: Params) {
   }));
 
   return (
-    <main>
+    <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
       <PointGrid points={points} />
       <QuoteBand namespace="home.quote" />

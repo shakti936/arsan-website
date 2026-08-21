@@ -3,13 +3,18 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArticleCards } from "@/components/sections/article-cards";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
+import { alternatesFor } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "subpage.insights" });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: alternatesFor(locale, "/insights"),
+  };
 }
 
 export default async function Page({ params }: Params) {
@@ -18,7 +23,7 @@ export default async function Page({ params }: Params) {
   const t = await getTranslations("subpage.insights");
 
   return (
-    <main>
+    <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
       <ArticleCards namespace="insightsRow" count={6} />
       <CtaBand />

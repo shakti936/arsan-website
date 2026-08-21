@@ -7,6 +7,7 @@ import { IconRow } from "@/components/sections/icon-row";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
+import { alternatesFor } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -16,7 +17,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     locale,
     namespace: "subpage.mexicoAdvisory",
   });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: alternatesFor(locale, "/for-clients/mexico-advisory"),
+  };
 }
 
 export default async function Page({ params }: Params) {
@@ -26,7 +31,7 @@ export default async function Page({ params }: Params) {
   const tq = await getTranslations("mexicoQuestions");
 
   return (
-    <main>
+    <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
       <section className="bg-white-warm py-16 lg:py-20">
         <Container>
@@ -44,7 +49,7 @@ export default async function Page({ params }: Params) {
                 className="h-full"
               >
                 <div className="h-full border border-cream-100 bg-white-warm p-6 shadow-sm shadow-navy-950/5">
-                  <h3 className="font-display text-lg font-semibold leading-snug text-navy-900 text-balance">
+                  <h3 className="font-display text-2xl font-semibold leading-snug text-navy-900 text-balance">
                     {tq(`items.${i}.title`)}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-navy-800">

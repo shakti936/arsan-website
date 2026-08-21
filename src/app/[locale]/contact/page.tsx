@@ -3,13 +3,18 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LeadForm } from "@/components/forms/lead-form";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
+import { alternatesFor } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "subpage.contact" });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: alternatesFor(locale, "/contact"),
+  };
 }
 
 export default async function Page({ params }: Params) {
@@ -18,7 +23,7 @@ export default async function Page({ params }: Params) {
   const t = await getTranslations("subpage.contact");
 
   return (
-    <main>
+    <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
       <section className="bg-white-warm py-16">
         <Container>

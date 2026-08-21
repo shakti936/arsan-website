@@ -56,7 +56,9 @@
           "description": "A collaborative, tailored approach."
         }
       }
-    }
+    },
+    "ariaLocale": "Language",
+    "skipToContent": "Skip to content"
   },
   "footer": {
     "regions": "U.S. · Mexico · Cross-Border",
@@ -349,7 +351,8 @@
       "heading": "Thank you — we've got it.",
       "clientBody": "We'll review your note and respond within one business day. If it's urgent, mention that in a reply to our confirmation and we'll prioritize it.",
       "candidateBody": "We'll review your note with care and respond within one business day. Your information stays confidential."
-    }
+    },
+    "selectPlaceholder": "Select an option…"
   },
   "team": {
     "heading": "Senior people. Senior work.",
@@ -589,5 +592,14 @@
         "value": "4"
       }
     ]
+  },
+  "errors": {
+    "notFoundTitle": "We couldn't find that page.",
+    "notFoundBody": "The page may have moved, or the address may have a typo. The homepage has everything within two clicks.",
+    "backHome": "Back to Home",
+    "errorEyebrow": "Something went wrong",
+    "errorTitle": "That didn't work — and it's on us.",
+    "errorBody": "An unexpected error interrupted the page. Try again; if it keeps happening, we'd genuinely like to know.",
+    "tryAgain": "Try Again"
   }
 }

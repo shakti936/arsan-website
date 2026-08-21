@@ -6,6 +6,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
+import { alternatesFor } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -15,7 +16,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     locale,
     namespace: "subpage.forCandidates",
   });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: alternatesFor(locale, "/for-candidates"),
+  };
 }
 
 export default async function Page({ params }: Params) {
@@ -25,7 +30,7 @@ export default async function Page({ params }: Params) {
   const th = await getTranslations("candidateHelp");
 
   return (
-    <main>
+    <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
       <TrustStrip namespace="candidateTrust" />
       <IconRow
@@ -46,7 +51,7 @@ export default async function Page({ params }: Params) {
                 className="h-full"
               >
                 <div className="h-full border border-cream-100 bg-white-warm p-7 text-center shadow-sm shadow-navy-950/5">
-                  <h3 className="font-display text-xl font-semibold text-navy-900">
+                  <h3 className="font-display text-2xl font-semibold text-navy-900">
                     {th(`items.${i}.title`)}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-navy-800">

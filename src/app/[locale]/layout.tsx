@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Libre_Franklin } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { routing } from "@/i18n/routing";
+import { alternatesFor, SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 // Display only — never below ~24px, weights 500+ (docs/sop/08-design-system.md)
@@ -39,13 +40,26 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "meta" });
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t("title"),
       template: "%s — ARSAN",
     },
     description: t("description"),
+    alternates: alternatesFor(locale, "/"),
+    openGraph: {
+      type: "website",
+      siteName: "ARSAN",
+      locale: locale === "es" ? "es_MX" : "en_US",
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
+
+export const viewport: Viewport = {
+  themeColor: "#061e39",
+};
 
 export default async function LocaleLayout({
   children,

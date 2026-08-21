@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Logo } from "@/components/ui/logo";
 import { Link } from "@/i18n/navigation";
 import { NAV_SECTIONS } from "@/lib/nav";
+import { LocaleSwitcher } from "./locale-switcher";
 import { MobileNav } from "./mobile-nav";
 
 /**
@@ -13,6 +14,12 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-navy-900">
+      <a
+        href="#main"
+        className="eyebrow absolute left-4 top-2 z-50 -translate-y-16 bg-brass-500 px-4 py-2 text-navy-950 transition-transform focus-visible:translate-y-0 focus-visible:outline-2 focus-visible:outline-brass-300 motion-reduce:transition-none"
+      >
+        {t("skipToContent")}
+      </a>
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4 sm:px-10">
         <Logo />
 
@@ -54,7 +61,8 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
+          <LocaleSwitcher />
           <Link
             href="/contact"
             className="eyebrow hidden border border-brass-500 px-5 py-3 text-brass-400 transition-colors hover:border-brass-300 hover:text-brass-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-300 sm:inline-flex"

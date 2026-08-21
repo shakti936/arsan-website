@@ -7,6 +7,7 @@ import { TeamRow } from "@/components/sections/team-row";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { alternatesFor } from "@/lib/site";
 
 const SECTIONS = [
   { id: "difference", key: "difference" },
@@ -19,7 +20,11 @@ type Params = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "subpage.whyArsan" });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: alternatesFor(locale, "/why-arsan"),
+  };
 }
 
 export default async function Page({ params }: Params) {
@@ -28,7 +33,7 @@ export default async function Page({ params }: Params) {
   const t = await getTranslations("subpage.whyArsan");
 
   return (
-    <main>
+    <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
       <section className="bg-white-warm py-16 lg:py-20">
         <Container className="flex flex-col gap-14">

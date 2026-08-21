@@ -19,7 +19,7 @@ export default function HomePage({
   setRequestLocale(locale);
 
   return (
-    <main>
+    <main id="main">
       <Hero namespace="home.hero" />
       <LogoWall />
       <Chooser />

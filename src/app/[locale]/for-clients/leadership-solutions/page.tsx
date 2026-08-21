@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { PointGrid } from "@/components/sections/point-grid";
+import { alternatesFor } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -12,7 +13,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     locale,
     namespace: "subpage.leadershipSolutions",
   });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: alternatesFor(locale, "/for-clients/leadership-solutions"),
+  };
 }
 
 export default async function Page({ params }: Params) {
@@ -25,7 +30,7 @@ export default async function Page({ params }: Params) {
   }));
 
   return (
-    <main>
+    <main id="main">
       <PageHero title={t("title")} intro={t("intro")} />
       <PointGrid points={points} />
       <CtaBand />

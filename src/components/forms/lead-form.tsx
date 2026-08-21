@@ -101,6 +101,7 @@ export function LeadForm({ kind }: { kind: "client" | "candidate" }) {
         <SelectField
           name="service"
           label={t("labels.service")}
+          placeholder={t("selectPlaceholder")}
           required
           error={err("service")}
           options={SERVICE_VALUES.map((value) => ({

@@ -320,3 +320,15 @@ the team section.
 **Mock-content flags:** team names/titles from mockups (unverified — Q-06); article cards
 render "coming soon," unlinked (no detail pages yet); case-study stats invented; job-board
 surfaces still excluded (D-023).
+
+### D-038 · 2026-08-21 · Typeset + polish + harden pass (via /impeccable)
+**Typeset:** enforced the Cormorant ≥24px floor everywhere — seven components were
+rendering display serif at 18–20px (article/story/team/point/help cards, logo wall).
+**Polish:** select was a blank box — added placeholder option + chevron; maxLength hints
+matching Zod caps.
+**Harden:** hreflang/canonical alternates on every page (P1 criterion, was missing);
+locale switcher in header (site had NO way to switch languages); skip-to-content link;
+localized 404 + catch-all route + error boundary; robots.ts + sitemap.ts (20 URLs with
+locale alternates); metadataBase + OpenGraph + themeColor. `NEXT_PUBLIC_SITE_URL` env
+(defaults to production domain).
+Verified in built HTML output, not just source. 24 SSG routes.
