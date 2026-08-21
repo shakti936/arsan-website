@@ -1,6 +1,9 @@
 # 10 — Deploy & Ops
 
-**Last updated:** 2026-08-20 · **Status:** OPEN — current host and DNS control unknown.
+**Last updated:** 2026-08-20 · **Status:** repo live at
+`github.com/shakti936/arsan-website` (Marianna's account, Drew collaborator — mirrors
+aios-arsancg). Vercel: Marianna imports the repo in her dashboard; no env vars needed for
+P1. Old-host/DNS questions still open (Q-03).
 
 ## Pipeline
 

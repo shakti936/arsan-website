@@ -273,3 +273,11 @@ proportion/spacing reference only.
 **Caution that motivated this:** the first generated logo file was misspelled "ARSON."
 Generator output is not a source of truth for brand-critical strings — the corrected file
 was verified letter-by-letter, and the code version keeps the spelling reviewable in git.
+
+### D-033 · 2026-08-20 · Repo hosted under Marianna's GitHub; deployed on her Vercel
+`shakti936/arsan-website` (private), Drew as collaborator — the mirror of the aios-arsancg
+arrangement. Vercel connects via her dashboard's GitHub import; previews per branch,
+production from `main`. Local branch renamed `master` → `main` before first push (house
+rule: main is production).
+**Noted trade-off (raised with Drew 2026-08-20):** code and hosting ownership sit with
+Marianna, not Drew. Accepted per Drew's call.
