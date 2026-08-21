@@ -16,7 +16,7 @@ export function Header() {
   const t = useTranslations("nav");
 
   return (
-    <header className="relative z-50 bg-navy-900">
+    <header className="site-header z-50 bg-navy-900">
       <a
         href="#main"
         className="eyebrow absolute left-4 top-2 z-50 -translate-y-16 bg-brass-500 px-4 py-2 text-navy-950 transition-transform focus-visible:translate-y-0 focus-visible:outline-2 focus-visible:outline-brass-300 motion-reduce:transition-none"
@@ -24,7 +24,7 @@ export function Header() {
         {t("skipToContent")}
       </a>
 
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4 sm:px-10 xl:gap-8">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 sm:px-10 xl:gap-8">
         <Logo />
 
         <nav aria-label={t("ariaMain")} className="hidden lg:block">

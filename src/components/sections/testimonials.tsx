@@ -21,7 +21,7 @@ export function Testimonials() {
   const t = useTranslations("testimonials");
 
   return (
-    <section id="testimonials" className="scroll-mt-24 bg-cream-50 section-y">
+    <section id="testimonials" className="scroll-mt-28 bg-cream-50 section-y">
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         <SectionHeading>{t("heading")}</SectionHeading>
         <div className="mt-10 flex h-105 justify-center gap-6 overflow-hidden">

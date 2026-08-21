@@ -62,6 +62,19 @@
   }
 }
 
+@keyframes header-condense {
+  from {
+    padding-block: 1rem;
+    background-color: var(--color-navy-900);
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 0);
+  }
+  to {
+    padding-block: 0.375rem;
+    background-color: var(--color-navy-950);
+    box-shadow: 0 8px 24px -14px rgb(0 26 54 / 0.9);
+  }
+}
+
 @keyframes reveal-in {
   from {
     opacity: 0;
@@ -109,6 +122,31 @@
     opacity: 0.22;
     mix-blend-mode: overlay;
     pointer-events: none;
+  }
+
+  /*
+   * Sticky header that condenses once you're past the hero: full height at the
+   * top of the page, slim bar thereafter. Pure CSS via a scroll timeline — the
+   * same mechanism as .reveal — so there's no scroll listener and no JS.
+   * Unsupported browsers keep a normal sticky header at full height.
+   */
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .site-header {
+      animation: header-condense linear both;
+      animation-timeline: scroll();
+      animation-range: 0 180px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .site-header {
+        animation-duration: 1ms;
+      }
+    }
   }
 
   /* One section rhythm for the whole site: tighter on phones so a scroll

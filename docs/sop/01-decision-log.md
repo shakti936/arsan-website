@@ -508,3 +508,23 @@ Escape closes, background scroll locked.
 ### D-050 · 2026-08-21 · Font payload halved
 Cormorant weight 700 was loaded and never used (audit: 25 × `font-semibold`, 6 × `font-medium`,
 0 × `font-bold`). Dropping it took the font set from 30 files / 768K to 15 files / 384K on disk.
+
+### D-051 · 2026-08-21 · Header is sticky and condenses on scroll
+**Decision:** yes, sticky. Pages run ~5,000px desktop and ~9,000px mobile; a visitor deep in
+a service page who decides to act should not scroll back to the top to reach "Discuss a
+Search." For a site whose only job is starting one conversation, a persistent CTA is the
+highest-leverage thing the header does.
+
+**Not plain sticky:** at 109px it would eat that much viewport all the way down. It now
+condenses to 89px (desktop) / 56px (mobile) past 180px of scroll, darkening to navy-950 with
+a shadow to separate from content. **Pure CSS** via `animation-timeline: scroll()` — the same
+mechanism as `.reveal`, so no scroll listener and no JS. Unsupported browsers get a normal
+full-height sticky header. Reduced-motion collapses the transition to 1ms rather than
+removing the behaviour.
+
+**Cascade trap worth remembering:** `position: sticky` set from a `@layer components` class
+was silently overridden by Tailwind's `relative` utility on the same element — utilities win.
+The header condensed correctly while scrolling away, so it *looked* like it worked. Removing
+`relative` fixed it; `sticky` is itself a positioned element, so the mega panels still anchor
+to the header. Covered by an e2e test asserting `y === 0` after scroll.
+Anchor targets moved to `scroll-mt-28` to clear the condensed bar.

@@ -66,3 +66,25 @@ test.describe("mega-menu must not overlay the page when closed", () => {
     ).toBeVisible();
   });
 });
+
+/**
+ * SOP D-051: the header carries `position: sticky` from a component-layer
+ * class. A Tailwind `relative` utility on the same element silently won out
+ * (utilities layer wins) and the header scrolled away while still condensing,
+ * which looked like the feature working.
+ */
+test.describe("sticky header", () => {
+  test("stays pinned and condenses once scrolled", async ({ page }) => {
+    await page.goto("/");
+    const header = page.locator("header").first();
+    const atTop = await header.boundingBox();
+
+    await page.evaluate(() => window.scrollTo(0, 1200));
+    await page.waitForTimeout(400);
+    const scrolled = await header.boundingBox();
+
+    if (!atTop || !scrolled) throw new Error("header has no bounding box");
+    expect(scrolled.y).toBe(0);
+    expect(scrolled.height).toBeLessThan(atTop.height);
+  });
+});
