@@ -1578,3 +1578,31 @@ Fixed by deleting the constant rather than correcting it: the four PNGs are impo
 static images, so the intrinsic size comes from the files and a re-export corrects itself.
 `style={{ width, height: "auto" }}` sets the rendered size. Verified with a console sweep
 across six routes — clean.
+
+### D-087 · 2026-08-21 · /why-arsan given the structure the rest of the site has
+Drew: *"based on all our changes give why arsan a quick pass."* No comp exists for this page,
+which is why it had drifted: three headings each followed by one sentence, the flattest page
+on the site and the one making the firm's argument for itself. A visitor arriving from the
+mega nav at `#difference` landed on a single line with two-thirds of the row empty.
+
+Rebuilt from the vocabulary the comps established elsewhere rather than inventing a fourth
+layout:
+
+- **Our Difference** → the divided icon strip from `dirA-for-candidates-landing.png`, four
+  claims with icons instead of one paragraph. The claims are the ones the home value props
+  and the case studies already make, restated — not new ones.
+- **How We Work** → the numbered process from `dirA-casestudy-merger-confidential.png`,
+  lifted into a `ProcessSteps` section so a page that is *about* the process can carry it.
+  The four steps are what the three case studies already describe ARSAN doing, so the page
+  and the evidence behind it agree.
+- **Our People** → merged into the leadership row. The heading was orphaned above a void;
+  `TeamRow` gained `id` and `intro` so the anchor lands on the people themselves.
+
+Section order now follows the mega panel, so the panel reads as this page's contents.
+
+`IconRow` gained `columns`: four items beside a heading column leave about 150px each, which
+is fine for one-word titles ("Respect" on /for-candidates) and wraps a sentence to three
+lines. Two columns is the right shape when the titles are phrases.
+
+One copy bug caught in the pass: the intro said "Three things decide whether a search lands"
+above four of them.

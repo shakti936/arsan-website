@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/sections/cta-band";
+import { IconRow } from "@/components/sections/icon-row";
 import { PageHero } from "@/components/sections/page-hero";
+import { ProcessSteps } from "@/components/sections/process-steps";
 import { QuoteBand } from "@/components/sections/quote-band";
 import { TeamRow } from "@/components/sections/team-row";
-import { Container } from "@/components/ui/container";
-import { Reveal } from "@/components/ui/reveal";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { pageMetadata } from "@/lib/site";
 
-const SECTIONS = [
-  { id: "difference", key: "difference" },
-  { id: "people", key: "people" },
-  { id: "how-we-work", key: "howWeWork" },
-] as const;
-
 type Params = { params: Promise<{ locale: string }> };
+
+const PROCESS_STEPS = 4;
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
@@ -28,6 +23,19 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   });
 }
 
+/**
+ * /why-arsan. No comp exists for this page, so it is built from the vocabulary
+ * the comps established elsewhere rather than a fourth layout: the divided
+ * icon strip from /for-candidates, the numbered process from the confidential
+ * case study, the leadership row from the home page.
+ *
+ * It was three headings each followed by one sentence — the flattest page on
+ * the site, and the one making the firm's argument for itself. A visitor
+ * arriving from the mega nav at `#difference` landed on a single line.
+ *
+ * Section order follows the mega panel, so the panel reads as this page's
+ * contents rather than as a different ordering of the same three ideas.
+ */
 export default async function Page({ params }: Params) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -41,24 +49,20 @@ export default async function Page({ params }: Params) {
         intro={t("intro")}
         photo="story-transformation"
       />
-      <section className="bg-white-warm section-y">
-        <Container className="flex flex-col gap-14">
-          {SECTIONS.map((section) => (
-            <Reveal key={section.id}>
-              <div
-                id={section.id}
-                className="grid scroll-mt-24 gap-5 lg:grid-cols-[1fr_2fr]"
-              >
-                <SectionHeading>{t(`${section.key}.heading`)}</SectionHeading>
-                <p className="max-w-[68ch] text-base text-navy-800">
-                  {t(`${section.key}.body`)}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </Container>
-      </section>
-      <TeamRow />
+      <IconRow
+        id="difference"
+        namespace="subpage.whyArsan.difference"
+        icons={["factory", "globe", "person", "compass"]}
+        withHeading
+        headingLayout="beside"
+        columns={2}
+      />
+      <TeamRow id="people" intro={t("peopleIntro")} />
+      <ProcessSteps
+        id="how-we-work"
+        namespace="subpage.whyArsan.process"
+        count={PROCESS_STEPS}
+      />
       <QuoteBand namespace="home.quote" />
       <CtaBand />
     </main>

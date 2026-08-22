@@ -16,6 +16,12 @@ type IconRowProps = {
    * stand." Requires a `body` key in the namespace.
    */
   headingLayout?: "above" | "beside";
+  /**
+   * Columns in the item grid at `lg`. Four beside a heading column leaves each
+   * item about 150px, which is fine for one-word titles ("Respect") and wraps
+   * a phrase to three lines. Pass 2 when the titles are sentences.
+   */
+  columns?: 2 | 4;
   id?: string;
 };
 
@@ -26,6 +32,7 @@ export function IconRow({
   tone = "light",
   withHeading,
   headingLayout = "above",
+  columns = 4,
   id,
 }: IconRowProps) {
   const t = useTranslations(namespace);
@@ -81,7 +88,11 @@ export function IconRow({
           className={cn(
             "grid gap-8 sm:grid-cols-2",
             withHeading && !beside && "mt-12",
-            icons.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-5",
+            icons.length !== 4
+              ? "lg:grid-cols-5"
+              : columns === 2
+                ? "lg:grid-cols-2"
+                : "lg:grid-cols-4",
           )}
         >
           {icons.map((icon, i) => {

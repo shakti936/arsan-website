@@ -380,16 +380,49 @@
       "intro": "We understand your business because we've led it. That perspective drives better conversations — and better results.",
       "difference": {
         "heading": "Our Difference",
-        "body": "Deep manufacturing expertise in the U.S., Mexico and cross-border. Access to senior talent others cannot reach. A disciplined process that protects your time and your decision."
+        "body": "Four things decide whether a search lands. The firm is built around them.",
+        "items": [
+          {
+            "title": "Manufacturing is all we do",
+            "body": "Every search we run sits in a plant, a supply chain, or the leadership above them. Not a generalist firm with an industrial practice attached."
+          },
+          {
+            "title": "Cross-border by default",
+            "body": "The U.S. and Mexico are one market to us — the same team and the same standard on both sides of the border."
+          },
+          {
+            "title": "Senior people stay on the search",
+            "body": "The advisor you meet is the advisor who runs it. Nothing is handed to a research desk once the work is won."
+          },
+          {
+            "title": "A process that protects your time",
+            "body": "A short, credible slate you can act on — and the reasoning behind every name on it."
+          }
+        ]
       },
-      "people": {
-        "heading": "Our People",
-        "body": "Senior advisors with real operating experience in HR, manufacturing and organizational leadership across the U.S. and Mexico."
-      },
-      "howWeWork": {
+      "process": {
         "heading": "How We Work",
-        "body": "Collaborative and tailored. We start with the business challenge, align on what success looks like and stay close to the work from first conversation to placement."
-      }
+        "body": "Every search starts with the business problem, not the job description. The discipline is the same whether we are filling one seat or rebuilding a leadership team.",
+        "steps": [
+          {
+            "title": "Understand the business",
+            "body": "We spend time on the floor and with the leadership team to learn what the role has to deliver in its first year — and what has made it hard to fill so far."
+          },
+          {
+            "title": "Define the role, then the slate",
+            "body": "The specification comes from the work, not from the last person who did it. We agree what success looks like before a single name is discussed."
+          },
+          {
+            "title": "Go to the market directly",
+            "body": "The leaders worth having are rarely reading job postings. We map who is running comparable operations and approach them ourselves, discreetly."
+          },
+          {
+            "title": "Assess for fit as hard as for capability",
+            "body": "Candidates are measured against your real conditions and the team they would inherit. Then we stay with it through offer, counteroffer and start date — where a search is most often lost."
+          }
+        ]
+      },
+      "peopleIntro": "Senior advisors with real operating experience in HR, manufacturing and organizational leadership across the U.S. and Mexico. You work with them directly, from the first conversation to the start date."
     },
     "contact": {
       "title": "Tell us what you're working through.",

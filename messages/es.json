@@ -380,16 +380,49 @@
       "intro": "Entendemos su negocio porque lo hemos dirigido. Esa perspectiva produce mejores conversaciones — y mejores resultados.",
       "difference": {
         "heading": "Nuestra Diferencia",
-        "body": "Experiencia profunda en manufactura en EE. UU., México y operaciones transfronterizas. Acceso a talento senior fuera del alcance de otros. Un proceso disciplinado que protege su tiempo y su decisión."
+        "body": "Cuatro cosas deciden si una búsqueda funciona. La firma está construida alrededor de ellas.",
+        "items": [
+          {
+            "title": "Solo hacemos manufactura",
+            "body": "Cada búsqueda que corremos está en una planta, en una cadena de suministro o en el liderazgo que las dirige. No somos una firma generalista con un área industrial."
+          },
+          {
+            "title": "Transfronterizos por definición",
+            "body": "Estados Unidos y México son un solo mercado para nosotros: el mismo equipo y el mismo estándar de los dos lados de la frontera."
+          },
+          {
+            "title": "Los socios se quedan en la búsqueda",
+            "body": "El asesor que usted conoce es quien la dirige. Nada se delega a un área de investigación una vez ganado el trabajo."
+          },
+          {
+            "title": "Un proceso que cuida su tiempo",
+            "body": "Una terna corta y creíble sobre la que puede decidir — y el razonamiento detrás de cada nombre."
+          }
+        ]
       },
-      "people": {
-        "heading": "Nuestro Equipo",
-        "body": "Asesores senior con experiencia real de operación en recursos humanos, manufactura y liderazgo organizacional en EE. UU. y México."
-      },
-      "howWeWork": {
+      "process": {
         "heading": "Cómo Trabajamos",
-        "body": "Colaborativo y a la medida. Partimos del reto de negocio, alineamos qué significa el éxito y nos mantenemos cerca del trabajo desde la primera conversación hasta la contratación."
-      }
+        "body": "Cada búsqueda empieza por el problema de negocio, no por la descripción del puesto. La disciplina es la misma para cubrir un puesto o para reconstruir un equipo directivo.",
+        "steps": [
+          {
+            "title": "Entender el negocio",
+            "body": "Pasamos tiempo en el piso y con el equipo directivo para saber qué debe entregar el puesto en su primer año — y por qué ha sido difícil de cubrir hasta ahora."
+          },
+          {
+            "title": "Definir el puesto y después la terna",
+            "body": "El perfil sale del trabajo, no de la última persona que lo ocupó. Acordamos cómo se ve el éxito antes de hablar de un solo nombre."
+          },
+          {
+            "title": "Ir al mercado directamente",
+            "body": "Los líderes que valen la pena rara vez leen vacantes publicadas. Mapeamos quién dirige operaciones comparables y los contactamos nosotros, con discreción."
+          },
+          {
+            "title": "Evaluar la afinidad con el mismo rigor que la capacidad",
+            "body": "Los candidatos se miden frente a sus condiciones reales y al equipo que heredarían. Después acompañamos la oferta, la contraoferta y la fecha de ingreso, que es donde más búsquedas se pierden."
+          }
+        ]
+      },
+      "peopleIntro": "Asesores senior con experiencia operativa real en Recursos Humanos, manufactura y liderazgo organizacional en Estados Unidos y México. Usted trabaja con ellos directamente, desde la primera conversación hasta la fecha de ingreso."
     },
     "contact": {
       "title": "Cuéntenos qué está resolviendo.",

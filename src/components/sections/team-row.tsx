@@ -29,13 +29,19 @@ const PORTRAITS = [
 export function TeamRow({
   /** The home page links out to the leadership section; that page IS it. */
   withViewAll,
+  /** Anchor target — /why-arsan#people comes from the mega nav. */
+  id,
+  /** A line under the heading. The page this anchors from needs one; the home row does not. */
+  intro,
 }: {
   withViewAll?: boolean;
+  id?: string;
+  intro?: string;
 }) {
   const t = useTranslations("team");
 
   return (
-    <section className="bg-white-warm section-y">
+    <section id={id} className="scroll-mt-24 bg-white-warm section-y">
       <div className="mx-auto w-full max-w-page px-6 sm:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading>{t("heading")}</SectionHeading>
@@ -43,6 +49,9 @@ export function TeamRow({
             <ArrowLink href="/why-arsan#people">{t("viewAll")}</ArrowLink>
           )}
         </div>
+        {intro && (
+          <p className="mt-5 max-w-[62ch] text-base text-navy-800">{intro}</p>
+        )}
 
         {/* Three across only from `lg`. The container caps at 72rem, so a
             column is ~325px however wide the window gets — at `md` that is
