@@ -47,9 +47,17 @@ type HeroCta = {
  */
 export type HeroStat = {
   icon: IconName;
-  figure: string;
+  /** The numeral. Set large; omit on a card whose headline is words. */
+  figure?: string;
+  /**
+   * The word beside the numeral — "Days" — or the whole headline when there is
+   * no numeral. Sized off the figure so the card has one big thing and one
+   * small one, which is all refs/dirA-results-page.png uses.
+   */
+  unit?: string;
   label: string;
-  note: string;
+  /** A dimmer second line. Omitted where the label is already a full thought. */
+  note?: string;
 };
 
 export function PageHero({
@@ -158,11 +166,34 @@ function HeroStats({ stats }: { stats: HeroStat[] }) {
             >
               <Icon className="h-5 w-5" />
             </span>
-            <p className="mt-4 font-display text-display-lg font-semibold leading-none text-white-warm">
+            {/*
+              Two sizes only, as the comp sets them: a display figure and a
+              half-size word beside it. The zero-width strut is what keeps the
+              four cards on one rhythm — a card whose headline is words has no
+              full-size glyph to set the line box, so without it card four's
+              baseline lands half a line high and everything under it shifts up
+              against its neighbours.
+            */}
+            <p className="mt-4 font-display text-display-lg font-semibold leading-tight text-white-warm">
+              <span aria-hidden="true" className="inline-block w-0">
+                &#8203;
+              </span>
               {stat.figure}
+              {stat.unit && (
+                <span
+                  className={cn(
+                    "text-[0.5em] font-normal",
+                    stat.figure && "ml-2",
+                  )}
+                >
+                  {stat.unit}
+                </span>
+              )}
             </p>
             <p className="mt-3 text-sm text-white-warm">{stat.label}</p>
-            <p className="mt-1 text-sm text-cream-100/80">{stat.note}</p>
+            {stat.note && (
+              <p className="mt-1 text-sm text-cream-100/80">{stat.note}</p>
+            )}
           </li>
         );
       })}

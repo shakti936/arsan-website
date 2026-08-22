@@ -362,8 +362,9 @@
       "heroSecondary": "Enviar mi Perfil"
     },
     "results": {
-      "title": "Trabajo que habla por sí mismo.",
-      "titleEmphasis": "habla por sí mismo",
+      "title": "Retos reales. Resultados comprobados.",
+      "titleEmphasis": "Resultados comprobados.",
+      "metaTitle": "Resultados — búsqueda ejecutiva para manufactura",
       "intro": "Historias seleccionadas de búsquedas y asesoría en EE. UU. y México. Los nombres de los clientes son confidenciales; los resultados son reales."
     },
     "insights": {
@@ -674,12 +675,7 @@
     ]
   },
   "candidateTrust": {
-    "items": [
-      "Confidencial",
-      "Selectivo",
-      "Personal",
-      "Enfocado en el Ajuste"
-    ]
+    "items": ["Confidencial", "Selectivo", "Personal", "Enfocado en el Ajuste"]
   },
   "candidateHelp": {
     "heading": "¿Cómo puede ayudar ARSAN?",
@@ -820,7 +816,6 @@
     "tryAgain": "Intentar de Nuevo"
   },
   "resultsPage": {
-    "storiesHeading": "Casos seleccionados",
     "eyebrow": "Resultados que importan",
     "intro": "Acompañamos a fabricantes en Estados Unidos y México para resolver retos críticos de talento y liderazgo, con impacto medible donde más cuenta.",
     "ctaApproach": "Nuestro Enfoque",
@@ -836,14 +831,14 @@
         "note": "Confianza en distintas industrias"
       },
       {
-        "figure": "30–45 días",
+        "figure": "30–45",
+        "unit": "días",
         "label": "Tiempo promedio de cobertura",
         "note": "Puestos críticos de liderazgo"
       },
       {
-        "figure": "Impacto medible",
-        "label": "Mejores equipos. Mejor operación.",
-        "note": "Resultados que duran."
+        "unit": "Impacto medible",
+        "label": "Mejores equipos. Mejor operación. Resultados que duran."
       }
     ],
     "impact": {

@@ -1507,3 +1507,25 @@ Two bugs found in the build:
 - The CASE STUDY badge painted *under* the photograph. Its container was unpositioned while
   the image's was `relative`, and positioned elements paint above unpositioned siblings
   regardless of document order. Fixed with `relative` on the copy container, not a z-index.
+
+### D-083 · 2026-08-21 · The results hero: comp copy, two type sizes, one baseline
+Three corrections from Drew, reading the comp beside the build:
+
+1. **The headline is the comp's.** "Real challenges. *Proven results.*" replaced "Work that
+   speaks for itself." A `metaTitle` came with it — the editorial headline is a weak `<title>`.
+2. **"There are only two text types, the big text and the small text."** The stat cards had
+   three: a display figure, a display phrase, and sans body. Now the figure slot holds a
+   numeral at `display-lg` and an optional word at `0.5em` of it — "30–45 **Days**", and on
+   the fourth card the phrase alone. Everything else is one sans size, with the note dimmed
+   rather than resized.
+3. **"Stronger teams. Better operations. Lasting results." is one sentence**, not a label and
+   a note. `note` is optional now.
+
+The alignment defect underneath (2) was a line-box problem, not a size one. Cards with a
+numeral have a full-size glyph setting the line box; the fourth card has only the half-size
+span, so its baseline landed half a line high and every element beneath it shifted up
+against its neighbours. Fixed with a zero-width strut at the display size, which sets the
+box and the baseline without rendering anything — not with a `min-height`, which would have
+aligned the boxes while leaving the baselines apart.
+
+`detect.mjs --scope type` reports clean on the file. Verified at 1440 and 390 in one pass.

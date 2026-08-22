@@ -362,8 +362,9 @@
       "heroSecondary": "Submit Your Profile"
     },
     "results": {
-      "title": "Work that speaks for itself.",
-      "titleEmphasis": "speaks for itself",
+      "title": "Real challenges. Proven results.",
+      "titleEmphasis": "Proven results.",
+      "metaTitle": "Results — Executive Search Outcomes for Manufacturers",
       "intro": "Selected stories from searches and advisory work across the U.S. and Mexico. Client names are confidential; outcomes are real."
     },
     "insights": {
@@ -674,12 +675,7 @@
     ]
   },
   "candidateTrust": {
-    "items": [
-      "Confidential",
-      "Selective",
-      "Personal",
-      "Focused on Fit"
-    ]
+    "items": ["Confidential", "Selective", "Personal", "Focused on Fit"]
   },
   "candidateHelp": {
     "heading": "How can ARSAN help?",
@@ -820,7 +816,6 @@
     "tryAgain": "Try Again"
   },
   "resultsPage": {
-    "storiesHeading": "Selected case studies",
     "eyebrow": "Results that matter",
     "intro": "We partner with manufacturers across the U.S. and Mexico to solve critical talent and leadership challenges—driving measurable impact where it matters most.",
     "ctaApproach": "Our Approach",
@@ -836,14 +831,14 @@
         "note": "Trusted across industries"
       },
       {
-        "figure": "30–45 Days",
+        "figure": "30–45",
+        "unit": "Days",
         "label": "Average Time to Fill",
         "note": "Critical leadership roles"
       },
       {
-        "figure": "Measurable Impact",
-        "label": "Stronger teams. Better operations.",
-        "note": "Lasting results."
+        "unit": "Measurable Impact",
+        "label": "Stronger teams. Better operations. Lasting results."
       }
     ],
     "impact": {

@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return pageMetadata({
     locale,
     path: "/results",
-    title: t("title"),
+    title: t("metaTitle"),
     description: t("intro"),
   });
 }
@@ -41,9 +41,12 @@ export default async function Page({ params }: Params) {
   // @unverified: the hero figures (200+ placements, 100+ clients, 30-45 day time to fill) are invented by the results comp — ARSAN has never counted them
   const stats: HeroStat[] = STAT_ICONS.map((icon, i) => ({
     icon,
-    figure: tr(`stats.${i}.figure`),
+    // `figure` and `unit` are each absent on one card — the numeral-only ones
+    // have no unit, and "Measurable Impact" has no numeral
+    figure: tr.has(`stats.${i}.figure`) ? tr(`stats.${i}.figure`) : undefined,
+    unit: tr.has(`stats.${i}.unit`) ? tr(`stats.${i}.unit`) : undefined,
     label: tr(`stats.${i}.label`),
-    note: tr(`stats.${i}.note`),
+    note: tr.has(`stats.${i}.note`) ? tr(`stats.${i}.note`) : undefined,
   }));
 
   return (
