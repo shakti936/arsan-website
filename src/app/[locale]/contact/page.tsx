@@ -29,8 +29,11 @@ export default async function Page({ params }: Params) {
         title={t("title")}
         intro={t("intro")}
         photo="insight-hiring-mexico"
+        // the shared primary is "Discuss a Search → /contact", which is here;
+        // on a phone the form is a screen and a half down
+        primary={{ label: t("heroCta"), href: "/contact#form" }}
       />
-      <section className="bg-white-warm section-y">
+      <section id="form" className="scroll-mt-24 bg-white-warm section-y">
         <Container>
           <LeadForm kind="client" />
         </Container>

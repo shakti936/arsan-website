@@ -143,6 +143,11 @@
     "ariaLocale": "Language",
     "skipToContent": "Skip to content"
   },
+  "hero": {
+    "ctaPrimary": "Discuss a Search",
+    "ctaSecondary": "See our work",
+    "regions": "U.S. · Mexico · Cross-Border"
+  },
   "footer": {
     "regions": "U.S. · Mexico · Cross-Border",
     "copyright": "© {year} ARSAN. All rights reserved.",
@@ -179,7 +184,7 @@
           "cta": "Explore Mexico Advisory"
         },
         {
-          "need": "Our leadership team needs to evolve.",
+          "need": "Our organization or leadership team needs to evolve.",
           "service": "Enterprise Talent & Leadership Solutions",
           "body": "We strengthen leadership teams and align talent strategies to support long-term transformation.",
           "cta": "Explore Leadership Solutions"
@@ -363,6 +368,7 @@
     "contact": {
       "title": "Tell us what you're working through.",
       "intro": "Start with the business challenge. We'll help you determine whether — and how — ARSAN can help.",
+      "heroCta": "Send us a brief",
       "cta": "Discuss a Search"
     },
     "opportunities": {

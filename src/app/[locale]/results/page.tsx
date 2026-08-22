@@ -24,6 +24,7 @@ export default async function Page({ params }: Params) {
   setRequestLocale(locale);
   const t = await getTranslations("subpage.results");
   const tr = await getTranslations("resultsPage");
+  const tn = await getTranslations("nav");
 
   return (
     <main id="main">
@@ -31,6 +32,8 @@ export default async function Page({ params }: Params) {
         title={t("title")}
         intro={t("intro")}
         photo="hero-plant-floor"
+        // the shared secondary is "See our work → /results", which is here
+        secondary={{ label: tn("whyArsan.label"), href: "/why-arsan" }}
       />
       <Stories headingOverride={tr("storiesHeading")} />
       <Testimonials />

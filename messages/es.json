@@ -143,6 +143,11 @@
     "ariaLocale": "Idioma",
     "skipToContent": "Saltar al contenido"
   },
+  "hero": {
+    "ctaPrimary": "Hablemos de su Búsqueda",
+    "ctaSecondary": "Vea nuestro trabajo",
+    "regions": "EE. UU. · México · Transfronterizo"
+  },
   "footer": {
     "regions": "EE. UU. · México · Transfronterizo",
     "copyright": "© {year} ARSAN. Todos los derechos reservados.",
@@ -179,7 +184,7 @@
           "cta": "Ver Asesoría México"
         },
         {
-          "need": "Nuestro equipo directivo necesita evolucionar.",
+          "need": "Nuestra organización o equipo directivo necesita evolucionar.",
           "service": "Talento Empresarial y Soluciones de Liderazgo",
           "body": "Fortalecemos equipos directivos y alineamos la estrategia de talento con la transformación de largo plazo.",
           "cta": "Ver Soluciones de Liderazgo"
@@ -363,6 +368,7 @@
     "contact": {
       "title": "Cuéntenos qué está resolviendo.",
       "intro": "Empiece por el reto de negocio. Le ayudamos a determinar si ARSAN puede ayudar — y cómo.",
+      "heroCta": "Envíenos su solicitud",
       "cta": "Hablemos de su Búsqueda"
     },
     "opportunities": {

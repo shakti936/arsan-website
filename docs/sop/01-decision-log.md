@@ -1063,3 +1063,49 @@ before the change). Below `lg` the rows stack full width with the text capped at
 line reserves two lines from `lg` up so a wrapped title doesn't push its bio below the others.
 Hairlines between columns come from a `-mx-6` grid with equal `px-6` per column, which keeps the
 first column aligned with the heading above it.
+
+### D-066 · 2026-08-21 · Chooser icon chips, and one hero template for every page
+Two corrections from Drew against `refs/dirA-home-v2.png`.
+
+**Chooser.** *"Include the icons and green circle."* A 40px teal disc straddles each card's top
+border in the comp — measured off it, the border crosses at 37% of the circle's height, which
+is `-mt-5` on an `h-14`. Teal, not brass: **D-063 kept `teal-800/900` for exactly these icon
+chips** when it ruled the mockups' sage green out as an *accent*. The chip is the one place
+green was always allowed.
+
+Two other things were wrong in the same card and both came from one cause. The service line was
+set as an `eyebrow` — uppercase at 0.16em — which runs "Enterprise Talent & Leadership
+Solutions" to two lines and pushed every card taller than the comp. The comp sets it in title
+case, navy, semibold. Pixel-sampled to be sure: darkest glyph `#1C2A36`, nowhere near brass.
+Body drops from `text-base` to `text-sm`, which is what the comp has relative to its heading.
+
+Card 3's heading was `"Our leadership team needs to evolve."`; the comp reads `"Our organization
+or leadership team needs to evolve."` Restored, both locales.
+
+**Every hero is now the home hero.** *"Make sure all heroes are the same as the reference, same
+layout with buttons and accent colour — use the homepage hero as a template."* `PageHero` gained
+the brass CTA, the outlined CTA and the region line, defaulting to
+`Discuss a Search → /contact` and `See our work → /results` from a shared `hero` namespace, so
+twelve pages get one hero without twelve copies of the same decision. Two pages whose own route
+is one of the defaults override it: `/results` points its outline at Why ARSAN, and `/contact`
+points its brass button at `#form` — on a phone that form is a screen and a half down.
+
+`title` stays `display-lg` against the home headline's `display-xl`: same template, one step
+down, so a page title doesn't compete with the one headline the site leads with.
+
+### D-067 · 2026-08-21 · Real client names in the marquee
+Drew supplied 23: Nidec, American Industries, Terex, CentroMotion, Genie, Jabil, Marelli,
+Crane Co., BVI Medical, Aletek, Vishay, five ITW business units plus Illinois Tool Works itself,
+ESAB, Rapid, TE Connectivity, Aptiv, Baltimore Aircoil Company, Align Technology. They replace
+the fictional stand-ins and settle that half of Q-06.
+
+**Set as type, not logos.** Twenty-three sourced SVGs at twenty-three optical weights is a
+different job, and a company's name in the site's own typeface does not carry the trademark
+question its logo does.
+
+**Ordered so the six ITW entries are never adjacent.** Run together they read as one client
+padded out to look like six.
+
+Names are rendered exactly as Drew wrote them, parentheticals included —
+"Illinois Tool Works (ITW)" sits four positions from "ITW Automotive", and "(ITW)" next to five
+"ITW …" entries is arguably redundant. Flagged rather than edited: they are his to set.
