@@ -82,7 +82,11 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${cormorant.variable} ${franklin.variable}`}
     >
-      <body>
+      {/* Browser extensions (ColorZilla, Grammarly, password managers) add
+          attributes to <body> before React hydrates, which reads as a
+          mismatch. This suppresses the element's OWN attributes only —
+          mismatches inside the tree are still reported. */}
+      <body suppressHydrationWarning>
         <NextIntlClientProvider>
           <Header />
           {children}

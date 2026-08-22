@@ -1960,3 +1960,29 @@ open. Worth knowing: **Studio behaviour is not covered by the suite**, and chang
 a grep for three deprecated field names would be fragile and would not generalise to the
 next invented value. The lesson is to read the `.d.ts` for config objects, where `string`
 types make anything typecheck.
+
+### D-095 · 2026-08-22 · Stega must never encode an identifier
+With Presentation working, the home page threw
+`MISSING_MESSAGE: Could not resolve 'articleCategories.market'` from
+`tc(article.categoryKey)`.
+
+**Root cause.** In draft mode the client appends invisible characters to *every* string in
+a query result, so click-to-edit can trace it to a field. That is right for prose and wrong
+for anything the code compares, looks up or parses. `categoryKey` feeds a translation
+lookup and missed. Two more were already armed behind it: `icon` indexes the icon map and
+would have rendered nothing, and `published` goes through `new Date()` and would have been
+Invalid Date. All three are invisible outside Presentation, because stega is only on in
+draft mode.
+
+**Fixed at the client, not the call sites.** `stega.filter` refuses to encode a field whose
+last path segment is an identifier (`categoryKey`, `icon`, `published`, `current`, `url`,
+`href`, `route`, `kind`, and the `_`-prefixed system fields). The client is what adds the
+encoding, so it is what decides where. `stegaClean()` at each use would have worked today
+and re-armed the bug for the next identifier field someone projects — silently, since
+nothing fails until a person opens the preview.
+
+*Also, and not our bug:* a hydration mismatch on `cz-shortcut-listen="true"`. That
+attribute is injected into `<body>` by the ColorZilla extension before React hydrates —
+Next's own error text names extensions as a cause. `suppressHydrationWarning` on the two
+`<body>` elements is the intended escape valve and is precisely scoped: it suppresses the
+element's own attributes and still reports mismatches inside the tree.

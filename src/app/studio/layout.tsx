@@ -16,7 +16,13 @@ export default function StudioLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0 }}>{children}</body>
+      {/* Browser extensions (ColorZilla, Grammarly, password managers) add
+          attributes to <body> before React hydrates, which reads as a
+          mismatch. This suppresses the element's OWN attributes only —
+          mismatches inside the tree are still reported. */}
+      <body suppressHydrationWarning style={{ margin: 0 }}>
+        {children}
+      </body>
     </html>
   );
 }
