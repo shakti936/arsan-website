@@ -2149,3 +2149,32 @@ page" — and only reading the call sites tells you which.
 window.top`), where they are the feature. On the site itself, preview announces itself with
 one small badge carrying the link that turns it off. The generic advice — "hard-reload" —
 would have cleared the symptom for an hour and taught nobody that the site was in preview.
+
+### D-102 · 2026-08-22 · Test data in the production dataset, and the query that hid it
+The home page kept showing `OVERRIDE-FROM-SANITY-OK` after the published document had
+been corrected and reseeded twice. Two mistakes, one on top of the other.
+
+**The data.** A throwaway document written while proving the merge worked was created in
+`production`. Deleting the published copy left `drafts.copyHome` behind, holding only the
+two test strings — which is why the Studio form showed every field on the page empty
+except one: the draft *is* the document in preview, and that draft had two fields in it.
+
+**The check that missed it.** `sanity documents query '*[_id in path("drafts.**")]'`
+returned `[]` twice, and both times it was read as proof of a clean dataset. The CLI
+resolves against the published perspective, where drafts do not exist by definition — the
+query could never have returned one. `sanity documents get drafts.<id>` finds it, and the
+HTTP API with `?perspective=raw` lists them all. That sweep found 31 drafts: 29 of them
+Sanity's own `previewUrlSecret` machinery, one the test document, and one an article draft
+that turned out to be byte-identical to its published version, so an accidental no-op
+rather than anyone's work. The two real ones were deleted after diffing; the system
+documents were left to Sanity.
+
+**Two rules from this.** Never write scratch data to `production` — the merge could have
+been proved against a document that was going to be seeded anyway, or in a separate
+dataset. And a query returning nothing is only evidence once you have confirmed the query
+*could* have returned something; this is the third measurement error in this batch
+(the others: a stega detector scanning the wrong Unicode block, and curl "disproving"
+draft mode it was never able to enable).
+
+Verified afterwards by comparing every leaf of `messages/en.json` against the dataset:
+41 documents, 571 English strings, none missing, no test strings anywhere, 571 Spanish.
