@@ -1,19 +1,17 @@
 import { createClient } from "next-sanity";
-import { apiVersion, dataset, isSanityConfigured, projectId } from "../env";
+import { apiVersion, dataset, projectId } from "../env";
 
 /**
  * Read-only client for published content.
  *
- * `null` when no project is configured, which is the normal state until the
- * migration lands — callers go through `src/sanity/lib/content.ts` and never
- * touch this directly, so there is exactly one place that has to know.
+ * No token: the `production` dataset is public, so a build — anyone's build,
+ * with no `.env.local` — can read it. Drafts are a different perspective and
+ * do need a token; that lives with the Presentation tool, not here.
  */
-export const client = isSanityConfigured
-  ? createClient({
-      projectId,
-      dataset,
-      apiVersion,
-      useCdn: true,
-      perspective: "published",
-    })
-  : null;
+export const client = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: true,
+  perspective: "published",
+});

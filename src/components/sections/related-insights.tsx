@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { useFormatter, useTranslations } from "next-intl";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { ArrowLink } from "@/components/ui/arrow-link";
-import { articleCopy, relatedArticles } from "@/content/insights";
 import { Link } from "@/i18n/navigation";
+import { relatedArticles } from "@/lib/articles";
 import { cn } from "@/lib/cn";
 
 /**
@@ -20,17 +20,17 @@ import { cn } from "@/lib/cn";
  * accessible name is the headline rather than "read more". The stretched
  * pseudo-element does the rest.
  */
-export function RelatedInsights({
+export async function RelatedInsights({
   currentSlug,
   locale,
 }: {
   currentSlug: string;
   locale: string;
 }) {
-  const t = useTranslations("article");
-  const tc = useTranslations("articleCategories");
-  const format = useFormatter();
-  const related = relatedArticles(currentSlug);
+  const t = await getTranslations("article");
+  const tc = await getTranslations("articleCategories");
+  const format = await getFormatter();
+  const related = await relatedArticles(currentSlug, locale);
 
   if (!related.length) return null;
 
@@ -53,7 +53,6 @@ export function RelatedInsights({
           )}
         >
           {related.map((article) => {
-            const copy = articleCopy(article, locale);
             return (
               <article
                 key={article.slug}
@@ -64,7 +63,7 @@ export function RelatedInsights({
                     that has to hold four lines */}
                 <div className="relative w-24 shrink-0 self-stretch overflow-hidden bg-cream-100 sm:w-28">
                   <Image
-                    src={`/images/${article.photo}.jpg`}
+                    src={article.image.url}
                     alt=""
                     fill
                     sizes="112px"
@@ -80,7 +79,7 @@ export function RelatedInsights({
                       href={`/insights/${article.slug}`}
                       className="transition-colors after:absolute after:inset-0 group-hover:text-brass-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-500"
                     >
-                      {copy.title}
+                      {article.title}
                     </Link>
                   </h3>
                   <p className="mt-3 text-sm text-navy-700">

@@ -3,70 +3,133 @@ import { defineQuery } from "next-sanity";
 /**
  * GROQ, written once and shared.
  *
- * Two rules hold across all of them:
+ * Three rules hold across all of them:
  *
- *   1. **Both languages are always fetched.** Filtering by locale in the query
- *      would mean a Spanish page that falls back to English needs a second
- *      round trip. The payloads are small; the fallback in `localize.ts` is
- *      cheaper than a query per language.
- *   2. **`approved` is filtered in the QUERY, not in the renderer.** An
- *      unapproved testimonial must not reach the client at all — a component
- *      that filters is a component someone can forget to use, and the words
- *      would still be sitting in the page's JSON payload. See D-071/Q-23:
- *      every testimonial on this site today is unverified.
+ *   1. **The locale is resolved in the query**, via `coalesce(x[$locale], x.en)`.
+ *      Fetching both languages and picking in TypeScript works, but it doubles
+ *      every payload and puts the fallback rule in two places. English is the
+ *      fallback because a missing translation should be *visible*, not blank.
+ *   2. **Links are resolved to hrefs here**, not in the renderer. A `destination`
+ *      is four shapes (a route, an article ref, a case-study ref, a URL) and a
+ *      component that has to branch on all four is a component every renderer
+ *      has to re-implement. GROQ can follow the reference; JSX cannot.
+ *   3. **`approved` is filtered in the QUERY.** An unapproved testimonial must
+ *      not reach the client at all — a component that filters is one someone can
+ *      forget to use, and the words would still sit in the page's JSON payload.
  */
 
-const CTA = /* groq */ `{
-  label,
-  destination {
-    kind, page, anchor, url,
-    "article": article->slug.current,
-    "caseStudy": caseStudy->slug.current
-  }
+/** Collapses a `destination` object into the one string a link needs. */
+const HREF = /* groq */ `"href": select(
+  destination.kind == "page"      => destination.page + select(defined(destination.anchor) => "#" + destination.anchor, ""),
+  destination.kind == "article"   => "/insights/" + destination.article->slug.current,
+  destination.kind == "caseStudy" => "/results/" + destination.caseStudy->slug.current,
+  destination.kind == "external"  => destination.url,
+  null
+)`;
+
+const CTA = /* groq */ `{ "label": coalesce(label[$locale], label.en), ${HREF} }`;
+
+const IMAGE = /* groq */ `{
+  "url": asset->url,
+  "lqip": asset->metadata.lqip,
+  "width": asset->metadata.dimensions.width,
+  "height": asset->metadata.dimensions.height,
+  "alt": coalesce(alt[$locale], alt.en)
 }`;
 
-const IMAGE = /* groq */ `{ ..., "url": asset->url, "lqip": asset->metadata.lqip, alt }`;
+/** Portable Text with its link annotations already turned into hrefs. */
+const BODY = (
+  field: string,
+) => /* groq */ `coalesce(${field}[$locale], ${field}.en)[]{
+  ...,
+  markDefs[]{ ..., _type == "internalLink" => { ${HREF} } }
+}`;
 
-const TESTIMONIAL = /* groq */ `{ quote, clientName, role, org }`;
-
-export const pageQuery = defineQuery(`
-  *[_type == "page" && route == $route][0]{
-    route, title, emphasis, intro,
-    "heroImage": heroImage${IMAGE},
-    "primaryCta": primaryCta${CTA},
-    "secondaryCta": secondaryCta${CTA},
-    "sections": sections[!(hidden == true)]{
-      _type, _key, heading, body,
-      "image": image${IMAGE},
-      "cta": cta${CTA},
-      cards[]{ title, body, "cta": cta${CTA} },
-      "testimonial": testimonial->{ ${TESTIMONIAL.slice(1, -1)}, approved }
-    },
-    seo { title, description, "ogImage": ogImage${IMAGE} }
-  }
-`);
+const ARTICLE_CARD = /* groq */ `
+  "slug": slug.current,
+  "characters": length(pt::text(coalesce(body[$locale], body.en))),
+  categoryKey,
+  published,
+  featured,
+  "title": coalesce(title[$locale], title.en),
+  "deck": coalesce(deck[$locale], deck.en),
+  "image": image${IMAGE}
+`;
 
 export const articleSlugsQuery = defineQuery(`
   *[_type == "article" && defined(slug.current)]{ "slug": slug.current }
 `);
 
+export const articleIndexQuery = defineQuery(`
+  *[_type == "article" && defined(slug.current)] | order(published desc){ ${ARTICLE_CARD} }
+`);
+
 export const articleQuery = defineQuery(`
   *[_type == "article" && slug.current == $slug][0]{
-    "slug": slug.current, title, deck, categoryKey, published, featured,
-    "image": image${IMAGE},
-    body,
-    seo { title, description, "ogImage": ogImage${IMAGE} }
+    ${ARTICLE_CARD},
+    "body": ${BODY("body")},
+    "pullQuote": coalesce(pullQuote[$locale], pullQuote.en),
+    "pullQuoteBy": coalesce(pullQuoteBy[$locale], pullQuoteBy.en),
+    "pullQuoteOrg": coalesce(pullQuoteOrg[$locale], pullQuoteOrg.en),
+    "stat": stat{ figure, source, "body": coalesce(body[$locale], body.en) },
+    "asideHeading": coalesce(asideHeading[$locale], asideHeading.en),
+    "asideItems": asideItems[]{ "value": coalesce(@[$locale], @.en) }.value,
+    "takeawaysHeading": coalesce(takeawaysHeading[$locale], takeawaysHeading.en),
+    "takeaways": takeaways[]{
+      icon,
+      "title": coalesce(title[$locale], title.en),
+      "body": coalesce(body[$locale], body.en)
+    },
+    "seo": seo{
+      "title": coalesce(title[$locale], title.en),
+      "description": coalesce(description[$locale], description.en),
+      "ogImage": ogImage${IMAGE}
+    }
   }
 `);
 
-export const articleIndexQuery = defineQuery(`
-  *[_type == "article" && defined(slug.current)] | order(published desc){
-    "slug": slug.current, title, deck, categoryKey, published, featured,
-    "image": image${IMAGE}
-  }
-`);
-
-/** Approved only — see rule 2 above. */
+/** Approved only — see rule 3 above. */
 export const testimonialsQuery = defineQuery(`
-  *[_type == "testimonial" && approved == true]${TESTIMONIAL}
+  *[_type == "testimonial" && approved == true]{
+    clientName,
+    "quote": coalesce(quote[$locale], quote.en),
+    "role": coalesce(role[$locale], role.en),
+    "org": coalesce(org[$locale], org.en)
+  }
+`);
+
+export const pageQuery = defineQuery(`
+  *[_type == "page" && route == $route][0]{
+    route,
+    "title": coalesce(title[$locale], title.en),
+    "emphasis": coalesce(emphasis[$locale], emphasis.en),
+    "intro": coalesce(intro[$locale], intro.en),
+    "heroImage": heroImage${IMAGE},
+    "primaryCta": primaryCta${CTA},
+    "secondaryCta": secondaryCta${CTA},
+    "sections": sections[!(hidden == true)]{
+      _type, _key,
+      "heading": coalesce(heading[$locale], heading.en),
+      "body": ${BODY("body")},
+      "image": image${IMAGE},
+      "cta": cta${CTA},
+      "cards": cards[]{
+        "title": coalesce(title[$locale], title.en),
+        "body": coalesce(body[$locale], body.en),
+        "cta": cta${CTA}
+      },
+      "testimonial": testimonial->{
+        clientName,
+        "quote": coalesce(quote[$locale], quote.en),
+        "role": coalesce(role[$locale], role.en),
+        "org": coalesce(org[$locale], org.en),
+        approved
+      }
+    },
+    "seo": seo{
+      "title": coalesce(title[$locale], title.en),
+      "description": coalesce(description[$locale], description.en),
+      "ogImage": ogImage${IMAGE}
+    }
+  }
 `);

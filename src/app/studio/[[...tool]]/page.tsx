@@ -1,5 +1,3 @@
-import { isSanityConfigured } from "@/sanity/env";
-import { StudioSetup } from "./setup";
 import StudioClient from "./studio-client";
 
 /**
@@ -15,8 +13,5 @@ export const dynamic = "force-dynamic";
 export { metadata, viewport } from "next-sanity/studio";
 
 export default function StudioPage() {
-  // Rendering a Studio pointed at a project that does not exist gives an
-  // editor a spinner and a console error. Say what is missing instead.
-  if (!isSanityConfigured) return <StudioSetup />;
   return <StudioClient />;
 }

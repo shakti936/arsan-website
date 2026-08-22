@@ -3,19 +3,17 @@ import { useFormatter, useTranslations } from "next-intl";
 import { Container } from "@/components/ui/container";
 import { type IconName, Icons } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
-import type { CategoryKey } from "@/content/insights";
 import { Link } from "@/i18n/navigation";
+import type { CategoryKey } from "@/lib/article-categories";
+import type { ArticleCard } from "@/lib/articles";
 import { cn } from "@/lib/cn";
 
-export type IndexCard = {
-  slug: string;
-  categoryKey: CategoryKey;
-  photo: string;
-  published: string;
-  readingMinutes: number;
-  title: string;
-  deck: string;
-};
+/**
+ * The card shape is `ArticleCard` straight from the read path — not a local
+ * copy of it. A second type that has to be kept in step with the query is a
+ * second place to forget.
+ */
+export type IndexCard = ArticleCard;
 
 type Tab = "all" | CategoryKey;
 
@@ -184,9 +182,11 @@ function Card({
           )}
         >
           <Image
-            src={`/images/${card.photo}.jpg`}
+            src={card.image.url}
             alt=""
             fill
+            placeholder={card.image.lqip ? "blur" : undefined}
+            blurDataURL={card.image.lqip ?? undefined}
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />

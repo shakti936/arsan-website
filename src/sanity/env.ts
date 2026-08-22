@@ -11,14 +11,20 @@
  * `next-sanity`'s `defineLive` throws on a missing token by design, so it is
  * only reached through `isSanityConfigured`.
  */
-export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+/**
+ * The ARSAN project. Defaulted in source rather than required from the
+ * environment, because it is not a secret — it ships to the browser inside the
+ * Studio bundle and inside every image URL — and because a build that fails
+ * without a `.env.local` is a build that fails for anyone who clones the repo.
+ * `sanity init` writes it into `sanity.config.ts` for the same reason. Override
+ * it to point a checkout at a different project or dataset.
+ */
+export const projectId =
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "shop59xi";
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
 
 /** Pinned. A floating API version changes query behaviour under you. */
 export const apiVersion = "2026-05-19";
-
-/** True once a Sanity project exists and its id is in the environment. */
-export const isSanityConfigured = Boolean(projectId);
 
 /**
  * A stand-in id so `sanity.config.ts` can be imported before a project exists.

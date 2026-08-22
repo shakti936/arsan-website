@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 /**
  * Field-level internationalisation.
@@ -86,14 +86,72 @@ export const localizedText = defineType({
  * What is left is what prose actually needs: subheadings, emphasis, lists and
  * links. An editor cannot reach the design system through this field.
  */
-function richTextFields(styles: { title: string; value: string }[]) {
+/**
+ * A numbered spine — the treatment the article comps use for "five traits
+ * that separate high-performing leaders".
+ *
+ * A first-class block rather than a numbered list with the title run in bold,
+ * which is what the first migration produced. Rendered side by side against
+ * the original, the run-in was plainly worse: each step lost the serif
+ * subheading that made it a titled point and became a dense paragraph. A
+ * generic list cannot express "heading plus prose, numbered" — so this is the
+ * shape, and an editor gets a form with two fields per step instead of a
+ * convention to remember.
+ */
+const steps = defineArrayMember({
+  type: "object",
+  name: "steps",
+  title: "Numbered steps",
+  fields: [
+    defineField({
+      name: "items",
+      title: "Steps",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "step",
+          fields: [
+            defineField({
+              name: "title",
+              type: "string",
+              validation: (rule) => rule.required().max(80),
+            }),
+            defineField({
+              name: "body",
+              type: "text",
+              rows: 4,
+              validation: (rule) => rule.required(),
+            }),
+          ],
+          preview: { select: { title: "title" } },
+        },
+      ],
+      validation: (rule) => rule.required().min(2),
+    }),
+  ],
+  preview: {
+    select: { items: "items" },
+    prepare: ({ items }: { items?: unknown[] }) => ({
+      title: `Numbered steps (${items?.length ?? 0})`,
+    }),
+  },
+});
+
+type ArrayMember = ReturnType<typeof defineArrayMember>;
+
+function richTextFields(
+  styles: { title: string; value: string }[],
+  extra: ArrayMember[] = [],
+) {
   return LOCALES.map(({ name, title }) =>
     defineField({
       name,
       title,
       type: "array",
       of: [
-        {
+        ...extra,
+        defineArrayMember({
           type: "block",
           styles,
           lists: [
@@ -120,7 +178,7 @@ function richTextFields(styles: { title: string; value: string }[]) {
               },
             ],
           },
-        },
+        }),
       ],
       validation: (rule) => (name === "en" ? rule.required() : rule),
     }),
@@ -158,11 +216,14 @@ export const localizedArticleBody = defineType({
   name: "localizedArticleBody",
   title: "Article body (EN / ES)",
   type: "object",
-  fields: richTextFields([
-    { title: "Body", value: "normal" },
-    { title: "Section heading", value: "h2" },
-    { title: "Subheading", value: "h3" },
-  ]),
+  fields: richTextFields(
+    [
+      { title: "Body", value: "normal" },
+      { title: "Section heading", value: "h2" },
+      { title: "Subheading", value: "h3" },
+    ],
+    [steps],
+  ),
 });
 
 /** Every locale a document must carry before it is allowed to publish. */

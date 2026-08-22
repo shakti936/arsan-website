@@ -37,6 +37,8 @@ import {
   UserStar,
   Users,
 } from "lucide-react";
+import type { ReactElement } from "react";
+import type { IconName } from "@/lib/icon-names";
 
 type IconProps = { className?: string };
 
@@ -72,7 +74,7 @@ function icon(Glyph: LucideIcon) {
   };
 }
 
-export const Icons = {
+export const Icons: Record<IconName, (props: IconProps) => ReactElement> = {
   person: icon(User),
   users: icon(Users),
   personStar: icon(UserStar),
@@ -111,7 +113,13 @@ export const Icons = {
   scale: icon(Scale),
 };
 
-export type IconName = keyof typeof Icons;
+/**
+ * Re-exported so callers keep importing `IconName` from here. The list itself
+ * lives in `@/lib/icon-names` because the Sanity schema needs it as data, and
+ * typing `Icons` as `Record<IconName, …>` above is what keeps the two in step:
+ * add a name there without an icon here and this file stops compiling.
+ */
+export type { IconName };
 
 /** An icon on a filled teal disc — the chip the comps set on card headers. */
 export function CircleIcon({

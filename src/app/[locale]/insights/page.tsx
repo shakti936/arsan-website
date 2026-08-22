@@ -8,7 +8,7 @@ import {
 import { NewsletterBand } from "@/components/sections/newsletter-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { TailoredBand } from "@/components/sections/tailored-band";
-import { ARTICLES, articleCopy } from "@/content/insights";
+import { listArticles } from "@/lib/articles";
 import { pageMetadata } from "@/lib/site";
 
 type Params = {
@@ -33,9 +33,9 @@ export async function generateMetadata({
  * /insights, built to refs/dirA-insights-index.png: hero, the category bar
  * over a featured grid, the tailored-insights band and the newsletter.
  *
- * Copy is resolved here rather than in the grid — the cards need only the four
- * strings they render, so the whole `Article` (five sections of prose,
- * takeaways, a rail) is never walked to draw an index.
+ * The grid asks Sanity for cards, not for articles: the index query projects
+ * the six fields a card renders and never touches the body, so drawing this
+ * page does not move five articles' worth of prose across the wire.
  *
  * Reading `?category=` here rather than in the browser makes the page dynamic,
  * and that is the point: every filtered view arrives as complete HTML on the
@@ -49,18 +49,7 @@ export default async function Page({ params, searchParams }: Params) {
   const { category } = await searchParams;
   const t = await getTranslations("subpage.insights");
 
-  const cards: IndexCard[] = ARTICLES.map((article) => {
-    const copy = articleCopy(article, locale);
-    return {
-      slug: article.slug,
-      categoryKey: article.categoryKey,
-      photo: article.photo,
-      published: article.published,
-      readingMinutes: article.readingMinutes,
-      title: copy.title,
-      deck: copy.deck,
-    };
-  });
+  const cards: IndexCard[] = await listArticles(locale);
 
   return (
     <main id="main">

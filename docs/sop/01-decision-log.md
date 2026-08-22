@@ -1830,3 +1830,59 @@ mapping before any page reads from Sanity would be guessing twice. Batch 2.
 *Environment note:* `cdn.sanity.io` is not on the sandbox network allowlist, so a re-import
 fails at the asset-reuse step with `getaddrinfo ENOTFOUND`. The first import works because
 uploads go via `api.sanity.io`. Not a code problem — run re-imports with network access.
+
+### D-092 · 2026-08-22 · Articles read from Sanity, and `src/content/insights` is deleted
+Drew: *"wire the read path for articles."*
+
+**Sanity is the source of truth for articles now.** `src/lib/articles.ts` is the only
+module that knows where an article comes from; the six consumers (index, detail, OG card,
+sitemap, the home row, the related rail) go through it. `src/content/insights/` is deleted
+— git keeps it, and a duplicate nobody reads is how two sources of truth start.
+
+**Three things had to be true first.**
+
+1. **The schema had to cover what the page renders.** It held title, deck, body, image and
+   SEO; the detail page also draws takeaways, a pull quote, a sidebar question list and a
+   figure card. Wiring it as-was would have silently dropped four sections. Added, grouped
+   into Article / Sidebar / Takeaways / Search so the form stays legible.
+2. **The dataset had to be publicly readable.** It is, so a build — anyone's build, with no
+   `.env.local` — reads it with no token. The project id is defaulted in `src/sanity/env.ts`
+   for the same reason: it is not a secret, it ships in every image URL, and a build that
+   fails without an env file fails for everyone who clones the repo.
+3. **This reverses "the site builds with no Sanity project" (D-090).** That property was
+   load-bearing when no project existed. It does not exist now: builds fetch from Sanity,
+   and a build with no network to `*.sanity.io` fails. Normal for a CMS-backed site, and
+   worth stating because it is a real change in what can go wrong.
+
+**Locale and links are resolved in GROQ**, not in components. `coalesce(x[$locale], x.en)`
+halves every payload versus fetching both languages, and puts the English-fallback rule in
+one place. A `destination` is four shapes (route, article ref, case-study ref, URL) — GROQ
+can follow a reference and JSX cannot, so the query emits an `href` and the renderer
+branches on nothing.
+
+**Reading time is computed, from a character count the query produces** —
+`length(pt::text(body))`, so the index can show it without shipping five bodies to count
+words. This changes what the site displays: the hand-authored values claimed 4–7 minutes
+for articles that are 300–600 words, roughly double. The computed figures are 2–3.
+
+**The one real mistake, caught by looking.** The first pass rendered the article comps'
+numbered spine as a plain numbered list with each title run in bold, and the SOP said that
+if the spine turned out to matter it should become a block type rather than a body
+convention (D-091). Screenshotted side by side against the pre-migration page, it plainly
+mattered — every step had lost the serif subheading that made it a titled point, in a batch
+whose entire subject was typographic hierarchy. `steps` is a first-class block in
+`localizedArticleBody` now, with a two-field form per step, and
+`scripts/migrate-steps.ts` converted the four affected articles.
+
+That script is a **dataset-to-dataset migration, not a re-seed**: it reads what is in
+Sanity, transforms it, writes it back. It also emits the WHOLE document rather than
+`{_id, body}` — `datasets import --replace` replaces rather than merges, so a projection
+would have imported articles whose title, image, takeaways and SEO had been deleted. That
+bug was caught before running by diffing the emitted key sets against the live documents.
+
+`scripts/seed-sanity.ts` no longer touches articles and must not again: re-seeding one
+would overwrite whatever an editor last wrote with a snapshot from git. The backup
+mechanism for CMS-owned content is `sanity dataset export`.
+
+*Environment note:* `*.sanity.io` is not on the sandbox network allowlist, so builds and
+Playwright runs need network access.

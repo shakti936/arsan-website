@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
-import type { ArticleCopy, CategoryKey } from "@/content/insights";
+import type { CategoryKey } from "@/lib/article-categories";
+import type { ArticleView } from "@/lib/articles";
 
 /**
  * Article hero from refs/dirA-article-*.png: a navy band split down the
@@ -15,21 +16,12 @@ import type { ArticleCopy, CategoryKey } from "@/content/insights";
  * runs full width above the copy — a portrait-width column can't carry a
  * three-line headline over an image and stay readable.
  */
-export function ArticleHero({
-  copy,
-  categoryKey,
-  photo,
-  published,
-  readingMinutes,
-}: {
-  copy: ArticleCopy;
-  categoryKey: CategoryKey;
-  photo: string;
-  published: string;
-  readingMinutes: number;
-}) {
+export function ArticleHero({ article }: { article: ArticleView }) {
+  const { image, published, readingMinutes } = article;
   const t = useTranslations("article");
-  const category = useTranslations("articleCategories")(categoryKey);
+  const category = useTranslations("articleCategories")(
+    article.categoryKey as CategoryKey,
+  );
   const format = useFormatter();
 
   return (
@@ -39,10 +31,12 @@ export function ArticleHero({
             at lg it is the right column either way, so order stays natural */}
         <div className="relative aspect-16/10 w-full lg:order-2 lg:aspect-auto lg:min-h-[34rem]">
           <Image
-            src={`/images/${photo}.jpg`}
-            alt={copy.imageAlt}
+            src={image.url}
+            alt={image.alt}
             fill
             priority
+            placeholder={image.lqip ? "blur" : undefined}
+            blurDataURL={image.lqip ?? undefined}
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
           />
@@ -62,16 +56,16 @@ export function ArticleHero({
           <div aria-hidden="true" className="mt-3 h-0.5 w-10 bg-brass-500" />
 
           <h1 className="mt-6 max-w-[20ch] font-display text-title font-semibold text-white-warm text-balance">
-            {copy.title}
+            {article.title}
           </h1>
 
           <div aria-hidden="true" className="mt-7 h-0.5 w-10 bg-brass-500" />
           <p className="mt-6 max-w-[46ch] text-lead text-cream-100">
-            {copy.deck}
+            {article.deck}
           </p>
 
           <div className="mt-9 text-sm text-cream-100/75">
-            <p>{t("byline", { author: copy.pullQuoteBy })}</p>
+            <p>{t("byline", { author: article.pullQuoteBy ?? "ARSAN" })}</p>
             <p className="mt-1">
               {format.dateTime(new Date(published), {
                 year: "numeric",

@@ -136,8 +136,8 @@ inventing either would be a fabricated claim, so they are not stubbed. **Owner:*
 D-090 put the boundary at page content vs UI chrome, but not the ORDER. The candidates,
 roughly by how often they change:
 
-1. ~~**Articles**~~ — **seeded 2026-08-22** (D-091). All five are in the dataset with
-   both locales, Portable Text bodies and uploaded images.
+1. ~~**Articles**~~ — **done 2026-08-22** (D-091 seeded, D-092 wired). Sanity is the
+   source of truth; `src/content/insights/` is deleted.
 2. ~~**Testimonials**~~ — **seeded**, all three with `approved: false`. The `@unverified`
    markers stay in `src/content/**` until the read path moves, so `check:launch` still
    fails on them; the CMS gate is now the second lock, not a replacement.
@@ -146,11 +146,10 @@ roughly by how often they change:
 4. **Case studies** — the richest structure (six narrative bands), and the schema for them
    is deliberately thin until one has actually been authored in Sanity.
 
-Open: whether `src/content/**` is deleted after migration or kept as the fallback the
-adapter already supports. Keeping it means two sources of truth for the same words, which
-is the failure mode this project avoids everywhere else — the recommendation is to delete
-each file as its content lands in Sanity, so the fallback shrinks to nothing rather than
-becoming a shadow copy. **Owner:** Drew.
+**Answered for articles:** deleted, not kept. Two sources of truth for the same words is
+the failure mode this project avoids everywhere else, and a fallback nobody reads is a
+shadow copy that diverges silently. The same applies as each remaining type lands.
+`src/content/case-studies/` stays until its read path moves. **Owner:** Drew.
 
 ### Q-31 · ANSWERED 2026-08-22 · The Sanity project
 Drew authenticated and the repo is connected to project **`shop59xi`**, dataset

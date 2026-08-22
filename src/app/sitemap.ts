@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CASE_STUDIES } from "@/content/case-studies";
-import { ARTICLES } from "@/content/insights";
 import { routing } from "@/i18n/routing";
+import { listArticles } from "@/lib/articles";
 import { localeUrl } from "@/lib/site";
 
 const PATHS = [
@@ -25,9 +25,9 @@ const PATHS = [
  * sitemap that reports every URL as modified today teaches a crawler to stop
  * believing `lastmod`, which is the one signal it is there to provide.
  */
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = PATHS.map((path) => ({ path, lastModified: new Date() }));
-  const articles = ARTICLES.map((article) => ({
+  const articles = (await listArticles("en")).map((article) => ({
     path: `/insights/${article.slug}`,
     lastModified: new Date(article.published),
   }));

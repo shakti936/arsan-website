@@ -7,8 +7,9 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { NewsletterBand } from "@/components/sections/newsletter-band";
 import { RelatedInsights } from "@/components/sections/related-insights";
 import { JsonLd } from "@/components/seo/json-ld";
-import { ARTICLES, articleCopy, getArticle } from "@/content/insights";
 import { routing } from "@/i18n/routing";
+import type { CategoryKey } from "@/lib/article-categories";
+import { articleSlugs, getArticleView } from "@/lib/articles";
 import { localeUrl, pageMetadata, SITE_URL } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
@@ -18,9 +19,10 @@ type Params = { params: Promise<{ locale: string; slug: string }> };
  * prerendered. Without this each one is a serverless invocation the first time
  * a crawler or a reader asks for it.
  */
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const slugs = await articleSlugs();
   return routing.locales.flatMap((locale) =>
-    ARTICLES.map((article) => ({ locale, slug: article.slug })),
+    slugs.map((slug) => ({ locale, slug })),
   );
 }
 
@@ -28,15 +30,16 @@ export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale, slug } = await params;
-  const article = getArticle(slug);
+  const article = await getArticleView(slug, locale);
   if (!article) return {};
-  const copy = articleCopy(article, locale);
 
+  // the SEO tab is optional and falls back to the article's own words rather
+  // than to an empty tag
   return pageMetadata({
     locale,
     path: `/insights/${slug}`,
-    title: copy.metaTitle,
-    description: copy.metaDescription,
+    title: article.seo?.title ?? article.title,
+    description: article.seo?.description ?? article.deck,
     publishedTime: article.published,
   });
 }
@@ -49,9 +52,8 @@ export default async function Page({ params }: Params) {
     namespace: "articleCategories",
   });
 
-  const article = getArticle(slug);
+  const article = await getArticleView(slug, locale);
   if (!article) notFound();
-  const copy = articleCopy(article, locale);
   const url = localeUrl(locale, `/insights/${slug}`);
 
   /**
@@ -72,13 +74,13 @@ export default async function Page({ params }: Params) {
       {
         "@type": "Article",
         "@id": `${url}#article`,
-        headline: copy.title,
-        description: copy.metaDescription,
+        headline: article.title,
+        description: article.seo?.description ?? article.deck,
         inLanguage: locale === "es" ? "es-MX" : "en-US",
         datePublished: article.published,
         dateModified: article.published,
-        articleSection: category(article.categoryKey),
-        image: [`${SITE_URL}/images/${article.photo}.jpg`],
+        articleSection: category(article.categoryKey as CategoryKey),
+        image: [article.image.url],
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
         author: { "@type": "Organization", name: "ARSAN", url: SITE_URL },
         publisher: {
@@ -104,10 +106,10 @@ export default async function Page({ params }: Params) {
           {
             "@type": "ListItem",
             position: 2,
-            name: category(article.categoryKey),
+            name: category(article.categoryKey as CategoryKey),
             item: localeUrl(locale, "/insights"),
           },
-          { "@type": "ListItem", position: 3, name: copy.title, item: url },
+          { "@type": "ListItem", position: 3, name: article.title, item: url },
         ],
       },
     ],
@@ -116,14 +118,8 @@ export default async function Page({ params }: Params) {
   return (
     <main id="main">
       <JsonLd data={jsonLd} />
-      <ArticleHero
-        copy={copy}
-        categoryKey={article.categoryKey}
-        photo={article.photo}
-        published={article.published}
-        readingMinutes={article.readingMinutes}
-      />
-      <ArticleBody copy={copy} />
+      <ArticleHero article={article} />
+      <ArticleBody article={article} />
       <RelatedInsights currentSlug={slug} locale={locale} />
       <CtaBand />
       <NewsletterBand />

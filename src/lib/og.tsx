@@ -24,6 +24,23 @@ const asset = (name: string) => join(process.cwd(), "assets", name);
 const photoPath = (name: string) =>
   join(process.cwd(), "public", "images", `${name}.jpg`);
 
+/**
+ * The card's photograph, from disk or from Sanity.
+ *
+ * Articles carry their image in the CMS now and everything else still ships
+ * one in `public/images`, so this takes either. Satori has no network of its
+ * own — the bytes have to be inlined as a data URI either way, so the only
+ * difference is where they are read from.
+ */
+async function loadPhoto(photo: string): Promise<Buffer> {
+  if (!/^https?:\/\//.test(photo)) return readFile(photoPath(photo));
+  const response = await fetch(photo);
+  if (!response.ok) {
+    throw new Error(`OG photo ${photo} responded ${response.status}`);
+  }
+  return Buffer.from(await response.arrayBuffer());
+}
+
 async function loadFonts() {
   const [display, body, bodyBold] = await Promise.all([
     readFile(asset("CormorantGaramond-SemiBold.ttf")),
@@ -74,14 +91,14 @@ export async function ogImage({
   locale: string;
   /** `subpage.*` key, or omitted for the site-level card */
   namespace?: string;
-  /** basename in public/images */
+  /** A basename in `public/images`, or an absolute image URL. */
   photo: string;
   /** Overrides the namespace lookup — articles keep their copy in a module. */
   title?: string;
 }) {
   const [fonts, photoData, wordmarkData, tTitle] = await Promise.all([
     loadFonts(),
-    readFile(photoPath(photo)),
+    loadPhoto(photo),
     readFile(join(process.cwd(), "public", "logo", "arsan-lockup-cream.png")),
     getTranslations({ locale, namespace: namespace ?? "home.hero" }),
   ]);

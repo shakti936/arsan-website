@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { useFormatter, useTranslations } from "next-intl";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { ARTICLES, articleCopy } from "@/content/insights";
 import { Link } from "@/i18n/navigation";
+import { listArticles } from "@/lib/articles";
 import { cn } from "@/lib/cn";
 
 /**
@@ -21,7 +21,7 @@ import { cn } from "@/lib/cn";
  * accessible name is the headline rather than "read more"; the stretched
  * pseudo-element covers the rest of the card.
  */
-export function ArticleCards({
+export async function ArticleCards({
   locale,
   count = 3,
   withViewAll,
@@ -46,10 +46,10 @@ export function ArticleCards({
   className?: string;
 }) {
   const beside = layout === "beside";
-  const t = useTranslations("insightsRow");
-  const tc = useTranslations("articleCategories");
-  const format = useFormatter();
-  const articles = ARTICLES.slice(0, count);
+  const t = await getTranslations("insightsRow");
+  const tc = await getTranslations("articleCategories");
+  const format = await getFormatter();
+  const articles = (await listArticles(locale)).slice(0, count);
 
   return (
     <section className={cn("bg-white-warm section-y", className)}>
@@ -65,7 +65,6 @@ export function ArticleCards({
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {articles.map((article, i) => {
-            const copy = articleCopy(article, locale);
             return (
               <Reveal
                 key={article.slug}
@@ -85,7 +84,7 @@ export function ArticleCards({
                     )}
                   >
                     <Image
-                      src={`/images/${article.photo}.jpg`}
+                      src={article.image.url}
                       alt=""
                       fill
                       sizes={
@@ -115,7 +114,7 @@ export function ArticleCards({
                         href={`/insights/${article.slug}`}
                         className="transition-colors after:absolute after:inset-0 group-hover:text-brass-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-500"
                       >
-                        {copy.title}
+                        {article.title}
                       </Link>
                     </h3>
                     <p
@@ -124,7 +123,7 @@ export function ArticleCards({
                         beside && "line-clamp-2",
                       )}
                     >
-                      {copy.deck}
+                      {article.deck}
                     </p>
                     {beside ? (
                       <p className="mt-5 flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-teal-900">
