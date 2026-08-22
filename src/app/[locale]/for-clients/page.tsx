@@ -6,7 +6,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { alternatesFor } from "@/lib/site";
+import { pageMetadata } from "@/lib/site";
 
 const CARD_HREFS = [
   "/for-clients/executive-search",
@@ -19,11 +19,12 @@ type Params = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "subpage.forClients" });
-  return {
+  return pageMetadata({
+    locale,
+    path: "/for-clients",
     title: t("title"),
     description: t("intro"),
-    alternates: alternatesFor(locale, "/for-clients"),
-  };
+  });
 }
 
 export default async function Page({ params }: Params) {

@@ -3,18 +3,19 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArticleCards } from "@/components/sections/article-cards";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
-import { alternatesFor } from "@/lib/site";
+import { pageMetadata } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "subpage.insights" });
-  return {
+  return pageMetadata({
+    locale,
+    path: "/insights",
     title: t("title"),
     description: t("intro"),
-    alternates: alternatesFor(locale, "/insights"),
-  };
+  });
 }
 
 export default async function Page({ params }: Params) {

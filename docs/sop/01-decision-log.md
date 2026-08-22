@@ -798,3 +798,59 @@ clicking a submenu link.
 `.group-data-[suppressed=true]:!hidden:is(:where(.group)[data-suppressed="true"] *)` is in the
 served stylesheet, and forcing the attribute by hand flips computed `display` from `block` to
 `none`.
+
+### D-059 · 2026-08-21 · OG cards are generated, per route, in both languages
+Shared links carried no image at all — `openGraph` had no `images`. Every route now has an
+`opengraph-image.tsx` rendering a 1200×630 card through one shared renderer (`src/lib/og.tsx`):
+the photograph that page already uses, navy raking across it exactly as the hero does, the
+ARSAN lockup, and the page's own headline. 13 routes × 2 locales = **26 cards**.
+
+Per-route files are ~12 lines each. The title comes from the same `subpage.*` catalog that
+feeds `generateMetadata`, so a copy change can't leave a card stale in either language. Fonts
+and photographs are read from disk, not fetched — these render at build time, and a build that
+needs a network round-trip is a build that can fail for reasons unrelated to the code.
+
+**Three real defects surfaced while building it, none of them visible on the page:**
+
+1. **Every page emitted the *site* title as `og:title`.** A child's `openGraph` replaces the
+   parent's wholesale rather than merging field by field, and only the root layout set one. A
+   link to "Your Mexico operation starts long before production does." previewed as
+   "ARSAN — Executive Search & Manufacturing Talent Advisory". Fixed at the layer that caused
+   it: `pageMetadata()` in `src/lib/site.ts` now builds title, description, alternates and
+   openGraph together, and all 13 pages call it. The class of bug is gone, not just the
+   instance.
+
+2. **The auto-detected image URL used the `/en/` prefix,** which under
+   `localePrefix: "as-needed"` 307s to the unprefixed URL — *and mangles its own cache-busting
+   query on the way* (`?14c615604a4819b2` → `?14c615604a4819b2=`). Scrapers that don't follow
+   redirects on images got nothing. `pageMetadata` sets `images` explicitly to the canonical
+   URL.
+
+3. **The home card kept regressing to the `/en/` URL** after (2) was fixed. Next's
+   `opengraph-image` file convention overrides `openGraph.images` coming from a **layout** in
+   the same segment, but not from a **page**. Home metadata moved from `layout.tsx` to
+   `page.tsx`; the layout keeps only the title template.
+
+**Two Satori limits worth remembering** — it is not a browser:
+- **No `inset` shorthand.** The scrim silently didn't paint and the first card came out as
+  unreadable text over a bright photograph. Offsets must be spelled out.
+- **Vertical space is the constraint, not width.** With 72px padding there are 486px for the
+  lockup, title and region line. The longest title on the site ("Su operación en México
+  empieza mucho antes que la producción.", 61 chars) wrapped to four lines and landed the
+  brass rule on top of the descriptor. Title sizes retuned around that worst case.
+
+**`generateStaticParams` on every card.** Without it all 26 rendered on demand — a serverless
+invocation every time a crawler looked at a link. Build output now shows `●` for all of them,
+`ƒ` for none. Each is 0.9–1.3MB, inside the 8MB OG and 5MB Twitter ceilings.
+
+`twitter:image` and `twitter:card: summary_large_image` are derived by Next from the same
+files; no separate `twitter-image` routes needed.
+
+**Covered by `e2e/og-images.spec.ts`** — walks all 26 route/locale pairs, asserts a distinct
+`og:title` per route, no `/en/` prefix, no query string, and that each image resolves 200 as
+`image/png` **with redirects disabled**. Negative control run: reintroducing `?v=1` on the URL
+fails the test.
+
+New committed assets: `assets/` holds the three TTFs Satori needs (Cormorant Garamond SemiBold,
+Libre Franklin Medium/SemiBold, 489KB total). `next/font` cannot supply them — ImageResponse
+needs raw font data.

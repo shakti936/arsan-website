@@ -7,7 +7,7 @@ import { TeamRow } from "@/components/sections/team-row";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { alternatesFor } from "@/lib/site";
+import { pageMetadata } from "@/lib/site";
 
 const SECTIONS = [
   { id: "difference", key: "difference" },
@@ -20,11 +20,12 @@ type Params = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "subpage.whyArsan" });
-  return {
+  return pageMetadata({
+    locale,
+    path: "/why-arsan",
     title: t("title"),
     description: t("intro"),
-    alternates: alternatesFor(locale, "/why-arsan"),
-  };
+  });
 }
 
 export default async function Page({ params }: Params) {

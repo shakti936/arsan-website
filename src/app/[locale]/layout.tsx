@@ -6,7 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { routing } from "@/i18n/routing";
-import { alternatesFor, SITE_URL } from "@/lib/site";
+import { pageMetadata, SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 // Display only — never below ~24px, weights 500+ (docs/sop/08-design-system.md)
@@ -41,18 +41,16 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
+    ...pageMetadata({
+      locale,
+      path: "/",
+      title: t("title"),
+      description: t("description"),
+    }),
+    // the template applies to child pages, which set a bare title string
     title: {
       default: t("title"),
       template: "%s — ARSAN",
-    },
-    description: t("description"),
-    alternates: alternatesFor(locale, "/"),
-    openGraph: {
-      type: "website",
-      siteName: "ARSAN",
-      locale: locale === "es" ? "es_MX" : "en_US",
-      title: t("title"),
-      description: t("description"),
     },
   };
 }

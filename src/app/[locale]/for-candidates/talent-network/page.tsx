@@ -4,7 +4,7 @@ import { LeadForm } from "@/components/forms/lead-form";
 import { IconRow } from "@/components/sections/icon-row";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
-import { alternatesFor } from "@/lib/site";
+import { pageMetadata } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -14,11 +14,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     locale,
     namespace: "subpage.talentNetwork",
   });
-  return {
+  return pageMetadata({
+    locale,
+    path: "/for-candidates/talent-network",
     title: t("title"),
     description: t("intro"),
-    alternates: alternatesFor(locale, "/for-candidates/talent-network"),
-  };
+  });
 }
 
 export default async function Page({ params }: Params) {

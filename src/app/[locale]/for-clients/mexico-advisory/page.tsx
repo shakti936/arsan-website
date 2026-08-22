@@ -7,7 +7,7 @@ import { IconRow } from "@/components/sections/icon-row";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { alternatesFor } from "@/lib/site";
+import { pageMetadata } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -17,11 +17,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     locale,
     namespace: "subpage.mexicoAdvisory",
   });
-  return {
+  return pageMetadata({
+    locale,
+    path: "/for-clients/mexico-advisory",
     title: t("title"),
     description: t("intro"),
-    alternates: alternatesFor(locale, "/for-clients/mexico-advisory"),
-  };
+  });
 }
 
 export default async function Page({ params }: Params) {

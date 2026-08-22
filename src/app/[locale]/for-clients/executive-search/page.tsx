@@ -7,7 +7,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { PointGrid } from "@/components/sections/point-grid";
 import { QuoteBand } from "@/components/sections/quote-band";
 import { Stories } from "@/components/sections/stories";
-import { alternatesFor } from "@/lib/site";
+import { pageMetadata } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -17,11 +17,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     locale,
     namespace: "subpage.executiveSearch",
   });
-  return {
+  return pageMetadata({
+    locale,
+    path: "/for-clients/executive-search",
     title: t("title"),
     description: t("intro"),
-    alternates: alternatesFor(locale, "/for-clients/executive-search"),
-  };
+  });
 }
 
 export default async function Page({ params }: Params) {

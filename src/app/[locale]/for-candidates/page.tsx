@@ -7,7 +7,7 @@ import { TrustStrip } from "@/components/sections/trust-strip";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { alternatesFor } from "@/lib/site";
+import { pageMetadata } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -17,11 +17,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     locale,
     namespace: "subpage.forCandidates",
   });
-  return {
+  return pageMetadata({
+    locale,
+    path: "/for-candidates",
     title: t("title"),
     description: t("intro"),
-    alternates: alternatesFor(locale, "/for-candidates"),
-  };
+  });
 }
 
 export default async function Page({ params }: Params) {
