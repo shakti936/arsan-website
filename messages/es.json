@@ -728,5 +728,12 @@
     "body": "Empiece por el reto de negocio. Le ayudamos a determinar si — y cómo — ARSAN puede aportar.",
     "cta": "Hablemos con ARSAN",
     "secondary": "O explore las soluciones para empresas"
+  },
+  "caseStudy": {
+    "breadcrumbLabel": "Ruta de navegación",
+    "home": "Inicio",
+    "results": "Casos de éxito",
+    "eyebrow": "Caso de éxito",
+    "allStudies": "Ver todos los casos"
   }
 }

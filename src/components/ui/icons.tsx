@@ -58,6 +58,13 @@ export const Icons = {
       <path d="M15.5 7H19v3.5" />
     </Base>
   ),
+  /* circled check — the "key roles placed" list in refs/dirA-casestudy-*.png */
+  check: (p: IconProps) => (
+    <Base {...p}>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="m8.25 12.25 2.5 2.5 5-5.5" />
+    </Base>
+  ),
   shield: (p: IconProps) => (
     <Base {...p}>
       <path d="M12 3.5 19 6v5.5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-2.5Z" />

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { CASE_STUDIES } from "@/content/case-studies";
 import { ARTICLES } from "@/content/insights";
 import { routing } from "@/i18n/routing";
 import { localeUrl } from "@/lib/site";
@@ -31,7 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(article.published),
   }));
 
-  return [...pages, ...articles].flatMap(({ path, lastModified }) =>
+  const studies = CASE_STUDIES.map((study) => ({
+    path: `/results/${study.slug}`,
+    lastModified: new Date(),
+  }));
+
+  return [...pages, ...articles, ...studies].flatMap(({ path, lastModified }) =>
     routing.locales.map((locale) => ({
       url: localeUrl(locale, path),
       lastModified,

@@ -3,10 +3,17 @@ import { ArrowLink } from "@/components/ui/arrow-link";
 import { Plate } from "@/components/ui/plate";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { CASE_STUDIES } from "@/content/case-studies";
 
 const STORY_COUNT = 3;
 
-/** One photograph per story, in the order the copy lists them. */
+/**
+ * One photograph and one case study per story, in the order the copy lists
+ * them. `CASE_STUDIES` is declared in the same order, so the teaser and the
+ * page it opens can't drift — the teaser copy stays in messages because the
+ * comps write it in a different register from the study's own headline
+ * (sentence case with a summary, against the study's title case and deck).
+ */
 const STORY_IMAGES = [
   "story-mexico-expansion",
   "story-transformation",
@@ -53,7 +60,9 @@ export function Stories({
                     {t(`items.${i}.body`)}
                   </p>
                   <div className="mt-5">
-                    <ArrowLink href="/results">{t("readStory")}</ArrowLink>
+                    <ArrowLink href={`/results/${CASE_STUDIES[i]?.slug ?? ""}`}>
+                      {t("readStory")}
+                    </ArrowLink>
                   </div>
                 </div>
               </article>

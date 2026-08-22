@@ -1208,3 +1208,44 @@ scale rules out. It balances over two lines with the arrow attached, and that is
 
 **Prose got its own measure.** A container is a layout bound, not a reading measure — the article
 body is capped at 72ch so a 1200px grid doesn't set body copy at 85 characters a line.
+
+### D-070 · 2026-08-21 · Three case studies, and the two fields they ship without
+Drew, with the three comps: *"make these case studies exactly how they are in the reference
+images."* `/results/[slug]` now renders all three, in both locales, from
+`src/content/case-studies/` — same typed-module pattern as the articles (D-068).
+
+**All six bands from the comps are built:** hero with a meta strip (Industry / Location / Focus)
+and an optional hero button, "At a glance", Challenge beside Approach, the dark results band,
+an optional client quote, "Key roles placed" and a close. One component file, not six: these
+bands only ever appear together, in this order.
+
+**Two fields are typed as optional and are unset on all three.**
+
+`figure` on a glance item. The mexico-plant comp puts "18+ leadership roles", "6 Months",
+"100% leadership team in place" and "High retention" in that strip. Those are measured outcomes
+of a real engagement and nobody who ran it supplied them. **The merger comp's own glance strip
+is qualitative** — icon and label, no numbers — which is the form all three ship in. That is
+what made it possible to build the section exactly as designed without inventing anything.
+
+`quote`. The comps attribute a testimonial to "VP of Human Resources, Global HVAC Manufacturer".
+Writing a client's words for them is the one thing on this site that cannot be walked back.
+The section renders the moment a real quote exists.
+
+Everything else — challenge, approach, results themes, roles — is written as ARSAN's method
+applied to the scenario each comp describes, which is what the comps' own prose is. **Every
+engagement fact still needs Armida's sign-off before these pages go live (Q-22).**
+
+**No `datePublished` in the JSON-LD.** An engagement date is a fact about a client's timeline
+and none was supplied; a date invented to satisfy a schema field is still an invented date.
+`Article` accepts the omission — schema.org has no case-study type, and Article is what search
+engines consume for this shape.
+
+**Teasers now open the studies.** `Stories` cards linked to `/results` for all three; they link
+to their own study now. The teaser copy stays in messages because the comps write it in a
+different register from the study's headline — sentence case with a summary, against the
+study's title case and deck.
+
+**One new icon and one new photograph.** `Icons.check` (circled) because the roles list calls
+for it and the set had no check primitive. `story-mexico-expansion.jpg` regenerated as the
+comp's scene — a facility at dusk with the U.S. and Mexican flags at the entrance — replacing
+an empty warehouse interior that said nothing about cross-border work.
