@@ -11,23 +11,9 @@ import type { NavSection } from "@/lib/nav";
  * left column = icon + title + description rows separated by rules,
  * right column = featured card. Results and Insights carry a photograph beside
  * the text in the reference; the other three keep their icon.
- * Opens on hover and on keyboard focus (focus-within) — no JS.
- *
- * Two things make it survive the trip from the nav item to the panel:
- *
- * 1. A **bridge** over the strip of header padding between the bottom of the
- *    `li` and the top of the panel — 24px that belonged to neither, so crossing
- *    it dropped `group-hover` and closed the panel before the pointer arrived.
- *    The bridge lives inside the group, so hovering it keeps `li:hover` true.
- *    It is only interactive while the group is hovered, which is what stops it
- *    becoming the invisible curtain that e2e/nav-overlay.spec.ts guards against.
- * 2. Nothing else. A close delay was tried on top and removed: the bridge
- *    alone passes e2e/mega-menu-travel.spec.ts, and holding a panel open on
- *    the way out made two full-width panels overlap for the duration when
- *    moving right-to-left along the nav.
- *
- * Dismissal on click lives in NavItem — a pointer parked on the item you just
- * clicked would otherwise keep its panel open over the page you asked for.
+ * Whether it is open is decided by NavMenu, not by `:hover` on this subtree —
+ * see that file for why two panels used to stack on every traverse. This
+ * renders the panel and reads `data-open` off the item above it.
  */
 export function MegaPanel({ section }: { section: NavSection }) {
   const t = useTranslations("nav");
@@ -35,10 +21,18 @@ export function MegaPanel({ section }: { section: NavSection }) {
   const FeatureIcon = section.feature ? Icons[section.feature.icon] : null;
 
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-full z-40 hidden group-data-[suppressed=true]:!hidden xl:block">
-      <div className="invisible translate-y-1 opacity-0 transition-[opacity,transform,visibility] duration-200 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:transition-none">
-        {/* the bridge — see the note above. Interactive only while the group is
-            hovered, and the nav link outranks it in the hit test. */}
+    <div className="pointer-events-none absolute inset-x-0 top-full z-40 hidden xl:block">
+      {/* Three deliberate choices, all of them about the traverse:
+          - `visibility` is never transitioned. It is not interpolatable, so
+            animating it holds a closing panel on screen for the full duration
+            and stacks it under the opening one.
+          - opening from closed gets the 200ms rise; closing is immediate.
+          - `data-swap` on the header (item to item, both open) zeroes the
+            duration, so the menu reads as one surface changing its contents
+            instead of blinking through 200ms of nothing. */}
+      <div className="invisible translate-y-1 opacity-0 transition-[opacity,transform] duration-200 ease-out group-data-[open]:pointer-events-auto group-data-[open]:visible group-data-[open]:translate-y-0 group-data-[open]:opacity-100 group-data-[swap]/nav:duration-0 motion-reduce:transition-none">
+        {/* covers the strip of header padding between the item and the panel,
+            so the pointer can travel down without crossing dead space */}
         <span aria-hidden="true" className="absolute inset-x-0 -top-6 h-6" />
         <div className="border-t-2 border-brass-500 bg-white-warm shadow-xl shadow-navy-950/25">
           <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-9 sm:px-10 lg:grid-cols-[1.15fr_1fr]">
@@ -51,7 +45,7 @@ export function MegaPanel({ section }: { section: NavSection }) {
                     <li key={child.key}>
                       <Link
                         href={child.href}
-                        className="group/item flex items-start gap-4 py-4 transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brass-500"
+                        className="group/item -mx-3 flex items-start gap-4 px-3 py-4 transition-colors hover:bg-cream-50 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brass-500"
                       >
                         <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-teal-900 text-cream-50">
                           <Icon className="h-5 w-5" />

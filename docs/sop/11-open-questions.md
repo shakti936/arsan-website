@@ -32,6 +32,7 @@ Resolved items move to [01-decision-log.md](01-decision-log.md) with their reaso
 | Q-05 | **Spanish copy timing** — does ES launch with EN, or does the architecture ship with EN-only content first? Architecture is identical either way. | Launch scope | 2026-08-20 |
 | Q-06 | **Proof points** — are the 30+ years / 99% / 100+ stats substantiated, and are there named client logos, case studies, or reviews we can use? Current site has very little. | Copy credibility | 2026-08-20 |
 | Q-18 | **Which mark is ARSAN's?** The live site uses an icon + "ARSAN INTERNATIONAL CONSULTING GROUP" (`refs/arsan-current-live-logo.png`). Direction A drops the icon and the "International Consulting Group" descriptor for "Executive Search & Manufacturing Talent Advisory". Marianna/Armida must confirm — that is a name-presentation change, not styling. Icon palette also sits outside the navy/brass system. | Header, footer, favicon, OG image | 2026-08-21 |
+| Q-20 | **Mega panel: full-bleed or inset card?** `refs/dirA-meganav-all-panels.png` draws the panel as a card inset to the header's content column, with a drop shadow and no brass top rule. The build renders it full-bleed with a 2px brass rule. Pixel-sampled the mockup to confirm: panel spans x=43..901 of 941, matching the logo's left edge, and the junction goes navy → shadow → cream with no gold. Behaviour is fixed either way (D-064); this is purely the look. | Mega nav appearance | 2026-08-21 |
 
 ## Deferred
 

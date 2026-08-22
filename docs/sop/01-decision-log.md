@@ -951,3 +951,78 @@ comps do.
 Decision: one accent. Every rule, eyebrow and CTA stays brass. `--color-teal-800/900` remain in
 the palette for the icon chips they already serve and do not become a second accent. **No mid-
 sage token is added** — an unused token invites exactly the drift this decision closes.
+
+### D-064 · 2026-08-21 · The header owns the open mega panel; CSS `:hover` no longer decides
+Drew: *"the navigation is fundamentally broken, the animations aren't smooth, the enabled and
+hover states are buggy — here I can see two menus stacked."* Screenshot on `/why-arsan` showed
+two full-width panels painted on top of each other.
+
+**Root cause, measured before touching anything.** `visibility` was inside a
+`transition-[opacity,transform,visibility] duration-200`. `visibility` is not interpolatable:
+it holds its old value for the whole duration and flips at the end. Traversing the nav
+therefore left the outgoing panel *visible* while the incoming one was already up:
+
+```
+after hovering 'Why ARSAN':          ["Why ARSAN"]
+ +  0ms after moving to 'Insights':  ["Why ARSAN"]
+ + 40ms                              ["Insights","Why ARSAN"]   ← both
+ +150ms                              ["Insights","Why ARSAN"]
+ +210ms                              ["Insights"]
+```
+
+The deeper layer: with `group-hover` driving each panel independently, **nothing in the system
+knew which panel was open.** Two-open was representable, so timing was the only thing keeping
+it rare.
+
+**Options weighed.**
+1. *Patch* — drop `visibility` from the transition list. Kills this instance in one line. Does
+   not stop the next one: any close delay, any longer duration, any second hover source
+   re-creates the overlap, because the invariant still isn't expressed anywhere.
+2. *Architectural* — one `openKey` owned by the header, panels read `data-open`. Two-open
+   becomes unrepresentable rather than unlikely. Cost: the header becomes a client component
+   boundary, which it already was via `NavItem`.
+3. *No fix* — rejected; Drew hit it by hand on the first try.
+
+**Chose 2.** `src/components/layout/nav-menu.tsx` holds `{ openKey, swap }`; `NavItem` is now a
+plain `<li data-nav-key data-open>` with no handlers and no state.
+
+**Events are delegated to the `<header>`, not bound per item.** Per-item `pointerenter` only
+knows about the items — it has nothing to say about the logo, the locale switcher, the CTA or
+bare header row, so sliding off a nav item onto any of them left the panel hanging open with
+the pointer nowhere near it (a second bug, found while fixing the first). One `pointerover`
+resolves whatever is under the pointer to a nav key or to none, so the state follows the
+pointer exactly. `pointerleave` covers the way out: it fires only when the pointer leaves the
+element *and every DOM descendant*, and both the panels and the 24px strip of header padding
+above them are descendants — which is what the old full-width "bridge" element was working
+around.
+
+**Animation.** Opening from closed rises 4px over 200ms. Item-to-item sets `data-swap` on the
+header in the *same commit*, which zeroes the duration: the menu reads as one surface changing
+its contents instead of blinking through 200ms of empty air. Closing is immediate — a
+cross-fade between two full-width panels is the overlap wearing a nicer hat. `swap` travels
+with `openKey` in one state object because deriving it in an effect would paint the fade first.
+
+**Dismissal after a click** is now `dismissed.current = <key clicked>` instead of a boolean.
+The boolean version had to be released by a global `pointermove` listener that checked whether
+the pointer had left the item; with the key, moving to *any other* item releases it by itself —
+no listener, no timer, and no keyboard trap (the old version could suppress the menu
+permanently for a keyboard user, since nothing they could do produced a qualifying
+`pointermove`). Escape closes, and returns focus to the trigger **only if focus was already in
+the header** — a hover-opened panel must not yank the caret out of a form.
+
+**Enabled state, from `refs/dirA-meganav-all-panels.png`.** The open item carries a brass
+underline in the reference and carried nothing here — a full-width panel dropped open with no
+indication of which item opened it. `NavLink` now underlines on `group-data-[open]` as well as
+`aria-current`. Panel rows gained a warm hover ground (`hover:bg-cream-50`, `-mx-3 px-3`) so
+the hit target is visible, not just the label colour.
+
+**Guarded by** `e2e/mega-menu-travel.spec.ts`, rewritten: it samples every 30ms across 240ms of
+each traverse (the old overlap opened at ~40ms and cleared at ~210ms, so a single sample at
+either end would have called it clean), and covers the logo/CTA slide-off, Escape, and tab-out.
+Verified the guard bites by reverting the component to `group-hover` + transitioned
+`visibility`: `forClients,whyArsan open ~30ms into forClients`.
+
+**Still divergent from the reference, deliberately not changed here:** the mockup draws the
+panel as a card inset to the header's content column with a shadow and *no* brass top rule;
+the build renders it full-bleed with a 2px brass rule. That is a look change Drew did not ask
+for in this pass — logged as Q-20.

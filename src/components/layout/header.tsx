@@ -7,6 +7,7 @@ import { MegaPanel } from "./mega-panel";
 import { MobileNav } from "./mobile-nav";
 import { NavItem } from "./nav-item";
 import { NavLink } from "./nav-link";
+import { NavMenu } from "./nav-menu";
 
 /**
  * Direction A header. `relative` is load-bearing: mega panels are
@@ -17,7 +18,7 @@ export function Header() {
   const t = useTranslations("nav");
 
   return (
-    <header className="site-header z-50 bg-navy-900">
+    <NavMenu className="site-header z-50 bg-navy-900">
       <a
         href="#main"
         className="eyebrow absolute left-4 top-2 z-50 -translate-y-16 bg-brass-500 px-4 py-2 text-navy-950 transition-transform focus-visible:translate-y-0 focus-visible:outline-2 focus-visible:outline-brass-300 motion-reduce:transition-none"
@@ -31,7 +32,7 @@ export function Header() {
         <nav aria-label={t("ariaMain")} className="hidden xl:block">
           <ul className="flex items-center gap-5 xl:gap-6">
             {NAV_SECTIONS.map((section) => (
-              <NavItem key={section.key}>
+              <NavItem key={section.key} section={section}>
                 <NavLink href={section.href}>
                   {t(`${section.key}.label`)}
                 </NavLink>
@@ -52,6 +53,6 @@ export function Header() {
           <MobileNav />
         </div>
       </div>
-    </header>
+    </NavMenu>
   );
 }
