@@ -1026,3 +1026,40 @@ Verified the guard bites by reverting the component to `group-hover` + transitio
 panel as a card inset to the header's content column with a shadow and *no* brass top rule;
 the build renders it full-bleed with a 2px brass rule. That is a look change Drew did not ask
 for in this pass — logged as Q-20.
+
+### D-065 · 2026-08-21 · Leadership portraits are generated placeholders, gated by a script
+Drew: *"can you generate AI employees for the team, 4:5 aspect ratio, so it looks just like
+this"* — `refs/dirA-home-v2.png`, the leadership row. Then, when told what the risk was:
+*"that's okay, use the real names for now."* Names stay; this records what that means.
+
+**What was flagged before building.** Armida Sánchez, Marianna Durán and Manuel Chavez are real
+people at a real firm. A synthetic face under a real partner's name is not a styling choice —
+a prospective client reads it as the person who would run their search. Drew's call to proceed
+is recorded; the guardrail is what makes "for now" mean something.
+
+**Three portraits**, KIE `nano-banana-pro`, one shared studio recipe (85mm at f/2.8, warm
+off-white seamless, soft key camera-left, Portra 400 grade) so the three read as one shoot —
+three different lighting setups is what makes an AI headshot set look assembled. Generated at
+1856×2304, cropped to 4:5, 86–145KB each. Two were re-cropped after the first render: head size
+read inconsistently across the row (Marianna's had ~12% headroom against Manuel's 5%), which no
+prompt change fixes — it is a crop.
+
+**Named `placeholder-portrait-<role>.jpg`, not `<person>.jpg`.** The filename is the one place
+the artifact can say what it is without a person's name attached to a synthetic face.
+
+**`scripts/launch-gate.mjs` / `bun run check:launch`** fails while any `placeholder-*` asset is
+still referenced from `src/` or `messages/`. Deliberately not wired into `build`: placeholders
+are correct during development and only wrong at cutover, and a gate that fires on every
+`next dev` is a gate people learn to ignore. Logged as **Q-21**.
+
+**`alt=""` on the portraits.** The name is the heading immediately beside the image, so an alt
+would make a screen reader say it twice — and an alt asserting whose face it is is the one
+claim these files cannot make.
+
+**Layout.** Three across only from `lg`. The container caps at 72rem, so a column is ~325px at
+any window width; at `md` that is ~200px, and a portrait plus "Partner, Mexico Practice" plus a
+bio does not go into 200px without breaking the body to two words a line (verified at 834px
+before the change). Below `lg` the rows stack full width with the text capped at 38ch. The title
+line reserves two lines from `lg` up so a wrapped title doesn't push its bio below the others.
+Hairlines between columns come from a `-mx-6` grid with equal `px-6` per column, which keeps the
+first column aligned with the heading above it.

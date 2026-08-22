@@ -50,7 +50,7 @@ export default function HomePage({
       <ValueProps />
       <QuoteBand namespace="home.quote" />
       <Stories />
-      <TeamRow />
+      <TeamRow withViewAll />
       <ArticleCards namespace="insightsRow" withViewAll />
       <CtaBand />
     </main>

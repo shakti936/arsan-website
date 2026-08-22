@@ -459,6 +459,7 @@
   },
   "team": {
     "heading": "Gente senior. Trabajo senior.",
+    "viewAll": "Conoce a nuestro liderazgo",
     "members": [
       {
         "name": "Armida Sánchez",
@@ -584,7 +585,12 @@
     ]
   },
   "candidateTrust": {
-    "items": ["Confidencial", "Selectivo", "Personal", "Enfocado en el Ajuste"]
+    "items": [
+      "Confidencial",
+      "Selectivo",
+      "Personal",
+      "Enfocado en el Ajuste"
+    ]
   },
   "candidateHelp": {
     "heading": "¿Cómo puede ayudar ARSAN?",
