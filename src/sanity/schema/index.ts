@@ -6,6 +6,7 @@ import { testimonial } from "./documents/testimonial";
 import { cta } from "./objects/cta";
 import { destination } from "./objects/destination";
 import {
+  localizedArticleBody,
   localizedHeading,
   localizedRichText,
   localizedString,
@@ -40,6 +41,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   localizedHeading,
   localizedText,
   localizedRichText,
+  localizedArticleBody,
   destination,
   cta,
   media,

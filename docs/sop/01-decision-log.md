@@ -1784,3 +1784,49 @@ not routine content, and it would delete a build-time parity guarantee to gain n
 *Also rejected:* document-level i18n (`@sanity/document-internationalization`) — two linked
 documents per article is a second thing to forget to create, and the existing content model
 is already field-level.
+
+### D-091 · 2026-08-22 · The dataset is seeded from `src/content/**`
+Drew: *"yes seed production, go ahead."* Ten documents — 5 articles, 2 case studies, 3
+testimonials — plus 7 uploaded images, via `scripts/seed-sanity.ts` and
+`sanity datasets import`.
+
+**Import, not the JS client**, because the CLI is already authenticated: no write token had
+to be minted, stored or leaked to seed a dataset once. **Document ids derive from slugs**
+(`article-<slug>`), so the script is idempotent — verified by running it twice and getting
+the same ten documents and seven assets back, with the second run reusing assets in 1s
+rather than re-uploading in 3.4s. That matters because the first run is never the last:
+the point of seeding is to find what the schema got wrong.
+
+**And it found something immediately.** `localizedRichText` allowed `h3` and not `h2` —
+correct for a page section, which already owns the H2 above the field, and wrong for an
+article, which is a document whose section headings genuinely are H2s. Sharing one type
+would have flattened every article's outline to H1 → H3. Split into `localizedRichText`
+(page sections) and `localizedArticleBody` (articles, H2 allowed). This is exactly the
+class of mistake that only shows up against real content, and it cost a schema edit
+instead of a re-migration because nothing reads from Sanity yet.
+
+**Lossy in one place, deliberately.** `ArticleSection.steps` is a numbered spine of
+title+body pairs and `checks` is a lead+body list. Both become Portable Text lists with the
+lead in bold and an em dash before the body (a plain space where the lead already ends in a
+colon). Every word survives; the bespoke structure does not. A generic body field cannot
+hold a bespoke one, and adding schema for a shape four articles use would be rebuilding the
+old model inside the new one. If the rendered spine turns out to matter, that is a
+`stepsSection` in the catalogue, not a special case in the body.
+
+**All three testimonials seeded `approved: false`** — every one was reproduced from a
+Direction A comp and no client has approved the words. The GROQ filters on `approved`, so
+they are visible in the Studio and nowhere else. The `@unverified` markers stay in
+`src/content/**` until the read path moves, so `check:launch` still fails on them: two
+locks, not a swap.
+
+Also added `sanity.cli.ts`, which the CLI needs for `documents query`. It reads the same
+two env vars as the app rather than hardcoding the ids the way `sanity init` would —
+one source, and the CLI loads `.env.local` itself.
+
+*Not seeded:* page documents. Page marketing copy lives in `messages/*.json` under
+namespaces that do not map onto the section catalogue one-for-one, and inventing that
+mapping before any page reads from Sanity would be guessing twice. Batch 2.
+
+*Environment note:* `cdn.sanity.io` is not on the sandbox network allowlist, so a re-import
+fails at the asset-reuse step with `getaddrinfo ENOTFOUND`. The first import works because
+uploads go via `api.sanity.io`. Not a code problem — run re-imports with network access.

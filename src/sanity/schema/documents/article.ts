@@ -90,7 +90,7 @@ export const article = defineType({
     defineField({
       name: "body",
       title: "Article",
-      type: "localizedRichText",
+      type: "localizedArticleBody",
       group: "content",
       validation: (rule) => rule.required(),
     }),

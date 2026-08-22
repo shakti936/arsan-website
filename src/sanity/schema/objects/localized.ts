@@ -86,11 +86,8 @@ export const localizedText = defineType({
  * What is left is what prose actually needs: subheadings, emphasis, lists and
  * links. An editor cannot reach the design system through this field.
  */
-export const localizedRichText = defineType({
-  name: "localizedRichText",
-  title: "Body copy (EN / ES)",
-  type: "object",
-  fields: LOCALES.map(({ name, title }) =>
+function richTextFields(styles: { title: string; value: string }[]) {
+  return LOCALES.map(({ name, title }) =>
     defineField({
       name,
       title,
@@ -98,10 +95,7 @@ export const localizedRichText = defineType({
       of: [
         {
           type: "block",
-          styles: [
-            { title: "Body", value: "normal" },
-            { title: "Subheading", value: "h3" },
-          ],
+          styles,
           lists: [
             { title: "Bulleted", value: "bullet" },
             { title: "Numbered", value: "number" },
@@ -130,7 +124,45 @@ export const localizedRichText = defineType({
       ],
       validation: (rule) => (name === "en" ? rule.required() : rule),
     }),
-  ),
+  );
+}
+
+/**
+ * Body copy INSIDE a page section. Subheadings only.
+ *
+ * The section already owns the H2 above this field, so an H2 typed in here
+ * would render at section-heading size mid-paragraph and put a second sibling
+ * in the outline.
+ */
+export const localizedRichText = defineType({
+  name: "localizedRichText",
+  title: "Body copy (EN / ES)",
+  type: "object",
+  fields: richTextFields([
+    { title: "Body", value: "normal" },
+    { title: "Subheading", value: "h3" },
+  ]),
+});
+
+/**
+ * The body of an ARTICLE, which is a document rather than a band on a page.
+ *
+ * Its section headings genuinely are H2s — the H1 is the article title and
+ * nothing else competes for that level — so this is the one body field where
+ * H2 belongs. Sharing `localizedRichText` here looked tidy right up until the
+ * first real article was migrated and its four section headings had nowhere
+ * above H3 to go, which would have flattened every article's outline to
+ * H1 → H3. Two types, because they are two different documents.
+ */
+export const localizedArticleBody = defineType({
+  name: "localizedArticleBody",
+  title: "Article body (EN / ES)",
+  type: "object",
+  fields: richTextFields([
+    { title: "Body", value: "normal" },
+    { title: "Section heading", value: "h2" },
+    { title: "Subheading", value: "h3" },
+  ]),
 });
 
 /** Every locale a document must carry before it is allowed to publish. */

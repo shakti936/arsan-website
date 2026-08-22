@@ -14,7 +14,8 @@
     "prebuild": "node scripts/validate-messages.mjs && node scripts/validate-design-system.mjs",
     "test:e2e": "playwright test",
     "validate:design": "node scripts/validate-design-system.mjs",
-    "validate:schema": "sanity schema validate --workspace arsan"
+    "validate:schema": "sanity schema validate --workspace arsan",
+    "seed:sanity": "bun scripts/seed-sanity.ts"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",

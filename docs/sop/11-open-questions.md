@@ -132,12 +132,15 @@ LinkedIn presence in its footer is conspicuous, and a phone number is the channe
 Mexico-side client is most likely to use. Needs the real handles and the real number —
 inventing either would be a fabricated claim, so they are not stubbed. **Owner:** Drew.
 
-### Q-30 · Non-blocking · Which pages move to Sanity first, and what happens to `src/content/`
+### Q-30 · Partly answered 2026-08-22 · What moves to Sanity, and what happens to `src/content/`
 D-090 put the boundary at page content vs UI chrome, but not the ORDER. The candidates,
 roughly by how often they change:
 
-1. **Articles** — publishing one is the routine content change, and it is self-contained.
-2. **Testimonials** — small, and it unblocks the `approved` gate on Q-23.
+1. ~~**Articles**~~ — **seeded 2026-08-22** (D-091). All five are in the dataset with
+   both locales, Portable Text bodies and uploaded images.
+2. ~~**Testimonials**~~ — **seeded**, all three with `approved: false`. The `@unverified`
+   markers stay in `src/content/**` until the read path moves, so `check:launch` still
+   fails on them; the CMS gate is now the second lock, not a replacement.
 3. **Page marketing copy** — the biggest win for Drew's "no Claude Code for routine
    changes", and the most work: every page becomes a section renderer.
 4. **Case studies** — the richest structure (six narrative bands), and the schema for them
