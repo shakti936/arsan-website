@@ -1606,3 +1606,56 @@ lines. Two columns is the right shape when the titles are phrases.
 
 One copy bug caught in the pass: the intro said "Three things decide whether a search lands"
 above four of them.
+
+### D-088 · 2026-08-21 · Every clickable thing audited, and the audit made a test
+Drew: *"make sure all links go somewhere, everything that's clickable should go to the
+right place or closest corresponding for now."*
+
+**A crawler, not a list.** `e2e/links.spec.ts` starts at both locale roots and follows
+every internal `<a href>` it finds. That reaches the article, case-study and opening
+detail pages without naming a single slug — which matters, because a seed list only ever
+covers the pages someone remembered to add. It checks three things a green build cannot:
+the URL resolves, it is not the 404 page wearing a 200, and every `#anchor` names an
+element that exists on the page it lands on. The third is the one that rots silently:
+renaming a section id breaks a mega-nav row with no error anywhere, in either language.
+The test also asserts it *descended* into each family of detail page — a crawler that
+quietly stops one hop short still reports all-green.
+
+**Nothing was broken.** No 404s, no missing anchors, no `href="#"`, no button that looks
+like a CTA and does nothing. That was not the interesting finding.
+
+**The interesting finding was links that resolve and still go nowhere.** Five rows of the
+Insights mega panel landed on a bare `/insights`; three Results rows landed on `/results`.
+A row that repeats its neighbour resolves fine, renders fine, and wastes the click. Fixed
+in three places:
+
+- **The insights category filter became an address.** It was `useState`. Now `?category=`
+  is read on the server and the tabs are `<Link>`s. A single-select category is what a
+  link is for: every view has an address, the back button works without being taught, and
+  the HTML of every filtered view is complete — on the one page whose job is to be indexed.
+  The job board keeps client state, because multi-select facets plus a search box would
+  mean a navigation per keystroke. Reading `searchParams` makes /insights dynamic; nothing
+  is fetched to render it, so that costs a render, not a round trip, and `generateMetadata`
+  already canonicalises every `?category=` view to `/insights` so they don't compete.
+- **Two bands got ids** — `#case-studies` on the case-study grid, `#impact` on the impact
+  strip — so the Results panel's three rows land on three different parts of the page.
+- **Feature cards now go where their CTA says.** "View the Case Study" pointed at the
+  results index and "Read the Article" at the insights index, while each card's own title
+  and body described one specific piece. Both now point at that piece. "Learn About Our
+  Process" pointed at the submit-profile form; it points at `#experience`.
+
+**The rule is enforced at build time, not by the test.** `scripts/validate-messages.mjs`
+already parses `nav.ts`; it now also fails when two rows in a panel share an href, query
+string included. Verified by breaking it on purpose — it reported the exact pair. This is
+where the check belongs: it is a data invariant about one file, and it runs on every build
+rather than only when someone runs Playwright.
+
+*Considered and rejected:* wrapping the index in `<Suspense>` to keep the client filter.
+It builds, but it pushes the whole grid to client render and ships an empty shell to a
+crawler. Also rejected: `/insights/category/[key]` as real static routes — better canonical
+URLs, but twelve more prerendered pages and a second route tree for five articles.
+
+*Left alone:* "Reports & Guides" has no reports behind it and now points at the leadership
+articles as the closest real thing (Q-26). The area-of-impact strip stays labels rather
+than six links to the same page (Q-28). The site has no external links at all — no
+LinkedIn, no `mailto:`, no `tel:` — which is an absence to fill, not a link to fix (Q-29).

@@ -6,10 +6,11 @@ import { Reveal } from "@/components/ui/reveal";
 
 /** The four routes out, in the comp's order. */
 const WAYS: { icon: IconName; href: string }[] = [
-  { icon: "personStar", href: "/results" },
-  { icon: "chat", href: "/results" },
+  { icon: "personStar", href: "/results#case-studies" },
+  // the one piece on the site that documents a measured client outcome
+  { icon: "chat", href: "/insights/from-vacant-to-victorious" },
   { icon: "document", href: "/results#testimonials" },
-  { icon: "factory", href: "/insights" },
+  { icon: "factory", href: "/results#impact" },
 ];
 
 /**
@@ -17,9 +18,9 @@ const WAYS: { icon: IconName; href: string }[] = [
  * refs/dirA-results-page.png, in place of the site's usual teal CTA band,
  * which this comp does not have.
  *
- * Three of the four destinations do not exist yet as separate pages, so they
- * point at the nearest real one rather than at a 404. Q-28 covers splitting
- * them out.
+ * None of the four has a page of its own yet, so each points at the band or
+ * article that actually holds what it promises rather than back at this page.
+ * Q-28 covers splitting them out.
  */
 export function MoreWays() {
   const t = useTranslations("resultsPage.more");

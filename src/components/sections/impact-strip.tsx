@@ -19,7 +19,10 @@ export function ImpactStrip() {
   const t = useTranslations("resultsPage.impact");
 
   return (
-    <section className="border-b border-cream-100 bg-cream-50 py-8">
+    <section
+      id="impact"
+      className="scroll-mt-24 border-b border-cream-100 bg-cream-50 py-8"
+    >
       <Container>
         <p className="eyebrow text-navy-900">{t("heading")}</p>
         <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-6">

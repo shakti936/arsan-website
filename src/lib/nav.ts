@@ -4,7 +4,17 @@ import type { IconName } from "@/components/ui/icons";
  * Navigation model. All labels/descriptions resolve through the "nav"
  * message namespace by key — no user-facing strings here.
  *
- * Every href resolves to a page that exists. The candidate-portal items
+ * Every href resolves to a page that exists, and no two rows in a panel land
+ * on the same view — a row that repeats its neighbour is a row that wastes a
+ * click. `scripts/validate-messages.mjs` enforces that at build time. Where a
+ * label has no page of its own yet (Reports & Guides), it points at the closest
+ * real thing and is logged in Q-26.
+ *
+ * A feature card's href has to match what its CTA promises: "View the Case
+ * Study" and "Read the Article" both used to land on an index, which is the
+ * card describing one thing and delivering another.
+ *
+ * The candidate-portal items
  * (opportunities, profile, talent network) ship as real routes ahead of the
  * job board (D-040) — opportunities carries an honest empty state rather
  * than invented listings.
@@ -74,11 +84,11 @@ export const NAV_SECTIONS: NavSection[] = [
         href: "/for-candidates/talent-network",
         icon: "users",
       },
-      { key: "resources", href: "/insights", icon: "book" },
+      { key: "resources", href: "/insights?category=hiring", icon: "book" },
     ],
     feature: {
       icon: "shieldLock",
-      href: "/for-candidates/submit-profile",
+      href: "/for-candidates#experience",
       cta: "link",
     },
   },
@@ -86,13 +96,15 @@ export const NAV_SECTIONS: NavSection[] = [
     key: "results",
     href: "/results",
     children: [
-      { key: "caseStudies", href: "/results", icon: "search" },
-      { key: "outcomes", href: "/results", icon: "chart" },
+      { key: "caseStudies", href: "/results#case-studies", icon: "search" },
+      { key: "outcomes", href: "/results#impact", icon: "chart" },
       { key: "testimonials", href: "/results#testimonials", icon: "chat" },
     ],
     feature: {
       icon: "factory",
-      href: "/results",
+      // the card's own copy is that case study — "View the Case Study" landing
+      // on the index is the card describing one thing and delivering another
+      href: "/results/mexico-plant-leadership",
       cta: "link",
       image: "/images/hero-plant-floor.jpg",
     },
@@ -102,13 +114,23 @@ export const NAV_SECTIONS: NavSection[] = [
     href: "/insights",
     children: [
       { key: "latest", href: "/insights", icon: "lightbulb" },
-      { key: "manufacturing", href: "/insights", icon: "factory" },
-      { key: "mexico", href: "/insights", icon: "globe" },
-      { key: "reports", href: "/insights", icon: "document" },
+      {
+        key: "manufacturing",
+        href: "/insights?category=trends",
+        icon: "factory",
+      },
+      { key: "mexico", href: "/insights?category=market", icon: "globe" },
+      // "Research and resources for decision-makers" — the leadership pieces
+      // are the closest thing the library holds until real reports exist (Q-26)
+      {
+        key: "reports",
+        href: "/insights?category=leadership",
+        icon: "document",
+      },
     ],
     feature: {
       icon: "chart",
-      href: "/insights",
+      href: "/insights/the-new-manufacturing-leader",
       cta: "link",
       image: "/images/nav-automation.jpg",
     },

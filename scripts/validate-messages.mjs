@@ -5,6 +5,8 @@
  *   1. nav.ts references a message key that no catalog defines
  *      (next-intl falls back silently in prod, throws in dev)
  *   2. locale catalogs drift apart — es missing a key en has, or vice versa
+ *   3. two rows in the same mega panel point at the same destination
+ *      (resolves fine, renders fine, wastes the click)
  */
 import { readFileSync } from "node:fs";
 
@@ -27,6 +29,7 @@ const flatten = (obj, prefix = "") =>
   );
 
 const errors = [];
+const duplicateHrefs = [];
 
 // 1. Every key nav.ts asks for must exist in every locale
 const nav = readFileSync("src/lib/nav.ts", "utf8");
@@ -35,7 +38,25 @@ const sectionRe =
 const required = [];
 for (const [, section, childBlock, hasFeature] of nav.matchAll(sectionRe)) {
   required.push(`nav.${section}.label`, `nav.${section}.exploreAll`);
-  for (const [, child] of childBlock.matchAll(/key:\s*"(\w+)"/g)) {
+  const rows = [...childBlock.matchAll(/key:\s*"(\w+)",\s*href:\s*"([^"]+)"/g)];
+  const keys = [...childBlock.matchAll(/key:\s*"(\w+)"/g)];
+  if (rows.length !== keys.length) {
+    errors.push(
+      `nav.${section}: parsed ${keys.length} rows but only ${rows.length} hrefs — the parser drifted from the file shape`,
+    );
+  }
+  // 3. Two rows landing on the same view is a row that wastes a click. Query
+  // strings count: /insights and /insights?category=trends are two views.
+  const seen = new Map();
+  for (const [, child, href] of rows) {
+    const first = seen.get(href);
+    if (first)
+      duplicateHrefs.push(
+        `nav.${section}: "${first}" and "${child}" both point at ${href}`,
+      );
+    else seen.set(href, child);
+  }
+  for (const [, child] of keys) {
     required.push(
       `nav.${section}.children.${child}.label`,
       `nav.${section}.children.${child}.description`,
@@ -77,6 +98,8 @@ for (const locale of rest) {
   }
 }
 
+errors.push(...duplicateHrefs);
+
 if (errors.length > 0) {
   console.error(`\n✗ message validation failed (${errors.length}):\n`);
   for (const e of errors) console.error(`  ${e}`);
@@ -84,5 +107,5 @@ if (errors.length > 0) {
   process.exit(1);
 }
 console.log(
-  `✓ messages valid — ${required.length} nav keys, ${baseKeys.size} total, ${LOCALES.length} locales in sync`,
+  `✓ messages valid — ${required.length} nav keys, ${baseKeys.size} total, ${LOCALES.length} locales in sync, no duplicate nav destinations`,
 );

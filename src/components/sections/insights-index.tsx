@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
-import { useState } from "react";
 import { Container } from "@/components/ui/container";
 import { type IconName, Icons } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
@@ -39,19 +36,37 @@ const TABS: { key: Tab; icon: IconName }[] = [
  * grid — a filter and the thing it filters that talk through a parent are two
  * places to get the same state wrong.
  *
- * Filtering is client-side over the whole list, as on the job board and for the
- * same reason: five articles is a few KB and the alternative is a navigation
- * per click. It moves behind a query when the archive is large enough to
- * paginate.
+ * **The tabs are links and the filtering is server-side**, unlike the job
+ * board's facets. A single-select category is what a link is for: every view
+ * has an address, so four rows of the Insights mega panel can deep-link to
+ * their own filtered page instead of all landing on a bare `/insights`; the
+ * back button works without being taught; and the HTML of every view is
+ * complete, which matters on the one page whose job is to be indexed. The
+ * board keeps client state because multi-select facets and a search box would
+ * mean a navigation per keystroke.
  *
  * **The featured layout only appears unfiltered.** One large card beside four
  * small ones says "start here"; the same shape applied to a category with two
  * articles in it says nothing, so a filtered view is a plain grid.
  */
-export function InsightsIndex({ cards }: { cards: IndexCard[] }) {
+/** `?category=` if it names a real tab, otherwise everything. */
+export function resolveTab(requested: string | undefined): Tab {
+  return TABS.some((entry) => entry.key === requested)
+    ? (requested as Tab)
+    : "all";
+}
+
+export function InsightsIndex({
+  cards,
+  tab,
+}: {
+  cards: IndexCard[];
+  tab: Tab;
+}) {
   const t = useTranslations("insightsIndex");
   const tc = useTranslations("articleCategories");
-  const [tab, setTab] = useState<Tab>("all");
+  const hrefFor = (key: Tab) =>
+    key === "all" ? "/insights" : `/insights?category=${key}`;
 
   // a tab with nothing behind it is a dead control
   const available = TABS.filter(
@@ -75,10 +90,9 @@ export function InsightsIndex({ cards }: { cards: IndexCard[] }) {
               const active = key === tab;
               return (
                 <li key={key} className="shrink-0">
-                  <button
-                    type="button"
-                    onClick={() => setTab(key)}
-                    aria-current={active ? "true" : undefined}
+                  <Link
+                    href={hrefFor(key)}
+                    aria-current={active ? "page" : undefined}
                     className={cn(
                       "flex min-w-32 flex-col items-center gap-2 border-b-2 px-6 py-6 text-sm transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brass-500 motion-reduce:transition-none",
                       active
@@ -88,7 +102,7 @@ export function InsightsIndex({ cards }: { cards: IndexCard[] }) {
                   >
                     <Icon className="h-7 w-7" />
                     {key === "all" ? t("all") : tc(key)}
-                  </button>
+                  </Link>
                 </li>
               );
             })}
@@ -111,14 +125,13 @@ export function InsightsIndex({ cards }: { cards: IndexCard[] }) {
             {/* only when filtered: on the unfiltered view this would offer a
                 reader what they are already looking at */}
             {tab !== "all" && (
-              <button
-                type="button"
-                onClick={() => setTab("all")}
+              <Link
+                href="/insights"
                 className="eyebrow flex items-center gap-2 py-3 text-brass-600 transition-colors hover:text-navy-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass-500 motion-reduce:transition-none"
               >
                 {t("viewAll")}
                 <span aria-hidden="true">&rarr;</span>
-              </button>
+              </Link>
             )}
           </div>
 

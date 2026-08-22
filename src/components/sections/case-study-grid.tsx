@@ -20,7 +20,7 @@ export function CaseStudyGrid({ locale }: { locale: string }) {
   const t = useTranslations("resultsPage.caseStudies");
 
   return (
-    <section className="bg-cream-50 section-y">
+    <section id="case-studies" className="scroll-mt-24 bg-cream-50 section-y">
       <Container>
         <div className="text-center">
           <h2 className="font-display text-display-md font-semibold text-navy-900 text-balance">

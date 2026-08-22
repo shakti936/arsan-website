@@ -108,14 +108,26 @@ there.
 If the flat-navy treatment is what he wants, it is a small change: drop `photo` from that
 one `PageHero` call and relax the test to exempt /results. **Owner:** Drew.
 
-### Q-28 · Non-blocking · Four results destinations that do not exist
+### Q-28 · Partly answered 2026-08-21 · Four results destinations that do not exist
 "More ways we deliver results" offers Success Stories, Client Outcomes, Testimonials and
-Results by Industry. Only Testimonials resolves to something real (the quote band on this
-page). The other three point at /results or /insights rather than at a 404.
+Results by Industry. Only Testimonials resolved to something real (the quote band on this
+page). The other three pointed at /results or /insights rather than at a 404.
 
-The area-of-impact strip has the same problem in a different shape: six practice areas that
-each want a filtered view of the results, and there is nothing to filter. It renders as
-labels, not links, rather than six links that all land on the same page.
+**Resolved for now (D-088):** all four land somewhere distinct and real —
+`#case-studies`, an article, `#testimonials`, `#impact`. Two of those anchors are new
+ids on bands that already existed.
 
-Both resolve the same way — once /results has an index with more than two studies in it.
-**Owner:** Drew.
+**Still open:** the area-of-impact strip is six practice areas that each want a filtered
+view of the results, and there is nothing to filter. It renders as labels, not links —
+which is honest, but it is six dead-looking affordances. Resolves once /results has an
+index with more than two studies in it. **Owner:** Drew.
+
+### Q-29 · Non-blocking · The site has no external links at all
+A crawl of both locales (`e2e/links.spec.ts`) found exactly one non-internal href on the
+whole site: the `#main` skip link. There is no LinkedIn, no `mailto:`, no `tel:` — the
+contact page is a form and nothing else, and the footer carries no company profile link.
+
+Nothing is broken; this is an absence, not a defect. But an executive search firm with no
+LinkedIn presence in its footer is conspicuous, and a phone number is the channel a
+Mexico-side client is most likely to use. Needs the real handles and the real number —
+inventing either would be a fabricated claim, so they are not stubbed. **Owner:** Drew.
