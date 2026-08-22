@@ -12,7 +12,7 @@ export function Footer() {
       <div className="mx-auto w-full max-w-6xl px-6 py-14 sm:px-10">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_2fr]">
           <div>
-            <Logo width={200} />
+            <Logo width={200} withSubtitle={false} />
             <p className="eyebrow mt-5 text-cream-100/70">{tf("regions")}</p>
           </div>
 
