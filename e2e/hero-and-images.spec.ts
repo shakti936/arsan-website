@@ -153,3 +153,29 @@ test("every page hero carries a photograph, not just navy", async ({
   }
   expect(seen).toHaveLength(SUBPAGES.length);
 });
+
+/**
+ * The leadership portraits are 4:5 by design. They stopped being 4:5 without
+ * anyone touching the aspect class: as a stretched flex child the line hands
+ * the wrapper a definite height, and `aspect-ratio` never gets to set one, so
+ * each portrait grew to whatever the bio beside it needed. Ratio is the thing
+ * to assert — the class being present proves nothing.
+ */
+test.describe("leadership portraits keep their 4:5 crop", () => {
+  for (const width of [1440, 1024, 834, 390]) {
+    test(`at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 1000 });
+      await page.goto("/");
+      const ratios = await page
+        .locator("section:has-text('Senior people') img")
+        .evaluateAll((els) =>
+          els.map((el) => {
+            const r = el.getBoundingClientRect();
+            return r.width / r.height;
+          }),
+        );
+      expect(ratios).toHaveLength(3);
+      for (const ratio of ratios) expect(ratio).toBeCloseTo(0.8, 2);
+    });
+  }
+});

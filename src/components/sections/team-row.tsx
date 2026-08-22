@@ -59,9 +59,12 @@ export function TeamRow({
                   i > 0 && "lg:border-l lg:border-cream-100",
                 )}
               >
-                {/* larger while the rows are stacked and have the width to
-                    spare; back to compact once three share a container */}
-                <div className="relative aspect-4/5 w-28 shrink-0 overflow-hidden bg-cream-100 sm:w-32 lg:w-28">
+                {/* `self-start` is load-bearing: as a stretched flex child the
+                    line hands this a definite height and `aspect-4/5` never
+                    gets to set one, so the portrait grew to whatever the bio
+                    beside it needed. Width scales up while the rows are
+                    stacked and have the room, back to compact at three-up. */}
+                <div className="relative aspect-4/5 w-28 shrink-0 self-start overflow-hidden bg-cream-100 sm:w-32 lg:w-28">
                   <Image
                     src={`/images/${photo}.jpg`}
                     alt=""
