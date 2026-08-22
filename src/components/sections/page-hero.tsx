@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { HeroBackdrop } from "@/components/ui/hero-backdrop";
+import { HeroTitle } from "@/components/ui/hero-title";
 
 type HeroCta = {
   label: string;
@@ -28,12 +29,15 @@ type HeroCta = {
  */
 export function PageHero({
   title,
+  emphasis,
   intro,
   photo,
   primary,
   secondary,
 }: {
   title: string;
+  /** A phrase inside `title` to set in brass italic, as the comps do. */
+  emphasis?: string;
   intro?: string;
   /** basename in public/images */
   photo: string;
@@ -55,9 +59,11 @@ export function PageHero({
         {/* the copy column has to stop before the scrim starts clearing at 55%
             of the container, or the intro lands on lit parts of the photograph */}
         <div className="flex max-w-[32rem] flex-col items-start">
-          <h1 className="font-display text-display-lg font-semibold text-white-warm text-balance">
-            {title}
-          </h1>
+          <HeroTitle
+            text={title}
+            emphasis={emphasis}
+            className="text-display-lg"
+          />
           <div aria-hidden="true" className="mt-6 h-0.5 w-10 bg-brass-500" />
           {intro && (
             <p className="mt-6 max-w-[40ch] text-lg text-cream-100">{intro}</p>

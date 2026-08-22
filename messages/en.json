@@ -245,8 +245,11 @@
   },
   "subpage": {
     "forClients": {
-      "title": "How can ARSAN help?",
+      "title": "The people decisions behind what comes next.",
+      "titleEmphasis": "people decisions",
+      "metaTitle": "Executive Search & Talent Advisory for Manufacturers",
       "intro": "Whether you are hiring a critical leader, building an operation in Mexico or navigating organizational change, ARSAN brings senior judgment and manufacturing context to the decisions that matter.",
+      "heroCtaPrimary": "Discuss Your Challenge",
       "cards": [
         {
           "title": "Executive & Professional Search",

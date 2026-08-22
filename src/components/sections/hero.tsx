@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/button-link";
 import { HeroBackdrop } from "@/components/ui/hero-backdrop";
+import { HeroTitle } from "@/components/ui/hero-title";
 
 /**
  * Direction A hero (refs/dirA-home-v2.png): one full-bleed photograph across
@@ -20,13 +21,11 @@ export function Hero({ namespace }: { namespace: string }) {
 
       <div className="relative mx-auto w-full max-w-6xl section-y px-6 sm:px-10">
         <div className="flex max-w-[32rem] flex-col items-start justify-center">
-          <h1 className="font-display text-display-xl font-semibold text-white-warm text-balance">
-            {t("headlineLead")}{" "}
-            <em className="font-medium text-brass-400">
-              {t("headlineEmphasis")}
-            </em>{" "}
-            {t("headlineTail")}
-          </h1>
+          <HeroTitle
+            text={`${t("headlineLead")} ${t("headlineEmphasis")} ${t("headlineTail")}`}
+            emphasis={t("headlineEmphasis")}
+            className="text-display-xl"
+          />
           <div aria-hidden="true" className="mt-6 h-0.5 w-10 bg-brass-500" />
           <p className="mt-6 max-w-[40ch] text-lg text-cream-100">
             {t("subhead")}

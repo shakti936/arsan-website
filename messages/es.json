@@ -245,8 +245,11 @@
   },
   "subpage": {
     "forClients": {
-      "title": "¿Cómo puede ayudar ARSAN?",
+      "title": "Las decisiones de talento detrás de lo que sigue.",
+      "titleEmphasis": "decisiones de talento",
+      "metaTitle": "Búsqueda de ejecutivos y asesoría de talento para manufactura",
       "intro": "Ya sea que esté contratando a un líder clave, construyendo una operación en México o navegando un cambio organizacional, ARSAN aporta criterio senior y contexto de manufactura a las decisiones que importan.",
+      "heroCtaPrimary": "Hablemos de su Reto",
       "cards": [
         {
           "title": "Búsqueda de Ejecutivos y Profesionales",

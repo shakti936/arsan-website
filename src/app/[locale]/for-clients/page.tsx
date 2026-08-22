@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return pageMetadata({
     locale,
     path: "/for-clients",
-    title: t("title"),
+    title: t("metaTitle"),
     description: t("intro"),
   });
 }
@@ -31,13 +31,18 @@ export default async function Page({ params }: Params) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("subpage.forClients");
+  const tn = await getTranslations("nav");
 
   return (
     <main id="main">
       <PageHero
         title={t("title")}
+        emphasis={t("titleEmphasis")}
         intro={t("intro")}
         photo="hero-plant-floor"
+        // the comp's own buttons, not the shared defaults
+        primary={{ label: t("heroCtaPrimary"), href: "/contact" }}
+        secondary={{ label: tn("whyArsan.label"), href: "/why-arsan" }}
       />
       <section className="bg-white-warm section-y">
         <Container>
