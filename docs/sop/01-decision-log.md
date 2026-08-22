@@ -2122,3 +2122,30 @@ editor's question actually falls into — instead of 41 rows named after code na
 guessing — that mistake is D-094). It is a per-user browser preference and sticks once
 flipped. With it off, nothing on the page is clickable, which is most of what "I can't
 edit everything" felt like.
+
+### D-101 · 2026-08-22 · Preview mode was invisible, and drew boxes over the photograph
+Drew reloaded the plain home page and found it strewn with blue rectangles, several
+stacked over the hero photograph, plus copy that looked stale.
+
+**One cause behind both.** Draft mode is a cookie. Opening the Presentation tool sets it,
+and from then on *every* visit to the site in that browser is a preview — including typing
+the bare URL — with nothing on the page to say so. The stale copy was the preview; the
+rectangles were `VisualEditing` drawing overlays outside the tool they belong to.
+
+**Why so many rectangles.** Now that every string comes from Sanity (D-099), every string
+carries a stega marker, including the ones that end up in `alt`, `aria-label` and
+`placeholder`. Those have no words on the page for an overlay to sit on, so it placed a box
+wherever it could — hence the cluster over the photo, none of it clickable. Those field
+names now sit in the stega filter alongside the identifiers from D-095, as do `metaTitle`
+and `metaDescription`, whose markers were reaching the `<head>` and so the browser tab and
+the search result.
+
+`title` is deliberately NOT filtered: it is the `PageHero` prop that renders the H1 on
+every subpage, and filtering it would make the most important field on those pages
+uneditable. The distinction is not "is it an attribute name" but "does it put words on the
+page" — and only reading the call sites tells you which.
+
+**Overlays are now drawn only inside the Presentation iframe** (`window.self !==
+window.top`), where they are the feature. On the site itself, preview announces itself with
+one small badge carrying the link that turns it off. The generic advice — "hard-reload" —
+would have cleared the symptom for an hour and taught nobody that the site was in preview.

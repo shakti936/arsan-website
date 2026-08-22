@@ -6,6 +6,32 @@ import { apiVersion, dataset, projectId } from "../env";
  * Matched on the LAST path segment, so `takeaways[2].icon` is covered too.
  */
 const IDENTIFIER_FIELDS = new Set([
+  /**
+   * Strings that end up in an ATTRIBUTE rather than in the page.
+   *
+   * Stega marks a string so the overlay can draw a clickable box over the
+   * words. A string in `alt`, `aria-label` or `placeholder` has no words on
+   * the page to draw over, so the overlay puts a box wherever it can — which
+   * is how the home page ended up strewn with rectangles stacked over the hero
+   * photograph. None of them was clickable, because there was nothing there.
+   *
+   * `title` is deliberately NOT here: it is the `PageHero` prop that renders
+   * the H1 on every subpage, and filtering it would make the single most
+   * important field on those pages uneditable.
+   */
+  "imageAlt",
+  "ariaLocale",
+  "ariaMain",
+  "filterLabel",
+  "placeholder",
+  "searchPlaceholder",
+  "selectPlaceholder",
+  "allFunctions",
+  "allLevels",
+  "allLocations",
+  /** `<head>`. Encoded markers here reach the browser tab and the SERP. */
+  "metaTitle",
+  "metaDescription",
   "categoryKey",
   "icon",
   "published",

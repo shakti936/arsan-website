@@ -4,9 +4,9 @@ import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { VisualEditing } from "next-sanity/visual-editing";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { PreviewBar } from "@/components/preview-bar";
 import { routing } from "@/i18n/routing";
 import { pageMetadata, SITE_URL } from "@/lib/site";
 import { SanityLive } from "@/sanity/lib/live";
@@ -99,12 +99,14 @@ export default async function LocaleLayout({
           draft mode: without it, a published visitor's page would subscribe to
           unpublished changes.
 
-          `VisualEditing` draws the click-to-edit overlays and only exists
-          inside preview — it is a Studio affordance, not something to ship to
-          a reader.
+          `PreviewBar` is preview-only. Inside the Presentation iframe it
+          draws the click-to-edit overlays; on the site itself it is a single
+          badge saying preview is on, with the link that turns it off. Draft
+          mode is a cookie, so without that badge an editor who once opened
+          Presentation sees drafts forever with nothing to explain why.
         */}
         <SanityLive includeDrafts={isDraft} />
-        {isDraft && <VisualEditing />}
+        {isDraft && <PreviewBar />}
       </body>
     </html>
   );
