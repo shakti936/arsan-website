@@ -1472,3 +1472,38 @@ Three real gaps, plus one that stays open by an earlier decision:
 - **The logo wall stays type, not logos** (D-067). The comp shows eight real client marks;
   reproducing them is a trademark decision nobody has made, and Drew's 23 names do not fit a
   static row. Unchanged, still the open item in that decision.
+
+### D-082 · 2026-08-21 · /results rebuilt to its comp
+Drew, with `refs/dirA-results-page.png`: *"make what we have look like the reference."* The
+page had been assembled from generic sections — the shared hero, `Stories`, `Testimonials`,
+`CtaBand` — and five of the comp's six bands did not exist.
+
+Now: hero with four figures, "Results by area of impact", a 2-up case-study grid, one dark
+testimonial band, and "More ways we deliver results".
+
+Decisions inside that:
+
+- **`PageHero` gained `eyebrow` and `stats`** rather than /results getting its own hero. The
+  band's shape changes (the copy column halves, four outlined cards take the right) but the
+  photograph, buttons, brass accent and region line are the same twelve pages share. See
+  Q-27 for the one place this still differs from the comp.
+- **The page does not close on the teal CTA band.** This comp closes on "More ways we deliver
+  results" — the right ending for a page whose job is to route a reader somewhere more
+  specific, rather than to a form they have already been offered twice.
+- **The marquee of six mock testimonials is gone**, replaced by the comp's single quote band.
+  Six invented quotes scrolling past is more fiction, not more proof — and in a screenshot
+  the vertical marquee's clipped cards read as a rendering bug. `id="testimonials"` moved
+  onto the new band so the mega nav's `/results#testimonials` still lands. The component and
+  its message block were deleted; git has them if real testimonials ever want that treatment.
+- **Two case studies, not three.** The third is drawn on the article template and lives under
+  /insights (D-072), so it is not in this row. The comp shows two.
+
+Two bugs found in the build:
+
+- The hero's stat cards were unreadable. `HeroBackdrop`'s scrim clears at 55% of the
+  container — calibrated for a copy column on the left, which is all any hero had until now.
+  Cards on the right sit over the lit half of the photograph, so they carry their own ground
+  (`bg-navy-950/80` + blur) rather than the scrim being widened for every other hero.
+- The CASE STUDY badge painted *under* the photograph. Its container was unpositioned while
+  the image's was `relative`, and positioned elements paint above unpositioned siblings
+  regardless of document order. Fixed with `relative` on the copy container, not a z-index.

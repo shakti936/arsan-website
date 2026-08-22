@@ -538,41 +538,6 @@
       "crumbBoard": "Opportunities"
     }
   },
-  "testimonials": {
-    "heading": "What clients and candidates say.",
-    "items": [
-      {
-        "quote": "They understood the operating reality of our plants before proposing a single name. The finalist slate was small, and every person on it was credible.",
-        "name": "Operations Executive",
-        "role": "Global automotive supplier"
-      },
-      {
-        "quote": "We were building in Mexico for the first time. ARSAN pushed us to define the organization before the org chart — that advice alone paid for the search.",
-        "name": "General Manager",
-        "role": "U.S. industrial manufacturer"
-      },
-      {
-        "quote": "The process respected my time. Honest about the role, honest about the risks, and available at every step.",
-        "name": "Placed Candidate",
-        "role": "Plant Director, Northern Mexico"
-      },
-      {
-        "quote": "They told us a hire we wanted to make was the wrong one — and they were right. That candor is why we keep coming back.",
-        "name": "VP Human Resources",
-        "role": "Aerospace components group"
-      },
-      {
-        "quote": "Cross-border searches usually mean two firms and two stories. With ARSAN it was one team on both sides of the border.",
-        "name": "Chief Operating Officer",
-        "role": "Food & beverage manufacturer"
-      },
-      {
-        "quote": "From first call to signed offer in nine weeks, without ever feeling rushed. The preparation before each interview was exceptional.",
-        "name": "Placed Candidate",
-        "role": "Director of Engineering, Texas"
-      }
-    ]
-  },
   "forms": {
     "optional": "(optional)",
     "submitting": "Sending…",
@@ -709,7 +674,12 @@
     ]
   },
   "candidateTrust": {
-    "items": ["Confidential", "Selective", "Personal", "Focused on Fit"]
+    "items": [
+      "Confidential",
+      "Selective",
+      "Personal",
+      "Focused on Fit"
+    ]
   },
   "candidateHelp": {
     "heading": "How can ARSAN help?",
@@ -850,7 +820,80 @@
     "tryAgain": "Try Again"
   },
   "resultsPage": {
-    "storiesHeading": "Selected case studies"
+    "storiesHeading": "Selected case studies",
+    "eyebrow": "Results that matter",
+    "intro": "We partner with manufacturers across the U.S. and Mexico to solve critical talent and leadership challenges—driving measurable impact where it matters most.",
+    "ctaApproach": "Our Approach",
+    "stats": [
+      {
+        "figure": "200+",
+        "label": "Successful Placements",
+        "note": "Across the U.S. and Mexico"
+      },
+      {
+        "figure": "100+",
+        "label": "Manufacturing Clients",
+        "note": "Trusted across industries"
+      },
+      {
+        "figure": "30–45 Days",
+        "label": "Average Time to Fill",
+        "note": "Critical leadership roles"
+      },
+      {
+        "figure": "Measurable Impact",
+        "label": "Stronger teams. Better operations.",
+        "note": "Lasting results."
+      }
+    ],
+    "impact": {
+      "heading": "Results by area of impact",
+      "items": [
+        "Leadership",
+        "Operations",
+        "Sales & Growth",
+        "Supply Chain",
+        "Engineering",
+        "HR & Culture"
+      ]
+    },
+    "caseStudies": {
+      "heading": "Case studies that speak for themselves.",
+      "intro": "Every engagement is unique. These stories reflect how we help organizations overcome challenges, secure the right talent, and achieve measurable results.",
+      "badge": "Case Study",
+      "cta": "View case study"
+    },
+    "quote": {
+      "text": "ARSAN delivered the leaders we needed to succeed. Their process is thorough, their people are exceptional, and their results speak for themselves.",
+      "name": "Sharon Jones",
+      "role": "VP, Sales – Core Electrical Products",
+      "org": "Sigma Engineered Solutions"
+    },
+    "more": {
+      "heading": "More ways we deliver results",
+      "items": [
+        {
+          "title": "Success Stories",
+          "body": "Explore more placements and outcomes across industries.",
+          "cta": "View success stories"
+        },
+        {
+          "title": "Client Outcomes",
+          "body": "See how we help organizations achieve measurable impact.",
+          "cta": "View client outcomes"
+        },
+        {
+          "title": "Testimonials",
+          "body": "Hear directly from leaders who have partnered with ARSAN.",
+          "cta": "Read testimonials"
+        },
+        {
+          "title": "Results by Industry",
+          "body": "Discover outcomes in manufacturing, industrial, and beyond.",
+          "cta": "Explore industries"
+        }
+      ]
+    }
   },
   "article": {
     "breadcrumbLabel": "Breadcrumb",

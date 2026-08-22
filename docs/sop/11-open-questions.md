@@ -97,3 +97,25 @@ rather than pointing somewhere approximate.
 Each needs a decision before it can be added: does Representative Searches mean a separate
 index from Case Studies? Is there a podcast? Is Our Story a section of /why-arsan or its own
 page? **Owner:** Drew.
+
+### Q-27 · Non-blocking · The results hero keeps its photograph; the comp's is flat navy
+`refs/dirA-results-page.png` draws the results hero on flat navy with a faint wave graphic
+and no photograph. Ours keeps the photograph, because "every page hero carries a photograph"
+is a rule Drew set after seeing inconsistent subpage heroes, and there is an e2e test
+enforcing it. The comp's substance — eyebrow, headline, two buttons, four figures — is all
+there.
+
+If the flat-navy treatment is what he wants, it is a small change: drop `photo` from that
+one `PageHero` call and relax the test to exempt /results. **Owner:** Drew.
+
+### Q-28 · Non-blocking · Four results destinations that do not exist
+"More ways we deliver results" offers Success Stories, Client Outcomes, Testimonials and
+Results by Industry. Only Testimonials resolves to something real (the quote band on this
+page). The other three point at /results or /insights rather than at a 404.
+
+The area-of-impact strip has the same problem in a different shape: six practice areas that
+each want a filtered view of the results, and there is nothing to filter. It renders as
+labels, not links, rather than six links that all land on the same page.
+
+Both resolve the same way — once /results has an index with more than two studies in it.
+**Owner:** Drew.

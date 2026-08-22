@@ -538,41 +538,6 @@
       "crumbBoard": "Oportunidades"
     }
   },
-  "testimonials": {
-    "heading": "Lo que dicen clientes y candidatos.",
-    "items": [
-      {
-        "quote": "Entendieron la realidad operativa de nuestras plantas antes de proponer un solo nombre. La terna final fue corta y cada persona era creíble.",
-        "name": "Ejecutivo de Operaciones",
-        "role": "Proveedor automotriz global"
-      },
-      {
-        "quote": "Construíamos en México por primera vez. ARSAN nos hizo definir la organización antes del organigrama — solo ese consejo pagó la búsqueda.",
-        "name": "Gerente General",
-        "role": "Fabricante industrial de EE. UU."
-      },
-      {
-        "quote": "El proceso respetó mi tiempo. Honestos sobre el puesto, honestos sobre los riesgos y disponibles en cada paso.",
-        "name": "Candidato Colocado",
-        "role": "Director de Planta, Norte de México"
-      },
-      {
-        "quote": "Nos dijeron que una contratación que queríamos hacer era la equivocada — y tenían razón. Esa franqueza es la razón por la que regresamos.",
-        "name": "VP de Recursos Humanos",
-        "role": "Grupo de componentes aeroespaciales"
-      },
-      {
-        "quote": "Las búsquedas transfronterizas suelen significar dos firmas y dos versiones. Con ARSAN fue un solo equipo en ambos lados de la frontera.",
-        "name": "Director de Operaciones",
-        "role": "Fabricante de alimentos y bebidas"
-      },
-      {
-        "quote": "De la primera llamada a la oferta firmada en nueve semanas, sin sentirnos apresurados. La preparación antes de cada entrevista fue excepcional.",
-        "name": "Candidato Colocado",
-        "role": "Director de Ingeniería, Texas"
-      }
-    ]
-  },
   "forms": {
     "optional": "(opcional)",
     "submitting": "Enviando…",
@@ -709,7 +674,12 @@
     ]
   },
   "candidateTrust": {
-    "items": ["Confidencial", "Selectivo", "Personal", "Enfocado en el Ajuste"]
+    "items": [
+      "Confidencial",
+      "Selectivo",
+      "Personal",
+      "Enfocado en el Ajuste"
+    ]
   },
   "candidateHelp": {
     "heading": "¿Cómo puede ayudar ARSAN?",
@@ -850,7 +820,80 @@
     "tryAgain": "Intentar de Nuevo"
   },
   "resultsPage": {
-    "storiesHeading": "Casos seleccionados"
+    "storiesHeading": "Casos seleccionados",
+    "eyebrow": "Resultados que importan",
+    "intro": "Acompañamos a fabricantes en Estados Unidos y México para resolver retos críticos de talento y liderazgo, con impacto medible donde más cuenta.",
+    "ctaApproach": "Nuestro Enfoque",
+    "stats": [
+      {
+        "figure": "200+",
+        "label": "Colocaciones exitosas",
+        "note": "En Estados Unidos y México"
+      },
+      {
+        "figure": "100+",
+        "label": "Clientes de manufactura",
+        "note": "Confianza en distintas industrias"
+      },
+      {
+        "figure": "30–45 días",
+        "label": "Tiempo promedio de cobertura",
+        "note": "Puestos críticos de liderazgo"
+      },
+      {
+        "figure": "Impacto medible",
+        "label": "Mejores equipos. Mejor operación.",
+        "note": "Resultados que duran."
+      }
+    ],
+    "impact": {
+      "heading": "Resultados por área de impacto",
+      "items": [
+        "Liderazgo",
+        "Operaciones",
+        "Ventas y crecimiento",
+        "Cadena de suministro",
+        "Ingeniería",
+        "RR. HH. y cultura"
+      ]
+    },
+    "caseStudies": {
+      "heading": "Casos que hablan por sí mismos.",
+      "intro": "Cada asignación es distinta. Estas historias muestran cómo ayudamos a las organizaciones a superar retos, asegurar el talento correcto y lograr resultados medibles.",
+      "badge": "Caso de éxito",
+      "cta": "Ver el caso"
+    },
+    "quote": {
+      "text": "ARSAN entregó a los líderes que necesitábamos para tener éxito. Su proceso es riguroso, su gente es excepcional y sus resultados hablan por sí mismos.",
+      "name": "Sharon Jones",
+      "role": "VP de Ventas – Productos Eléctricos",
+      "org": "Sigma Engineered Solutions"
+    },
+    "more": {
+      "heading": "Más formas en que entregamos resultados",
+      "items": [
+        {
+          "title": "Historias de éxito",
+          "body": "Conozca más colocaciones y resultados en distintas industrias.",
+          "cta": "Ver historias de éxito"
+        },
+        {
+          "title": "Resultados de clientes",
+          "body": "Vea cómo ayudamos a lograr un impacto medible.",
+          "cta": "Ver resultados de clientes"
+        },
+        {
+          "title": "Testimonios",
+          "body": "Escuche directamente a líderes que han trabajado con ARSAN.",
+          "cta": "Leer testimonios"
+        },
+        {
+          "title": "Resultados por industria",
+          "body": "Descubra resultados en manufactura, industria y más.",
+          "cta": "Explorar industrias"
+        }
+      ]
+    }
   },
   "article": {
     "breadcrumbLabel": "Ruta de navegación",
