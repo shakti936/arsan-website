@@ -854,3 +854,49 @@ fails the test.
 New committed assets: `assets/` holds the three TTFs Satori needs (Cormorant Garamond SemiBold,
 Libre Franklin Medium/SemiBold, 489KB total). `next/font` cannot supply them — ImageResponse
 needs raw font data.
+
+### D-060 · 2026-08-21 · The wordmark is the supplied artwork (Q-18 half-settled)
+Drew: use `refs/dirA-logo-lockup.png`, in the nav, the footer and the OG cards. That reverses
+D-032 (hand-set type) and D-053 (no descriptor in the header) — both now superseded.
+
+**No white version needed, and no CSS invert.** The artwork is grayscale + alpha: near-black
+ink with the shape carried in the alpha channel. Each colour variant is that mask filled with
+a surface colour, which is strictly better than inverting — inverting the black artwork would
+also invert how its anti-aliased edges meet the ground and fringe the letterforms. Two
+variants live in `public/logo/` (cream for navy surfaces, navy for cream ones), 42KB each, at
+900px so a 176px render has 5× headroom. The exact command is in the `Logo` docblock.
+
+**The descriptor stays live text.** The supplied lockup bakes "EXECUTIVE SEARCH & MANUFACTURING
+TALENT ADVISORY" into the artwork, in English — shipping it whole would put English under the
+mark on every Spanish page. The artwork is cropped to `ARSAN`; the descriptor is rendered
+beneath it from the message catalog, so `/es` reads "BÚSQUEDA DE EJECUTIVOS Y ASESORÍA DE
+TALENTO EN MANUFACTURA". Visually identical to the lockup, correct in both languages.
+
+Header is 73px with the full lockup restored, and both locales keep healthy slack in the nav
+row (EN +53px, ES +69px) — the artwork at 176px is narrower than the 209px of type it replaced,
+which is what made room for the descriptor to come back.
+
+**Q-18 is half-answered.** Drew has chosen the Direction A wordmark over the live site's mark.
+Still open for Marianna and Armida: retiring the four-square icon, and dropping "International"
+from the company's name presentation.
+
+### D-061 · 2026-08-21 · Nine new mockups catalogued
+Drew added nine ChatGPT-named files to `refs/`. Renamed by what they are:
+
+| File | What it specifies |
+|---|---|
+| `dirA-results-page.png` | Results page — 2×2 stat cards in the hero, "results by area of impact" icon row, case-study cards with photos, testimonial band, "more ways we deliver results" 4-up |
+| `dirA-casestudy-mexico-plant.png` | Case-study detail — breadcrumb, photo hero, "At a glance" stats, challenge/approach two-column, dark results band, testimonial, key-roles checklist |
+| `dirA-casestudy-merger-confidential.png` | Case-study detail, confidential variant — teal outcome band, "some of our strongest work we don't name" panel |
+| `dirA-article-leadership-traits.png` · `-automation.png` · `-passive-candidates.png` · `-market-update.png` | Article detail template ×4 — breadcrumb, photo hero with byline/date/read-time, prose column + right rail (pull-quote, stat card), numbered list, Key Takeaways 3-up, Related Insights, CTA band, newsletter |
+| `dirA-casestudy-vacant-to-victorious.png` | Case study rendered in the article template |
+| `dirA-insights-index.png` | Insights index — category tab row, featured mosaic, CTA band, newsletter |
+
+**New components these imply** (none exist yet): breadcrumb, article hero, prose + right-rail
+layout, numbered steps, Key Takeaways, Related Insights, newsletter band, category tabs,
+featured mosaic, At-a-glance stats, challenge/approach, dark results band, key-roles checklist.
+
+**Content warning carried forward.** These mockups are dense with fabricated proof: "200+
+placements", "100+ clients", "30–45 days", 78%/67%/70%/4.8%/32% stats attributed to Deloitte
+and LinkedIn, and a named testimonial ("Sharon Jones, VP Sales, Sigma Engineered Solutions").
+Structure can be built from them; **the numbers and names cannot ship without Q-06**.
