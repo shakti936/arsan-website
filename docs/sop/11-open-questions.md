@@ -149,19 +149,16 @@ is the failure mode this project avoids everywhere else — the recommendation i
 each file as its content lands in Sanity, so the fallback shrinks to nothing rather than
 becoming a shadow copy. **Owner:** Drew.
 
-### Q-31 · BLOCKING for the CMS · The Sanity project does not exist yet
-Everything in D-090 is in the repo and validated (`bun run validate:schema` — 0 errors),
-but `sanity login` opens a browser and authenticates a human. It cannot be run on Drew's
-behalf, and no project id means no dataset to write to.
+### Q-31 · ANSWERED 2026-08-22 · The Sanity project
+Drew authenticated and the repo is connected to project **`shop59xi`**, dataset
+`production`. `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` are in
+`.env.local` (gitignored). `/studio` boots against it with no console errors.
 
-Three commands, in the project root:
+The project is still named "Website" in sanity.io/manage. Drew is renaming it to ARSAN;
+this is cosmetic only — the Studio takes its title from `sanity.config.ts`, which already
+says ARSAN, and the project **ID never changes**, so nothing in the code depends on it.
 
-```
-bunx sanity login
-bunx sanity init --env .env.local
-bun run dev
-```
-
-`init` writes `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` into
-`.env.local`. The same two values then go into Vercel's environment for deploys.
-`/studio` shows these steps on screen until they are done. **Owner:** Drew.
+Remaining, and deliberately not done yet — see `10-deploy-and-ops.md`: the two env vars are
+not in Vercel, and the production domain is not in Sanity's CORS allowlist. Neither
+matters until a page actually reads from Sanity (Batch 2); production currently renders
+from `src/content/**`, which is correct.

@@ -51,3 +51,28 @@ fails to reach GHL is the most expensive bug this site can have.
 
 Vercel keeps prior deployments; production rollback is a promotion of the last good build.
 DNS-level rollback depends on TTL — lower it before cutover.
+
+## Sanity — before the Studio works on a deployed URL
+
+Not done yet, and not needed until a page reads from Sanity (Batch 2). Production
+currently renders from `src/content/**`, which is the correct behaviour while the dataset
+is empty. Two steps, and they have to happen together or the Studio loads and then fails
+every request:
+
+1. **Vercel env vars** — `NEXT_PUBLIC_SANITY_PROJECT_ID=shop59xi` and
+   `NEXT_PUBLIC_SANITY_DATASET=production`. Both are `NEXT_PUBLIC_` by design: they ship
+   to the browser inside the Studio bundle and are not secrets. Add to Production and
+   Preview. Without them a deployed `/studio` shows the setup panel, which is a safe
+   default rather than a broken page.
+2. **Sanity CORS** — add the deployed origin with `--credentials`:
+   ```
+   bunx sanity cors add https://<domain> --credentials --project-id shop59xi
+   ```
+   Vercel preview URLs are per-deployment, so previews need either a wildcard origin or a
+   stable preview alias. A wildcard on a client's dataset is worth a decision, not a
+   default — the Studio authenticates with cookies, and the origin allowlist is what
+   stops another site from using them.
+
+`SANITY_API_READ_TOKEN` is only needed for draft previews. It IS a secret: server-side
+only, never `NEXT_PUBLIC_`.
+

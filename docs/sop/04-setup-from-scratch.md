@@ -86,3 +86,35 @@ _Anything that cost more than five minutes goes here, with the fix._
 | 2026-08-20 | Biome 2.5 deprecated `files.includes` negation patterns for ignores | Rely on `vcs.useIgnoreFile: true` + `.gitignore` instead |
 | 2026-08-20 | `next build` rewrote tsconfig (`jsx: react-jsx`) | Expected — commit the rewrite |
 | 2026-08-20 | First Vercel deploy failed: `No Output Directory named "public" found` — the imported project's Framework Preset wasn't Next.js | Pin `vercel.json` with `"framework": "nextjs"` so the setting is versioned and survives re-imports; don't rely on dashboard detection |
+
+## Connecting Sanity (run 2026-08-22)
+
+```
+bunx sanity login --provider google
+bunx sanity projects list          # → shop59xi, dataset "production"
+bunx sanity cors add http://localhost:3000 --credentials --project-id shop59xi
+```
+
+Then two lines into `.env.local`:
+
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=shop59xi
+NEXT_PUBLIC_SANITY_DATASET=production
+```
+
+Three things that cost time:
+
+1. **`sanity login` needs `--provider` when there is no TTY.** Run through Claude Code's
+   `!` prefix, or any non-interactive shell, it fails with *"Multiple login providers
+   available: google, github, sanity"* instead of showing the picker.
+2. **`sanity init` was never run, on purpose.** It scaffolds its own `sanity.config.ts`,
+   which would overwrite the one in this repo that wires up the whole schema. The project
+   already existed, so the only thing `init` would have contributed was the two env vars
+   above — and those are two lines.
+3. **CORS.** A Sanity project allows `http://localhost:3333` out of the box — the port a
+   standalone Studio runs on. Ours is co-hosted at `localhost:3000/studio`, so it has to
+   be added explicitly or the Studio loads and then fails every request. `--credentials`
+   is required: the Studio authenticates with cookies.
+
+Verify with `bun run validate:schema` (offline, 0 errors) and by opening `/studio`.
+
