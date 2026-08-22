@@ -14,4 +14,12 @@ export const client = createClient({
   apiVersion,
   useCdn: true,
   perspective: "published",
+  /**
+   * Click-to-edit. In draft mode the fetched strings carry invisible markers
+   * pointing back at the field that produced them, which is what lets an
+   * editor click a headline in the Presentation preview and land on it in the
+   * form. The markers are stripped outside draft mode, so published HTML is
+   * unaffected.
+   */
+  stega: { studioUrl: "/studio" },
 });

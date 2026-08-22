@@ -33,7 +33,22 @@ export const page = defineType({
       type: "string",
       options: { list: ROUTE_OPTIONS },
       group: "hero",
-      validation: (rule) => rule.required(),
+      validation: (rule) =>
+        rule.required().custom(async (route, context) => {
+          if (!route) return true;
+          // one page document per route. Two claiming the same one is not an
+          // error anywhere — the query takes [0] and whichever document sorts
+          // first wins, which looks like an edit that did not save.
+          const { getClient, document } = context;
+          const id = (document?._id ?? "").replace(/^drafts\./, "");
+          const taken = await getClient({
+            apiVersion: "2026-05-19",
+          }).fetch<boolean>(
+            `count(*[_type == "page" && route == $route && !(_id in [$id, "drafts." + $id])]) > 0`,
+            { route, id },
+          );
+          return taken ? "Another page already uses this route." : true;
+        }),
     }),
 
     defineField({

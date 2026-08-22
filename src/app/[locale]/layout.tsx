@@ -1,12 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Libre_Franklin } from "next/font/google";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { routing } from "@/i18n/routing";
 import { pageMetadata, SITE_URL } from "@/lib/site";
+import { SanityLive } from "@/sanity/lib/live";
 import "../globals.css";
 
 // Display only — never below ~24px, weights 500+ (docs/sop/08-design-system.md)
@@ -72,6 +75,7 @@ export default async function LocaleLayout({
   }
 
   setRequestLocale(locale);
+  const { isEnabled: isDraft } = await draftMode();
 
   return (
     <html
@@ -84,6 +88,19 @@ export default async function LocaleLayout({
           {children}
           <Footer />
         </NextIntlClientProvider>
+        {/*
+          Live content. `SanityLive` opens a channel that re-renders the page
+          when a document changes, so the Presentation preview updates as an
+          editor types rather than on refresh. `includeDrafts` is gated on
+          draft mode: without it, a published visitor's page would subscribe to
+          unpublished changes.
+
+          `VisualEditing` draws the click-to-edit overlays and only exists
+          inside preview — it is a Studio affordance, not something to ship to
+          a reader.
+        */}
+        <SanityLive includeDrafts={isDraft} />
+        {isDraft && <VisualEditing />}
       </body>
     </html>
   );

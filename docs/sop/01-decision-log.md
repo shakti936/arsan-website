@@ -1886,3 +1886,50 @@ mechanism for CMS-owned content is `sanity dataset export`.
 
 *Environment note:* `*.sanity.io` is not on the sandbox network allowlist, so builds and
 Playwright runs need network access.
+
+### D-093 · 2026-08-22 · The Studio gets a shape, and live preview
+Drew: *"make sure our sanity cms /studio is easy to use, simple and has live preview."*
+
+**Presentation is the default tool.** It opens the site beside the form, renders unpublished
+drafts in place, and lets an editor click a heading on the page to land on the field that
+produces it. Starting there rather than on a list of documents is the difference between a
+CMS and a database browser. `previewUrl.origin: "same-origin"` so the tool previews
+whatever host the Studio is served from — localhost in development, the deployment in
+production, nothing to keep in sync.
+
+**The document lists are organised by how the content behaves**, not by schema type
+(`src/sanity/structure.ts`):
+
+- Articles newest first — the order they are worked on and the order the site shows them.
+- **Testimonials split into "Awaiting approval" and "Approved — live on the site".** Every
+  quote here was reproduced from a comp and none has client approval (D-071, Q-23); the
+  GROQ filters unapproved ones out, so they sit in the CMS looking published and are
+  invisible on the site. Without the split that state is silent. Now it is a to-do list.
+- Pages last, under a divider: the least-touched type.
+
+**Live updates are server-proxied, deliberately.** `defineLive` takes `serverToken` and no
+`browserToken`. Handing the browser a token that can read every draft in the dataset would
+put a credential for a client's unpublished work into a public bundle. The cost is that
+updates route through the server rather than opening a direct channel; that is the right
+trade here. `SanityLive` only subscribes with `includeDrafts` when draft mode is on, so a
+reader's page never listens for unpublished changes.
+
+**The draft-mode route is not an open door.** `defineEnableDraftMode` validates a signed
+secret the Presentation tool appends; without it the path would hand every draft in the
+dataset to anyone who guessed the URL. Verified: unsigned and wrong-secret requests both
+return 401, and `/api/draft-mode/disable` 307s home.
+
+**Two schema changes that prevent mistakes rather than tidy things up.** `published`
+defaults to today. And a `page` document validates that no other page claims its route —
+two claiming the same one is not an error anywhere: the query takes `[0]`, whichever
+document sorts first wins, and it looks like an edit that did not save.
+
+**A viewer token was created** (`sanity tokens create`, role `viewer`, label "Draft preview
+(Next.js)") and written to `.env.local`. Read-only, server-side, never `NEXT_PUBLIC_`.
+Revoke with `sanity tokens delete`. It is **not in Vercel yet** — see `10-deploy-and-ops.md`;
+without it a deployed Presentation tool shows published content instead of drafts, which
+degrades rather than breaks.
+
+*Checked:* adding `draftMode()` to the locale layout does **not** deopt the site to dynamic
+— every page is still `●` in the build output. Next keeps the static shell and resolves
+draft mode per request.

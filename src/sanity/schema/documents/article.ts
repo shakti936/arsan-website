@@ -71,8 +71,11 @@ export const article = defineType({
     defineField({
       name: "published",
       title: "Publication date",
+      description: "Orders /insights and feeds the Article JSON-LD.",
       type: "date",
       group: "content",
+      // today, so the common case is already filled in
+      initialValue: () => new Date().toISOString().slice(0, 10),
       validation: (rule) => rule.required(),
     }),
     defineField({

@@ -1,6 +1,7 @@
 import type { PortableTextBlock } from "next-sanity";
 import type { IconName } from "@/lib/icon-names";
 import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import {
   articleIndexQuery,
   articleQuery,
@@ -18,13 +19,17 @@ import {
  * destinations into hrefs, so nothing downstream ever sees a `{ en, es }`
  * object or a `destination`.
  *
- * `revalidate: 60` rather than a webhook, for now. Articles are prerendered at
- * build time, so this only governs the one dynamic page (`/insights`, which
- * reads `?category=`); a minute of staleness there is invisible and it costs
- * no infrastructure. A publish-triggered revalidation webhook is the upgrade
- * when someone needs to see an edit live in seconds.
+ * Reads go through `sanityFetch` (see `sanity/lib/live.ts`), which serves
+ * published content normally and switches to drafts when Next's draft mode is
+ * on. That switch is what makes the Studio's Presentation tool show
+ * unpublished work in place instead of a stale published page — and it lives
+ * here, once, rather than in each of the six callers.
+ *
+ * `articleSlugs` is the exception and stays on the plain client: it runs inside
+ * `generateStaticParams`, which is build time with no request and therefore no
+ * draft mode to read. Prerendering the routes of unpublished articles would be
+ * wrong anyway.
  */
-const REVALIDATE = 60;
 
 export type ArticleBlock = PortableTextBlock;
 
@@ -60,8 +65,9 @@ export type ArticleView = ArticleCard & {
   seo: { title: string | null; description: string | null } | null;
 };
 
-function fetch<T>(query: string, params: Record<string, unknown> = {}) {
-  return client.fetch<T>(query, params, { next: { revalidate: REVALIDATE } });
+async function fetch<T>(query: string, params: Record<string, unknown> = {}) {
+  const { data } = await sanityFetch({ query, params });
+  return data as T;
 }
 
 /**
@@ -90,7 +96,7 @@ const withReadingTime = <T extends { readingMinutes: number }>(
   ({ ...row, readingMinutes: minutesFrom(row.characters) }) as unknown as T;
 
 export async function articleSlugs(): Promise<string[]> {
-  const rows = await fetch<{ slug: string }[]>(articleSlugsQuery);
+  const rows = await client.fetch<{ slug: string }[]>(articleSlugsQuery);
   return rows.map((row) => row.slug);
 }
 

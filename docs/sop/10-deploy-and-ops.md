@@ -73,6 +73,13 @@ every request:
    default — the Studio authenticates with cookies, and the origin allowlist is what
    stops another site from using them.
 
-`SANITY_API_READ_TOKEN` is only needed for draft previews. It IS a secret: server-side
-only, never `NEXT_PUBLIC_`.
+`SANITY_API_READ_TOKEN` is the viewer token created 2026-08-22 for draft previews (D-093).
+It IS a secret: server-side only, never `NEXT_PUBLIC_`. It lives in `.env.local` and is not
+in Vercel yet — without it a deployed Presentation tool shows published content instead of
+drafts, which degrades rather than breaks. Add it to Production and Preview when the
+Studio is used from a deployed URL. Revoke or replace with `sanity tokens delete` /
+`sanity tokens rotate`.
+
+**Builds now require network to `*.sanity.io`** (D-092). Vercel has it; a sandboxed local
+build does not, and fails at `getaddrinfo ENOTFOUND shop59xi.apicdn.sanity.io`.
 
