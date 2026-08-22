@@ -900,3 +900,40 @@ featured mosaic, At-a-glance stats, challenge/approach, dark results band, key-r
 placements", "100+ clients", "30–45 days", 78%/67%/70%/4.8%/32% stats attributed to Deloitte
 and LinkedIn, and a named testimonial ("Sharon Jones, VP Sales, Sigma Engineered Solutions").
 Structure can be built from them; **the numbers and names cannot ship without Q-06**.
+
+### D-062 · 2026-08-21 · The logo is the whole artwork; every hero carries a photograph
+**Logo, third correction and final.** Drew: "use this exact photo, all the text in this photo
+is the logo, do not crop anything out." The nav now renders the complete lockup — wordmark and
+the two-line descriptor, as one image. The footer takes the wordmark alone, which is what he
+asked for there. Recoloured, never cropped: only the fully transparent border is trimmed
+(1370×379 → 1350×361), then the alpha mask is filled with the surface colour. Two assets,
+~55KB each at 1100px.
+
+The OG cards' live descriptor line was deleted — the lockup already carries it, and rendering
+both printed the descriptor twice.
+
+**Q-19 (new, non-blocking):** the descriptor is baked into the artwork in English, so `/es`
+shows an English descriptor beneath the mark. A Spanish lockup has to come from whoever
+produced the original; it cannot be cropped or re-set here without altering the supplied asset,
+which is exactly what Drew ruled out. Flagged rather than worked around.
+
+**Every hero now carries a photograph.** `PageHero` was navy-only text on twelve routes; it now
+uses the same treatment as the home hero, with the photograph that page's OG card already uses
+— so a page looks the same whether you land on it or see it shared.
+
+**The scrim moved into `HeroBackdrop`, shared by both.** Two copies of a four-stop gradient
+tuned against measured contrast would have drifted the first time either was touched.
+
+**Putting text over twelve more photographs broke contrast, as expected — measured, then
+fixed.** Nine page-hero intros landed between 3.92:1 and 4.45:1, under AA. Cause: `PageHero`
+capped the paragraph at `46ch` but never capped the *column*, so at 1440 the intro ran past
+where the scrim starts clearing (55%) onto lit parts of the frame. Fixed by giving it the
+`max-w-[32rem]` column the home hero already had — **0 failures across 116 hero text runs**
+(13 routes × 2 locales × 2 widths), worst ratio 4.94.
+
+**Instrument note, third time this has bitten:** the checker reported "Why ARSAN" at 1.02:1 on
+every run. Setting `el.style.color = "transparent"` inline did not take on that element, so the
+sampler was reading the glyphs themselves as the background. Replaced with an injected
+stylesheet (`main section :is(h1,p,a,em,span){color:transparent!important}`) — the phantom
+failure disappeared and the real ones stayed. **A contrast checker that hides text must prove
+the text is hidden.**

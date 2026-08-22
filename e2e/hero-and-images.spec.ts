@@ -116,3 +116,40 @@ test("no broken or oversized images on the home page", async ({ page }) => {
   expect(bad.broken).toEqual([]);
   expect(bad.oversized).toEqual([]);
 });
+
+const SUBPAGES = [
+  "/for-clients",
+  "/for-clients/executive-search",
+  "/for-clients/mexico-advisory",
+  "/for-clients/leadership-solutions",
+  "/for-candidates",
+  "/for-candidates/opportunities",
+  "/for-candidates/submit-profile",
+  "/for-candidates/talent-network",
+  "/results",
+  "/insights",
+  "/why-arsan",
+  "/contact",
+];
+
+test("every page hero carries a photograph, not just navy", async ({
+  page,
+}) => {
+  const seen: string[] = [];
+  for (const route of SUBPAGES) {
+    await page.goto(route);
+    const img = page.locator("main section img").first();
+    await expect(img, `${route} has no hero image`).toBeVisible();
+    // next/image serves through /_next/image?url=%2Fimages%2F… — decode before asserting
+    const src = decodeURIComponent(
+      await img.evaluate((i: HTMLImageElement) => i.currentSrc),
+    );
+    expect(src, `${route} hero image did not load`).toContain("/images/");
+    seen.push(src);
+    // the photograph spans the band rather than sitting in a column
+    const s = await page.locator("main section").first().boundingBox();
+    const i = await img.boundingBox();
+    expect(i?.width, route).toBeGreaterThanOrEqual((s?.width ?? 0) - 1);
+  }
+  expect(seen).toHaveLength(SUBPAGES.length);
+});

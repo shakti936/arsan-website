@@ -34,7 +34,11 @@ export default async function Page({ params }: Params) {
 
   return (
     <main id="main">
-      <PageHero title={t("title")} intro={t("intro")} />
+      <PageHero
+        title={t("title")}
+        intro={t("intro")}
+        photo="hero-plant-floor"
+      />
       <section className="bg-white-warm section-y">
         <Container>
           <div className="grid gap-6 md:grid-cols-3">

@@ -32,7 +32,11 @@ export default async function Page({ params }: Params) {
 
   return (
     <main id="main">
-      <PageHero title={t("title")} intro={t("intro")} />
+      <PageHero
+        title={t("title")}
+        intro={t("intro")}
+        photo="story-transformation"
+      />
       <PointGrid points={points} />
       <CtaBand />
     </main>

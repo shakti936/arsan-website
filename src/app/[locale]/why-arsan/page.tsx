@@ -35,7 +35,11 @@ export default async function Page({ params }: Params) {
 
   return (
     <main id="main">
-      <PageHero title={t("title")} intro={t("intro")} />
+      <PageHero
+        title={t("title")}
+        intro={t("intro")}
+        photo="story-transformation"
+      />
       <section className="bg-white-warm section-y">
         <Container className="flex flex-col gap-14">
           {SECTIONS.map((section) => (

@@ -35,7 +35,11 @@ export default async function Page({ params }: Params) {
 
   return (
     <main id="main">
-      <PageHero title={t("title")} intro={t("intro")} />
+      <PageHero
+        title={t("title")}
+        intro={t("intro")}
+        photo="story-mexico-expansion"
+      />
       <section className="bg-white-warm section-y">
         <Container>
           <div className="mx-auto flex max-w-2xl flex-col items-center border border-cream-100 bg-cream-50 p-10 text-center">

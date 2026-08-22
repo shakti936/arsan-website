@@ -33,7 +33,11 @@ export default async function Page({ params }: Params) {
 
   return (
     <main id="main">
-      <PageHero title={t("title")} intro={t("intro")} />
+      <PageHero
+        title={t("title")}
+        intro={t("intro")}
+        photo="insight-leadership-teams"
+      />
       <TrustStrip namespace="candidateTrust" />
       <IconRow
         namespace="candidateValues"

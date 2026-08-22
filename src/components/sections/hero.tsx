@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ui/button-link";
+import { HeroBackdrop } from "@/components/ui/hero-backdrop";
 
 /**
  * Direction A hero (refs/dirA-home-v2.png): one full-bleed photograph across
@@ -8,45 +8,15 @@ import { ButtonLink } from "@/components/ui/button-link";
  * off the right so the plant reads. The reference carries no panel beside the
  * headline — the photograph is the right-hand column.
  *
- * Two scrims rather than one: below `lg` the copy sits over the middle of the
- * frame, so the navy has to cover everything; from `lg` up it can rake off to
- * the right. Both are tuned against the darkest text in the block.
+ * The photographic ground lives in HeroBackdrop, shared with the twelve page
+ * heroes so the two treatments can't drift apart.
  */
 export function Hero({ namespace }: { namespace: string }) {
   const t = useTranslations(namespace);
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-900">
-      <Image
-        src="/images/hero-executives.jpg"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="-z-10 object-cover object-[72%_center] lg:object-[70%_20%]"
-      />
-      {/* Narrow viewports get the photograph as atmosphere, not as subject: a
-          390px portrait band cannot both feature two people and carry five
-          lines of copy over them, and a half-lit face at the edge reads as an
-          accident. Flat, strong scrim; the reference only specifies desktop. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 lg:hidden"
-        style={{
-          background:
-            "linear-gradient(180deg, color-mix(in oklab, var(--color-navy-950) 86%, transparent) 0%, color-mix(in oklab, var(--color-navy-900) 88%, transparent) 100%)",
-        }}
-      />
-      {/* lg and up: navy holds the left column and clears the photograph */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 hidden lg:block"
-        style={{
-          background:
-            "linear-gradient(90deg, color-mix(in oklab, var(--color-navy-950) 98%, transparent) 0%, color-mix(in oklab, var(--color-navy-900) 95%, transparent) 44%, color-mix(in oklab, var(--color-navy-900) 58%, transparent) 55%, transparent 68%)",
-        }}
-      />
-      <div aria-hidden="true" className="grain absolute inset-0 -z-10" />
+      <HeroBackdrop src="/images/hero-executives.jpg" priority />
 
       <div className="relative mx-auto w-full max-w-6xl section-y px-6 sm:px-10">
         <div className="flex max-w-[32rem] flex-col items-start justify-center">

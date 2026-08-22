@@ -76,11 +76,10 @@ export async function ogImage({
   /** basename in public/images */
   photo: string;
 }) {
-  const [fonts, photoData, wordmarkData, tBrand, tTitle] = await Promise.all([
+  const [fonts, photoData, wordmarkData, tTitle] = await Promise.all([
     loadFonts(),
     readFile(photoPath(photo)),
-    readFile(join(process.cwd(), "public", "logo", "arsan-wordmark-cream.png")),
-    getTranslations({ locale, namespace: "brand" }),
+    readFile(join(process.cwd(), "public", "logo", "arsan-lockup-cream.png")),
     getTranslations({ locale, namespace: namespace ?? "home.hero" }),
   ]);
 
@@ -148,21 +147,7 @@ export async function ogImage({
         <div style={{ display: "flex", flexDirection: "column" }}>
           {/* the supplied artwork, not type we set — see src/components/ui/logo.tsx */}
           {/* biome-ignore lint/performance/noImgElement: ImageResponse has no next/image */}
-          <img src={wordmark} alt="ARSAN" width={232} height={38} />
-          <div
-            style={{
-              marginTop: 10,
-              fontSize: 17,
-              fontWeight: 500,
-              letterSpacing: 1.8,
-              textTransform: "uppercase",
-              color: "rgba(242,239,236,0.72)",
-              maxWidth: 420,
-              lineHeight: 1.35,
-            }}
-          >
-            {tBrand("subtitle")}
-          </div>
+          <img src={wordmark} alt="ARSAN" width={264} height={71} />
         </div>
 
         <div

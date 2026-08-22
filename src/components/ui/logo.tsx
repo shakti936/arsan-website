@@ -1,53 +1,54 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 
 /**
- * The wordmark is the supplied artwork (`refs/dirA-logo-lockup.png`), not type
- * we set ourselves.
+ * The logo is the supplied artwork (`refs/dirA-logo-lockup.png`), used whole.
  *
- * **Only the wordmark, though.** The supplied lockup has the two-line
- * descriptor baked in, in English, which would put English under the mark on
- * every Spanish page. The artwork is cropped to `ARSAN`; the descriptor stays
- * live text so it localizes.
+ * `variant="lockup"` is the complete image — wordmark and the two-line
+ * descriptor beneath it — nothing cropped out. `variant="wordmark"` is ARSAN
+ * alone, which is what the footer asks for.
  *
- * **Two colour variants rather than a CSS filter.** The source is grayscale +
- * alpha — the shape lives in the alpha channel — so each variant is that mask
- * filled with a surface colour. Inverting the black artwork would also invert
- * how its anti-aliased edges meet the ground, fringing the letterforms.
- * Generated with:
+ * **Colour variants, not a CSS filter.** The source is grayscale + alpha: the
+ * shape lives in the alpha channel, so each variant is that mask filled with a
+ * surface colour. Inverting the black artwork instead would also invert how its
+ * anti-aliased edges meet the ground and fringe the letterforms.
  *
- *   magick refs/dirA-logo-lockup.png -crop 1370x235+0+0 +repage -trim +repage \
- *     -alpha extract -write mpr:mask +delete -size WxH xc:'#fefefa' \
- *     mpr:mask -alpha off -compose CopyOpacity -composite -resize 900x
+ *   magick refs/dirA-logo-lockup.png -trim +repage \
+ *     -alpha extract -write mpr:m +delete -size WxH xc:'#fefefa' \
+ *     mpr:m -alpha off -compose CopyOpacity -composite -resize 1100x
+ *
+ * **Known gap (SOP Q-19):** the descriptor is baked into the artwork in
+ * English, so `/es` shows an English descriptor under the mark. A Spanish
+ * lockup needs to come from whoever produced the original — it can't be
+ * cropped or re-set here without altering the supplied asset.
  */
 type LogoProps = {
   /** "light" renders for dark surfaces (header/footer on navy) */
   tone?: "light" | "dark";
-  /** Renders the two-line descriptor under the wordmark */
-  withSubtitle?: boolean;
-  /** Rendered width of the wordmark in px */
+  /** "lockup" is the full artwork; "wordmark" is ARSAN alone */
+  variant?: "lockup" | "wordmark";
+  /** Rendered width in px */
   width?: number;
   className?: string;
 };
 
-/** Intrinsic ratio of the cropped artwork (1350×223). */
-const WORDMARK_RATIO = 223 / 1350;
+/** Intrinsic ratios of the two trimmed assets. */
+const RATIO = { lockup: 361 / 1350, wordmark: 223 / 1350 } as const;
 
 export function Logo({
   tone = "light",
-  withSubtitle = true,
-  width = 176,
+  variant = "lockup",
+  width = 190,
   className,
 }: LogoProps) {
-  const t = useTranslations("brand");
+  const shade = tone === "light" ? "cream" : "navy";
 
   return (
     <Link
       href="/"
       className={cn(
-        "group inline-flex flex-col focus-visible:outline-2 focus-visible:outline-offset-4",
+        "inline-flex focus-visible:outline-2 focus-visible:outline-offset-4",
         tone === "light"
           ? "focus-visible:outline-brass-300"
           : "focus-visible:outline-brass-500",
@@ -55,27 +56,17 @@ export function Logo({
       )}
     >
       <Image
-        src={
-          tone === "light"
-            ? "/logo/arsan-wordmark-cream.png"
-            : "/logo/arsan-wordmark-navy.png"
+        src={`/logo/arsan-${variant}-${shade}.png`}
+        alt={
+          variant === "lockup"
+            ? "ARSAN — Executive Search & Manufacturing Talent Advisory"
+            : "ARSAN"
         }
-        alt="ARSAN"
         width={width}
-        height={Math.round(width * WORDMARK_RATIO)}
+        height={Math.round(width * RATIO[variant])}
         priority
         sizes={`${width}px`}
       />
-      {withSubtitle && (
-        <span
-          className={cn(
-            "mt-2 hidden max-w-[13.25rem] text-[0.59375rem] font-medium uppercase leading-tight tracking-[0.1em] sm:block",
-            tone === "light" ? "text-cream-100/80" : "text-navy-700",
-          )}
-        >
-          {t("subtitle")}
-        </span>
-      )}
     </Link>
   );
 }

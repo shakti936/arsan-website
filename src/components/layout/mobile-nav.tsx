@@ -108,7 +108,7 @@ export function MobileNav() {
           className="fixed inset-0 z-100 flex h-dvh flex-col bg-navy-900"
         >
           <div className="flex shrink-0 items-center justify-between border-b border-navy-800 px-6 py-4">
-            <Logo />
+            <Logo width={168} />
             <button
               ref={closeButtonRef}
               type="button"
