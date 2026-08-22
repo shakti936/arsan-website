@@ -1933,3 +1933,30 @@ degrades rather than breaks.
 *Checked:* adding `draftMode()` to the locale layout does **not** deopt the site to dynamic
 — every page is still `●` in the build output. Next keeps the static shell and resolves
 draft mode per request.
+
+### D-094 · 2026-08-22 · The Presentation tool crashed on an invented config value
+`previewUrl: { origin: "same-origin", preview: "/" }` took the whole tool down with
+*"Failed to construct 'URL': Invalid base URL"* — on localhost and on the deployment.
+
+**Root cause.** `origin?: string` is deprecated and wants a real origin
+(`https://example.com`); it defaults to `location.origin`. Presentation evaluates
+`new URL(preview, origin)`, so mine became `new URL("/", "same-origin")`. I invented the
+literal from the behaviour I wanted — "preview whatever origin the Studio is served from" —
+instead of reading the type, and because the field is typed `string`, `tsc` had nothing to
+say about it.
+
+**The fix is less config, not different config.** `initial` already defaults to
+`location.origin` and the preview path to `/`, which is exactly the behaviour I was
+reaching for. Only `previewMode` is passed now, and no deprecated field is used. Rejected:
+setting `origin` to the deployed host — same deprecated surface, plus a hardcoded origin
+that differs across localhost, preview and production, which is the drift I was trying to
+avoid in the first place.
+
+**Why nothing caught it.** Presentation needs an authenticated Studio session, which
+Playwright does not have, so the e2e suite reaches `/studio` and stops at the login screen.
+Public pages were clean throughout — the crash lived entirely in a tool the tests cannot
+open. Worth knowing: **Studio behaviour is not covered by the suite**, and changes to
+`sanity.config.ts` need a human to open the tool. No automated guard was added for this;
+a grep for three deprecated field names would be fragile and would not generalise to the
+next invented value. The lesson is to read the `.d.ts` for config objects, where `string`
+types make anything typecheck.

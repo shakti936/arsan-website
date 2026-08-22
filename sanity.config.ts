@@ -39,12 +39,20 @@ export default defineConfig({
   schema: { types: schemaTypes },
   plugins: [
     presentationTool({
-      // relative, so the tool previews whatever origin the Studio is served
-      // from — localhost in development, the deployment in production, with
-      // nothing to keep in sync
+      /**
+       * Only `previewMode`. `initial` already defaults to `location.origin`
+       * and the preview path to `/`, which IS "preview whatever origin the
+       * Studio is served from" — localhost in development, the deployment in
+       * production, nothing to keep in sync.
+       *
+       * This previously passed `origin: "same-origin"`, a literal invented for
+       * that behaviour rather than read from the type. `origin` is deprecated
+       * and wants a real origin (`https://example.com`), so Presentation
+       * evaluated `new URL("/", "same-origin")` and crashed the whole tool with
+       * "Invalid base URL". `origin?: string` accepts any string, so tsc had
+       * nothing to say (D-094).
+       */
       previewUrl: {
-        origin: "same-origin",
-        preview: "/",
         previewMode: { enable: "/api/draft-mode/enable" },
       },
     }),
