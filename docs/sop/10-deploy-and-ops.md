@@ -83,3 +83,48 @@ Studio is used from a deployed URL. Revoke or replace with `sanity tokens delete
 **Builds now require network to `*.sanity.io`** (D-092). Vercel has it; a sandboxed local
 build does not, and fails at `getaddrinfo ENOTFOUND shop59xi.apicdn.sanity.io`.
 
+## Live deployment (2026-08-22)
+
+**https://arsan-website.vercel.app** — Vercel project `arsan-website` under the
+**Kaizen Gods** team, not `drew-6677s-projects`. Drew is a *member* of that team, which
+matters below. Production tracks `main`.
+
+It builds with **no environment variables**, by design: the Sanity project id is defaulted
+in `src/sanity/env.ts` and the `production` dataset is public, so a build needs neither a
+secret nor a `.env.local` (D-092). Verified on the live HTML — articles render from Sanity,
+images come from `cdn.sanity.io`, the numbered spine and reading times are present.
+
+### Done
+
+- `https://arsan-website.vercel.app` added to Sanity CORS with `--credentials`. Without it
+  `/studio` returns 200 and then fails every data request — a confusing failure, because
+  the page itself looks fine.
+- `SANITY_API_READ_TOKEN` added to the **Preview** environment.
+
+### Blocked on a team Owner/Admin
+
+`SANITY_API_READ_TOKEN` could **not** be added to **Production**:
+
+```
+Additional permissions are required to create production environment variables.
+```
+
+Drew's role on Kaizen Gods can write Preview env vars and not Production ones. Until an
+Owner adds it, the Presentation tool on the production URL shows *published* content
+instead of drafts. That degrades rather than breaks: the Studio works, editing works,
+publishing works — only the draft preview falls back.
+
+### Still open
+
+- **Preview deployments cannot load the Studio.** Their URLs are per-deployment and each
+  origin needs allowlisting. A wildcard (`https://*-kaizen-gods.vercel.app`) would cover
+  them; that is a decision on a client's dataset rather than a default, so it is not set.
+- **`NEXT_PUBLIC_SITE_URL` is unset**, so canonical URLs and OG tags point at
+  `https://www.arsancg.com` (the default in `src/lib/site.ts`). Correct once the real
+  domain is live; wrong today, because the site is only reachable at the `.vercel.app` URL
+  and every canonical claims otherwise. Set it on Vercel to the deployed URL, or accept it
+  until the domain is pointed.
+- **`bun run check:launch` still fails** — 26 unverified claims, 29 invented job openings,
+  3 placeholder portraits. Acceptable on a `.vercel.app` URL nobody is given; this gate is
+  what should block a real domain.
+

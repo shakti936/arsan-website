@@ -9,12 +9,15 @@ out/
 build/
 next-env.d.ts
 
-# env — never commit
+# env — never commit. Explicit rather than `.env*`, which `vercel link` likes
+# to append: that would also ignore .env.example, the one env file that is
+# supposed to be committed because it documents the variable NAMES.
 .env
 .env.local
 .env.*.local
 .env.production
 .env.development
+!.env.example
 
 # vercel
 .vercel
