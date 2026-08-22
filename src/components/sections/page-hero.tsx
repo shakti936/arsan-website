@@ -20,9 +20,11 @@ type HeroCta = {
  * one of those two pass an override; `secondary={null}` drops the outline
  * button entirely.
  *
- * `title` stays at `display-lg` where the home headline is `display-xl` — same
- * template, one step down, so a page title doesn't compete with the one
- * headline the site leads with.
+ * `title` is `display-xl`, the same as the home headline. It was a step down
+ * at first, on the theory that a page title shouldn't compete with the one
+ * line the site leads with; Drew saw the two side by side and asked why they
+ * differed, which is the answer — "template" means the same type, not a
+ * smaller echo of it.
  *
  * `photo` is the same frame the page's OG card uses, so a page looks the same
  * whether you arrive on it or see it shared.
@@ -62,7 +64,7 @@ export function PageHero({
           <HeroTitle
             text={title}
             emphasis={emphasis}
-            className="text-display-lg"
+            className="text-display-xl"
           />
           <div aria-hidden="true" className="mt-6 h-0.5 w-10 bg-brass-500" />
           {intro && (
