@@ -1,22 +1,29 @@
-import { highStakesCriticalSearch } from "./high-stakes-critical-search";
 import { mexicoPlantLeadership } from "./mexico-plant-leadership";
 import { postMergerExecutiveTeam } from "./post-merger-executive-team";
 import type { CaseStudy, CaseStudyCopy } from "./types";
 
-export type { CaseStudy, CaseStudyCopy, GlanceItem, IconPoint } from "./types";
+export type {
+  ApproachStep,
+  CaseStudy,
+  CaseStudyCopy,
+  CaseStudyVariant,
+  ChallengeItem,
+  GlanceItem,
+  IconPoint,
+  ResultItem,
+} from "./types";
 
 /**
- * The three case studies, in the order `home.stories` already lists them so
- * the teaser and the page it opens never disagree.
+ * The case studies that use this template.
  *
- * No study carries `figure` on a glance item and none carries a `quote`. Those
- * are the two things only ARSAN can supply and the two the comps invent — see
- * the note in `types.ts` and SOP Q-22.
+ * There are two, not three. The third comp — "From Vacant to Victorious" —
+ * lays its case study out as an article, breadcrumbs and all, so it lives in
+ * `content/insights/` under the template it actually uses rather than being
+ * forced through this one.
  */
 export const CASE_STUDIES: readonly CaseStudy[] = [
   mexicoPlantLeadership,
   postMergerExecutiveTeam,
-  highStakesCriticalSearch,
 ] as const;
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {

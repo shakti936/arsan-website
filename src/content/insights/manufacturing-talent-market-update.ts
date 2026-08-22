@@ -31,36 +31,39 @@ export const manufacturingTalentMarketUpdate: Article = {
       "What follows is what we are seeing from inside live searches rather than a survey: which roles are hard, why offers are being declined, and where the market has moved since the start of the year.",
     ],
 
-    bodyHeading: "What we're seeing this quarter",
-    steps: [
+    sections: [
       {
-        title: "Demand Is Concentrated, Not Broad",
-        body: "Hiring is not uniformly strong; it is intense in a narrow band of roles. Operations leadership, controls and automation engineering, quality and regulatory, and supply chain are absorbing most of the search activity we see. General management roles are moving more slowly, and organizations are more willing to leave one open than to fill it wrong.",
+        heading: "What we're seeing this quarter",
+        steps: [
+          {
+            title: "Demand Is Concentrated, Not Broad",
+            body: "Hiring is not uniformly strong; it is intense in a narrow band of roles. Operations leadership, controls and automation engineering, quality and regulatory, and supply chain are absorbing most of the search activity we see. General management roles are moving more slowly, and organizations are more willing to leave one open than to fill it wrong.",
+          },
+          {
+            title: "Compensation Pressure Is Real, but Selective",
+            body: "The broad market is not repricing. Specific roles are. Where a skill is scarce and the plant cannot run without it — automation, EHS in regulated environments, bilingual plant leadership on the border — candidates have real leverage and know it. Elsewhere, base-salary escalation has cooled and the negotiation has moved to bonus structure, equity and relocation support.",
+          },
+          {
+            title: "Counteroffers Are Reshaping Timelines",
+            body: "More senior candidates are receiving serious counteroffers than at any point in the last several years, and employers are moving faster to make them. Practically, that means a process that takes six weeks to reach a decision is competing against an incumbent who can act in two. Slow processes are not losing on money; they are losing on speed.",
+          },
+          {
+            title: "The U.S. and Mexico Markets Are Diverging",
+            body: "Cross-border organizations are finding that a compensation philosophy set in the U.S. does not transfer cleanly. In the Bajío and the northern border corridor, competition for plant and engineering leadership is concentrated in a small number of industrial parks, and the deciding factors are frequently structural — reporting line, autonomy, whether the site is a cost center or a business — rather than cash.",
+          },
+          {
+            title: "Retention Is Being Treated as a Hiring Strategy",
+            body: "The most effective response we're seeing is not more aggressive recruiting; it is protecting the bench that already exists. Organizations that have mapped their succession risk and made two or three targeted internal moves are running fewer external searches this year, and the ones they do run start from a stronger position.",
+          },
+        ],
       },
       {
-        title: "Compensation Pressure Is Real, but Selective",
-        body: "The broad market is not repricing. Specific roles are. Where a skill is scarce and the plant cannot run without it — automation, EHS in regulated environments, bilingual plant leadership on the border — candidates have real leverage and know it. Elsewhere, base-salary escalation has cooled and the negotiation has moved to bonus structure, equity and relocation support.",
-      },
-      {
-        title: "Counteroffers Are Reshaping Timelines",
-        body: "More senior candidates are receiving serious counteroffers than at any point in the last several years, and employers are moving faster to make them. Practically, that means a process that takes six weeks to reach a decision is competing against an incumbent who can act in two. Slow processes are not losing on money; they are losing on speed.",
-      },
-      {
-        title: "The U.S. and Mexico Markets Are Diverging",
-        body: "Cross-border organizations are finding that a compensation philosophy set in the U.S. does not transfer cleanly. In the Bajío and the northern border corridor, competition for plant and engineering leadership is concentrated in a small number of industrial parks, and the deciding factors are frequently structural — reporting line, autonomy, whether the site is a cost center or a business — rather than cash.",
-      },
-      {
-        title: "Retention Is Being Treated as a Hiring Strategy",
-        body: "The most effective response we're seeing is not more aggressive recruiting; it is protecting the bench that already exists. Organizations that have mapped their succession risk and made two or three targeted internal moves are running fewer external searches this year, and the ones they do run start from a stronger position.",
+        body: [
+          "The rest of this year will reward organizations that move quickly to secure priority talent, invest in leadership development and design total rewards that reflect what candidates are actually deciding on. Planning now is what builds the bench and the capability needed for the year ahead.",
+          "We publish what we see from live searches rather than from a survey panel. If you want the read on a specific role, region or compensation band, [tell us what you're working on](/contact) — or see [how we work with clients](/for-clients).",
+        ],
       },
     ],
-
-    outroHeading: "What Leaders Should Watch",
-    outro: [
-      "The rest of this year will reward organizations that move quickly to secure priority talent, invest in leadership development and design total rewards that reflect what candidates are actually deciding on. Planning now is what builds the bench and the capability needed for the year ahead.",
-      "We publish what we see from live searches rather than from a survey panel. If you want the read on a specific role, region or compensation band, [tell us what you're working on](/contact) — or see [how we work with clients](/for-clients).",
-    ],
-
     takeawaysHeading: "Key Takeaways",
     takeaways: [
       {
@@ -83,6 +86,12 @@ export const manufacturingTalentMarketUpdate: Article = {
     pullQuote:
       "The manufacturers who win this year will be the ones who align talent strategy with business strategy — investing in the right leaders, in the right roles, at the right time.",
     pullQuoteBy: "ARSAN Market Intelligence Team",
+
+    stat: {
+      figure: "4.8%", // @unverified: cites a 'Q3 2025 ARSAN Manufacturing Talent Market Report' that has never been produced
+      body: "average increase in total cash compensation for key manufacturing leadership roles year-over-year.",
+      source: "Source: Q3 2025 ARSAN Manufacturing Talent Market Report",
+    },
 
     asideHeading: "Questions to take to your team",
     asideItems: [
@@ -107,36 +116,40 @@ export const manufacturingTalentMarketUpdate: Article = {
       "Lo que sigue es lo que vemos desde búsquedas en curso, no desde una encuesta: qué posiciones cuestan trabajo, por qué se rechazan ofertas y hacia dónde se movió el mercado desde el arranque del año.",
     ],
 
-    bodyHeading: "Lo que estamos viendo este trimestre",
-    steps: [
+    sections: [
       {
-        title: "La demanda está concentrada, no generalizada",
-        body: "La contratación no está fuerte de manera pareja; está intensa en una banda estrecha de posiciones. Liderazgo de operaciones, ingeniería de control y automatización, calidad y asuntos regulatorios, y cadena de suministro absorben la mayor parte de la actividad que vemos. Las posiciones de dirección general se mueven más lento, y las organizaciones prefieren dejar una vacante abierta antes que cubrirla mal.",
+        heading: "Lo que estamos viendo este trimestre",
+        steps: [
+          {
+            title: "La demanda está concentrada, no generalizada",
+            body: "La contratación no está fuerte de manera pareja; está intensa en una banda estrecha de posiciones. Liderazgo de operaciones, ingeniería de control y automatización, calidad y asuntos regulatorios, y cadena de suministro absorben la mayor parte de la actividad que vemos. Las posiciones de dirección general se mueven más lento, y las organizaciones prefieren dejar una vacante abierta antes que cubrirla mal.",
+          },
+          {
+            title: "La presión salarial es real, pero selectiva",
+            body: "El mercado amplio no se está repreciando. Ciertos puestos sí. Donde la habilidad es escasa y la planta no opera sin ella — automatización, seguridad y medio ambiente en entornos regulados, liderazgo de planta bilingüe en la frontera — los candidatos tienen poder de negociación y lo saben. En el resto, el incremento de sueldo base se enfrió y la negociación se movió al bono, el incentivo de largo plazo y el apoyo de reubicación.",
+          },
+          {
+            title: "Las contraofertas están cambiando los tiempos",
+            body: "Más candidatos senior están recibiendo contraofertas serias que en cualquier momento de los últimos años, y las empresas actúan más rápido para hacerlas. En la práctica, un proceso que tarda seis semanas en decidir compite contra un empleador actual que puede actuar en dos. Los procesos lentos no están perdiendo por dinero; están perdiendo por velocidad.",
+          },
+          {
+            title: "Los mercados de Estados Unidos y México se separan",
+            body: "Las organizaciones transfronterizas están descubriendo que una filosofía de compensación definida en Estados Unidos no se traslada limpiamente. En el Bajío y el corredor fronterizo, la competencia por liderazgo de planta e ingeniería se concentra en unos pocos parques industriales, y lo que decide suele ser estructural — línea de reporte, autonomía, si el sitio es centro de costo o negocio — más que efectivo.",
+          },
+          {
+            title:
+              "La retención se está usando como estrategia de contratación",
+            body: "La respuesta más efectiva que vemos no es reclutar con más agresividad; es proteger el banco que ya existe. Las organizaciones que mapearon su riesgo de sucesión e hicieron dos o tres movimientos internos dirigidos están corriendo menos búsquedas externas este año, y las que corren arrancan desde una mejor posición.",
+          },
+        ],
       },
       {
-        title: "La presión salarial es real, pero selectiva",
-        body: "El mercado amplio no se está repreciando. Ciertos puestos sí. Donde la habilidad es escasa y la planta no opera sin ella — automatización, seguridad y medio ambiente en entornos regulados, liderazgo de planta bilingüe en la frontera — los candidatos tienen poder de negociación y lo saben. En el resto, el incremento de sueldo base se enfrió y la negociación se movió al bono, el incentivo de largo plazo y el apoyo de reubicación.",
-      },
-      {
-        title: "Las contraofertas están cambiando los tiempos",
-        body: "Más candidatos senior están recibiendo contraofertas serias que en cualquier momento de los últimos años, y las empresas actúan más rápido para hacerlas. En la práctica, un proceso que tarda seis semanas en decidir compite contra un empleador actual que puede actuar en dos. Los procesos lentos no están perdiendo por dinero; están perdiendo por velocidad.",
-      },
-      {
-        title: "Los mercados de Estados Unidos y México se separan",
-        body: "Las organizaciones transfronterizas están descubriendo que una filosofía de compensación definida en Estados Unidos no se traslada limpiamente. En el Bajío y el corredor fronterizo, la competencia por liderazgo de planta e ingeniería se concentra en unos pocos parques industriales, y lo que decide suele ser estructural — línea de reporte, autonomía, si el sitio es centro de costo o negocio — más que efectivo.",
-      },
-      {
-        title: "La retención se está usando como estrategia de contratación",
-        body: "La respuesta más efectiva que vemos no es reclutar con más agresividad; es proteger el banco que ya existe. Las organizaciones que mapearon su riesgo de sucesión e hicieron dos o tres movimientos internos dirigidos están corriendo menos búsquedas externas este año, y las que corren arrancan desde una mejor posición.",
+        body: [
+          "Lo que resta del año favorecerá a las organizaciones que se muevan rápido para asegurar talento prioritario, inviertan en desarrollo de liderazgo y diseñen una compensación total alineada con lo que los candidatos realmente están decidiendo. Planear ahora es lo que construye el banco y la capacidad del año siguiente.",
+          "Publicamos lo que vemos en búsquedas en curso, no lo que arroja un panel de encuestas. Si quiere la lectura de un puesto, una región o una banda salarial en particular, [cuéntenos en qué está trabajando](/contact) — o vea [cómo trabajamos con clientes](/for-clients).",
+        ],
       },
     ],
-
-    outroHeading: "Qué deben vigilar los líderes",
-    outro: [
-      "Lo que resta del año favorecerá a las organizaciones que se muevan rápido para asegurar talento prioritario, inviertan en desarrollo de liderazgo y diseñen una compensación total alineada con lo que los candidatos realmente están decidiendo. Planear ahora es lo que construye el banco y la capacidad del año siguiente.",
-      "Publicamos lo que vemos en búsquedas en curso, no lo que arroja un panel de encuestas. Si quiere la lectura de un puesto, una región o una banda salarial en particular, [cuéntenos en qué está trabajando](/contact) — o vea [cómo trabajamos con clientes](/for-clients).",
-    ],
-
     takeawaysHeading: "Puntos clave",
     takeaways: [
       {
@@ -159,6 +172,13 @@ export const manufacturingTalentMarketUpdate: Article = {
     pullQuote:
       "Los fabricantes que ganen este año serán los que alineen la estrategia de talento con la del negocio — invirtiendo en los líderes correctos, en los puestos correctos, en el momento correcto.",
     pullQuoteBy: "Equipo de Inteligencia de Mercado ARSAN",
+
+    stat: {
+      figure: "4.8%", // @unverified: cites a 'Q3 2025 ARSAN Manufacturing Talent Market Report' that has never been produced
+      body: "de aumento promedio en la compensación total en efectivo de los puestos clave de liderazgo en manufactura, año contra año.",
+      source:
+        "Fuente: Reporte ARSAN del Mercado de Talento en Manufactura, T3 2025",
+    },
 
     asideHeading: "Preguntas para llevar a su equipo",
     asideItems: [

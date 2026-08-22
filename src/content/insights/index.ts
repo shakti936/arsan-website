@@ -1,4 +1,5 @@
 import { automationChangingManufacturingJobs } from "./automation-changing-manufacturing-jobs";
+import { fromVacantToVictorious } from "./from-vacant-to-victorious";
 import { manufacturingTalentMarketUpdate } from "./manufacturing-talent-market-update";
 import { theNewManufacturingLeader } from "./the-new-manufacturing-leader";
 import type { Article, ArticleCopy } from "./types";
@@ -11,15 +12,17 @@ export type { Article, ArticleCopy } from "./types";
  * index, the home row and each article's "Related Insights" all read from it,
  * so a new piece appears in three places by being added here once.
  *
- * **No article carries a `stat`.** The four comps each show a rail figure
+ * **Every `stat` in here is unverified.** The comps each put a rail figure
  * sourced to Deloitte, LinkedIn or an "ARSAN Manufacturing Talent Market
- * Report" — 67%, 70%, 78%, 4.8%. None of those exist. Attributing an invented
- * number to a real research firm is the kind of thing a competitor screenshots,
- * so the slot is wired and empty; the rail carries the article's questions
- * instead. Fill `stat` when Armida provides sourced data (SOP Q-06).
+ * Report" — 67%, 70%, 78%, 4.8%, and a 32% client outcome. Drew asked for the
+ * comps reproduced exactly (D-071), so they are in the build and every one is
+ * annotated `@unverified`; `bun run check:launch` fails while any is still
+ * here. Verify each against the real report or delete it — the rail falls back
+ * to the article's own questions, so removing one leaves no hole (SOP Q-23).
  */
 export const ARTICLES: readonly Article[] = [
   manufacturingTalentMarketUpdate,
+  fromVacantToVictorious,
   theNewManufacturingLeader,
   automationChangingManufacturingJobs,
   whyTheBestCandidatesArentLooking,
@@ -36,7 +39,10 @@ export function articleCopy(article: Article, locale: string): ArticleCopy {
   return locale === "es" ? article.es : article.en;
 }
 
-/** Everything except `slug`, in list order — for "Related Insights". */
-export function relatedArticles(slug: string, count = 3): Article[] {
+/**
+ * Everything except `slug`, in list order — for "Related Insights". Four is
+ * what the comps show once the set is big enough to fill the row.
+ */
+export function relatedArticles(slug: string, count = 4): Article[] {
   return ARTICLES.filter((a) => a.slug !== slug).slice(0, count);
 }

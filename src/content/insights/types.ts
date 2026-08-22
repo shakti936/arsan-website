@@ -11,8 +11,12 @@ import type { IconName } from "@/components/ui/icons";
  * missing translation a build error rather than a runtime `insights.3.steps.2`
  * showing through on the page.
  *
- * The shape follows refs/dirA-article-*.png, which all four comps share:
- * lede, a numbered spine, a close, three takeaways, and a rail.
+ * The shape follows refs/dirA-article-*.png. The body is a list of `sections`
+ * rather than a fixed heading-plus-spine, because the comps show two different
+ * body shapes and a page type that can only render one of them is a page type
+ * that will be worked around. The four opinion pieces are one section with a
+ * numbered spine plus a closing section of prose; the case study is three
+ * prose sections, one of which carries a check list.
  *
  * Prose fields accept one piece of inline markup, `[label](/path)`, so an
  * article can link into the service pages from inside a sentence. That is
@@ -22,6 +26,22 @@ import type { IconName } from "@/components/ui/icons";
  */
 export type ArticleStep = { title: string; body: string };
 
+/** A circled-check line with a bold lead-in — refs/dirA-casestudy-vacant-to-victorious.png. */
+export type ArticleCheck = { lead: string; body: string };
+
+/**
+ * One H2 and what sits under it. Everything is optional but the order is not:
+ * prose, then a numbered spine or a check list. A section carries one list at
+ * most; two lists under one heading is a second section.
+ */
+export type ArticleSection = {
+  /** H2 over the section. */
+  heading?: string;
+  body?: string[];
+  steps?: ArticleStep[];
+  checks?: ArticleCheck[];
+};
+
 export type ArticleTakeaway = {
   icon: IconName;
   title: string;
@@ -29,9 +49,10 @@ export type ArticleTakeaway = {
 };
 
 /**
- * The rail's figure card. **Optional and currently unset on every article** —
- * see the note in `index.ts`. When Armida supplies a sourced number it drops
- * straight in; until then the rail carries `aside` instead.
+ * The rail's figure card. Optional, and every one currently in the build is
+ * marked `@unverified` — see the note in `index.ts`. Deleting a `stat` is
+ * always safe: the rail falls back to `aside`, so pulling an unsourced number
+ * before launch costs one line and leaves no hole behind.
  */
 export type ArticleStat = {
   figure: string;
@@ -52,16 +73,14 @@ export type ArticleCopy = {
   imageAlt: string;
   /** Paragraphs before the first heading. */
   lede: string[];
-  bodyHeading: string;
-  steps: ArticleStep[];
-  /** Optional H2 over the closing paragraphs — the market update's "What to watch". */
-  outroHeading?: string;
-  outro: string[];
+  sections: ArticleSection[];
   takeawaysHeading: string;
   takeaways: ArticleTakeaway[];
   pullQuote: string;
   pullQuoteBy: string;
-  /** Rail card: the questions this piece should send a reader back to work with. */
+  /** Second attribution line — the case study's "Precision Components Manufacturer". */
+  pullQuoteOrg?: string;
+  /** Rail fallback: the questions this piece should send a reader back to work with. */
   asideHeading: string;
   asideItems: string[];
   stat?: ArticleStat;

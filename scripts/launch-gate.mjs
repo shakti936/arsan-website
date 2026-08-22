@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Pre-cutover gate: nothing named `placeholder-` may go to production.
+ * Pre-cutover gate. Two things must be gone before this site is public:
+ * assets named `placeholder-`, and content marked `@unverified`.
  *
  * Why this exists as a script rather than a line on a checklist. The
  * leadership row ships generated portraits standing in for real headshots of
@@ -22,6 +23,17 @@ import { extname, join, relative } from "node:path";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const PREFIX = "placeholder-";
+/**
+ * Claims replicated from the Direction A comps that nobody has verified —
+ * third-party statistics, client outcome figures, client testimonials. Drew
+ * asked for the comps reproduced exactly (D-071), so they are in the build;
+ * this is what stops them reaching production unnoticed. Annotate each one:
+ *
+ *   // @unverified: needs the real Deloitte figure or removal
+ *
+ * Delete the claim, delete the marker, and the gate goes quiet.
+ */
+const UNVERIFIED = /(?:^|\s)\/\/ @unverified:(.*)$/;
 const SEARCH_DIRS = ["src", "messages"];
 const SEARCH_EXTS = new Set([".ts", ".tsx", ".js", ".jsx", ".json", ".css"]);
 
@@ -58,6 +70,21 @@ for (const asset of assets) {
   else orphans.push(asset);
 }
 
+const claims = [];
+for (const [path, text] of corpus) {
+  text.split("\n").forEach((line, i) => {
+    // `// @unverified:` exactly — prose in a block comment that happens to
+    // name the marker is documentation, not an annotation
+    const match = UNVERIFIED.exec(line);
+    if (match) {
+      claims.push({
+        where: `${relative(ROOT, path)}:${i + 1}`,
+        note: (match[1] ?? "").trim(),
+      });
+    }
+  });
+}
+
 const kb = (path) => `${Math.round(statSync(path).size / 1024)}KB`;
 
 if (orphans.length) {
@@ -68,18 +95,33 @@ if (orphans.length) {
   console.log("");
 }
 
-if (!blocking.length) {
-  console.log("✓ launch gate clear — no placeholder assets are referenced.");
+if (!blocking.length && !claims.length) {
+  console.log("✓ launch gate clear — no placeholders, no unverified claims.");
   process.exit(0);
 }
 
-console.error("✗ launch gate BLOCKED — placeholder assets are still live:\n");
-for (const { asset, referencedBy } of blocking) {
-  console.error(`  ${relative(ROOT, asset)}  ${kb(asset)}`);
-  for (const path of referencedBy) console.error(`      ← ${path}`);
+if (blocking.length) {
+  console.error("✗ placeholder assets are still live:\n");
+  for (const { asset, referencedBy } of blocking) {
+    console.error(`  ${relative(ROOT, asset)}  ${kb(asset)}`);
+    for (const path of referencedBy) console.error(`      ← ${path}`);
+  }
+  console.error(
+    "\n  → replace with real assets, or remove the surfaces using them (Q-21).\n",
+  );
 }
-console.error(
-  "\nReplace these with the real assets, or remove the surfaces that use them,\n" +
-    "before promoting to production. See docs/sop/11-open-questions.md Q-21.",
-);
+
+if (claims.length) {
+  console.error(`✗ ${claims.length} unverified claims are still live:\n`);
+  for (const { where, note } of claims) {
+    console.error(`  ${where}`);
+    console.error(`      ${note}`);
+  }
+  console.error(
+    "\n  → each is a statistic, source or client quote copied from a Direction A\n" +
+      "    comp and never verified. Verify it, replace it, or delete it and its\n" +
+      "    marker before promoting to production (D-071, Q-23).\n",
+  );
+}
+
 process.exit(1);

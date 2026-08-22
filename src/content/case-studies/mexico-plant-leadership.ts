@@ -1,7 +1,9 @@
 import type { CaseStudy } from "./types";
 
+/** refs/dirA-casestudy-mexico-plant.png — the outcomes treatment. */
 export const mexicoPlantLeadership: CaseStudy = {
   slug: "mexico-plant-leadership",
+  variant: "outcomes",
   photo: "story-mexico-expansion",
 
   en: {
@@ -21,10 +23,21 @@ export const mexicoPlantLeadership: CaseStudy = {
     glanceBody:
       "A leading global HVAC manufacturer partnered with ARSAN to build the leadership team and workforce strategy for a new state-of-the-art manufacturing facility in Mexico — before breaking ground.",
     glance: [
-      { icon: "users", label: "Greenfield leadership team" },
-      { icon: "compass", label: "Pre-operational timeline" },
-      { icon: "globe", label: "Bilingual, cross-cultural hires" },
-      { icon: "chart", label: "Built for scale from day one" },
+      // @unverified: outcome figure invented by the comp — needs the engagement's real numbers from Armida or removal
+      { figure: "18+", label: "Leadership roles successfully filled" },
+      // @unverified: outcome figure invented by the comp — needs the engagement's real numbers from Armida or removal
+      {
+        figure: "6",
+        unit: "Months",
+        label: "From engagement to plant opening",
+      },
+      // @unverified: outcome figure invented by the comp — needs the engagement's real numbers from Armida or removal
+      {
+        figure: "100%",
+        label: "Leadership team in place before operations start",
+      },
+      // @unverified: outcome figure invented by the comp — needs the engagement's real numbers from Armida or removal
+      { figure: "High", label: "Leadership team retention" },
     ],
 
     challengeHeading: "The challenge",
@@ -32,10 +45,18 @@ export const mexicoPlantLeadership: CaseStudy = {
       "The client was investing in a new greenfield facility in Mexico and needed to build an entire leadership team from the ground up.",
     challengeListHeading: "Key challenges included:",
     challenges: [
-      "Limited local talent with the right mix of manufacturing expertise and leadership experience",
-      "Need for a bilingual, cross-cultural leadership team aligned with global standards",
-      "A tight timeline to have the team in place before operations began",
-      "Building a foundation for long-term scalability and performance",
+      {
+        text: "Limited local talent with the right mix of manufacturing expertise and leadership experience",
+      },
+      {
+        text: "Need for a bilingual, cross-cultural leadership team aligned with global standards",
+      },
+      {
+        text: "A tight timeline to have the team in place before operations began",
+      },
+      {
+        text: "Building a foundation for long-term scalability and performance",
+      },
     ],
 
     approachHeading: "Our approach",
@@ -99,10 +120,19 @@ export const mexicoPlantLeadership: CaseStudy = {
       "Operations Manager",
       "Maintenance Manager",
       "EHS Manager",
+      // fills the second row's fourth cell, exactly as the comp sets it
+      "And more...",
       "Manufacturing Engineering Manager",
       "Supply Chain Manager",
       "Finance Manager",
     ],
+
+    quote: {
+      // @unverified: client testimonial reproduced from the Direction A comp — no client has approved these words
+      text: "ARSAN delivered the leadership team we needed before our plant opened. Their process was thorough, their candidates were exceptional, and their support was instrumental in our success.",
+      role: "VP of Human Resources",
+      org: "Global HVAC Manufacturer",
+    },
 
     ctaHeading: "Ready to build your leadership foundation?",
     ctaBody:
@@ -127,10 +157,18 @@ export const mexicoPlantLeadership: CaseStudy = {
     glanceBody:
       "Un fabricante global líder en HVAC se asoció con ARSAN para construir el equipo directivo y la estrategia de personal de una nueva planta de manufactura de última generación en México — antes de la primera palada.",
     glance: [
-      { icon: "users", label: "Equipo directivo desde cero" },
-      { icon: "compass", label: "Antes del arranque de operaciones" },
-      { icon: "globe", label: "Contrataciones bilingües y biculturales" },
-      { icon: "chart", label: "Diseñado para escalar desde el día uno" },
+      // @unverified: outcome figure invented by the comp — needs the engagement's real numbers from Armida or removal
+      { figure: "18+", label: "Puestos de liderazgo cubiertos" },
+      // @unverified: outcome figure invented by the comp — needs the engagement's real numbers from Armida or removal
+      {
+        figure: "6",
+        unit: "meses",
+        label: "De la asignación a la apertura de la planta",
+      },
+      // @unverified: outcome figure invented by the comp — needs the engagement's real numbers from Armida or removal
+      { figure: "100%", label: "Equipo directivo listo antes del arranque" },
+      // @unverified: outcome figure invented by the comp — needs the engagement's real numbers from Armida or removal
+      { figure: "Alta", label: "Retención del equipo directivo" },
     ],
 
     challengeHeading: "El reto",
@@ -138,10 +176,18 @@ export const mexicoPlantLeadership: CaseStudy = {
       "El cliente estaba invirtiendo en una nueva planta en México y necesitaba formar un equipo directivo completo desde cero.",
     challengeListHeading: "Los retos principales:",
     challenges: [
-      "Talento local limitado con la combinación correcta de experiencia en manufactura y liderazgo",
-      "Necesidad de un equipo directivo bilingüe y bicultural alineado con estándares globales",
-      "Un calendario ajustado para tener al equipo en su lugar antes de arrancar operaciones",
-      "Construir una base para la escalabilidad y el desempeño de largo plazo",
+      {
+        text: "Talento local limitado con la combinación correcta de experiencia en manufactura y liderazgo",
+      },
+      {
+        text: "Necesidad de un equipo directivo bilingüe y bicultural alineado con estándares globales",
+      },
+      {
+        text: "Un calendario ajustado para tener al equipo en su lugar antes de arrancar operaciones",
+      },
+      {
+        text: "Construir una base para la escalabilidad y el desempeño de largo plazo",
+      },
     ],
 
     approachHeading: "Nuestro enfoque",
@@ -205,10 +251,18 @@ export const mexicoPlantLeadership: CaseStudy = {
       "Gerente de Operaciones",
       "Gerente de Mantenimiento",
       "Gerente de Seguridad y Medio Ambiente",
+      "Y más...",
       "Gerente de Ingeniería de Manufactura",
       "Gerente de Cadena de Suministro",
       "Gerente de Finanzas",
     ],
+
+    quote: {
+      // @unverified: client testimonial reproduced from the Direction A comp — no client has approved these words
+      text: "ARSAN entregó el equipo directivo que necesitábamos antes de que abriera nuestra planta. Su proceso fue riguroso, sus candidatos excepcionales y su acompañamiento fue determinante para nuestro éxito.",
+      role: "VP de Recursos Humanos",
+      org: "Fabricante global de HVAC",
+    },
 
     ctaHeading: "¿Listo para construir su base de liderazgo?",
     ctaBody:

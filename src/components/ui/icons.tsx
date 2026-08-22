@@ -71,6 +71,37 @@ export const Icons = {
       <path d="m9 11.5 2 2 4-4" />
     </Base>
   ),
+  /* padlock + org chart — the merger study's outcome strip,
+     refs/dirA-casestudy-merger-confidential.png */
+  lock: (p: IconProps) => (
+    <Base {...p}>
+      <rect x="4.5" y="10.5" width="15" height="10" rx="1.5" />
+      <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
+      <path d="M12 14v3" />
+    </Base>
+  ),
+  hierarchy: (p: IconProps) => (
+    <Base {...p}>
+      <rect x="9" y="3.5" width="6" height="4.5" rx="1" />
+      <rect x="3" y="16" width="6" height="4.5" rx="1" />
+      <rect x="15" y="16" width="6" height="4.5" rx="1" />
+      <path d="M12 8v3.5M6 16v-2.25h12V16" />
+    </Base>
+  ),
+  /* a shield with a keyhole — "confidential search partnership" */
+  shieldLock: (p: IconProps) => (
+    <Base {...p}>
+      <path d="M12 3.5 19 6v5.5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-2.5Z" />
+      <circle cx="12" cy="10.5" r="1.6" />
+      <path d="M12 12.1v2.4" />
+    </Base>
+  ),
+  /* outline only, no check — the confidentiality note band */
+  shieldPlain: (p: IconProps) => (
+    <Base {...p}>
+      <path d="M12 3.5 19 6v5.5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-2.5Z" />
+    </Base>
+  ),
   map: (p: IconProps) => (
     <Base {...p}>
       <path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4Zm0 0v14m6-12v14" />

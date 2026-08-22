@@ -43,3 +43,23 @@ Resolved items move to [01-decision-log.md](01-decision-log.md) with their reaso
 | Q-07 | Auth method for the portal (magic link vs. LinkedIn OAuth vs. password) | After internal repo review — that system may already decide it |
 | Q-08 | Whether P4 (employer/admin surface) is needed at all, or already covered by the internal system | After internal repo review |
 | Q-09 | Analytics/tracking stack | Before cutover |
+
+### Q-23 · BLOCKING before launch · 24 unverified claims are live in the build
+Per D-071 the comps' invented statistics and testimonials are in the site. Every one is
+annotated `// @unverified: <what it needs>` and `bun run check:launch` lists them:
+
+- **Third-party statistics** — 67%, 78% attributed to *Deloitte 2025 Manufacturing Industry
+  Outlook*; 70% to *LinkedIn Global Talent Trends 2024*. Someone has to open those reports.
+  If the figure is real, keep it and delete the marker. If it is not, the claim goes.
+- **4.8%** cites a *Q3 2025 ARSAN Manufacturing Talent Market Report*. That report does not
+  exist. Either ARSAN publishes it or the figure comes out.
+- **32%, 18+, 6 Months, 100%, High** are client outcome figures. Armida has to confirm them
+  against the engagements, or they come out.
+- **Three client testimonials** (VP of Human Resources / Chief Executive Officer / Senior HR
+  Executive). No client has said these words. Each needs written approval from the client it
+  is attributed to, or it comes out.
+
+Deleting a claim is always safe: the article rail falls back to the piece's own questions
+and a glance cell to a qualitative label. Nothing needs redesigning to remove one.
+
+**Owner:** Armida. **Blocks:** production cutover.

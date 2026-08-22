@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { CaseStudy } from "@/components/sections/case-study";
+import { JsonLd } from "@/components/seo/json-ld";
 import {
   CASE_STUDIES,
   caseStudyCopy,
@@ -98,12 +99,8 @@ export default async function Page({ params }: Params) {
 
   return (
     <main id="main">
-      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD has no other insertion point, and the payload is built here from typed content */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <CaseStudy copy={copy} photo={study.photo} />
+      <JsonLd data={jsonLd} />
+      <CaseStudy copy={copy} photo={study.photo} variant={study.variant} />
     </main>
   );
 }

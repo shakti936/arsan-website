@@ -22,36 +22,39 @@ export const theNewManufacturingLeader: Article = {
       "The useful part is not the list. It's that each of these can be interviewed for — with evidence, not impressions — and most hiring processes don't.",
     ],
 
-    bodyHeading: "Five traits that separate high-performing leaders",
-    steps: [
+    sections: [
       {
-        title: "Strategic Vision with Commercial Acumen",
-        body: "Top leaders connect daily operations to long-term business goals. They understand the financial levers of the business, make data-informed decisions and can defend why one initiative comes before another. Ask a candidate what they chose not to fund last year and why — the answer separates an operator from a business leader faster than any competency framework.",
+        heading: "Five traits that separate high-performing leaders",
+        steps: [
+          {
+            title: "Strategic Vision with Commercial Acumen",
+            body: "Top leaders connect daily operations to long-term business goals. They understand the financial levers of the business, make data-informed decisions and can defend why one initiative comes before another. Ask a candidate what they chose not to fund last year and why — the answer separates an operator from a business leader faster than any competency framework.",
+          },
+          {
+            title: "Operational Excellence Mindset",
+            body: "They build systems that scale rather than heroics that don't. These leaders are relentless about process discipline, continuous improvement and quality, and they measure the things that predict a result instead of the things that report it. The tell is whether the improvement survived their promotion.",
+          },
+          {
+            title: "People-Centric Leadership",
+            body: "The best leaders develop talent, build trust and give people room to do their best work. They can name the people they promoted and what those people do now. In a market where the constraint is rarely capital and almost always capability, a leader who grows benches is compounding an asset the balance sheet doesn't show.",
+          },
+          {
+            title: "Agility and Change Leadership",
+            body: "From digital transformation to tariff shifts to a customer moving a program, change is constant. High-performing leaders anticipate it, communicate it with clarity, and mobilize an organization to act before the pressure is obvious to everyone. Ask what they got wrong in a change they led; leaders who have actually led one always have an answer.",
+          },
+          {
+            title: "Cross-Functional Collaboration",
+            body: "Today's problems don't respect a functional boundary. Effective leaders work across engineering, quality, supply chain, HR and commercial, and they are trusted by peers who don't report to them. In multi-site and cross-border organizations this is the trait that determines whether a strategy set at headquarters survives contact with a plant.",
+          },
+        ],
       },
       {
-        title: "Operational Excellence Mindset",
-        body: "They build systems that scale rather than heroics that don't. These leaders are relentless about process discipline, continuous improvement and quality, and they measure the things that predict a result instead of the things that report it. The tell is whether the improvement survived their promotion.",
-      },
-      {
-        title: "People-Centric Leadership",
-        body: "The best leaders develop talent, build trust and give people room to do their best work. They can name the people they promoted and what those people do now. In a market where the constraint is rarely capital and almost always capability, a leader who grows benches is compounding an asset the balance sheet doesn't show.",
-      },
-      {
-        title: "Agility and Change Leadership",
-        body: "From digital transformation to tariff shifts to a customer moving a program, change is constant. High-performing leaders anticipate it, communicate it with clarity, and mobilize an organization to act before the pressure is obvious to everyone. Ask what they got wrong in a change they led; leaders who have actually led one always have an answer.",
-      },
-      {
-        title: "Cross-Functional Collaboration",
-        body: "Today's problems don't respect a functional boundary. Effective leaders work across engineering, quality, supply chain, HR and commercial, and they are trusted by peers who don't report to them. In multi-site and cross-border organizations this is the trait that determines whether a strategy set at headquarters survives contact with a plant.",
+        body: [
+          "Leaders who embody these five traits are not only navigating complexity — they are building resilient organizations prepared to win in the years ahead. But traits only matter if your process can detect them. Most interview loops test for domain knowledge, which is the easiest thing to verify and the least predictive of performance.",
+          "At ARSAN we partner with manufacturers to identify and attract leaders who drive real impact, and to develop the ones already inside the business. Start with [executive and professional search](/for-clients/executive-search), or with [enterprise talent and leadership solutions](/for-clients/leadership-solutions) when the answer is a stronger bench rather than a new hire.",
+        ],
       },
     ],
-
-    outroHeading: "What this means for how you hire",
-    outro: [
-      "Leaders who embody these five traits are not only navigating complexity — they are building resilient organizations prepared to win in the years ahead. But traits only matter if your process can detect them. Most interview loops test for domain knowledge, which is the easiest thing to verify and the least predictive of performance.",
-      "At ARSAN we partner with manufacturers to identify and attract leaders who drive real impact, and to develop the ones already inside the business. Start with [executive and professional search](/for-clients/executive-search), or with [enterprise talent and leadership solutions](/for-clients/leadership-solutions) when the answer is a stronger bench rather than a new hire.",
-    ],
-
     takeawaysHeading: "Key Takeaways",
     takeaways: [
       {
@@ -74,6 +77,12 @@ export const theNewManufacturingLeader: Article = {
     pullQuote:
       "The future of manufacturing will be defined by leaders who can align people, processes and purpose to drive sustainable performance.",
     pullQuoteBy: "ARSAN Editorial Team",
+
+    stat: {
+      figure: "78%", // @unverified: attributed to the Deloitte 2025 Manufacturing Industry Outlook; nobody has opened the report to confirm the figure
+      body: "of manufacturing executives say leadership quality is the top factor impacting their company's performance.",
+      source: "Source: Deloitte 2025 Manufacturing Industry Outlook",
+    },
 
     asideHeading: "Questions to take to your team",
     asideItems: [
@@ -99,36 +108,39 @@ export const theNewManufacturingLeader: Article = {
       "Lo útil no es la lista. Es que cada uno de estos rasgos se puede evaluar en entrevista — con evidencia, no con impresiones — y la mayoría de los procesos no lo hace.",
     ],
 
-    bodyHeading: "Cinco rasgos que distinguen a los líderes de alto desempeño",
-    steps: [
+    sections: [
       {
-        title: "Visión estratégica con criterio comercial",
-        body: "Los mejores líderes conectan la operación diaria con los objetivos del negocio. Entienden las palancas financieras, deciden con datos y pueden defender por qué una iniciativa va antes que otra. Pregunte a un candidato qué decidió no financiar el año pasado y por qué: la respuesta separa a un operador de un líder de negocio más rápido que cualquier marco de competencias.",
+        heading: "Cinco rasgos que distinguen a los líderes de alto desempeño",
+        steps: [
+          {
+            title: "Visión estratégica con criterio comercial",
+            body: "Los mejores líderes conectan la operación diaria con los objetivos del negocio. Entienden las palancas financieras, deciden con datos y pueden defender por qué una iniciativa va antes que otra. Pregunte a un candidato qué decidió no financiar el año pasado y por qué: la respuesta separa a un operador de un líder de negocio más rápido que cualquier marco de competencias.",
+          },
+          {
+            title: "Mentalidad de excelencia operativa",
+            body: "Construyen sistemas que escalan en lugar de heroísmos que no. Son implacables con la disciplina de proceso, la mejora continua y la calidad, y miden lo que anticipa un resultado en vez de lo que lo reporta. La señal real es si la mejora sobrevivió a su promoción.",
+          },
+          {
+            title: "Liderazgo centrado en las personas",
+            body: "Los mejores líderes desarrollan talento, construyen confianza y dan espacio para que la gente haga su mejor trabajo. Pueden nombrar a quienes promovieron y decir qué hacen hoy. En un mercado donde la restricción rara vez es el capital y casi siempre la capacidad, un líder que forma cuadros está acumulando un activo que el balance no muestra.",
+          },
+          {
+            title: "Agilidad y liderazgo del cambio",
+            body: "De la transformación digital a los cambios arancelarios o a un cliente que mueve un programa, el cambio es constante. Los líderes de alto desempeño lo anticipan, lo comunican con claridad y movilizan a la organización antes de que la presión sea evidente para todos. Pregunte qué hicieron mal en un cambio que lideraron; quien de verdad lideró uno siempre tiene respuesta.",
+          },
+          {
+            title: "Colaboración transversal",
+            body: "Los problemas de hoy no respetan fronteras funcionales. Los líderes efectivos trabajan con ingeniería, calidad, cadena de suministro, recursos humanos y el área comercial, y gozan de la confianza de pares que no les reportan. En organizaciones multiplanta y transfronterizas, este rasgo determina si una estrategia definida en corporativo sobrevive al contacto con la planta.",
+          },
+        ],
       },
       {
-        title: "Mentalidad de excelencia operativa",
-        body: "Construyen sistemas que escalan en lugar de heroísmos que no. Son implacables con la disciplina de proceso, la mejora continua y la calidad, y miden lo que anticipa un resultado en vez de lo que lo reporta. La señal real es si la mejora sobrevivió a su promoción.",
-      },
-      {
-        title: "Liderazgo centrado en las personas",
-        body: "Los mejores líderes desarrollan talento, construyen confianza y dan espacio para que la gente haga su mejor trabajo. Pueden nombrar a quienes promovieron y decir qué hacen hoy. En un mercado donde la restricción rara vez es el capital y casi siempre la capacidad, un líder que forma cuadros está acumulando un activo que el balance no muestra.",
-      },
-      {
-        title: "Agilidad y liderazgo del cambio",
-        body: "De la transformación digital a los cambios arancelarios o a un cliente que mueve un programa, el cambio es constante. Los líderes de alto desempeño lo anticipan, lo comunican con claridad y movilizan a la organización antes de que la presión sea evidente para todos. Pregunte qué hicieron mal en un cambio que lideraron; quien de verdad lideró uno siempre tiene respuesta.",
-      },
-      {
-        title: "Colaboración transversal",
-        body: "Los problemas de hoy no respetan fronteras funcionales. Los líderes efectivos trabajan con ingeniería, calidad, cadena de suministro, recursos humanos y el área comercial, y gozan de la confianza de pares que no les reportan. En organizaciones multiplanta y transfronterizas, este rasgo determina si una estrategia definida en corporativo sobrevive al contacto con la planta.",
+        body: [
+          "Los líderes que reúnen estos cinco rasgos no solo navegan la complejidad: construyen organizaciones resilientes, preparadas para ganar en los próximos años. Pero los rasgos solo importan si su proceso puede detectarlos. La mayoría de las entrevistas evalúa conocimiento técnico, que es lo más fácil de verificar y lo menos predictivo del desempeño.",
+          "En ARSAN acompañamos a los fabricantes para identificar y atraer líderes que generan impacto real, y para desarrollar a los que ya están dentro. Empiece por [búsqueda de ejecutivos y profesionales](/for-clients/executive-search), o por [talento empresarial y soluciones de liderazgo](/for-clients/leadership-solutions) cuando la respuesta es un mejor banco y no una nueva contratación.",
+        ],
       },
     ],
-
-    outroHeading: "Qué significa esto para su forma de contratar",
-    outro: [
-      "Los líderes que reúnen estos cinco rasgos no solo navegan la complejidad: construyen organizaciones resilientes, preparadas para ganar en los próximos años. Pero los rasgos solo importan si su proceso puede detectarlos. La mayoría de las entrevistas evalúa conocimiento técnico, que es lo más fácil de verificar y lo menos predictivo del desempeño.",
-      "En ARSAN acompañamos a los fabricantes para identificar y atraer líderes que generan impacto real, y para desarrollar a los que ya están dentro. Empiece por [búsqueda de ejecutivos y profesionales](/for-clients/executive-search), o por [talento empresarial y soluciones de liderazgo](/for-clients/leadership-solutions) cuando la respuesta es un mejor banco y no una nueva contratación.",
-    ],
-
     takeawaysHeading: "Puntos clave",
     takeaways: [
       {
@@ -151,6 +163,12 @@ export const theNewManufacturingLeader: Article = {
     pullQuote:
       "El futuro de la manufactura lo definirán los líderes capaces de alinear personas, procesos y propósito para sostener el desempeño.",
     pullQuoteBy: "Equipo Editorial ARSAN",
+
+    stat: {
+      figure: "78%", // @unverified: attributed to the Deloitte 2025 Manufacturing Industry Outlook; nobody has opened the report to confirm the figure
+      body: "de los directivos de manufactura señalan la calidad del liderazgo como el principal factor en el desempeño de su empresa.",
+      source: "Fuente: Deloitte 2025 Manufacturing Industry Outlook",
+    },
 
     asideHeading: "Preguntas para llevar a su equipo",
     asideItems: [

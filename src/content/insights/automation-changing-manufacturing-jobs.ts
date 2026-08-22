@@ -22,35 +22,39 @@ export const automationChangingManufacturingJobs: Article = {
       "We see where that breaks down, because we see it on the hiring side. Capital gets approved, the equipment arrives, the line comes up — and the organization running it is still the one built for the old process. The roles a modernized plant depends on are the hardest to fill and, almost always, the last to get planned.",
     ],
 
-    bodyHeading: "How Automation Is Changing the Manufacturing Workforce",
-    steps: [
+    sections: [
       {
-        title: "From Manual to Meaningful",
-        body: "Repetitive and physically demanding tasks are automated first, which moves the operator's job from executing a step to supervising a process. That is a genuine change in what good performance looks like: judgment, exception handling and continuous improvement rather than throughput per shift. A job description written for the old work will screen out the people who can do the new work.",
+        heading: "How Automation Is Changing the Manufacturing Workforce",
+        steps: [
+          {
+            title: "From Manual to Meaningful",
+            body: "Repetitive and physically demanding tasks are automated first, which moves the operator's job from executing a step to supervising a process. That is a genuine change in what good performance looks like: judgment, exception handling and continuous improvement rather than throughput per shift. A job description written for the old work will screen out the people who can do the new work.",
+          },
+          {
+            title: "New Roles, New Skillsets",
+            body: "Demand is rising fastest for controls engineering, robotics maintenance, data analytics, OT cybersecurity and AI oversight — roles that pair technical depth with judgment. Most of them did not exist on a plant org chart a decade ago, so there is no internal precedent for how to level them, what to pay them, or where they report. Getting that structure wrong costs far more than the salary does.",
+          },
+          {
+            title: "The Upskilling Imperative",
+            body: "The cheapest source of qualified people is usually the ones already on site. An operator who knows the product, the tolerances and the customer is a shorter path to a controls technician than an outside hire is to plant knowledge. Manufacturers that build a real internal route — assessment, training, a step in pay, a title that means something — fill roles faster and lose fewer people to the plant down the road.",
+          },
+          {
+            title: "Human + Machine Collaboration",
+            body: "The future of manufacturing is collaborative, not competitive. Cobots, vision systems and predictive maintenance perform best where the people around them are expected to intervene, and that expectation is a leadership and culture question long before it is a technical one. Lines that treat the system as infallible run worse than lines that treat it as a colleague.",
+          },
+          {
+            title: "Workforce Planning for What's Next",
+            body: "Technology roadmaps run three to five years. Most workforce plans run one budget cycle. Closing that gap — mapping the roles each phase of automation creates and retires, then starting the hiring and training that far ahead — is the highest-leverage thing an operations leader and an HR leader can do together, and it costs nothing but the meeting.",
+          },
+        ],
       },
       {
-        title: "New Roles, New Skillsets",
-        body: "Demand is rising fastest for controls engineering, robotics maintenance, data analytics, OT cybersecurity and AI oversight — roles that pair technical depth with judgment. Most of them did not exist on a plant org chart a decade ago, so there is no internal precedent for how to level them, what to pay them, or where they report. Getting that structure wrong costs far more than the salary does.",
-      },
-      {
-        title: "The Upskilling Imperative",
-        body: "The cheapest source of qualified people is usually the ones already on site. An operator who knows the product, the tolerances and the customer is a shorter path to a controls technician than an outside hire is to plant knowledge. Manufacturers that build a real internal route — assessment, training, a step in pay, a title that means something — fill roles faster and lose fewer people to the plant down the road.",
-      },
-      {
-        title: "Human + Machine Collaboration",
-        body: "The future of manufacturing is collaborative, not competitive. Cobots, vision systems and predictive maintenance perform best where the people around them are expected to intervene, and that expectation is a leadership and culture question long before it is a technical one. Lines that treat the system as infallible run worse than lines that treat it as a colleague.",
-      },
-      {
-        title: "Workforce Planning for What's Next",
-        body: "Technology roadmaps run three to five years. Most workforce plans run one budget cycle. Closing that gap — mapping the roles each phase of automation creates and retires, then starting the hiring and training that far ahead — is the highest-leverage thing an operations leader and an HR leader can do together, and it costs nothing but the meeting.",
+        body: [
+          "Automation will continue to evolve — but people will always be the engine of progress. Manufacturers who invest in their workforce today are building the capability and culture to lead tomorrow.",
+          "At ARSAN we help manufacturers put the leadership and technical talent in place before the equipment arrives rather than after. If your automation roadmap is ahead of your org chart, that is the conversation to have — start with [executive and professional search](/for-clients/executive-search), or with [enterprise talent and leadership solutions](/for-clients/leadership-solutions) if the capability you need is already inside the business.",
+        ],
       },
     ],
-
-    outro: [
-      "Automation will continue to evolve — but people will always be the engine of progress. Manufacturers who invest in their workforce today are building the capability and culture to lead tomorrow.",
-      "At ARSAN we help manufacturers put the leadership and technical talent in place before the equipment arrives rather than after. If your automation roadmap is ahead of your org chart, that is the conversation to have — start with [executive and professional search](/for-clients/executive-search), or with [enterprise talent and leadership solutions](/for-clients/leadership-solutions) if the capability you need is already inside the business.",
-    ],
-
     takeawaysHeading: "Key Takeaways",
     takeaways: [
       {
@@ -73,6 +77,12 @@ export const automationChangingManufacturingJobs: Article = {
     pullQuote:
       "Automation doesn't replace people — prepared people lead the future.",
     pullQuoteBy: "ARSAN Editorial Team",
+
+    stat: {
+      figure: "67%", // @unverified: attributed to the Deloitte 2025 Manufacturing Industry Outlook; nobody has opened the report to confirm the figure
+      body: "of manufacturers say upskilling and reskilling are their top workforce priorities over the next two years.",
+      source: "Source: Deloitte 2025 Manufacturing Industry Outlook",
+    },
 
     asideHeading: "Questions to take to your team",
     asideItems: [
@@ -98,35 +108,39 @@ export const automationChangingManufacturingJobs: Article = {
       "Vemos dónde se rompe, porque lo vemos del lado de la contratación. Se aprueba la inversión, llega el equipo, arranca la línea — y la organización que la opera sigue siendo la que se diseñó para el proceso anterior. Los roles de los que depende una planta modernizada son los más difíciles de cubrir y, casi siempre, los últimos en planearse.",
     ],
 
-    bodyHeading: "Cómo está cambiando la automatización a la fuerza laboral",
-    steps: [
+    sections: [
       {
-        title: "De lo manual a lo relevante",
-        body: "Las tareas repetitivas y físicamente demandantes se automatizan primero, lo que convierte el trabajo del operador de ejecutar un paso a supervisar un proceso. Es un cambio real en lo que significa un buen desempeño: criterio, manejo de excepciones y mejora continua, más que piezas por turno. Una descripción de puesto escrita para el trabajo anterior descarta justamente a quienes pueden hacer el nuevo.",
+        heading: "Cómo está cambiando la automatización a la fuerza laboral",
+        steps: [
+          {
+            title: "De lo manual a lo relevante",
+            body: "Las tareas repetitivas y físicamente demandantes se automatizan primero, lo que convierte el trabajo del operador de ejecutar un paso a supervisar un proceso. Es un cambio real en lo que significa un buen desempeño: criterio, manejo de excepciones y mejora continua, más que piezas por turno. Una descripción de puesto escrita para el trabajo anterior descarta justamente a quienes pueden hacer el nuevo.",
+          },
+          {
+            title: "Nuevos roles, nuevas capacidades",
+            body: "La demanda crece más rápido en ingeniería de control, mantenimiento de robótica, analítica de datos, ciberseguridad industrial y supervisión de IA — roles que combinan profundidad técnica con criterio. La mayoría no existía en el organigrama de una planta hace diez años, así que no hay precedente interno para nivelarlos, tabularlos ni definir a quién reportan. Equivocarse en esa estructura cuesta mucho más que el sueldo.",
+          },
+          {
+            title: "El imperativo de la formación interna",
+            body: "La fuente más económica de gente calificada suele ser la que ya está en la planta. Un operador que conoce el producto, las tolerancias y al cliente está más cerca de ser técnico de control que un candidato externo de conocer la planta. Los fabricantes que construyen una ruta interna real — evaluación, capacitación, un escalón de sueldo y un puesto con nombre propio — cubren vacantes más rápido y pierden menos gente con la planta vecina.",
+          },
+          {
+            title: "Colaboración entre personas y máquinas",
+            body: "El futuro de la manufactura es colaborativo, no competitivo. Los cobots, los sistemas de visión y el mantenimiento predictivo rinden mejor donde se espera que la gente intervenga, y esa expectativa es una cuestión de liderazgo y cultura mucho antes que técnica. Las líneas que tratan al sistema como infalible operan peor que las que lo tratan como un colega.",
+          },
+          {
+            title: "Planeación de personal para lo que sigue",
+            body: "Las hojas de ruta tecnológicas corren a tres o cinco años. La mayoría de los planes de personal corren un ciclo presupuestal. Cerrar esa brecha — mapear los roles que cada fase de automatización crea y retira, y arrancar la contratación y la capacitación con esa anticipación — es lo de mayor impacto que un líder de operaciones y uno de recursos humanos pueden hacer juntos, y no cuesta más que la reunión.",
+          },
+        ],
       },
       {
-        title: "Nuevos roles, nuevas capacidades",
-        body: "La demanda crece más rápido en ingeniería de control, mantenimiento de robótica, analítica de datos, ciberseguridad industrial y supervisión de IA — roles que combinan profundidad técnica con criterio. La mayoría no existía en el organigrama de una planta hace diez años, así que no hay precedente interno para nivelarlos, tabularlos ni definir a quién reportan. Equivocarse en esa estructura cuesta mucho más que el sueldo.",
-      },
-      {
-        title: "El imperativo de la formación interna",
-        body: "La fuente más económica de gente calificada suele ser la que ya está en la planta. Un operador que conoce el producto, las tolerancias y al cliente está más cerca de ser técnico de control que un candidato externo de conocer la planta. Los fabricantes que construyen una ruta interna real — evaluación, capacitación, un escalón de sueldo y un puesto con nombre propio — cubren vacantes más rápido y pierden menos gente con la planta vecina.",
-      },
-      {
-        title: "Colaboración entre personas y máquinas",
-        body: "El futuro de la manufactura es colaborativo, no competitivo. Los cobots, los sistemas de visión y el mantenimiento predictivo rinden mejor donde se espera que la gente intervenga, y esa expectativa es una cuestión de liderazgo y cultura mucho antes que técnica. Las líneas que tratan al sistema como infalible operan peor que las que lo tratan como un colega.",
-      },
-      {
-        title: "Planeación de personal para lo que sigue",
-        body: "Las hojas de ruta tecnológicas corren a tres o cinco años. La mayoría de los planes de personal corren un ciclo presupuestal. Cerrar esa brecha — mapear los roles que cada fase de automatización crea y retira, y arrancar la contratación y la capacitación con esa anticipación — es lo de mayor impacto que un líder de operaciones y uno de recursos humanos pueden hacer juntos, y no cuesta más que la reunión.",
+        body: [
+          "La automatización seguirá evolucionando — pero la gente siempre será el motor del avance. Los fabricantes que invierten hoy en su personal están construyendo la capacidad y la cultura para liderar mañana.",
+          "En ARSAN ayudamos a los fabricantes a tener el liderazgo y el talento técnico en su lugar antes de que llegue el equipo, no después. Si su hoja de ruta de automatización va por delante de su organigrama, esa es la conversación: empiece por [búsqueda de ejecutivos y profesionales](/for-clients/executive-search), o por [talento empresarial y soluciones de liderazgo](/for-clients/leadership-solutions) si la capacidad que necesita ya está dentro del negocio.",
+        ],
       },
     ],
-
-    outro: [
-      "La automatización seguirá evolucionando — pero la gente siempre será el motor del avance. Los fabricantes que invierten hoy en su personal están construyendo la capacidad y la cultura para liderar mañana.",
-      "En ARSAN ayudamos a los fabricantes a tener el liderazgo y el talento técnico en su lugar antes de que llegue el equipo, no después. Si su hoja de ruta de automatización va por delante de su organigrama, esa es la conversación: empiece por [búsqueda de ejecutivos y profesionales](/for-clients/executive-search), o por [talento empresarial y soluciones de liderazgo](/for-clients/leadership-solutions) si la capacidad que necesita ya está dentro del negocio.",
-    ],
-
     takeawaysHeading: "Puntos clave",
     takeaways: [
       {
@@ -149,6 +163,12 @@ export const automationChangingManufacturingJobs: Article = {
     pullQuote:
       "La automatización no reemplaza a las personas — las personas preparadas lideran el futuro.",
     pullQuoteBy: "Equipo Editorial ARSAN",
+
+    stat: {
+      figure: "67%", // @unverified: attributed to the Deloitte 2025 Manufacturing Industry Outlook; nobody has opened the report to confirm the figure
+      body: "de los fabricantes señalan que la capacitación y la reconversión de su gente son su principal prioridad de talento para los próximos dos años.",
+      source: "Fuente: Deloitte 2025 Manufacturing Industry Outlook",
+    },
 
     asideHeading: "Preguntas para llevar a su equipo",
     asideItems: [

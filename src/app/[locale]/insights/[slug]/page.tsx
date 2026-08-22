@@ -6,6 +6,7 @@ import { ArticleHero } from "@/components/sections/article-hero";
 import { CtaBand } from "@/components/sections/cta-band";
 import { NewsletterBand } from "@/components/sections/newsletter-band";
 import { RelatedInsights } from "@/components/sections/related-insights";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ARTICLES, articleCopy, getArticle } from "@/content/insights";
 import { routing } from "@/i18n/routing";
 import { localeUrl, pageMetadata, SITE_URL } from "@/lib/site";
@@ -110,11 +111,7 @@ export default async function Page({ params }: Params) {
 
   return (
     <main id="main">
-      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD has no other insertion point, and the payload is built here from typed content */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <ArticleHero
         copy={copy}
         photo={article.photo}

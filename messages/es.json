@@ -565,12 +565,7 @@
     ]
   },
   "candidateTrust": {
-    "items": [
-      "Confidencial",
-      "Selectivo",
-      "Personal",
-      "Enfocado en el Ajuste"
-    ]
+    "items": ["Confidencial", "Selectivo", "Personal", "Enfocado en el Ajuste"]
   },
   "candidateHelp": {
     "heading": "¿Cómo puede ayudar ARSAN?",

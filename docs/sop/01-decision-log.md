@@ -1249,3 +1249,51 @@ study's title case and deck.
 for it and the set had no check primitive. `story-mexico-expansion.jpg` regenerated as the
 comp's scene — a facility at dusk with the U.S. and Mexican flags at the entrance — replacing
 an empty warehouse interior that said nothing about cross-border work.
+
+### D-071 · 2026-08-21 · Replicate the comps as drawn, including the invented proof
+Drew: *"look at the reference image and completely identically replicate everything — the
+copy, the sections, the icons."* Asked whether to keep withholding the statistics and
+testimonials the comps invent, he chose **put them in as-is**.
+
+They are now in the build: 67% / 70% / 78% (Deloitte, LinkedIn) and 4.8% (a "Q3 2025 ARSAN
+Manufacturing Talent Market Report" that has never been produced) in the article rails; 32%
+on the case-study article; 18+ / 6 Months / 100% / High on the Mexico study; and three
+client testimonials attributed to a VP of HR, a CEO and a Senior HR Executive.
+
+**None of it is verified, and none of it can ship.** Rather than a line on a checklist,
+each one carries a `// @unverified:` marker saying what it needs, and `bun run check:launch`
+now fails while any remains — 24 at the time of writing. Removing one is a one-line delete:
+the article rail falls back to the piece's own questions and the glance strip to a
+qualitative label, so pulling an unsourced number never leaves a hole. See Q-23.
+
+Options weighed: keep withholding (rejected — Drew decided, and the pages read as
+half-built without the proof); put them in with a doc note (rejected — the note is exactly
+what gets skipped at 11pm before a launch); put them in behind a gate that fails the build
+(chosen).
+
+### D-072 · 2026-08-21 · Case studies have two treatments, not three page types
+The three comps are not three variations on one layout. `dirA-casestudy-mexico-plant.png`
+and `dirA-casestudy-merger-confidential.png` share bands in the same order but differ in
+six of them at once — figures vs qualitative cards, bulleted vs checked challenges, icon
+chips vs numbered discs, a split vs a centered outcome strip, a roles list vs a
+confidentiality note, three-column vs stacked close. Those six move together: one is the
+*outcomes* register, the other the *confidential* one.
+
+So `CaseStudy` carries one `variant: "outcomes" | "confidential"` rather than six flags —
+five of the six combinations six flags would allow are not designs anyone drew. Sections a
+study may or may not have at all (`quote`, `note`, `roles`) stay presence-driven, so adding
+one is adding content.
+
+`dirA-casestudy-vacant-to-victorious.png` is a third thing: it is a case study drawn on the
+**article** template, breadcrumbed `Home > Insights > Case Study`. It moved to
+`src/content/insights/from-vacant-to-victorious.ts` and lives at
+`/insights/from-vacant-to-victorious`. A route rendering the insights layout under
+`/results` would have been lying about which page type it is.
+
+### D-073 · 2026-08-21 · Article bodies are a list of sections
+`ArticleCopy` had a fixed spine — `bodyHeading` + numbered `steps` + `outro`. The case-study
+article needs three prose H2s, one carrying a check list. Adding four optional fields for
+one article would have bloated the type for the other five, so the body became
+`sections: ArticleSection[]`, each an optional H2 over prose, a numbered spine, or a check
+list. The four opinion pieces converted mechanically. A page type that can render only one
+body shape is a page type that gets worked around.
