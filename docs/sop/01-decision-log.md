@@ -937,3 +937,17 @@ sampler was reading the glyphs themselves as the background. Replaced with an in
 stylesheet (`main section :is(h1,p,a,em,span){color:transparent!important}`) — the phantom
 failure disappeared and the real ones stayed. **A contrast checker that hides text must prove
 the text is hidden.**
+
+### D-063 · 2026-08-21 · Brass is the only accent; the mockups' green is discarded
+Grilled and answered by Drew: **keep brass, no green.**
+
+The evidence behind the question: colour-quantizing five mockups put brass at the top of every
+one (#A88A64, #B08B59, #BC935B, #B08C5F), which matches `--color-brass-500: #a2865a` almost
+exactly. But the short rules under headings sample as sage green — rgb(95,151,133) — on the
+home hero, the results page and the case-study pages, while the insights index uses brass for
+the same element. Inconsistent within the mockup set itself, which is what AI-generated
+comps do.
+
+Decision: one accent. Every rule, eyebrow and CTA stays brass. `--color-teal-800/900` remain in
+the palette for the icon chips they already serve and do not become a second accent. **No mid-
+sage token is added** — an unused token invites exactly the drift this decision closes.
