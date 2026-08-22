@@ -1,11 +1,17 @@
 import { useTranslations } from "next-intl";
 import { ArrowLink } from "@/components/ui/arrow-link";
-import { Icons } from "@/components/ui/icons";
+import { type IconName, Icons } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
+import { cn } from "@/lib/cn";
 
 /**
- * "What talent challenge are you facing?" — the three-door router into the
- * client services, built to refs/dirA-home-v2.png.
+ * The card router: "What talent challenge are you facing?" on the home page
+ * (refs/dirA-home-v2.png) and "How can ARSAN help?" on /for-candidates
+ * (refs/dirA-for-candidates-landing.png).
+ *
+ * One component with a namespace and a card list, because the two comps draw
+ * the same card — teal disc straddling the top border, need, service line,
+ * body, arrow — and differ only in how many there are and where they point.
  *
  * The teal chip straddling each card's top border is the mockup's, measured
  * off it: a 40px circle in a 941px-wide comp whose top border crosses at 37%
@@ -17,23 +23,42 @@ import { Reveal } from "@/components/ui/reveal";
  * 0.16em tracking runs "Enterprise Talent & Leadership Solutions" to two lines
  * in a column this narrow and pushes every card taller than the comp.
  */
-const CARDS = [
+export type ChooserCard = {
+  /** A route on this site — every card in both comps is an internal link. */
+  href: string;
+  icon: IconName;
+};
+
+const CLIENT_CARDS: ChooserCard[] = [
   { href: "/for-clients/executive-search", icon: "person" },
   { href: "/for-clients/mexico-advisory", icon: "factory" },
   { href: "/for-clients/leadership-solutions", icon: "users" },
-] as const;
+];
 
-export function Chooser() {
-  const t = useTranslations("home.chooser");
+export function Chooser({
+  namespace = "home.chooser",
+  cards = CLIENT_CARDS,
+  className,
+}: {
+  namespace?: string;
+  cards?: ChooserCard[];
+  className?: string;
+} = {}) {
+  const t = useTranslations(namespace);
 
   return (
-    <section className="bg-white-warm section-y">
+    <section className={cn("bg-white-warm section-y", className)}>
       <div className="mx-auto w-full max-w-page px-6 sm:px-10">
         <h2 className="text-center font-display text-display-md font-semibold text-navy-900 text-balance">
           {t("heading")}
         </h2>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {CARDS.map(({ href, icon }, i) => {
+        <div
+          className={cn(
+            "mt-14 grid gap-6 md:grid-cols-2",
+            cards.length === 4 ? "lg:grid-cols-4" : "md:grid-cols-3",
+          )}
+        >
+          {cards.map(({ href, icon }, i) => {
             const Icon = Icons[icon];
             return (
               <Reveal key={href} delay={i * 0.08} className="h-full">

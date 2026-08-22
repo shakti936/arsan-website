@@ -155,6 +155,41 @@ test("every page hero carries a photograph, not just navy", async ({
 });
 
 /**
+ * Every hero headline sets one phrase in brass — "Your *career* deserves
+ * thoughtful representation." The phrase is a substring of the headline, and
+ * `HeroTitle` falls back to a plain headline when it can't find it, which is
+ * the right runtime behaviour and a silent one. That fallback is invisible in
+ * English and easy to hit in Spanish, where the sentence is rewritten rather
+ * than translated word for word — so both locales are checked.
+ */
+for (const locale of ["", "/es"]) {
+  test(`every hero headline carries its brass accent (${locale || "en"})`, async ({
+    page,
+  }) => {
+    for (const route of ["/", ...SUBPAGES]) {
+      const url = `${locale}${route}`.replace(/\/$/, "") || "/";
+      await page.goto(url);
+      const accent = page.locator("main section h1 em").first();
+      await expect(
+        accent,
+        `${url} headline has no accented phrase`,
+      ).toBeVisible();
+      expect((await accent.innerText()).trim().length, url).toBeGreaterThan(0);
+      // brass-400 — a phrase that renders in the headline colour is not an accent
+      const color = await accent.evaluate(
+        (node) => getComputedStyle(node).color,
+      );
+      expect(color, url).not.toBe(
+        await page
+          .locator("main section h1")
+          .first()
+          .evaluate((node) => getComputedStyle(node).color),
+      );
+    }
+  });
+}
+
+/**
  * The leadership portraits are 4:5 by design. They stopped being 4:5 without
  * anyone touching the aspect class: as a stretched flex child the line hands
  * the wrapper a definite height, and `aspect-ratio` never gets to set one, so

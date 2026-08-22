@@ -1353,3 +1353,66 @@ pseudo-element.
 The same failure surfaced a second, site-wide bug: the sticky header covered anything
 scrolled to. Fixed once with `html { scroll-padding-top: 6rem }` rather than per-target
 `scroll-margin`, because every scroll target on the site has the same header above it.
+
+### D-076 · 2026-08-21 · Every icon comes from Lucide; none are hand-drawn
+Drew, pointing at the "Respect" icon on /for-candidates: *"I think this is supposed to be a
+handshake but it's not, so please get icons that are reliable... only use lucide icons."*
+
+He was right, and the fix is not that one path. Twenty-six pictograms had been hand-authored
+as SVG path data. Drawing them by hand means twenty-six chances to produce something legible
+to whoever drew it and to nobody else, and no way to find the bad ones except by inspecting
+every one — which is how a handshake shipped looking like a blob.
+
+`lucide-react` now backs the whole set. Keys stay ours (`Icons.handshake`, `Icons.chart`)
+rather than Lucide's, so a better-fitting glyph can be swapped without touching the pages
+that use it, and the wrapper keeps the contract call sites already rely on: `className`
+only, `h-6 w-6` default, always `aria-hidden` (every icon on this site sits beside its own
+label), `strokeWidth` 1.5 rather than Lucide's 2 — heavier reads as UI chrome against this
+typography.
+
+The sweep covered more than the icon map: the arrow in `ArrowLink`, the select chevron in
+`forms/field.tsx`, and the hamburger, close and accordion chevron in `mobile-nav.tsx` were
+all hand-drawn too. The only inline path left in the codebase is the checkbox tick in
+`globals.css`, which has to be a background image because an `<input>` cannot host a
+pseudo-element — its geometry is Lucide's `check`, inlined. The `.grain` data URI is a
+turbulence filter, not an icon.
+
+### D-077 · 2026-08-21 · Every hero headline carries its accent, from a message key
+Drew: *"make sure each hero also has the accent in the h1, the gold words, the same words
+that [the for-candidates comp uses]."*
+
+Ten heroes had none. Each now sets `titleEmphasis` beside `title` in its own namespace, so a
+translator moves the phrase by editing the sentence rather than by keeping two keys in sync
+across a rewrite. Comp-sourced where a comp exists — "right" (executive search), "Mexico"
+(mexico advisory), "career" (for candidates), "moves your career forward." (job board),
+"Proven results." (results) — and chosen to the same pattern where none does.
+
+This also fixed a live bug: the job board passed the English phrase as a literal, so the
+Spanish headline rendered with no accent at all. `HeroTitle` falls back to a plain headline
+when it cannot find the substring, which is the right runtime behaviour and a silent one —
+so there is now an e2e guard that walks every hero in **both** locales and fails if the
+accent is missing or renders in the headline colour.
+
+### D-078 · 2026-08-21 · /for-candidates rebuilt to its comp, and the second lead form removed
+Drew: *"for candidates, same sections, same icons, same headers... should look just like the
+reference."* The page had a hero, a trust strip, a centred icon row, three plain cards and a
+lead form. `refs/dirA-for-candidates-landing.png` has eight bands, and three were missing
+outright — Featured opportunities, Insights for your career, and the talent-network band.
+
+Built by generalising what already existed rather than adding parallel components:
+
+- `Chooser` (the home page's card router) now takes a namespace and a card list. Both comps
+  draw the same card — teal disc straddling the top border, need, service line, body, arrow
+  — and differ only in how many and where they point.
+- `IconRow` gained `headingLayout="beside"`, which is how the comp sets "You deserve to know
+  where you stand." The other two pages using that namespace keep the centred layout.
+- `ArticleCards` takes heading overrides, so "Insights for your career" is the same three
+  published pieces under a different frame rather than three teasers that could go stale.
+- Featured opportunities reads the same `Opening` records the board does, with a `featured`
+  flag on the contract — a real ATS has that idea. A featured card that outlives its listing
+  is the failure mode this avoids.
+
+**The lead form is gone from this page.** The comp does not have one, and it was the same
+form `/for-candidates/submit-profile` exists to host. Two places to submit the same profile
+is two to maintain and one more decision than the page should ask a candidate for; both
+closes now point at the one page that owns it.

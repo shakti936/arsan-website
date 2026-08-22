@@ -1,5 +1,7 @@
 "use client";
 
+import { ChevronDown, Menu, X } from "lucide-react";
+
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { Icons } from "@/components/ui/icons";
@@ -86,16 +88,7 @@ export function MobileNav() {
         className="inline-flex h-11 w-11 items-center justify-center text-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-300"
       >
         <span className="sr-only">{t("openMenu")}</span>
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        >
-          <path d="M3 6.5h18M3 12h18M3 17.5h18" strokeLinecap="square" />
-        </svg>
+        <Menu aria-hidden="true" strokeWidth={1.5} className="h-6 w-6" />
       </button>
 
       {open && (
@@ -116,16 +109,7 @@ export function MobileNav() {
               className="-mr-2 inline-flex h-11 w-11 items-center justify-center text-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-300"
             >
               <span className="sr-only">{t("close")}</span>
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path d="M5 5l14 14M19 5 5 19" strokeLinecap="square" />
-              </svg>
+              <X aria-hidden="true" strokeWidth={1.5} className="h-6 w-6" />
             </button>
           </div>
 
@@ -162,19 +146,14 @@ export function MobileNav() {
                               className="h-1.5 w-1.5 rounded-full bg-brass-500"
                             />
                           )}
-                          <svg
+                          <ChevronDown
                             aria-hidden="true"
-                            viewBox="0 0 16 16"
+                            strokeWidth={1.5}
                             className={cn(
                               "h-4 w-4 shrink-0 text-brass-400 transition-transform duration-200 motion-reduce:transition-none",
                               isOpen && "rotate-180",
                             )}
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                          >
-                            <path d="m3 6 5 5 5-5" strokeLinecap="square" />
-                          </svg>
+                          />
                         </span>
                       </button>
                     </h2>

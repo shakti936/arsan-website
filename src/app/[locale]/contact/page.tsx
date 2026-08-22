@@ -27,6 +27,7 @@ export default async function Page({ params }: Params) {
     <main id="main">
       <PageHero
         title={t("title")}
+        emphasis={t("titleEmphasis")}
         intro={t("intro")}
         photo="insight-hiring-mexico"
         // the shared primary is "Discuss a Search → /contact", which is here;

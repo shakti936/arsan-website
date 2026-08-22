@@ -37,6 +37,15 @@ export async function listOpenings(now = Date.now()): Promise<Opening[]> {
   })).sort((a, b) => b.postedAt.localeCompare(a.postedAt));
 }
 
+/**
+ * What /for-candidates puts above the fold. Flagged openings first, then the
+ * newest — so the section is never empty, whatever the ATS is serving.
+ */
+export function featuredOpenings(openings: Opening[], count = 3) {
+  const flagged = openings.filter((opening) => opening.featured);
+  return [...flagged, ...openings.filter((o) => !o.featured)].slice(0, count);
+}
+
 export async function getOpening(slug: string, now = Date.now()) {
   return (await listOpenings(now)).find((opening) => opening.slug === slug);
 }

@@ -14,9 +14,12 @@ import { ButtonLink } from "@/components/ui/button-link";
  */
 export function CtaBand({
   namespace = "ctaBand",
+  href = "/contact",
   secondary,
 }: {
   namespace?: string;
+  /** Where the solid button goes. Not every page's close is "talk to us". */
+  href?: React.ComponentProps<typeof ButtonLink>["href"];
   secondary?: {
     label: string;
     href: React.ComponentProps<typeof ArrowLink>["href"];
@@ -38,7 +41,7 @@ export function CtaBand({
         </h2>
         <p className="max-w-[46ch] text-base text-cream-100">{t("body")}</p>
         <div className="flex flex-col items-start gap-1">
-          <ButtonLink href="/contact">{t("cta")}</ButtonLink>
+          <ButtonLink href={href}>{t("cta")}</ButtonLink>
           {secondary && (
             <ArrowLink href={secondary.href} tone="light">
               {secondary.label}

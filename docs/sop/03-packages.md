@@ -9,6 +9,7 @@ check whether the project already has something that does the job.
 | Package | Version | Dev? | Why it's here | What breaks without it |
 |---|---|---|---|---|
 | `clsx` | `^2.1.1` |  | Half of cn() | Conditional classes get stringly |
+| `lucide-react` | `^1.33.0` |  | Every icon on the site (D-076) | Hand-drawn SVG pictograms nobody can tell are wrong |
 | `motion` | `^13.1.1` |  | Animation (Framer Motion current package name) | No motion language |
 | `next` | `^16.3.1` |  | Framework — App Router, RSC, SSG | No site |
 | `next-intl` | `^4.13.7` |  | EN/ES locale routing + messages (D-005) | No i18n — retrofit costs every route |

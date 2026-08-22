@@ -37,6 +37,7 @@ export default async function Page({ params }: Params) {
     <main id="main">
       <PageHero
         title={t("title")}
+        emphasis={t("titleEmphasis")}
         intro={t("intro")}
         photo="story-transformation"
       />

@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/cn";
 
@@ -109,16 +110,11 @@ export function SelectField({
             </option>
           ))}
         </select>
-        <svg
+        <ChevronDown
           aria-hidden="true"
-          viewBox="0 0 16 16"
+          strokeWidth={1.5}
           className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-700"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        >
-          <path d="m3.5 6 4.5 4.5L12.5 6" strokeLinecap="square" />
-        </svg>
+        />
       </div>
     </FieldShell>
   );

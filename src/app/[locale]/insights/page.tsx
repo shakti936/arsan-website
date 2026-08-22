@@ -25,7 +25,12 @@ export default async function Page({ params }: Params) {
 
   return (
     <main id="main">
-      <PageHero title={t("title")} intro={t("intro")} photo="nav-automation" />
+      <PageHero
+        title={t("title")}
+        emphasis={t("titleEmphasis")}
+        intro={t("intro")}
+        photo="nav-automation"
+      />
       <ArticleCards locale={locale} count={6} />
       <CtaBand />
     </main>

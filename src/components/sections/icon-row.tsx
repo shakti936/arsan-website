@@ -9,6 +9,13 @@ type IconRowProps = {
   icons: IconName[];
   tone?: "light" | "dark";
   withHeading?: boolean;
+  /**
+   * `above` centres the heading over the row. `beside` puts it in its own
+   * column to the left with a rule and a line of body copy, which is how
+   * refs/dirA-for-candidates-landing.png sets "You deserve to know where you
+   * stand." Requires a `body` key in the namespace.
+   */
+  headingLayout?: "above" | "beside";
   id?: string;
 };
 
@@ -18,10 +25,12 @@ export function IconRow({
   icons,
   tone = "light",
   withHeading,
+  headingLayout = "above",
   id,
 }: IconRowProps) {
   const t = useTranslations(namespace);
   const dark = tone === "dark";
+  const beside = withHeading && headingLayout === "beside";
 
   return (
     <section
@@ -31,21 +40,47 @@ export function IconRow({
         "scroll-mt-24 section-y",
       )}
     >
-      <div className="mx-auto w-full max-w-page px-6 sm:px-10">
-        {withHeading && (
-          <h2
-            className={cn(
-              "text-center font-display text-display-md font-semibold text-balance",
-              dark ? "text-white-warm" : "text-navy-900",
-            )}
-          >
-            {t("heading")}
-          </h2>
+      <div
+        className={cn(
+          "mx-auto w-full max-w-page px-6 sm:px-10",
+          beside && "grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-14",
         )}
+      >
+        {withHeading &&
+          (beside ? (
+            <div>
+              <h2
+                className={cn(
+                  "font-display text-display-md font-semibold text-balance",
+                  dark ? "text-white-warm" : "text-navy-900",
+                )}
+              >
+                {t("heading")}
+              </h2>
+              <div aria-hidden="true" className="mt-4 h-0.5 w-10 bg-teal-900" />
+              <p
+                className={cn(
+                  "mt-6 max-w-[42ch] text-sm",
+                  dark ? "text-cream-100/85" : "text-navy-800",
+                )}
+              >
+                {t("body")}
+              </p>
+            </div>
+          ) : (
+            <h2
+              className={cn(
+                "text-center font-display text-display-md font-semibold text-balance",
+                dark ? "text-white-warm" : "text-navy-900",
+              )}
+            >
+              {t("heading")}
+            </h2>
+          ))}
         <div
           className={cn(
             "grid gap-8 sm:grid-cols-2",
-            withHeading && "mt-12",
+            withHeading && !beside && "mt-12",
             icons.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-5",
           )}
         >
@@ -61,13 +96,15 @@ export function IconRow({
                 >
                   <Icon
                     className={cn(
-                      "h-7 w-7",
+                      beside ? "h-9 w-9" : "h-7 w-7",
                       dark ? "text-brass-300" : "text-teal-900",
                     )}
                   />
                   <h3
                     className={cn(
-                      "text-sm font-semibold",
+                      beside
+                        ? "font-display text-display-sm font-semibold leading-snug"
+                        : "text-sm font-semibold",
                       dark ? "text-white-warm" : "text-navy-900",
                     )}
                   >

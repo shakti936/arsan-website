@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 
@@ -34,17 +35,11 @@ export function ArrowLink({
       )}
     >
       {children}
-      <svg
+      <ArrowRight
         aria-hidden="true"
-        viewBox="0 0 16 16"
+        strokeWidth={1.5}
         className="ml-2 inline-block h-3.5 w-3.5 align-[-0.15em] transition-transform group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      >
-        <title />
-        <path d="M1 8h13M9.5 3.5 14 8l-4.5 4.5" strokeLinecap="square" />
-      </svg>
+      />
     </Link>
   );
 }

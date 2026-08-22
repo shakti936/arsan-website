@@ -57,6 +57,12 @@ export type Opening = {
   level: Level;
   fn: JobFunction;
   summary: Localized;
+  /**
+   * Surfaced on /for-candidates ahead of the newest. A real ATS has the same
+   * idea — a role the client is pushing, or one worth the top of the page —
+   * so it belongs in the contract rather than in a hardcoded slug list here.
+   */
+  featured?: boolean;
 };
 
 export function openingCopy(opening: Opening, locale: string) {

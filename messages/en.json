@@ -275,6 +275,7 @@
     },
     "executiveSearch": {
       "title": "The right hire changes more than a position.",
+      "titleEmphasis": "right",
       "intro": "ARSAN helps manufacturers identify and secure executives and critical professionals who can lead, operate and deliver in the environment they are entering — not simply match a job description.",
       "points": [
         {
@@ -293,6 +294,7 @@
     },
     "mexicoAdvisory": {
       "title": "Your Mexico operation starts long before production does.",
+      "titleEmphasis": "Mexico",
       "intro": "ARSAN helps manufacturers translate business strategy into the leadership, workforce and organizational foundation required to operate successfully in Mexico.",
       "points": [
         {
@@ -311,6 +313,7 @@
     },
     "leadershipSolutions": {
       "title": "Strengthen the team you already have.",
+      "titleEmphasis": "already have",
       "intro": "Leadership development, executive transitions and organizational alignment for manufacturers navigating growth and change.",
       "points": [
         {
@@ -329,6 +332,7 @@
     },
     "forCandidates": {
       "title": "Your career deserves thoughtful representation.",
+      "titleEmphasis": "career",
       "intro": "Career moves are meaningful. We take the time to understand your experience, priorities and potential — then connect you with opportunities where you can lead, grow and make real impact.",
       "points": [
         {
@@ -346,19 +350,31 @@
       ],
       "ctaNote": "The right opportunity may not be open today. Tell us about your goals and we'll reach out when opportunities align.",
       "cta": "Start a Confidential Conversation",
-      "ctaOpportunities": "View Opportunities"
+      "ctaOpportunities": "View Opportunities",
+      "featuredHeading": "Featured opportunities",
+      "featuredViewAll": "View all opportunities",
+      "insightsHeading": "Insights for your career",
+      "insightsViewAll": "View all insights",
+      "networkHeading": "The right opportunity may not be open today.",
+      "networkBody": "Join our Talent Network and stay connected. We'll reach out when opportunities align with your experience and goals.",
+      "networkCta": "Join Our Talent Network",
+      "heroPrimary": "View Opportunities",
+      "heroSecondary": "Submit Your Profile"
     },
     "results": {
       "title": "Work that speaks for itself.",
+      "titleEmphasis": "speaks for itself",
       "intro": "Selected stories from searches and advisory work across the U.S. and Mexico. Client names are confidential; outcomes are real."
     },
     "insights": {
       "title": "Perspective for better people decisions.",
+      "titleEmphasis": "better people decisions",
       "intro": "Thinking on manufacturing talent, Mexico workforce strategy and leadership — written for decision-makers.",
       "comingSoon": "Articles are on their way. In the meantime, tell us what you're working through."
     },
     "whyArsan": {
       "title": "We've sat on your side of the table.",
+      "titleEmphasis": "your side of the table",
       "intro": "We understand your business because we've led it. That perspective drives better conversations — and better results.",
       "difference": {
         "heading": "Our Difference",
@@ -375,12 +391,14 @@
     },
     "contact": {
       "title": "Tell us what you're working through.",
+      "titleEmphasis": "working through",
       "intro": "Start with the business challenge. We'll help you determine whether — and how — ARSAN can help.",
       "heroCta": "Send us a brief",
       "cta": "Discuss a Search"
     },
     "opportunities": {
       "title": "Find the opportunity that moves your career forward.",
+      "titleEmphasis": "moves your career forward.",
       "intro": "Explore curated opportunities with leading manufacturers across the U.S. and Mexico. We connect exceptional talent with roles that drive impact.",
       "emptyHeading": "Most of our searches never get posted.",
       "emptyBody": "A large share of ARSAN's work is confidential, so the strongest opportunities reach candidates directly rather than through a listing. Share your profile and we'll contact you when a role genuinely fits.",
@@ -479,10 +497,12 @@
     },
     "submitProfile": {
       "title": "Submit your profile, confidentially.",
+      "titleEmphasis": "confidentially",
       "intro": "Share your background and goals. Your profile helps our consultants consider you for roles that may never be publicly listed — including confidential searches."
     },
     "talentNetwork": {
       "title": "Join our talent network.",
+      "titleEmphasis": "talent network",
       "intro": "The right opportunity may not be open today. Stay connected and we'll reach out when a search matches your experience and goals."
     },
     "opportunity": {
@@ -667,6 +687,7 @@
   },
   "candidateValues": {
     "heading": "You deserve to know where you stand.",
+    "body": "We are trusted by candidates across manufacturing because of how we work — and how we show up.",
     "items": [
       {
         "title": "Respect",
@@ -691,18 +712,30 @@
   },
   "candidateHelp": {
     "heading": "How can ARSAN help?",
-    "items": [
+    "cards": [
       {
-        "title": "Submit your profile",
-        "body": "Share your background confidentially. Your profile helps our consultants consider you for roles that may not be publicly listed."
+        "need": "View Opportunities",
+        "service": "Explore current leadership roles across the U.S. and Mexico.",
+        "body": "Browse open positions that match your experience, priorities and career goals.",
+        "cta": "Browse Open Roles"
       },
       {
-        "title": "Candidate experience",
-        "body": "A clear, professional process built on respect, transparency and consistent communication."
+        "need": "Submit Your Profile",
+        "service": "Share your background for future searches.",
+        "body": "Your confidential profile helps our consultants consider you for roles that may not be publicly listed.",
+        "cta": "Submit Profile"
       },
       {
-        "title": "Career guidance",
-        "body": "Insight and market perspective for your next move, from advisors who know manufacturing careers."
+        "need": "Candidate Experience",
+        "service": "What to expect when working with ARSAN.",
+        "body": "A clear, professional process built on respect, transparency and consistent communication.",
+        "cta": "Learn Our Process"
+      },
+      {
+        "need": "Join Our Talent Network",
+        "service": "Stay connected for the right opportunities.",
+        "body": "Let us know you are open to future conversations and we will reach out when the timing is right.",
+        "cta": "Join the Network"
       }
     ]
   },
@@ -852,5 +885,11 @@
     "results": "Case Studies",
     "eyebrow": "Case Study",
     "allStudies": "See all client stories"
+  },
+  "ctaBandCandidates": {
+    "heading": "Ready when the right move is.",
+    "body": "Explore opportunities, submit your profile, or join our Talent Network. We look forward to learning more about your goals.",
+    "cta": "Join Our Talent Network",
+    "secondary": "or view open opportunities"
   }
 }

@@ -275,6 +275,7 @@
     },
     "executiveSearch": {
       "title": "La contratación correcta cambia más que una posición.",
+      "titleEmphasis": "correcta",
       "intro": "ARSAN ayuda a los fabricantes a identificar y asegurar ejecutivos y profesionales clave capaces de dirigir, operar y entregar resultados en el entorno al que llegan — no solo de coincidir con una descripción de puesto.",
       "points": [
         {
@@ -293,6 +294,7 @@
     },
     "mexicoAdvisory": {
       "title": "Su operación en México empieza mucho antes que la producción.",
+      "titleEmphasis": "México",
       "intro": "ARSAN ayuda a los fabricantes a traducir la estrategia de negocio en el liderazgo, la fuerza laboral y la base organizacional que se requieren para operar con éxito en México.",
       "points": [
         {
@@ -311,6 +313,7 @@
     },
     "leadershipSolutions": {
       "title": "Fortalezca al equipo que ya tiene.",
+      "titleEmphasis": "ya tiene",
       "intro": "Desarrollo de liderazgo, transiciones ejecutivas y alineación organizacional para fabricantes en crecimiento y cambio.",
       "points": [
         {
@@ -329,6 +332,7 @@
     },
     "forCandidates": {
       "title": "Su carrera merece una representación seria.",
+      "titleEmphasis": "carrera",
       "intro": "Los movimientos de carrera importan. Nos tomamos el tiempo de entender su experiencia, prioridades y potencial — y lo conectamos con oportunidades donde pueda dirigir, crecer y generar impacto real.",
       "points": [
         {
@@ -346,19 +350,31 @@
       ],
       "ctaNote": "La oportunidad correcta puede no estar abierta hoy. Cuéntenos sus metas y lo contactaremos cuando haya coincidencia.",
       "cta": "Iniciar una Conversación Confidencial",
-      "ctaOpportunities": "Ver Oportunidades"
+      "ctaOpportunities": "Ver Oportunidades",
+      "featuredHeading": "Oportunidades destacadas",
+      "featuredViewAll": "Ver todas las oportunidades",
+      "insightsHeading": "Perspectivas para su carrera",
+      "insightsViewAll": "Ver todas las perspectivas",
+      "networkHeading": "La oportunidad correcta puede no estar abierta hoy.",
+      "networkBody": "Únase a nuestra Red de Talento y mantengámonos en contacto. Le buscaremos cuando surja una oportunidad alineada con su experiencia y sus objetivos.",
+      "networkCta": "Únase a Nuestra Red de Talento",
+      "heroPrimary": "Ver Oportunidades",
+      "heroSecondary": "Enviar mi Perfil"
     },
     "results": {
       "title": "Trabajo que habla por sí mismo.",
+      "titleEmphasis": "habla por sí mismo",
       "intro": "Historias seleccionadas de búsquedas y asesoría en EE. UU. y México. Los nombres de los clientes son confidenciales; los resultados son reales."
     },
     "insights": {
       "title": "Perspectiva para mejores decisiones de talento.",
+      "titleEmphasis": "mejores decisiones de talento",
       "intro": "Ideas sobre talento en manufactura, estrategia laboral en México y liderazgo — escritas para quienes deciden.",
       "comingSoon": "Los artículos vienen en camino. Mientras tanto, cuéntenos qué está resolviendo."
     },
     "whyArsan": {
       "title": "Hemos estado de su lado de la mesa.",
+      "titleEmphasis": "de su lado de la mesa",
       "intro": "Entendemos su negocio porque lo hemos dirigido. Esa perspectiva produce mejores conversaciones — y mejores resultados.",
       "difference": {
         "heading": "Nuestra Diferencia",
@@ -375,12 +391,14 @@
     },
     "contact": {
       "title": "Cuéntenos qué está resolviendo.",
+      "titleEmphasis": "qué está resolviendo",
       "intro": "Empiece por el reto de negocio. Le ayudamos a determinar si ARSAN puede ayudar — y cómo.",
       "heroCta": "Envíenos su solicitud",
       "cta": "Hablemos de su Búsqueda"
     },
     "opportunities": {
       "title": "Encuentre la oportunidad que impulsa su carrera.",
+      "titleEmphasis": "impulsa su carrera.",
       "intro": "Explore oportunidades seleccionadas con fabricantes líderes en EE. UU. y México. Conectamos talento excepcional con posiciones de impacto.",
       "emptyHeading": "La mayoría de nuestras búsquedas nunca se publican.",
       "emptyBody": "Buena parte del trabajo de ARSAN es confidencial, así que las mejores oportunidades llegan directamente a los candidatos y no por una vacante publicada. Comparta su perfil y lo contactaremos cuando una posición realmente encaje.",
@@ -479,10 +497,12 @@
     },
     "submitProfile": {
       "title": "Comparta su perfil, de forma confidencial.",
+      "titleEmphasis": "de forma confidencial",
       "intro": "Comparta su trayectoria y sus metas. Su perfil permite a nuestros consultores considerarlo para posiciones que quizá nunca se publiquen — incluidas búsquedas confidenciales."
     },
     "talentNetwork": {
       "title": "Únase a nuestra red de talento.",
+      "titleEmphasis": "red de talento",
       "intro": "La oportunidad correcta puede no estar abierta hoy. Manténgase conectado y lo contactaremos cuando una búsqueda coincida con su experiencia y metas."
     },
     "opportunity": {
@@ -667,6 +687,7 @@
   },
   "candidateValues": {
     "heading": "Usted merece saber dónde está parado.",
+    "body": "Los candidatos de manufactura confían en nosotros por cómo trabajamos — y por cómo aparecemos.",
     "items": [
       {
         "title": "Respeto",
@@ -691,18 +712,30 @@
   },
   "candidateHelp": {
     "heading": "¿Cómo puede ayudar ARSAN?",
-    "items": [
+    "cards": [
       {
-        "title": "Comparta su perfil",
-        "body": "Comparta su trayectoria de forma confidencial. Su perfil permite a nuestros consultores considerarlo para posiciones que quizá no estén publicadas."
+        "need": "Ver Oportunidades",
+        "service": "Explore los puestos de liderazgo abiertos en EE. UU. y México.",
+        "body": "Revise vacantes que coincidan con su experiencia, sus prioridades y sus objetivos de carrera.",
+        "cta": "Ver Vacantes Abiertas"
       },
       {
-        "title": "Experiencia del candidato",
-        "body": "Un proceso claro y profesional basado en respeto, transparencia y comunicación constante."
+        "need": "Enviar mi Perfil",
+        "service": "Comparta su trayectoria para búsquedas futuras.",
+        "body": "Su perfil confidencial permite a nuestros consultores considerarlo para puestos que no se publican.",
+        "cta": "Enviar Perfil"
       },
       {
-        "title": "Guía de carrera",
-        "body": "Contexto y perspectiva de mercado para su siguiente paso, de asesores que conocen las carreras de manufactura."
+        "need": "Experiencia del Candidato",
+        "service": "Qué esperar al trabajar con ARSAN.",
+        "body": "Un proceso claro y profesional, construido sobre el respeto, la transparencia y la comunicación constante.",
+        "cta": "Conocer el Proceso"
+      },
+      {
+        "need": "Únase a Nuestra Red de Talento",
+        "service": "Manténgase conectado para la oportunidad correcta.",
+        "body": "Díganos que está abierto a futuras conversaciones y le buscaremos cuando sea el momento.",
+        "cta": "Unirme a la Red"
       }
     ]
   },
@@ -852,5 +885,11 @@
     "results": "Casos de éxito",
     "eyebrow": "Caso de éxito",
     "allStudies": "Ver todos los casos"
+  },
+  "ctaBandCandidates": {
+    "heading": "Listos cuando llegue el movimiento correcto.",
+    "body": "Explore oportunidades, comparta su perfil o únase a nuestra Red de Talento. Nos interesa conocer sus objetivos.",
+    "cta": "Únase a Nuestra Red de Talento",
+    "secondary": "o vea las oportunidades abiertas"
   }
 }

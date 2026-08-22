@@ -33,12 +33,83 @@ export type PlaceholderOpening = {
   level: Level;
   fn: JobFunction;
   summary: Localized;
+  featured?: boolean;
 };
 
 const us = "us" as const;
 const mx = "mx" as const;
 
 export const PLACEHOLDER_OPENINGS: readonly PlaceholderOpening[] = [
+  /* the three refs/dirA-for-candidates-landing.png features, in its order */
+  {
+    slug: "plant-manager-monterrey",
+    daysAgo: 1,
+    featured: true,
+    title: { en: "Plant Manager", es: "Gerente de Planta" },
+    company: {
+      en: "World-Class Manufacturing Operation",
+      es: "Operación de manufactura de clase mundial",
+    },
+    location: {
+      en: "Monterrey, Nuevo León, Mexico",
+      es: "Monterrey, Nuevo León",
+    },
+    country: mx,
+    workMode: "onsite",
+    employment: "full-time",
+    level: "executive",
+    fn: "operations",
+    summary: {
+      en: "Lead operations, drive performance, and build high-performing teams in a fast-paced, world-class manufacturing environment.",
+      es: "Dirigir la operación, impulsar el desempeño y formar equipos de alto rendimiento en un entorno de manufactura de clase mundial y ritmo exigente.",
+    },
+  },
+  {
+    slug: "director-of-engineering-detroit",
+    daysAgo: 2,
+    featured: true,
+    title: { en: "Director of Engineering", es: "Director de Ingeniería" },
+    company: {
+      en: "Global Mobility Platform",
+      es: "Plataforma global de movilidad",
+    },
+    location: {
+      en: "Detroit, Michigan, USA",
+      es: "Detroit, Michigan, EE. UU.",
+    },
+    country: us,
+    workMode: "hybrid",
+    employment: "full-time",
+    level: "executive",
+    fn: "engineering",
+    summary: {
+      en: "Shape engineering strategy and lead new product development initiatives across a global platform.",
+      es: "Definir la estrategia de ingeniería y dirigir las iniciativas de desarrollo de nuevos productos de una plataforma global.",
+    },
+  },
+  {
+    slug: "strategic-account-director-houston",
+    daysAgo: 3,
+    featured: true,
+    title: {
+      en: "Strategic Account Director",
+      es: "Director de Cuentas Estratégicas",
+    },
+    company: {
+      en: "Industrial Solutions Provider",
+      es: "Proveedor de soluciones industriales",
+    },
+    location: { en: "Houston, Texas, USA", es: "Houston, Texas, EE. UU." },
+    country: us,
+    workMode: "hybrid",
+    employment: "full-time",
+    level: "executive",
+    fn: "sales",
+    summary: {
+      en: "Own enterprise relationships, grow market share, and deliver value across complex manufacturing solutions.",
+      es: "Responsabilizarse de las relaciones con clientes corporativos, hacer crecer la participación de mercado y entregar valor en soluciones de manufactura complejas.",
+    },
+  },
   {
     slug: "strategic-account-manager-electrical-products",
     daysAgo: 2,

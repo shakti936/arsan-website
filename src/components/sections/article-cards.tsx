@@ -25,11 +25,16 @@ export function ArticleCards({
   locale,
   count = 3,
   withViewAll,
+  headingOverride,
+  viewAllOverride,
   className,
 }: {
   locale: string;
   count?: number;
   withViewAll?: boolean;
+  /** /for-candidates frames the same three pieces as "Insights for your career". */
+  headingOverride?: string;
+  viewAllOverride?: string;
   className?: string;
 }) {
   const t = useTranslations("insightsRow");
@@ -40,9 +45,11 @@ export function ArticleCards({
     <section className={cn("bg-white-warm section-y", className)}>
       <div className="mx-auto w-full max-w-page px-6 sm:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading>{t("heading")}</SectionHeading>
+          <SectionHeading>{headingOverride ?? t("heading")}</SectionHeading>
           {withViewAll && (
-            <ArrowLink href="/insights">{t("viewAll")}</ArrowLink>
+            <ArrowLink href="/insights">
+              {viewAllOverride ?? t("viewAll")}
+            </ArrowLink>
           )}
         </div>
 
