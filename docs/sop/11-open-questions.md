@@ -63,3 +63,27 @@ Deleting a claim is always safe: the article rail falls back to the piece's own 
 and a glance cell to a qualitative label. Nothing needs redesigning to remove one.
 
 **Owner:** Armida. **Blocks:** production cutover.
+
+### Q-24 · BLOCKING before launch · The job board renders 29 invented openings
+`src/lib/jobs/placeholder-openings.ts` fabricates every listing on
+`/for-candidates/opportunities`. No client has authorised any of these roles and none exist.
+A visitor cannot tell them from real ones, and the board invites them to act on it.
+
+`bun run check:launch` fails while the fixture is wired up. Clearing it means pointing
+`listOpenings()` at the internal ATS and deleting the file — the contract in
+`src/lib/jobs/types.ts` is what the ATS needs to satisfy.
+
+**Owner:** Drew (AIOS/ATS build). **Blocks:** production cutover.
+
+### Q-25 · Non-blocking · Two job-board questions with no comp behind them
+1. **The detail page has no reference.** `refs/dirA-job-board.png` links to it; nothing draws
+   it. What is there now is composed from drawn patterns and says openly that the full brief
+   comes from a consultant. If a comp arrives, `opportunity-detail.tsx` is the file.
+2. **The board comp has a For Candidates sub-nav bar** under the header — Opportunities /
+   Why Work With ARSAN / Career Resources / Submit Your Profile. `dirA-for-candidates-landing.png`
+   does not. Adding it to one page of four would be a navigation pattern that appears and
+   disappears, so it is not built. Does it belong on all four candidate pages, or nowhere?
+
+Also parked: board filter state lives in component state, not the URL, so a filtered board
+cannot be shared or restored with the back button. Worth adding — but against the ATS query,
+not against the current in-memory list.

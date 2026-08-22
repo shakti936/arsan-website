@@ -385,7 +385,97 @@
       "emptyHeading": "La mayoría de nuestras búsquedas nunca se publican.",
       "emptyBody": "Buena parte del trabajo de ARSAN es confidencial, así que las mejores oportunidades llegan directamente a los candidatos y no por una vacante publicada. Comparta su perfil y lo contactaremos cuando una posición realmente encaje.",
       "emptyCtaNetwork": "Unirse a la Red de Talento",
-      "emptyCtaProfile": "Comparta su Perfil"
+      "emptyCtaProfile": "Comparta su Perfil",
+      "eyebrowBadge": "Nuevas oportunidades cada semana",
+      "searchLabel": "Buscar vacantes",
+      "searchPlaceholder": "Puesto, palabra clave o empresa",
+      "locationLabel": "Ubicación",
+      "functionLabel": "Función",
+      "levelLabel": "Nivel de experiencia",
+      "allLocations": "Todas las ubicaciones",
+      "allFunctions": "Todas las funciones",
+      "allLevels": "Todos los niveles",
+      "searchButton": "Buscar Vacantes",
+      "clearFilters": "Limpiar filtros",
+      "showing": "{count, plural, =0 {Sin oportunidades} one {# oportunidad} other {# oportunidades}}",
+      "sortBy": "Ordenar por",
+      "sortRecent": "Más recientes",
+      "sortOldest": "Más antiguas",
+      "sortTitle": "Título A–Z",
+      "isNew": "Nueva",
+      "viewDetails": "Ver detalles",
+      "noMatchHeading": "Ninguna oportunidad coincide con esos filtros.",
+      "noMatchBody": "Amplíe la búsqueda o comparta su perfil: la mayoría de las búsquedas de ARSAN son confidenciales y nunca aparecen en esta página.",
+      "alertsHeading": "Reciba alertas",
+      "alertsBody": "Entérese primero de las nuevas oportunidades que coincidan con su experiencia y sus objetivos.",
+      "alertsCta": "Crear alerta",
+      "refineHeading": "Refinar por",
+      "facetEmployment": "Tipo de contratación",
+      "facetCountry": "Ubicación",
+      "facetFn": "Función",
+      "facetLevel": "Nivel de experiencia",
+      "showMore": "Ver más",
+      "showLess": "Ver menos",
+      "pagination": "Paginación",
+      "previousPage": "Página anterior",
+      "nextPage": "Página siguiente",
+      "goToPage": "Ir a la página {page}",
+      "employment": {
+        "full-time": "Tiempo completo",
+        "contract": "Por contrato",
+        "temporary": "Temporal"
+      },
+      "level": {
+        "entry": "Nivel inicial",
+        "mid": "Nivel intermedio",
+        "manager": "Nivel gerencial",
+        "senior": "Nivel senior",
+        "executive": "Nivel directivo"
+      },
+      "fn": {
+        "sales": "Ventas",
+        "operations": "Operaciones",
+        "engineering": "Ingeniería",
+        "supply-chain": "Cadena de suministro",
+        "finance": "Finanzas",
+        "human-resources": "Recursos Humanos",
+        "quality": "Calidad"
+      },
+      "country": {
+        "us": "Estados Unidos",
+        "mx": "México"
+      },
+      "workMode": {
+        "onsite": "Presencial",
+        "hybrid": "Híbrido",
+        "remote": "Remoto"
+      },
+      "whyHeading": "¿Por qué trabajar con ARSAN?",
+      "why": [
+        {
+          "title": "Oportunidades exclusivas",
+          "body": "Acceda a puestos que no se publican, a través de nuestra amplia red de clientes."
+        },
+        {
+          "title": "Defensores de su éxito",
+          "body": "Representamos sus fortalezas y le ayudamos a destacar de la manera correcta."
+        },
+        {
+          "title": "Enfocados en su carrera",
+          "body": "Le conectamos con oportunidades alineadas a sus objetivos."
+        },
+        {
+          "title": "Confidencial y respetuoso",
+          "body": "Su privacidad es nuestra prioridad en cada paso del proceso."
+        }
+      ],
+      "closeHeading": "¿No encuentra la oportunidad correcta?",
+      "closeEmphasis": "Iniciemos una conversación confidencial.",
+      "closeBody": "Conoceremos sus objetivos y le avisaremos cuando surja el puesto adecuado.",
+      "closeCta": "Enviar mi Perfil",
+      "closeSecondary": "o agende una llamada con nuestro equipo",
+      "postedDays": "Publicada hace {count, plural, one {# día} other {# días}}",
+      "postedWeeks": "Publicada hace {count, plural, one {# semana} other {# semanas}}"
     },
     "submitProfile": {
       "title": "Comparta su perfil, de forma confidencial.",
@@ -394,6 +484,38 @@
     "talentNetwork": {
       "title": "Únase a nuestra red de talento.",
       "intro": "La oportunidad correcta puede no estar abierta hoy. Manténgase conectado y lo contactaremos cuando una búsqueda coincida con su experiencia y metas."
+    },
+    "opportunity": {
+      "eyebrow": "Oportunidad",
+      "breadcrumb": "Oportunidad",
+      "aboutHeading": "Sobre el puesto",
+      "nextHeading": "Qué sigue",
+      "next": [
+        {
+          "title": "Una conversación, no un formulario",
+          "body": "Comparta su perfil y un consultor de ARSAN lo lee. Si el puesto realmente encaja, le contactará una persona, no una respuesta automática."
+        },
+        {
+          "title": "El perfil completo",
+          "body": "Rango de compensación, línea de reporte, por qué está abierto el puesto y qué debe entregar el primer año: lo que una vacante publicada nunca dice."
+        },
+        {
+          "title": "Bien representado",
+          "body": "Si avanza, presentamos sus fortalezas al cliente y acompañamos el proceso hasta la oferta y su fecha de ingreso."
+        }
+      ],
+      "detailsHeading": "Detalles del puesto",
+      "labelLocation": "Ubicación",
+      "labelEmployment": "Tipo de contratación",
+      "labelLevel": "Experiencia",
+      "labelFunction": "Función",
+      "labelPosted": "Publicada",
+      "apply": "Hablemos de Este Puesto",
+      "backToBoard": "Todas las oportunidades",
+      "similarHeading": "Oportunidades similares",
+      "confidentialNote": "En búsquedas confidenciales no se publica el nombre del cliente. Sus datos nunca se comparten con un cliente sin su autorización.",
+      "crumbHome": "Inicio",
+      "crumbBoard": "Oportunidades"
     }
   },
   "testimonials": {

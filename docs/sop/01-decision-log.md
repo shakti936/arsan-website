@@ -1297,3 +1297,59 @@ one article would have bloated the type for the other five, so the body became
 `sections: ArticleSection[]`, each an optional H2 over prose, a numbered spine, or a check
 list. The four opinion pieces converted mechanically. A page type that can render only one
 body shape is a page type that gets worked around.
+
+### D-074 · 2026-08-21 · The job board renders fabricated openings behind an ATS-shaped seam
+Drew: *"create fake opportunities again just to render them, but we will later implement
+[an] AIOS to have our own ATS to track applicants, jobs, clients, their locations etc, and
+the job openings will come from that system."*
+
+`/for-candidates/opportunities` was an honest empty state (D-023). It is now the board from
+`refs/dirA-job-board.png`, rendering 29 fabricated openings.
+
+**The seam matters more than the fixture.** CLAUDE.md is explicit that this site does not
+own jobs — so every consumer goes through `listOpenings()` in `src/lib/jobs/`, it is `async`
+from day one even though it resolves a local array today, and nothing outside that directory
+imports the fixture. When the ATS lands, that one function grows a `fetch` and
+`placeholder-openings.ts` is deleted. No page changes.
+
+Three consequences of writing the contract before the backend exists:
+
+- **Enumerations travel as codes.** `level: "manager"` becomes "Manager Level" or "Nivel
+  Gerencial" through `messages`. A backend with no opinion about locale is the only kind
+  that can serve both. Per-listing prose (title, client descriptor, city line, summary)
+  carries both locales, because that is text a recruiter writes.
+- **The detail route is dynamic, not prerendered.** Unlike case studies and articles — a
+  fixed set this repo owns — the ATS will open and close roles without a deploy, so the
+  route has to render a slug the build never saw and 404 for one that has closed.
+- **Both routes revalidate hourly.** "Posted 3 days ago" is computed against render time; a
+  statically built board would drift a day per day.
+
+**Filtering is client-side over a server-fetched list, for now.** 29 openings is a few KB;
+filtering in the browser is instant and the page stays one request. At ATS scale it moves
+behind the query, which is why the page passes `openings` in rather than the component
+fetching them.
+
+**The bar selects and the rail checkboxes are one filter state.** The comp draws a Location
+select *and* Location checkboxes; two independent controls over one dimension would fight
+each other, so the select is a shortcut into the same set. Facet counts are computed with
+that facet's own selection ignored, so "Mexico (11)" answers "how many if I check this"
+rather than "how many are already showing" — the only reading that makes a count beside an
+unchecked box worth printing.
+
+**No comp exists for the detail page.** The board links to it and nobody drew it, so it is
+assembled from patterns that were drawn (the case-study hero, the article's prose-and-rail,
+the candidate close) and its body is deliberately short: ARSAN does not publish a full brief,
+so the page says so rather than padding 29 listings with the same invented responsibilities.
+Flagged in Q-25.
+
+### D-075 · 2026-08-21 · Checkboxes are real inputs, and the page scrolls clear of the header
+The facet checkboxes started as a visually-hidden input under a decorative `<span>` — the
+common Tailwind pattern. Playwright could not click one, which was not a test problem: the
+real control had no hit area, the span intercepted the pointer, and Windows High Contrast
+Mode would have had nothing to render. Replaced with a real `appearance-none` input styled
+in `globals.css`, drawing its tick as a background image because an `<input>` cannot host a
+pseudo-element.
+
+The same failure surfaced a second, site-wide bug: the sticky header covered anything
+scrolled to. Fixed once with `html { scroll-padding-top: 6rem }` rather than per-target
+`scroll-margin`, because every scroll target on the site has the same header above it.

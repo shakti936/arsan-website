@@ -102,6 +102,31 @@ export const Icons = {
       <path d="M12 3.5 19 6v5.5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-2.5Z" />
     </Base>
   ),
+  /* the job board — refs/dirA-job-board.png */
+  briefcase: (p: IconProps) => (
+    <Base {...p}>
+      <rect x="3" y="7.5" width="18" height="12.5" rx="1.5" />
+      <path d="M8.5 7.5V6a1.5 1.5 0 0 1 1.5-1.5h4A1.5 1.5 0 0 1 15.5 6v1.5" />
+      <path d="M3 12.5h18M11 12v1.5h2V12" />
+    </Base>
+  ),
+  mail: (p: IconProps) => (
+    <Base {...p}>
+      <rect x="3" y="5.5" width="18" height="13" rx="1.5" />
+      <path d="m3.5 7 8.5 6 8.5-6" />
+    </Base>
+  ),
+  search: (p: IconProps) => (
+    <Base {...p}>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m15.8 15.8 4.2 4.2" />
+    </Base>
+  ),
+  chevronDown: (p: IconProps) => (
+    <Base {...p}>
+      <path d="m6 9.5 6 6 6-6" />
+    </Base>
+  ),
   map: (p: IconProps) => (
     <Base {...p}>
       <path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4Zm0 0v14m6-12v14" />

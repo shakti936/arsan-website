@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * Pre-cutover gate. Two things must be gone before this site is public:
- * assets named `placeholder-`, and content marked `@unverified`.
+ * Pre-cutover gate. Three things must be gone before this site is public:
+ * assets named `placeholder-`, content marked `@unverified`, and fabricated
+ * data marked `@placeholder`.
  *
  * Why this exists as a script rather than a line on a checklist. The
  * leadership row ships generated portraits standing in for real headshots of
@@ -33,7 +34,15 @@ const PREFIX = "placeholder-";
  *
  * Delete the claim, delete the marker, and the gate goes quiet.
  */
-const UNVERIFIED = /(?:^|\s)\/\/ @unverified:(.*)$/;
+const UNVERIFIED = /(?:^|\s)(?:\/\/|\*) @unverified:(.*)$/;
+/**
+ * Fabricated data standing in for a system that does not exist yet — today,
+ * the job openings the board renders while the internal ATS is built. A
+ * visitor can't tell an invented opening from a real one, so this is a
+ * separate category from an unverified claim and a harder stop: someone could
+ * apply to a role nobody is hiring for.
+ */
+const PLACEHOLDER_DATA = /(?:^|\s)(?:\/\/|\*) @placeholder:(.*)$/;
 const SEARCH_DIRS = ["src", "messages"];
 const SEARCH_EXTS = new Set([".ts", ".tsx", ".js", ".jsx", ".json", ".css"]);
 
@@ -71,15 +80,23 @@ for (const asset of assets) {
 }
 
 const claims = [];
+const fixtures = [];
 for (const [path, text] of corpus) {
   text.split("\n").forEach((line, i) => {
     // `// @unverified:` exactly — prose in a block comment that happens to
     // name the marker is documentation, not an annotation
-    const match = UNVERIFIED.exec(line);
-    if (match) {
+    const claim = UNVERIFIED.exec(line);
+    if (claim) {
       claims.push({
         where: `${relative(ROOT, path)}:${i + 1}`,
-        note: (match[1] ?? "").trim(),
+        note: (claim[1] ?? "").trim(),
+      });
+    }
+    const fixture = PLACEHOLDER_DATA.exec(line);
+    if (fixture) {
+      fixtures.push({
+        where: `${relative(ROOT, path)}:${i + 1}`,
+        note: (fixture[1] ?? "").trim(),
       });
     }
   });
@@ -95,10 +112,17 @@ if (orphans.length) {
   console.log("");
 }
 
-if (!blocking.length && !claims.length) {
+if (!blocking.length && !claims.length && !fixtures.length) {
   console.log("✓ launch gate clear — no placeholders, no unverified claims.");
   process.exit(0);
 }
+
+const report = (rows) => {
+  for (const { where, note } of rows) {
+    console.error(`  ${where}`);
+    console.error(`      ${note}`);
+  }
+};
 
 if (blocking.length) {
   console.error("✗ placeholder assets are still live:\n");
@@ -111,12 +135,20 @@ if (blocking.length) {
   );
 }
 
+if (fixtures.length) {
+  console.error(
+    `✗ ${fixtures.length} fabricated dataset${fixtures.length === 1 ? " is" : "s are"} still wired up:\n`,
+  );
+  report(fixtures);
+  console.error(
+    "\n  → invented records a visitor cannot tell from real ones. Point the\n" +
+      "    provider at the real system and delete the fixture (D-074, Q-24).\n",
+  );
+}
+
 if (claims.length) {
   console.error(`✗ ${claims.length} unverified claims are still live:\n`);
-  for (const { where, note } of claims) {
-    console.error(`  ${where}`);
-    console.error(`      ${note}`);
-  }
+  report(claims);
   console.error(
     "\n  → each is a statistic, source or client quote copied from a Direction A\n" +
       "    comp and never verified. Verify it, replace it, or delete it and its\n" +

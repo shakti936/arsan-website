@@ -385,7 +385,97 @@
       "emptyHeading": "Most of our searches never get posted.",
       "emptyBody": "A large share of ARSAN's work is confidential, so the strongest opportunities reach candidates directly rather than through a listing. Share your profile and we'll contact you when a role genuinely fits.",
       "emptyCtaNetwork": "Join the Talent Network",
-      "emptyCtaProfile": "Submit Your Profile"
+      "emptyCtaProfile": "Submit Your Profile",
+      "eyebrowBadge": "New opportunities added weekly",
+      "searchLabel": "Search jobs",
+      "searchPlaceholder": "Job title, keyword or company",
+      "locationLabel": "Location",
+      "functionLabel": "Function",
+      "levelLabel": "Experience Level",
+      "allLocations": "All Locations",
+      "allFunctions": "All Functions",
+      "allLevels": "All Levels",
+      "searchButton": "Search Jobs",
+      "clearFilters": "Clear filters",
+      "showing": "Showing {count, plural, =0 {no opportunities} one {# opportunity} other {# opportunities}}",
+      "sortBy": "Sort by",
+      "sortRecent": "Most Recent",
+      "sortOldest": "Oldest First",
+      "sortTitle": "Title A–Z",
+      "isNew": "New",
+      "viewDetails": "View details",
+      "noMatchHeading": "No opportunities match those filters.",
+      "noMatchBody": "Widen the search, or share your profile — most ARSAN searches are confidential and never appear on this page.",
+      "alertsHeading": "Get job alerts",
+      "alertsBody": "Be the first to know about new opportunities that match your experience and goals.",
+      "alertsCta": "Create alert",
+      "refineHeading": "Refine by",
+      "facetEmployment": "Job Type",
+      "facetCountry": "Location",
+      "facetFn": "Function",
+      "facetLevel": "Experience Level",
+      "showMore": "Show more",
+      "showLess": "Show less",
+      "pagination": "Pagination",
+      "previousPage": "Previous page",
+      "nextPage": "Next page",
+      "goToPage": "Go to page {page}",
+      "employment": {
+        "full-time": "Full-time",
+        "contract": "Contract",
+        "temporary": "Temporary"
+      },
+      "level": {
+        "entry": "Entry Level",
+        "mid": "Mid Level",
+        "manager": "Manager Level",
+        "senior": "Senior Level",
+        "executive": "Executive Level"
+      },
+      "fn": {
+        "sales": "Sales",
+        "operations": "Operations",
+        "engineering": "Engineering",
+        "supply-chain": "Supply Chain",
+        "finance": "Finance",
+        "human-resources": "Human Resources",
+        "quality": "Quality"
+      },
+      "country": {
+        "us": "United States",
+        "mx": "Mexico"
+      },
+      "workMode": {
+        "onsite": "On-site",
+        "hybrid": "Hybrid",
+        "remote": "Remote"
+      },
+      "whyHeading": "Why work with ARSAN?",
+      "why": [
+        {
+          "title": "Exclusive Opportunities",
+          "body": "Access roles not posted publicly through our extensive client network."
+        },
+        {
+          "title": "Advocates for Your Success",
+          "body": "We represent your strengths and help you stand out in the right way."
+        },
+        {
+          "title": "Career Growth Focused",
+          "body": "We connect you with opportunities that align with your goals."
+        },
+        {
+          "title": "Confidential & Respectful",
+          "body": "Your privacy is our priority at every step of the process."
+        }
+      ],
+      "closeHeading": "Don't see the right opportunity?",
+      "closeEmphasis": "Let's start a confidential conversation.",
+      "closeBody": "We'll learn more about your goals and notify you when the right role becomes available.",
+      "closeCta": "Submit Your Profile",
+      "closeSecondary": "or schedule a call with our team",
+      "postedDays": "Posted {count, plural, one {# day} other {# days}} ago",
+      "postedWeeks": "Posted {count, plural, one {# week} other {# weeks}} ago"
     },
     "submitProfile": {
       "title": "Submit your profile, confidentially.",
@@ -394,6 +484,38 @@
     "talentNetwork": {
       "title": "Join our talent network.",
       "intro": "The right opportunity may not be open today. Stay connected and we'll reach out when a search matches your experience and goals."
+    },
+    "opportunity": {
+      "eyebrow": "Opportunity",
+      "breadcrumb": "Opportunity",
+      "aboutHeading": "About this role",
+      "nextHeading": "What happens next",
+      "next": [
+        {
+          "title": "A conversation, not a form",
+          "body": "Share your profile and an ARSAN consultant reads it. If the role is a genuine fit you will hear from a person, not an autoresponder."
+        },
+        {
+          "title": "The full brief",
+          "body": "Compensation range, reporting line, the reason the seat is open and what the first year has to deliver — the parts a listing never carries."
+        },
+        {
+          "title": "Represented properly",
+          "body": "If you go forward, we present your strengths to the client and stay with the process through offer and start date."
+        }
+      ],
+      "detailsHeading": "Role details",
+      "labelLocation": "Location",
+      "labelEmployment": "Job type",
+      "labelLevel": "Experience",
+      "labelFunction": "Function",
+      "labelPosted": "Posted",
+      "apply": "Discuss This Role",
+      "backToBoard": "All opportunities",
+      "similarHeading": "Similar opportunities",
+      "confidentialNote": "Client names are withheld on confidential searches. Your details are never shared with a client without your agreement.",
+      "crumbHome": "Home",
+      "crumbBoard": "Opportunities"
     }
   },
   "testimonials": {

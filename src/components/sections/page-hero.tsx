@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { HeroBackdrop } from "@/components/ui/hero-backdrop";
 import { HeroTitle } from "@/components/ui/hero-title";
+import { type IconName, Icons } from "@/components/ui/icons";
 
 type HeroCta = {
   label: string;
@@ -28,6 +29,12 @@ type HeroCta = {
  *
  * `photo` is the same frame the page's OG card uses, so a page looks the same
  * whether you arrive on it or see it shared.
+ *
+ * `badge` is the one addition to the shared layout: the job board comp sets a
+ * circled briefcase and "New opportunities added weekly" beside its headline.
+ * It sits in the copy column, above the region line, rather than floating over
+ * the photograph — a badge on the image would be a second hero layout, and the
+ * point of this component is that there is one.
  */
 export function PageHero({
   title,
@@ -36,6 +43,7 @@ export function PageHero({
   photo,
   primary,
   secondary,
+  badge,
 }: {
   title: string;
   /** A phrase inside `title` to set in brass italic, as the comps do. */
@@ -46,6 +54,8 @@ export function PageHero({
   primary?: HeroCta;
   /** `null` renders no outline button */
   secondary?: HeroCta | null;
+  /** A single reassurance under the buttons — see the note above. */
+  badge?: { icon: IconName; text: string };
 }) {
   const t = useTranslations("hero");
   const first = primary ?? { label: t("ctaPrimary"), href: "/contact" };
@@ -78,9 +88,25 @@ export function PageHero({
               </ButtonLink>
             )}
           </div>
+          {badge && <HeroBadge {...badge} />}
           <p className="eyebrow mt-10 text-cream-100/70">{t("regions")}</p>
         </div>
       </Container>
     </section>
+  );
+}
+
+function HeroBadge({ icon, text }: { icon: IconName; text: string }) {
+  const Icon = Icons[icon];
+  return (
+    <p className="mt-8 flex items-center gap-3 text-sm text-cream-100">
+      <span
+        aria-hidden="true"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brass-400/60 text-brass-400"
+      >
+        <Icon className="h-5 w-5" />
+      </span>
+      {text}
+    </p>
   );
 }
