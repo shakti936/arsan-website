@@ -3,15 +3,15 @@
 import { defineField, defineType } from "sanity";
 
 const shape = [
-  defineField({ name: "heading", title: "Heading", type: "string" }),
-  defineField({ name: "body", title: "Body", type: "text", rows: 3 }),
-  defineField({ name: "cta", title: "Cta", type: "string" }),
+  defineField({ name: "heading", title: "Section heading", type: "string" }),
+  defineField({ name: "body", title: "Paragraph", type: "text", rows: 3 }),
+  defineField({ name: "cta", title: "Button", type: "string" }),
   defineField({ name: "secondary", title: "Secondary", type: "string" }),
 ];
 
 export const copyCtaBandForClients = defineType({
   name: "copyCtaBandForClients",
-  title: "CTA band — for clients",
+  title: "“Let’s talk” band — clients",
   type: "document",
   fields: [
     defineField({
@@ -42,13 +42,16 @@ export const copyCtaBandForClients = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -56,5 +59,5 @@ export const copyCtaBandForClients = defineType({
       ],
     }),
   ],
-  preview: { prepare: () => ({ title: "CTA band — for clients" }) },
+  preview: { prepare: () => ({ title: "“Let’s talk” band — clients" }) },
 });

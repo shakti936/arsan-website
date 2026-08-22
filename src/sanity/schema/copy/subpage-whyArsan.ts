@@ -9,18 +9,28 @@ const shape = [
     title: "Title Emphasis",
     type: "string",
   }),
-  defineField({ name: "intro", title: "Intro", type: "text", rows: 3 }),
+  defineField({
+    name: "intro",
+    title: "Intro paragraph",
+    type: "text",
+    rows: 3,
+  }),
   defineField({
     name: "difference",
     title: "Difference",
+    description: "The “Our Difference” block",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
-      defineField({ name: "heading", title: "Heading", type: "string" }),
-      defineField({ name: "body", title: "Body", type: "string" }),
+      defineField({
+        name: "heading",
+        title: "Section heading",
+        type: "string",
+      }),
+      defineField({ name: "body", title: "Paragraph", type: "string" }),
       defineField({
         name: "items",
-        title: "Items",
+        title: "List items",
         type: "array",
         of: [
           defineArrayMember({
@@ -29,7 +39,7 @@ const shape = [
               defineField({ name: "title", title: "Title", type: "string" }),
               defineField({
                 name: "body",
-                title: "Body",
+                title: "Paragraph",
                 type: "text",
                 rows: 3,
               }),
@@ -42,14 +52,19 @@ const shape = [
   defineField({
     name: "process",
     title: "Process",
+    description: "The “How We Work” block",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
-      defineField({ name: "heading", title: "Heading", type: "string" }),
-      defineField({ name: "body", title: "Body", type: "text", rows: 3 }),
+      defineField({
+        name: "heading",
+        title: "Section heading",
+        type: "string",
+      }),
+      defineField({ name: "body", title: "Paragraph", type: "text", rows: 3 }),
       defineField({
         name: "steps",
-        title: "Steps",
+        title: "Numbered steps",
         type: "array",
         of: [
           defineArrayMember({
@@ -58,7 +73,7 @@ const shape = [
               defineField({ name: "title", title: "Title", type: "string" }),
               defineField({
                 name: "body",
-                title: "Body",
+                title: "Paragraph",
                 type: "text",
                 rows: 3,
               }),
@@ -109,13 +124,16 @@ export const copySubpageWhyArsan = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,

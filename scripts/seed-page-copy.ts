@@ -23,6 +23,7 @@
 import { createClient } from "next-sanity";
 import en from "../messages/en.json";
 import es from "../messages/es.json";
+import { toFieldName } from "../src/sanity/lib/copy-keys";
 import {
   flattenStrings,
   hash,
@@ -86,8 +87,9 @@ function sanitise(value: unknown, path: string): unknown {
   if (value && typeof value === "object") {
     const out: Tree = {};
     for (const [k, v] of Object.entries(value as Tree)) {
-      if (!VALID_FIELD.test(k)) continue;
-      out[k] = sanitise(v, `${path}.${k}`);
+      const name = toFieldName(k);
+      if (!VALID_FIELD.test(name)) continue;
+      out[name] = sanitise(v, `${path}.${k}`);
     }
     return out;
   }

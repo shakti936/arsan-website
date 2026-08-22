@@ -9,7 +9,12 @@ const shape = [
     title: "Title Emphasis",
     type: "string",
   }),
-  defineField({ name: "intro", title: "Intro", type: "text", rows: 3 }),
+  defineField({
+    name: "intro",
+    title: "Intro paragraph",
+    type: "text",
+    rows: 3,
+  }),
   defineField({ name: "emptyHeading", title: "Empty Heading", type: "string" }),
   defineField({
     name: "emptyBody",
@@ -98,8 +103,9 @@ const shape = [
     name: "employment",
     title: "Employment",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
+      defineField({ name: "full__time", title: "Full-time", type: "string" }),
       defineField({ name: "contract", title: "Contract", type: "string" }),
       defineField({ name: "temporary", title: "Temporary", type: "string" }),
     ],
@@ -108,7 +114,7 @@ const shape = [
     name: "level",
     title: "Level",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
       defineField({ name: "entry", title: "Entry", type: "string" }),
       defineField({ name: "mid", title: "Mid", type: "string" }),
@@ -121,7 +127,7 @@ const shape = [
     name: "fn",
     title: "Fn",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
       defineField({ name: "sales", title: "Sales", type: "string" }),
       defineField({ name: "operations", title: "Operations", type: "string" }),
@@ -130,7 +136,17 @@ const shape = [
         title: "Engineering",
         type: "string",
       }),
+      defineField({
+        name: "supply__chain",
+        title: "Supply-chain",
+        type: "string",
+      }),
       defineField({ name: "finance", title: "Finance", type: "string" }),
+      defineField({
+        name: "human__resources",
+        title: "Human-resources",
+        type: "string",
+      }),
       defineField({ name: "quality", title: "Quality", type: "string" }),
     ],
   }),
@@ -138,7 +154,7 @@ const shape = [
     name: "country",
     title: "Country",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
       defineField({ name: "us", title: "Us", type: "string" }),
       defineField({ name: "mx", title: "Mx", type: "string" }),
@@ -148,7 +164,7 @@ const shape = [
     name: "workMode",
     title: "Work Mode",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
       defineField({ name: "onsite", title: "Onsite", type: "string" }),
       defineField({ name: "hybrid", title: "Hybrid", type: "string" }),
@@ -165,7 +181,7 @@ const shape = [
         type: "object",
         fields: [
           defineField({ name: "title", title: "Title", type: "string" }),
-          defineField({ name: "body", title: "Body", type: "string" }),
+          defineField({ name: "body", title: "Paragraph", type: "string" }),
         ],
       }),
     ],
@@ -189,7 +205,7 @@ const shape = [
 
 export const copySubpageOpportunities = defineType({
   name: "copySubpageOpportunities",
-  title: "Opportunities",
+  title: "Opportunities (job list)",
   type: "document",
   fields: [
     defineField({
@@ -220,13 +236,16 @@ export const copySubpageOpportunities = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -234,5 +253,5 @@ export const copySubpageOpportunities = defineType({
       ],
     }),
   ],
-  preview: { prepare: () => ({ title: "Opportunities" }) },
+  preview: { prepare: () => ({ title: "Opportunities (job list)" }) },
 });

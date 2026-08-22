@@ -5,25 +5,31 @@ import { defineField, defineType } from "sanity";
 const shape = [
   defineField({ name: "filterLabel", title: "Filter Label", type: "string" }),
   defineField({ name: "all", title: "All", type: "string" }),
-  defineField({ name: "heading", title: "Heading", type: "string" }),
-  defineField({ name: "viewAll", title: "View All", type: "string" }),
+  defineField({ name: "heading", title: "Section heading", type: "string" }),
+  defineField({ name: "viewAll", title: '"View all" link', type: "string" }),
   defineField({ name: "featured", title: "Featured", type: "string" }),
   defineField({
     name: "tailored",
     title: "Tailored",
+    description:
+      "The “Want insights tailored to your business and hiring goals?” block",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
-      defineField({ name: "heading", title: "Heading", type: "string" }),
-      defineField({ name: "body", title: "Body", type: "text", rows: 3 }),
-      defineField({ name: "cta", title: "Cta", type: "string" }),
+      defineField({
+        name: "heading",
+        title: "Section heading",
+        type: "string",
+      }),
+      defineField({ name: "body", title: "Paragraph", type: "text", rows: 3 }),
+      defineField({ name: "cta", title: "Button", type: "string" }),
     ],
   }),
 ];
 
 export const copyInsightsIndex = defineType({
   name: "copyInsightsIndex",
-  title: "Insights — index",
+  title: "Insights index",
   type: "document",
   fields: [
     defineField({
@@ -54,13 +60,16 @@ export const copyInsightsIndex = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -68,5 +77,5 @@ export const copyInsightsIndex = defineType({
       ],
     }),
   ],
-  preview: { prepare: () => ({ title: "Insights — index" }) },
+  preview: { prepare: () => ({ title: "Insights index" }) },
 });

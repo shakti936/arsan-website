@@ -13,12 +13,12 @@ const shape = [
   defineField({ name: "byline", title: "Byline", type: "string" }),
   defineField({ name: "readingTime", title: "Reading Time", type: "string" }),
   defineField({ name: "related", title: "Related", type: "string" }),
-  defineField({ name: "viewAll", title: "View All", type: "string" }),
+  defineField({ name: "viewAll", title: '"View all" link', type: "string" }),
 ];
 
 export const copyArticle = defineType({
   name: "copyArticle",
-  title: "Article furniture",
+  title: "Article page furniture",
   type: "document",
   fields: [
     defineField({
@@ -49,13 +49,16 @@ export const copyArticle = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -63,5 +66,5 @@ export const copyArticle = defineType({
       ],
     }),
   ],
-  preview: { prepare: () => ({ title: "Article furniture" }) },
+  preview: { prepare: () => ({ title: "Article page furniture" }) },
 });

@@ -28,46 +28,62 @@ const messages = JSON.parse(
 );
 
 /**
- * Namespaces that are PAGE COPY. Everything absent is UI chrome and stays in
- * code (D-090): `nav` labels, `forms` validation, `errors`, `meta`, `brand`.
- * Shared section namespaces are listed too — they are copy, they are just copy
- * that appears on more than one page.
+ * Every namespace an editor can change, and where it belongs in the Studio.
+ *
+ * `nav`, `forms` and `errors` were originally held back as "UI chrome that
+ * stays in code". That was wrong: the header's "Discuss a Search" button, the
+ * mega-menu labels and a form's own wording are copy the business owns, and
+ * leaving them out produced exactly the complaint it deserved — a page where
+ * some words can be edited and others cannot, with no way to tell which.
+ *
+ * The group is what the Studio lists them under. Three groups, because an
+ * editor's real question is one of three: *this page*, *the bit that repeats
+ * on every page*, or *the whole site*.
  */
 const PAGES = [
-  ["home", "Home"],
-  ["subpage.forClients", "For Clients"],
-  ["subpage.executiveSearch", "Executive Search"],
-  ["subpage.mexicoAdvisory", "Mexico Advisory"],
-  ["subpage.leadershipSolutions", "Leadership Solutions"],
-  ["subpage.forCandidates", "For Candidates"],
-  ["subpage.results", "Results"],
-  ["subpage.insights", "Insights"],
-  ["subpage.whyArsan", "Why ARSAN"],
-  ["subpage.contact", "Contact"],
-  ["subpage.opportunities", "Opportunities"],
-  ["subpage.submitProfile", "Submit Your Profile"],
-  ["subpage.talentNetwork", "Talent Network"],
-  ["resultsPage", "Results — sections"],
-  ["insightsIndex", "Insights — index"],
-  ["article", "Article furniture"],
-  ["newsletter", "Newsletter band"],
-  ["ctaBand", "CTA band — default"],
-  ["ctaBandForClients", "CTA band — for clients"],
-  ["ctaBandCandidates", "CTA band — for candidates"],
-  ["insightsRow", "Insights row"],
-  ["team", "Team row"],
-  ["candidateValues", "Candidate values"],
-  ["candidateHelp", "Candidate help"],
-  ["candidateTrust", "Candidate trust"],
-  ["whyChoose", "Why choose ARSAN"],
-  ["whyCall", "Why call"],
-  ["functionGrid", "Function grid"],
-  ["mexicoCase", "Mexico case"],
-  ["mexicoQuestions", "Mexico questions"],
-  ["mexicoEarly", "Mexico early"],
-  ["caseStudy", "Case study furniture"],
-  ["hero", "Hero furniture"],
-  ["footer", "Footer"],
+  ["home", "Home", "Pages"],
+  ["subpage.forClients", "For Clients", "Pages"],
+  ["subpage.executiveSearch", "Executive Search", "Pages"],
+  ["subpage.mexicoAdvisory", "Mexico Advisory", "Pages"],
+  ["subpage.leadershipSolutions", "Leadership Solutions", "Pages"],
+  ["subpage.forCandidates", "For Candidates", "Pages"],
+  ["subpage.results", "Results", "Pages"],
+  ["subpage.insights", "Insights", "Pages"],
+  ["subpage.whyArsan", "Why ARSAN", "Pages"],
+  ["subpage.contact", "Contact", "Pages"],
+  ["subpage.opportunities", "Opportunities (job list)", "Pages"],
+  ["subpage.opportunity", "Opportunities (one job)", "Pages"],
+  ["subpage.submitProfile", "Submit Your Profile", "Pages"],
+  ["subpage.talentNetwork", "Talent Network", "Pages"],
+
+  ["hero", "Page headers", "Repeated blocks"],
+  ["ctaBand", "“Let’s talk” band — default", "Repeated blocks"],
+  ["ctaBandForClients", "“Let’s talk” band — clients", "Repeated blocks"],
+  ["ctaBandCandidates", "“Let’s talk” band — candidates", "Repeated blocks"],
+  ["newsletter", "Newsletter sign-up", "Repeated blocks"],
+  ["team", "Meet the team row", "Repeated blocks"],
+  ["insightsRow", "Latest insights row", "Repeated blocks"],
+  ["resultsPage", "Results page sections", "Repeated blocks"],
+  ["insightsIndex", "Insights index", "Repeated blocks"],
+  ["article", "Article page furniture", "Repeated blocks"],
+  ["caseStudy", "Case study furniture", "Repeated blocks"],
+  ["candidateValues", "Candidate values", "Repeated blocks"],
+  ["candidateHelp", "Candidate help", "Repeated blocks"],
+  ["candidateTrust", "Candidate trust", "Repeated blocks"],
+  ["whyChoose", "Why choose ARSAN", "Repeated blocks"],
+  ["whyCall", "Why call", "Repeated blocks"],
+  ["functionGrid", "Functions we search", "Repeated blocks"],
+  ["mexicoCase", "Mexico case", "Repeated blocks"],
+  ["mexicoQuestions", "Mexico questions", "Repeated blocks"],
+  ["mexicoEarly", "Mexico early", "Repeated blocks"],
+
+  ["nav", "Menu & header", "Whole site"],
+  ["footer", "Footer", "Whole site"],
+  ["forms", "Form labels & messages", "Whole site"],
+  ["errors", "Error messages", "Whole site"],
+  ["articleCategories", "Article category names", "Whole site"],
+  ["meta", "Site title & description", "Whole site"],
+  ["brand", "Company name", "Whole site"],
 ];
 
 const get = (path) =>
@@ -79,11 +95,103 @@ const pascal = (s) =>
     .map((p) => p[0].toUpperCase() + p.slice(1))
     .join("");
 
-const title = (key) =>
+/**
+ * Field labels, written for someone who has never built a website.
+ *
+ * De-camelCasing the key gives "Headline Lead", "Cta Primary", "Chooser" —
+ * accurate names for things the editor has no name for. They describe the
+ * data; an editor needs to know **which words on the page** a box changes.
+ * Keyed by the bare message key, so one entry fixes the same concept
+ * everywhere it appears across 34 pages.
+ *
+ * Anything not listed falls back to the de-camelCased key, which is fine for
+ * the ones that are already plain — "Title", "Body", "Heading".
+ */
+const LABELS = {
+  hero: "Top of the page",
+  chooser: "Choose-your-path cards",
+  values: "What we stand for",
+  stories: "Client stories",
+  logoWall: "Client logos",
+  newsletter: "Newsletter sign-up",
+  footer: "Footer",
+  form: "The form",
+  seo: "Google & social sharing",
+  headlineLead: "Headline — first part",
+  headlineEmphasis: "Headline — the highlighted words",
+  headlineTail: "Headline — last part",
+  headline: "Headline",
+  subhead: "Paragraph under the headline",
+  eyebrow: "Small label above the heading",
+  deck: "Short intro paragraph",
+  lead: "Opening line (bold)",
+  heading: "Section heading",
+  subheading: "Smaller heading",
+  body: "Paragraph",
+  text: "Paragraph",
+  intro: "Intro paragraph",
+  note: "Small print",
+  cta: "Button",
+  ctaPrimary: "Main button",
+  ctaSecondary: "Second button",
+  ctaLabel: "Button",
+  ctaHeading: "Heading above the button",
+  ctaBody: "Paragraph above the button",
+  heroCta: "Button at the top of the page",
+  label: "Label",
+  viewAll: '"View all" link',
+  readStory: '"Read story" link',
+  readMore: '"Read more" link',
+  imageAlt: "Image description (for screen readers and Google)",
+  metaTitle: "Google search result — title",
+  metaDescription: "Google search result — description",
+  regions: "Small line under the buttons",
+  cards: "Cards",
+  items: "List items",
+  steps: "Numbered steps",
+  need: "Card — the problem",
+  service: "Card — what we call it",
+  role: "Person's job title",
+  org: "Company name",
+  quote: "Quotation",
+  placeholder: "Grey hint text inside the box",
+  error: "Message shown when it goes wrong",
+  success: "Message shown when it works",
+};
+
+const deCamel = (key) =>
   key
     .replace(/([A-Z])/g, " $1")
     .replace(/^./, (c) => c.toUpperCase())
     .trim();
+
+const title = (key) => LABELS[key] ?? deCamel(key);
+
+/**
+ * Names a SECTION by the words it puts on the page.
+ *
+ * "Chooser" means nothing to an editor; `The "What talent challenge are you
+ * facing?" block` is the thing they can see. Taken from the section's own
+ * heading text, so it needs no hand-maintained list and cannot describe a
+ * section that no longer exists.
+ */
+function describe(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const joined = [
+    value.headlineLead,
+    value.headlineEmphasis,
+    value.headlineTail,
+  ]
+    .filter((part) => typeof part === "string")
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const sample =
+    value.heading ?? value.title ?? value.headline ?? joined ?? value.label;
+  if (typeof sample !== "string" || !sample.trim()) return null;
+  const trimmed = sample.length > 70 ? `${sample.slice(0, 67)}…` : sample;
+  return `The “${trimmed}” block`;
+}
 
 /** Long strings get a textarea; short ones a single line. */
 const isLong = (v) => typeof v === "string" && v.length > 90;
@@ -101,16 +209,27 @@ const pad = () => "  ".repeat(indentLevel);
 const VALID_FIELD = /^[A-Za-z]+[0-9A-Za-z_]*$/;
 const skipped = [];
 
+/** MUST match `src/sanity/lib/copy-keys.ts`. A hyphen is illegal in a Sanity
+ *  field name; `__` is the reversible stand-in. */
+const toFieldName = (key) => key.replace(/-/g, "__");
+
 function editableEntries(value, path) {
   return Object.entries(value).filter(([k]) => {
-    if (VALID_FIELD.test(k)) return true;
+    if (k.includes("__")) {
+      throw new Error(
+        `${path}.${k} contains "__", which is the hyphen marker used to make ` +
+          `keys legal as Sanity field names. Rename the message key — the ` +
+          `round trip in src/sanity/lib/copy-keys.ts would not be lossless.`,
+      );
+    }
+    if (VALID_FIELD.test(toFieldName(k))) return true;
     skipped.push(`${path}.${k}`);
     return false;
   });
 }
 
 function field(key, value) {
-  const base = `name: "${key}", title: ${JSON.stringify(title(key))}`;
+  const base = `name: "${toFieldName(key)}", title: ${JSON.stringify(title(key))}`;
   if (Array.isArray(value)) {
     const [sample] = value;
     if (sample && typeof sample === "object") {
@@ -141,7 +260,12 @@ function field(key, value) {
       .filter(Boolean)
       .join(",\n");
     indentLevel -= 1;
-    return `${pad()}defineField({ ${base}, type: "object", options: { collapsible: true, collapsed: true }, fields: [\n${inner}\n${pad()}] })`;
+    const hint = describe(value);
+    const described = hint ? `, description: ${JSON.stringify(hint)}` : "";
+    // expanded, NOT collapsed: a page of shut accordions with names like
+    // "Chooser" shows an editor nothing they recognise. Open, every box holds
+    // words they can read off the page.
+    return `${pad()}defineField({ ${base}${described}, type: "object", options: { collapsible: true, collapsed: false }, fields: [\n${inner}\n${pad()}] })`;
   }
   return `${pad()}defineField({ ${base}, type: "${isLong(value) ? "text" : "string"}"${isLong(value) ? ", rows: 3" : ""} })`;
 }
@@ -153,7 +277,7 @@ for (const f of readdirSync(outDir)) {
 }
 
 const types = [];
-for (const [namespace, label] of PAGES) {
+for (const [namespace, label, group] of PAGES) {
   const tree = get(namespace);
   if (!tree || typeof tree !== "object") {
     console.error(`  skipped ${namespace} — not an object in messages/en.json`);
@@ -208,13 +332,16 @@ export const ${typeName} = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -230,6 +357,7 @@ export const ${typeName} = defineType({
     typeName,
     namespace,
     label,
+    group,
     file: namespace.replace(/\./g, "-"),
   });
 }
@@ -268,6 +396,16 @@ writeFileSync(
 export const COPY_NAMESPACES: Record<string, string> = {
 ${types.map((t) => `  ${t.typeName}: ${JSON.stringify(t.namespace)},`).join("\n")}
 };
+
+/**
+ * The same list, with the label and the Studio group each belongs under.
+ *
+ * Three groups, because an editor's question is always one of three: *this
+ * page*, *the block that repeats on every page*, or *the whole site*.
+ */
+export const COPY_PAGES: { type: string; label: string; group: string }[] = [
+${types.map((t) => `  { type: "${t.typeName}", label: ${JSON.stringify(t.label)}, group: ${JSON.stringify(t.group)} },`).join("\n")}
+];
 `,
 );
 console.log(`✓ generated ${types.length} page-copy document types`);

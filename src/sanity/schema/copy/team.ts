@@ -3,8 +3,8 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 const shape = [
-  defineField({ name: "heading", title: "Heading", type: "string" }),
-  defineField({ name: "viewAll", title: "View All", type: "string" }),
+  defineField({ name: "heading", title: "Section heading", type: "string" }),
+  defineField({ name: "viewAll", title: '"View all" link', type: "string" }),
   defineField({
     name: "members",
     title: "Members",
@@ -24,7 +24,7 @@ const shape = [
 
 export const copyTeam = defineType({
   name: "copyTeam",
-  title: "Team row",
+  title: "Meet the team row",
   type: "document",
   fields: [
     defineField({
@@ -55,13 +55,16 @@ export const copyTeam = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -69,5 +72,5 @@ export const copyTeam = defineType({
       ],
     }),
   ],
-  preview: { prepare: () => ({ title: "Team row" }) },
+  preview: { prepare: () => ({ title: "Meet the team row" }) },
 });

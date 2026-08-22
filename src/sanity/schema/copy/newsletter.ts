@@ -3,26 +3,34 @@
 import { defineField, defineType } from "sanity";
 
 const shape = [
-  defineField({ name: "heading", title: "Heading", type: "string" }),
-  defineField({ name: "body", title: "Body", type: "text", rows: 3 }),
+  defineField({ name: "heading", title: "Section heading", type: "string" }),
+  defineField({ name: "body", title: "Paragraph", type: "text", rows: 3 }),
   defineField({ name: "label", title: "Label", type: "string" }),
-  defineField({ name: "placeholder", title: "Placeholder", type: "string" }),
-  defineField({ name: "cta", title: "Cta", type: "string" }),
+  defineField({
+    name: "placeholder",
+    title: "Grey hint text inside the box",
+    type: "string",
+  }),
+  defineField({ name: "cta", title: "Button", type: "string" }),
   defineField({ name: "pending", title: "Pending", type: "string" }),
-  defineField({ name: "success", title: "Success", type: "string" }),
+  defineField({
+    name: "success",
+    title: "Message shown when it works",
+    type: "string",
+  }),
   defineField({ name: "privacy", title: "Privacy", type: "string" }),
   defineField({
     name: "errors",
     title: "Errors",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [defineField({ name: "email", title: "Email", type: "string" })],
   }),
 ];
 
 export const copyNewsletter = defineType({
   name: "copyNewsletter",
-  title: "Newsletter band",
+  title: "Newsletter sign-up",
   type: "document",
   fields: [
     defineField({
@@ -53,13 +61,16 @@ export const copyNewsletter = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -67,5 +78,5 @@ export const copyNewsletter = defineType({
       ],
     }),
   ],
-  preview: { prepare: () => ({ title: "Newsletter band" }) },
+  preview: { prepare: () => ({ title: "Newsletter sign-up" }) },
 });

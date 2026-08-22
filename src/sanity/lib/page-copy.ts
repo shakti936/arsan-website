@@ -1,6 +1,7 @@
 import { draftMode } from "next/headers";
 import { COPY_NAMESPACES } from "../schema/copy/namespaces";
 import { client } from "./client";
+import { toMessageKey } from "./copy-keys";
 
 /**
  * Page copy authored in the Studio, merged over the message catalogues.
@@ -64,7 +65,8 @@ function strip(value: unknown): unknown {
     return Object.fromEntries(
       Object.entries(value as Tree)
         .filter(([k]) => !k.startsWith("_"))
-        .map(([k, v]) => [k, strip(v)]),
+        // `full__time` in Sanity is `full-time` in the catalogue
+        .map(([k, v]) => [toMessageKey(k), strip(v)]),
     );
   }
   return value;

@@ -9,8 +9,17 @@ const shape = [
     title: "Title Emphasis",
     type: "string",
   }),
-  defineField({ name: "metaTitle", title: "Meta Title", type: "string" }),
-  defineField({ name: "intro", title: "Intro", type: "text", rows: 3 }),
+  defineField({
+    name: "metaTitle",
+    title: "Google search result — title",
+    type: "string",
+  }),
+  defineField({
+    name: "intro",
+    title: "Intro paragraph",
+    type: "text",
+    rows: 3,
+  }),
   defineField({
     name: "heroCtaPrimary",
     title: "Hero Cta Primary",
@@ -27,8 +36,8 @@ const shape = [
         fields: [
           defineField({ name: "title", title: "Title", type: "string" }),
           defineField({ name: "lede", title: "Lede", type: "string" }),
-          defineField({ name: "body", title: "Body", type: "string" }),
-          defineField({ name: "cta", title: "Cta", type: "string" }),
+          defineField({ name: "body", title: "Paragraph", type: "string" }),
+          defineField({ name: "cta", title: "Button", type: "string" }),
         ],
       }),
     ],
@@ -73,13 +82,16 @@ export const copySubpageForClients = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,

@@ -61,12 +61,25 @@ Where P1 content lives (typed content files vs. CMS): typed content files, per
 
 Every user-facing string on every page is editable in the Studio, in two ways:
 
-**Click-to-edit.** `/studio` → **Presentation**. The live page sits beside the form; click
-a headline or paragraph and its field opens. This is text editing, not layout editing —
-sections cannot be reordered or moved, which is deliberate (D-099).
+**Click-to-edit.** `/studio` → **Presentation** → **flip the `Edit` toggle on**, top-left
+next to the address bar. That toggle is what makes the page clickable; with it off nothing
+responds. It is a per-user browser setting and sticks once flipped — Sanity offers no way
+to default it on (D-100).
 
-**Form editing.** `/studio` → **Structure** → *Page copy* → the page. Same fields, grouped
-the way the page reads.
+Then click any headline or paragraph and its box opens on the right. This is text editing,
+not layout editing — sections cannot be reordered or moved, which is deliberate (D-099).
+
+**Form editing.** `/studio` → **Structure**, then one of three groups:
+
+| Group | What is in it |
+|---|---|
+| **Pages** | One entry per page with a URL — Home, For Clients, Contact, ... |
+| **Repeated blocks** | Bits that appear on many pages — the "Let's talk" band, the newsletter sign-up, the team row |
+| **Whole site** | Menu & header, footer, form labels, error messages, site title |
+
+Boxes are labelled by what a visitor sees — "Headline — the highlighted words", "Main
+button" — and each section is named after its own heading, so `Chooser` reads as
+*The "What talent challenge are you facing?" block*.
 
 ### How the layers fit
 

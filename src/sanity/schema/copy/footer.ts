@@ -3,7 +3,11 @@
 import { defineField, defineType } from "sanity";
 
 const shape = [
-  defineField({ name: "regions", title: "Regions", type: "string" }),
+  defineField({
+    name: "regions",
+    title: "Small line under the buttons",
+    type: "string",
+  }),
   defineField({ name: "copyright", title: "Copyright", type: "string" }),
   defineField({ name: "tagline", title: "Tagline", type: "string" }),
 ];
@@ -41,13 +45,16 @@ export const copyFooter = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,

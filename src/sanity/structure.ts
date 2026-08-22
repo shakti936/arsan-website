@@ -1,5 +1,5 @@
 import type { StructureResolver } from "sanity/structure";
-import { COPY_NAMESPACES } from "./schema/copy/namespaces";
+import { COPY_PAGES } from "./schema/copy/namespaces";
 
 /**
  * The Studio's left-hand navigation.
@@ -75,15 +75,26 @@ export const structure: StructureResolver = (S) =>
        * effectively a singleton, so the child goes straight to the document
        * rather than to a list containing one row.
        */
-      S.listItem()
-        .title("Page copy")
-        .child(
-          S.list()
-            .title("Page copy")
-            .items(
-              Object.keys(COPY_NAMESPACES).map((type) =>
-                S.documentTypeListItem(type),
+      /**
+       * The words on the site, in the three piles an editor actually thinks
+       * in: the page in front of them, the block that repeats across pages,
+       * and the whole site. One flat list of 41 rows named after code
+       * namespaces was a listing of the schema, not of the work.
+       *
+       * Each entry is effectively a singleton, so the child goes straight to
+       * the document rather than to a list holding one row.
+       */
+      ...["Pages", "Repeated blocks", "Whole site"].map((group) =>
+        S.listItem()
+          .title(group)
+          .child(
+            S.list()
+              .title(group)
+              .items(
+                COPY_PAGES.filter((page) => page.group === group).map((page) =>
+                  S.documentTypeListItem(page.type).title(page.label),
+                ),
               ),
-            ),
-        ),
+          ),
+      ),
     ]);

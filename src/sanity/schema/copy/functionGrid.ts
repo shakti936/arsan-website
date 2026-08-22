@@ -3,17 +3,17 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 const shape = [
-  defineField({ name: "heading", title: "Heading", type: "string" }),
+  defineField({ name: "heading", title: "Section heading", type: "string" }),
   defineField({
     name: "items",
-    title: "Items",
+    title: "List items",
     type: "array",
     of: [
       defineArrayMember({
         type: "object",
         fields: [
           defineField({ name: "title", title: "Title", type: "string" }),
-          defineField({ name: "body", title: "Body", type: "string" }),
+          defineField({ name: "body", title: "Paragraph", type: "string" }),
         ],
       }),
     ],
@@ -22,7 +22,7 @@ const shape = [
 
 export const copyFunctionGrid = defineType({
   name: "copyFunctionGrid",
-  title: "Function grid",
+  title: "Functions we search",
   type: "document",
   fields: [
     defineField({
@@ -53,13 +53,16 @@ export const copyFunctionGrid = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -67,5 +70,5 @@ export const copyFunctionGrid = defineType({
       ],
     }),
   ],
-  preview: { prepare: () => ({ title: "Function grid" }) },
+  preview: { prepare: () => ({ title: "Functions we search" }) },
 });

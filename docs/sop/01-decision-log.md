@@ -2078,3 +2078,47 @@ CMS works without them.
 dialog. And @sanity/icons 5 dropped named icon exports for one `Icon` component plus a
 symbol registry; its types resolve loosely enough that importing a name that no longer
 exists still typechecks and fails at bundle time instead.
+
+### D-100 · 2026-08-22 · The Studio was built for the schema, not for the editor
+Drew opened Presentation and said he could not edit everything, and that it was far too
+complicated. Both were true, for three separate reasons.
+
+**1 · 130 strings were not in the Studio at all.** D-096 classified `nav`, `forms`,
+`errors`, `meta`, `brand`, `articleCategories` and `subpage.opportunity` as "UI chrome
+that stays in code". Wrong call: `nav` alone is 69 strings and includes the header's
+"Discuss a Search" button and every mega-menu label. That is copy the business owns. The
+result was the worst possible state — a page where some words can be edited and others
+cannot, with nothing to tell you which. All seven are now editable; 41 documents, not 34.
+
+**2 · Six labels were silently skipped for containing a hyphen.** Sanity field names
+cannot contain one, and `forms.services["executive-search"]` and friends are enum-coded
+keys — but their *values* are the contact form's dropdown options and the job board's
+filter labels. Skipping them was invisible to everyone except the person who wondered why
+those particular words would not edit. They are now encoded as `executive__search` and
+decoded on read (`src/sanity/lib/copy-keys.ts`), so the catalogue key stays authoritative.
+No message key contains `__`, and the generator now throws if one ever does, so the round
+trip cannot silently stop being lossless. Verified end to end: the rendered option is
+still `value="executive-search"` with the label coming from Sanity.
+
+**3 · The form was a listing of the data structure.** Every nested object was emitted
+`collapsed: true`, so opening a page showed five shut accordions named `Chooser`,
+`Values`, `Stories`, `Quote`, `Logo Wall` — internal names for things the editor has no
+name for, hiding all the text that would have made them recognisable. Three changes:
+
+- **Nothing is collapsed.** Open, every box holds words that can be read off the page.
+- **Labels say what a visitor sees.** `headlineEmphasis` → "Headline — the highlighted
+  words"; `ctaPrimary` → "Main button"; `imageAlt` → "Image description (for screen
+  readers and Google)". Keyed by the bare message key in `LABELS`, so one entry fixes the
+  same concept across all 41 pages, falling back to the de-camelCased name.
+- **Sections are named by their own heading text**, generated rather than hand-listed:
+  `Chooser` now carries `The "What talent challenge are you facing?" block`. It cannot
+  describe a section that no longer exists, and needs no maintenance.
+
+The left-hand list is grouped **Pages / Repeated blocks / Whole site** — the three piles an
+editor's question actually falls into — instead of 41 rows named after code namespaces.
+
+**Not fixed, because it cannot be:** Presentation's Edit toggle defaults to off, and
+`PresentationPluginOptions` has no setting for it (checked the interface rather than
+guessing — that mistake is D-094). It is a per-user browser preference and sticks once
+flipped. With it off, nothing on the page is clickable, which is most of what "I can't
+edit everything" felt like.

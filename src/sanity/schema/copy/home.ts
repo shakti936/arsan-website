@@ -5,42 +5,58 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 const shape = [
   defineField({
     name: "hero",
-    title: "Hero",
+    title: "Top of the page",
+    description:
+      "The “Critical talent decisions. Better business outcomes.” block",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
       defineField({
         name: "headlineLead",
-        title: "Headline Lead",
+        title: "Headline — first part",
         type: "string",
       }),
       defineField({
         name: "headlineEmphasis",
-        title: "Headline Emphasis",
+        title: "Headline — the highlighted words",
         type: "string",
       }),
       defineField({
         name: "headlineTail",
-        title: "Headline Tail",
+        title: "Headline — last part",
         type: "string",
       }),
-      defineField({ name: "subhead", title: "Subhead", type: "text", rows: 3 }),
-      defineField({ name: "ctaPrimary", title: "Cta Primary", type: "string" }),
+      defineField({
+        name: "subhead",
+        title: "Paragraph under the headline",
+        type: "text",
+        rows: 3,
+      }),
+      defineField({ name: "ctaPrimary", title: "Main button", type: "string" }),
       defineField({
         name: "ctaSecondary",
-        title: "Cta Secondary",
+        title: "Second button",
         type: "string",
       }),
-      defineField({ name: "regions", title: "Regions", type: "string" }),
+      defineField({
+        name: "regions",
+        title: "Small line under the buttons",
+        type: "string",
+      }),
     ],
   }),
   defineField({
     name: "chooser",
-    title: "Chooser",
+    title: "Choose-your-path cards",
+    description: "The “What talent challenge are you facing?” block",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
-      defineField({ name: "heading", title: "Heading", type: "string" }),
+      defineField({
+        name: "heading",
+        title: "Section heading",
+        type: "string",
+      }),
       defineField({
         name: "cards",
         title: "Cards",
@@ -49,19 +65,23 @@ const shape = [
           defineArrayMember({
             type: "object",
             fields: [
-              defineField({ name: "need", title: "Need", type: "string" }),
+              defineField({
+                name: "need",
+                title: "Card — the problem",
+                type: "string",
+              }),
               defineField({
                 name: "service",
-                title: "Service",
+                title: "Card — what we call it",
                 type: "string",
               }),
               defineField({
                 name: "body",
-                title: "Body",
+                title: "Paragraph",
                 type: "text",
                 rows: 3,
               }),
-              defineField({ name: "cta", title: "Cta", type: "string" }),
+              defineField({ name: "cta", title: "Button", type: "string" }),
             ],
           }),
         ],
@@ -70,22 +90,27 @@ const shape = [
   }),
   defineField({
     name: "values",
-    title: "Values",
+    title: "What we stand for",
+    description: "The “We've sat on your side of the table.” block",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
-      defineField({ name: "heading", title: "Heading", type: "string" }),
-      defineField({ name: "body", title: "Body", type: "text", rows: 3 }),
+      defineField({
+        name: "heading",
+        title: "Section heading",
+        type: "string",
+      }),
+      defineField({ name: "body", title: "Paragraph", type: "text", rows: 3 }),
       defineField({
         name: "items",
-        title: "Items",
+        title: "List items",
         type: "array",
         of: [
           defineArrayMember({
             type: "object",
             fields: [
               defineField({ name: "title", title: "Title", type: "string" }),
-              defineField({ name: "body", title: "Body", type: "string" }),
+              defineField({ name: "body", title: "Paragraph", type: "string" }),
             ],
           }),
         ],
@@ -94,16 +119,29 @@ const shape = [
   }),
   defineField({
     name: "stories",
-    title: "Stories",
+    title: "Client stories",
+    description: "The “Work that speaks for itself.” block",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
-      defineField({ name: "heading", title: "Heading", type: "string" }),
-      defineField({ name: "viewAll", title: "View All", type: "string" }),
-      defineField({ name: "readStory", title: "Read Story", type: "string" }),
+      defineField({
+        name: "heading",
+        title: "Section heading",
+        type: "string",
+      }),
+      defineField({
+        name: "viewAll",
+        title: '"View all" link',
+        type: "string",
+      }),
+      defineField({
+        name: "readStory",
+        title: '"Read story" link',
+        type: "string",
+      }),
       defineField({
         name: "items",
-        title: "Items",
+        title: "List items",
         type: "array",
         of: [
           defineArrayMember({
@@ -117,13 +155,13 @@ const shape = [
               defineField({ name: "title", title: "Title", type: "string" }),
               defineField({
                 name: "body",
-                title: "Body",
+                title: "Paragraph",
                 type: "text",
                 rows: 3,
               }),
               defineField({
                 name: "imageAlt",
-                title: "Image Alt",
+                title: "Image description (for screen readers and Google)",
                 type: "text",
                 rows: 3,
               }),
@@ -135,22 +173,30 @@ const shape = [
   }),
   defineField({
     name: "quote",
-    title: "Quote",
+    title: "Quotation",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
-      defineField({ name: "lead", title: "Lead", type: "string" }),
+      defineField({
+        name: "lead",
+        title: "Opening line (bold)",
+        type: "string",
+      }),
       defineField({ name: "emphasis", title: "Emphasis", type: "string" }),
       defineField({ name: "tail", title: "Tail", type: "string" }),
     ],
   }),
   defineField({
     name: "logoWall",
-    title: "Logo Wall",
+    title: "Client logos",
     type: "object",
-    options: { collapsible: true, collapsed: true },
+    options: { collapsible: true, collapsed: false },
     fields: [
-      defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+      defineField({
+        name: "eyebrow",
+        title: "Small label above the heading",
+        type: "string",
+      }),
     ],
   }),
 ];
@@ -188,13 +234,16 @@ export const copyHome = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,

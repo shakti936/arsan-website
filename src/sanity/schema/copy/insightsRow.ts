@@ -3,15 +3,15 @@
 import { defineField, defineType } from "sanity";
 
 const shape = [
-  defineField({ name: "heading", title: "Heading", type: "string" }),
-  defineField({ name: "viewAll", title: "View All", type: "string" }),
+  defineField({ name: "heading", title: "Section heading", type: "string" }),
+  defineField({ name: "viewAll", title: '"View all" link', type: "string" }),
   defineField({ name: "readingTime", title: "Reading Time", type: "string" }),
   defineField({ name: "readArticle", title: "Read Article", type: "string" }),
 ];
 
 export const copyInsightsRow = defineType({
   name: "copyInsightsRow",
-  title: "Insights row",
+  title: "Latest insights row",
   type: "document",
   fields: [
     defineField({
@@ -42,13 +42,16 @@ export const copyInsightsRow = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -56,5 +59,5 @@ export const copyInsightsRow = defineType({
       ],
     }),
   ],
-  preview: { prepare: () => ({ title: "Insights row" }) },
+  preview: { prepare: () => ({ title: "Latest insights row" }) },
 });

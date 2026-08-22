@@ -10,7 +10,11 @@ const shape = [
   }),
   defineField({ name: "home", title: "Home", type: "string" }),
   defineField({ name: "results", title: "Results", type: "string" }),
-  defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+  defineField({
+    name: "eyebrow",
+    title: "Small label above the heading",
+    type: "string",
+  }),
   defineField({ name: "allStudies", title: "All Studies", type: "string" }),
 ];
 
@@ -47,13 +51,16 @@ export const copyCaseStudy = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,

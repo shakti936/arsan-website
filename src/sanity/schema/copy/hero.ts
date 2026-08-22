@@ -3,14 +3,18 @@
 import { defineField, defineType } from "sanity";
 
 const shape = [
-  defineField({ name: "ctaPrimary", title: "Cta Primary", type: "string" }),
-  defineField({ name: "ctaSecondary", title: "Cta Secondary", type: "string" }),
-  defineField({ name: "regions", title: "Regions", type: "string" }),
+  defineField({ name: "ctaPrimary", title: "Main button", type: "string" }),
+  defineField({ name: "ctaSecondary", title: "Second button", type: "string" }),
+  defineField({
+    name: "regions",
+    title: "Small line under the buttons",
+    type: "string",
+  }),
 ];
 
 export const copyHero = defineType({
   name: "copyHero",
-  title: "Hero furniture",
+  title: "Page headers",
   type: "document",
   fields: [
     defineField({
@@ -41,13 +45,16 @@ export const copyHero = defineType({
         defineField({
           name: "en",
           title: "English",
+          description: "Write the page here. Spanish is generated from it.",
           type: "object",
           options: { collapsible: true, collapsed: false },
           fields: shape,
         }),
         defineField({
           name: "es",
-          title: "Español",
+          title: "Español (Spanish)",
+          description:
+            "Filled in for you. Press “Translate to Spanish” above — you only need to open this to correct a word, and anything you change here is kept forever.",
           type: "object",
           options: { collapsible: true, collapsed: true },
           fields: shape,
@@ -55,5 +62,5 @@ export const copyHero = defineType({
       ],
     }),
   ],
-  preview: { prepare: () => ({ title: "Hero furniture" }) },
+  preview: { prepare: () => ({ title: "Page headers" }) },
 });
