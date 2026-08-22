@@ -19,7 +19,7 @@ export function FeaturedCase({ namespace }: { namespace: string }) {
           />
           <div className="flex flex-col justify-center p-8 lg:p-10">
             <p className="eyebrow text-brass-600">{t("eyebrow")}</p>
-            <h2 className="mt-3 font-display text-display-md font-semibold text-navy-900 text-balance">
+            <h2 className="mt-3 font-display text-heading font-semibold text-navy-900 text-balance">
               {t("title")}
             </h2>
             <p className="mt-4 max-w-[58ch] text-base text-navy-800">
@@ -31,7 +31,7 @@ export function FeaturedCase({ namespace }: { namespace: string }) {
                   <dt className="eyebrow text-navy-700/70">
                     {t(`stats.${i}.label`)}
                   </dt>
-                  <dd className="mt-1 font-display text-display-sm font-semibold text-teal-900">
+                  <dd className="mt-1 font-display text-subheading font-semibold text-teal-900">
                     {t(`stats.${i}.value`)}
                   </dd>
                 </div>

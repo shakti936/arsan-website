@@ -72,10 +72,10 @@ export function CaseStudy({
             ]}
           />
           <p className="eyebrow mt-9 text-brass-400">{t("eyebrow")}</p>
-          <h1 className="mt-4 max-w-[22ch] font-display text-display-xl font-semibold text-white-warm text-balance">
+          <h1 className="mt-4 max-w-[22ch] font-display text-title font-semibold text-white-warm text-balance">
             {copy.title}
           </h1>
-          <p className="mt-6 max-w-[54ch] text-lg text-cream-100">
+          <p className="mt-6 max-w-[54ch] text-lead text-cream-100">
             {copy.deck}
           </p>
 
@@ -126,7 +126,7 @@ export function CaseStudy({
                   >
                     {Icon && <Icon className="h-8 w-8 text-teal-900" />}
                     {item.figure && (
-                      <p className="font-display text-display-lg font-semibold leading-none text-teal-900">
+                      <p className="font-display text-figure font-semibold text-teal-900">
                         {item.figure}
                         {item.unit && (
                           <span className="ml-2 text-[0.55em] font-normal">
@@ -136,7 +136,7 @@ export function CaseStudy({
                       </p>
                     )}
                     {item.title && (
-                      <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                      <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                         {item.title}
                       </h3>
                     )}
@@ -231,7 +231,7 @@ export function CaseStudy({
                         </span>
                       )}
                       <div className={cn(!Icon && "pb-1")}>
-                        <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900">
+                        <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900">
                           {item.title}
                         </h3>
                         <p className="mt-2 text-sm text-navy-800">
@@ -262,7 +262,7 @@ export function CaseStudy({
             {/* centered, and without the brass rule the other headings carry —
                 the comp lets the subtitle sit directly under the word */}
             {confidential ? (
-              <h2 className="font-display text-display-md font-semibold text-white-warm text-balance">
+              <h2 className="font-display text-heading font-semibold text-white-warm text-balance">
                 {copy.resultsHeading}
               </h2>
             ) : (
@@ -300,7 +300,7 @@ export function CaseStudy({
                     <h3
                       className={cn(
                         "font-display font-semibold leading-snug text-white-warm text-balance",
-                        confidential ? "text-lg" : "text-display-sm",
+                        confidential ? "text-lg" : "text-subheading",
                       )}
                     >
                       {item.title}
@@ -324,12 +324,12 @@ export function CaseStudy({
             <div className="relative mx-auto flex w-full max-w-page gap-5 px-6 sm:px-10">
               <span
                 aria-hidden="true"
-                className="font-display text-[3.5rem] leading-[0.7] text-brass-500"
+                className="font-display text-quote text-brass-500"
               >
                 &ldquo;
               </span>
               <figure className="border-l border-brass-500/60 pl-6">
-                <blockquote className="max-w-[62ch] font-display text-display-sm leading-relaxed text-navy-900">
+                <blockquote className="max-w-[62ch] font-display text-subheading leading-relaxed text-navy-900">
                   {copy.quote.text}
                 </blockquote>
                 <figcaption className="eyebrow mt-5 text-brass-600">
@@ -344,11 +344,11 @@ export function CaseStudy({
               <figure className="flex gap-5">
                 <span
                   aria-hidden="true"
-                  className="font-display text-[3.5rem] leading-[0.7] text-brass-500"
+                  className="font-display text-quote text-brass-500"
                 >
                   &ldquo;
                 </span>
-                <blockquote className="font-display text-display-sm leading-relaxed text-navy-900">
+                <blockquote className="font-display text-subheading leading-relaxed text-navy-900">
                   {copy.quote.text}
                 </blockquote>
               </figure>
@@ -375,7 +375,7 @@ export function CaseStudy({
           <div className="mx-auto flex w-full max-w-page items-start gap-6 px-6 sm:px-10 sm:gap-8">
             <Icons.shieldPlain className="h-12 w-12 shrink-0 text-teal-900 sm:h-14 sm:w-14" />
             <div>
-              <h2 className="font-display text-display-md font-semibold text-navy-900 text-balance">
+              <h2 className="font-display text-heading font-semibold text-navy-900 text-balance">
                 {copy.note.title}
               </h2>
               <p className="mt-3 max-w-[68ch] text-sm text-navy-800">
@@ -420,7 +420,7 @@ export function CaseStudy({
           )}
         >
           <div>
-            <h2 className="font-display text-display-lg font-semibold text-white-warm text-balance">
+            <h2 className="font-display text-headline font-semibold text-white-warm text-balance">
               {copy.ctaHeading}
             </h2>
             {confidential && (
@@ -454,7 +454,7 @@ function GhostRoundel({ className }: { className: string }) {
     <span
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute top-1/2 hidden -translate-y-1/2 select-none font-display text-[12rem] font-medium leading-none sm:block lg:text-[16rem]",
+        "pointer-events-none absolute top-1/2 hidden -translate-y-1/2 select-none font-display text-watermark font-medium sm:block lg:text-watermark-lg",
         className,
       )}
     >

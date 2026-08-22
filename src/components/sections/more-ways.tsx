@@ -29,7 +29,7 @@ export function MoreWays() {
     <section className="border-t border-cream-100 bg-white-warm section-y">
       <Container>
         <div className="text-center">
-          <h2 className="font-display text-display-md font-semibold text-navy-900 text-balance">
+          <h2 className="font-display text-heading font-semibold text-navy-900 text-balance">
             {t("heading")}
           </h2>
           <div
@@ -44,7 +44,7 @@ export function MoreWays() {
               <Reveal key={icon} delay={i * 0.06} className="h-full">
                 <li className="flex h-full flex-col lg:border-l lg:border-cream-100 lg:pl-6 lg:[&:first-child]:border-l-0 lg:[&:first-child]:pl-0">
                   <Icon className="h-9 w-9 text-teal-900" />
-                  <h3 className="mt-4 font-display text-display-sm font-semibold leading-snug text-navy-900">
+                  <h3 className="mt-4 font-display text-subheading font-semibold leading-snug text-navy-900">
                     {t(`items.${i}.title`)}
                   </h3>
                   <p className="mt-3 flex-1 text-sm text-navy-800">

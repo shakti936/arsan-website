@@ -55,7 +55,7 @@ export function ProcessSteps({
                       )}
                     </span>
                     <div className="pb-1">
-                      <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                      <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                         {t(`steps.${i}.title`)}
                       </h3>
                       <p className="mt-2 text-base text-navy-800">

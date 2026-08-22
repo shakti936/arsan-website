@@ -28,7 +28,7 @@ export function CandidateClose() {
             <Icons.document className="h-11 w-11" />
           </span>
           <div className="flex-1">
-            <h2 className="font-display text-display-md font-semibold text-white-warm text-balance">
+            <h2 className="font-display text-heading font-semibold text-white-warm text-balance">
               {t("closeHeading")}
               <span className="mt-1 block font-medium text-brass-400">
                 {t("closeEmphasis")}

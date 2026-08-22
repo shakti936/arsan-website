@@ -98,8 +98,8 @@ export function MegaPanel({ section }: { section: NavSection }) {
                     className={cn(
                       "font-display font-semibold text-navy-900 text-balance",
                       section.feature.image
-                        ? "text-display-sm"
-                        : "mt-5 text-display-md",
+                        ? "text-subheading"
+                        : "mt-5 text-heading",
                     )}
                   >
                     {t(`${section.key}.feature.title`)}

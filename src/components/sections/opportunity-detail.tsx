@@ -78,10 +78,10 @@ export function OpportunityDetail({
             ]}
           />
           <p className="eyebrow mt-9 text-brass-400">{t("eyebrow")}</p>
-          <h1 className="mt-4 max-w-[24ch] font-display text-display-xl font-semibold text-white-warm text-balance">
+          <h1 className="mt-4 max-w-[24ch] font-display text-title font-semibold text-white-warm text-balance">
             {copy.title}
           </h1>
-          <p className="mt-5 text-lg text-cream-100">
+          <p className="mt-5 text-lead text-cream-100">
             <span className="font-semibold">{copy.company}</span>
             <span aria-hidden="true" className="mx-2 text-cream-100/50">
               &middot;
@@ -115,7 +115,7 @@ export function OpportunityDetail({
         <Container>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-14">
             <div className="max-w-[72ch]">
-              <h2 className="font-display text-display-md font-semibold text-navy-900">
+              <h2 className="font-display text-heading font-semibold text-navy-900">
                 {t("aboutHeading")}
               </h2>
               <div
@@ -124,7 +124,7 @@ export function OpportunityDetail({
               />
               <p className="mt-6 text-base text-navy-800">{copy.summary}</p>
 
-              <h2 className="mt-11 font-display text-display-md font-semibold text-navy-900">
+              <h2 className="mt-11 font-display text-heading font-semibold text-navy-900">
                 {t("nextHeading")}
               </h2>
               <ol className="mt-7 flex flex-col gap-7">
@@ -137,7 +137,7 @@ export function OpportunityDetail({
                       {i + 1}
                     </span>
                     <div>
-                      <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900">
+                      <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900">
                         {t(`next.${i}.title`)}
                       </h3>
                       <p className="mt-2 text-base text-navy-800">
@@ -151,7 +151,7 @@ export function OpportunityDetail({
 
             <aside className="lg:sticky lg:top-28 lg:self-start">
               <div className="border border-cream-100 bg-cream-50 p-7">
-                <h2 className="font-display text-display-sm font-semibold text-navy-900">
+                <h2 className="font-display text-subheading font-semibold text-navy-900">
                   {t("detailsHeading")}
                 </h2>
                 <dl className="mt-5 flex flex-col gap-4">
@@ -185,7 +185,7 @@ export function OpportunityDetail({
         <section className="border-t border-cream-100 bg-cream-50 section-y">
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-4">
-              <h2 className="font-display text-display-md font-semibold text-navy-900">
+              <h2 className="font-display text-heading font-semibold text-navy-900">
                 {t("similarHeading")}
               </h2>
               <ArrowLink href="/for-candidates/opportunities">
@@ -198,7 +198,7 @@ export function OpportunityDetail({
                 return (
                   <Reveal key={other.id} delay={i * 0.08} className="h-full">
                     <li className="group relative flex h-full flex-col border border-cream-100 bg-white-warm p-6 transition-shadow duration-300 hover:shadow-[0_10px_28px_-14px_rgba(6,30,57,.3)] motion-reduce:transition-none">
-                      <h3 className="font-display text-display-sm font-semibold leading-snug text-teal-900 text-balance">
+                      <h3 className="font-display text-subheading font-semibold leading-snug text-teal-900 text-balance">
                         <Link
                           href={`/for-candidates/opportunities/${other.slug}`}
                           className="transition-colors after:absolute after:inset-0 group-hover:text-teal-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-500 motion-reduce:transition-none"

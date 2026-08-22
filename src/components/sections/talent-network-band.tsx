@@ -24,7 +24,7 @@ export function TalentNetworkBand() {
           >
             <Icons.users className="h-9 w-9" />
           </span>
-          <h2 className="max-w-[22ch] font-display text-display-md font-semibold text-navy-900 text-balance">
+          <h2 className="max-w-[22ch] font-display text-heading font-semibold text-navy-900 text-balance">
             {t("networkHeading")}
           </h2>
           <p className="max-w-[38ch] flex-1 text-sm text-navy-800">

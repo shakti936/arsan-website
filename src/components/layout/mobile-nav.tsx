@@ -133,7 +133,7 @@ export function MobileNav() {
                       >
                         <span
                           className={cn(
-                            "font-display text-display-sm font-medium transition-colors",
+                            "font-display text-subheading font-medium transition-colors",
                             current ? "text-brass-300" : "text-white-warm",
                           )}
                         >

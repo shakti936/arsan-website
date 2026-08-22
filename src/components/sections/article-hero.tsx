@@ -61,12 +61,12 @@ export function ArticleHero({
           <p className="eyebrow mt-8 text-brass-400">{category}</p>
           <div aria-hidden="true" className="mt-3 h-0.5 w-10 bg-brass-500" />
 
-          <h1 className="mt-6 max-w-[20ch] font-display text-display-xl font-semibold text-white-warm text-balance">
+          <h1 className="mt-6 max-w-[20ch] font-display text-title font-semibold text-white-warm text-balance">
             {copy.title}
           </h1>
 
           <div aria-hidden="true" className="mt-7 h-0.5 w-10 bg-brass-500" />
-          <p className="mt-6 max-w-[46ch] text-lg text-cream-100">
+          <p className="mt-6 max-w-[46ch] text-lead text-cream-100">
             {copy.deck}
           </p>
 

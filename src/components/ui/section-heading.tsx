@@ -14,7 +14,7 @@ export function SectionHeading({
     <div className={className}>
       <h2
         className={cn(
-          "font-display text-display-md font-semibold text-balance",
+          "font-display text-heading font-semibold text-balance",
           tone === "navy" ? "text-navy-900" : "text-white-warm",
         )}
       >

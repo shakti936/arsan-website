@@ -30,7 +30,7 @@ export function FeaturedOpenings({ openings }: { openings: Opening[] }) {
     <section className="bg-cream-50 section-y">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-display-md font-semibold text-navy-900 text-balance">
+          <h2 className="font-display text-heading font-semibold text-navy-900 text-balance">
             {t("featuredHeading")}
           </h2>
           <ArrowLink href="/for-candidates/opportunities">
@@ -47,7 +47,7 @@ export function FeaturedOpenings({ openings }: { openings: Opening[] }) {
                   <p className="eyebrow text-brass-600">
                     {tb(`fn.${opening.fn}`)}
                   </p>
-                  <h3 className="mt-3 font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                  <h3 className="mt-3 font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                     <Link
                       href={`/for-candidates/opportunities/${opening.slug}`}
                       className="transition-colors after:absolute after:inset-0 group-hover:text-brass-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-500 motion-reduce:transition-none"

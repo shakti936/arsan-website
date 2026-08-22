@@ -36,7 +36,7 @@ export function NewsletterBand() {
     <section className="border-y border-cream-100 bg-white-warm py-14">
       <div className="mx-auto grid w-full max-w-page gap-8 px-6 sm:px-10 lg:grid-cols-2 lg:items-center lg:gap-14">
         <div>
-          <h2 className="font-display text-display-md font-semibold text-navy-900">
+          <h2 className="font-display text-heading font-semibold text-navy-900">
             {t("heading")}
           </h2>
           <div aria-hidden="true" className="mt-3 h-0.5 w-10 bg-brass-500" />

@@ -35,7 +35,7 @@ export function ServiceCards() {
   return (
     <section className="bg-white-warm section-y">
       <div className="mx-auto w-full max-w-page px-6 sm:px-10">
-        <h2 className="text-center font-display text-display-md font-semibold text-navy-900 text-balance">
+        <h2 className="text-center font-display text-heading font-semibold text-navy-900 text-balance">
           {t("helpHeading")}
         </h2>
 
@@ -53,7 +53,7 @@ export function ServiceCards() {
                   </span>
 
                   <div className="flex flex-1 flex-col">
-                    <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                    <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                       {t(`cards.${i}.title`)}
                     </h3>
                     <p className="mt-2 text-sm font-semibold text-navy-900">

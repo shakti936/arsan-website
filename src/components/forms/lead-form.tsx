@@ -30,7 +30,7 @@ export function LeadForm({ kind }: { kind: "client" | "candidate" }) {
         role="status"
         className="border-l-2 border-brass-500 bg-cream-50 p-8"
       >
-        <p className="font-display text-display-md font-semibold text-navy-900">
+        <p className="font-display text-heading font-semibold text-navy-900">
           {t("success.heading")}
         </p>
         <p className="mt-3 max-w-[52ch] text-base text-navy-800">

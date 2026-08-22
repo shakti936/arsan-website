@@ -30,11 +30,11 @@ export function ResultsQuote() {
           <figure className="flex gap-5">
             <span
               aria-hidden="true"
-              className="font-display text-[3.5rem] leading-[0.7] text-teal-400"
+              className="font-display text-quote text-teal-400"
             >
               &ldquo;
             </span>
-            <blockquote className="font-display text-display-sm leading-relaxed text-white-warm">
+            <blockquote className="font-display text-subheading leading-relaxed text-white-warm">
               {t("text")}
             </blockquote>
           </figure>

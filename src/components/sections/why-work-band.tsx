@@ -18,7 +18,7 @@ export function WhyWorkBand() {
     <section className="border-t border-cream-100 bg-white-warm section-y">
       <Container>
         <div className="text-center">
-          <h2 className="font-display text-display-md font-semibold text-navy-900 text-balance">
+          <h2 className="font-display text-heading font-semibold text-navy-900 text-balance">
             {t("whyHeading")}
           </h2>
           <div
@@ -38,7 +38,7 @@ export function WhyWorkBand() {
                   >
                     <Icon className="h-7 w-7" />
                   </span>
-                  <h3 className="mt-5 font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                  <h3 className="mt-5 font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                     {t(`why.${i}.title`)}
                   </h3>
                   <p className="mt-3 max-w-[30ch] text-sm text-navy-800">

@@ -226,7 +226,7 @@ export function OpportunityBoard({
             {shown.length === 0 ? (
               <div className="mt-6 border border-cream-100 bg-white-warm p-10 text-center">
                 <Icons.compass className="mx-auto h-9 w-9 text-brass-500" />
-                <h2 className="mt-4 font-display text-display-sm font-semibold text-navy-900">
+                <h2 className="mt-4 font-display text-subheading font-semibold text-navy-900">
                   {t("noMatchHeading")}
                 </h2>
                 <p className="mx-auto mt-3 max-w-[52ch] text-sm text-navy-800">
@@ -259,7 +259,7 @@ export function OpportunityBoard({
           {/* ---- rail ---- */}
           <aside className="flex flex-col gap-6">
             <div className="border border-cream-100 bg-white-warm p-7">
-              <h2 className="font-display text-display-sm font-semibold text-navy-900">
+              <h2 className="font-display text-subheading font-semibold text-navy-900">
                 {t("alertsHeading")}
               </h2>
               <span
@@ -278,7 +278,7 @@ export function OpportunityBoard({
             </div>
 
             <div className="border border-cream-100 bg-white-warm p-7">
-              <h2 className="font-display text-display-sm font-semibold text-navy-900">
+              <h2 className="font-display text-subheading font-semibold text-navy-900">
                 {t("refineHeading")}
               </h2>
               <div aria-hidden="true" className="mt-4 h-px bg-cream-100" />
@@ -470,7 +470,7 @@ function OpeningCard({ opening, now }: { opening: Opening; now: number }) {
   return (
     <li className="group relative border border-cream-100 bg-white-warm p-6 transition-shadow duration-300 hover:shadow-[0_10px_28px_-14px_rgba(6,30,57,.3)] motion-reduce:transition-none">
       <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
-        <h3 className="flex flex-wrap items-center gap-3 font-display text-display-sm font-semibold text-teal-900">
+        <h3 className="flex flex-wrap items-center gap-3 font-display text-subheading font-semibold text-teal-900">
           <a
             href={`/for-candidates/opportunities/${opening.slug}`}
             className="transition-colors after:absolute after:inset-0 hover:text-teal-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-500 motion-reduce:transition-none"
@@ -478,7 +478,7 @@ function OpeningCard({ opening, now }: { opening: Opening; now: number }) {
             {copy.title}
           </a>
           {isNew(opening, now) && (
-            <span className="rounded-sm bg-teal-900/10 px-2 py-1 font-sans text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-teal-900">
+            <span className="rounded-sm bg-teal-900/10 px-2 py-1 badge text-teal-900">
               {t("isNew")}
             </span>
           )}

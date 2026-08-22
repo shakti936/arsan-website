@@ -8,7 +8,7 @@ export function QuoteBand({ namespace }: { namespace: string }) {
     <section className="bg-navy-900 section-y">
       <Reveal className="mx-auto w-full max-w-4xl px-6 sm:px-10">
         <figure className="border-l-2 border-brass-500 pl-6 sm:pl-10">
-          <blockquote className="font-display text-display-md font-medium text-white-warm text-balance">
+          <blockquote className="font-display text-heading font-medium text-white-warm text-balance">
             {t("lead")} <em className="text-brass-400">{t("emphasis")}</em>
             {t("tail")}
           </blockquote>

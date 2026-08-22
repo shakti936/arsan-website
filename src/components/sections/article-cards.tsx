@@ -108,7 +108,7 @@ export function ArticleCards({
                         "mt-3 font-display font-semibold leading-snug text-navy-900 text-balance",
                         beside
                           ? "text-lg [&>*]:line-clamp-2"
-                          : "text-display-sm",
+                          : "text-subheading",
                       )}
                     >
                       <Link

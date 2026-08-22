@@ -60,7 +60,7 @@ export function Stories({
                   <p className="eyebrow eyebrow-block text-brass-600">
                     {t(`items.${i}.category`)}
                   </p>
-                  <h3 className="mt-3 font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                  <h3 className="mt-3 font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                     {t(`items.${i}.title`)}
                   </h3>
                   <p className="mt-3 flex-1 text-base text-navy-800">

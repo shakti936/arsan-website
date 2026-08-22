@@ -51,6 +51,50 @@ uppercase eyebrows/buttons, generous whitespace, card grids, thin rule under hea
 Button text: navy-on-brass 4.87 ✓. Full scale (tints/shades) derived at token time in
 `globals.css` `@theme` — **Tailwind 4 CSS-first, no JS config.**
 
+## Type scale — roles, not sizes
+
+Defined in `src/app/globals.css` under `@theme`. **One token per role.** The
+scale was previously named for size (`display-xl/lg/md/sm`) and drifted badly:
+`display-lg` was simultaneously a page title, a marketing headline and a stat
+figure, so "make section headings bigger" was not a change anyone could make.
+
+| Role | Token / class | 375px → 1440px | Face | Used for |
+|---|---|---|---|---|
+| Eyebrow | `.eyebrow` | 13px | sans 600, 0.16em | Label above a heading |
+| Marketing headline | `text-headline` | 34 → 56 | display 600 | Home hero H1, CTA band H2 |
+| Page title | `text-title` | 32 → 48 | display 600 | The H1 of every other page |
+| Section heading | `text-heading` | 26 → 38 | display 600 | H2 |
+| Subsection heading | `text-subheading` | 20 → 25 | display 600 | H3, card titles, panel labels |
+| Figure | `text-figure` | 30 → 44 | display 600 | A number in a stat card. **Never a heading.** |
+| Supporting copy | `text-lead` | 18 → 20 | sans | The deck under a title |
+| Body | `text-base` | 17px | sans | Prose |
+| Badge | `.badge` | 11px | sans 600, 0.14em | Micro label in a chip |
+
+Ornaments (`text-quote`, `text-quote-sm`, `text-watermark`,
+`text-watermark-sm`, `text-watermark-lg`) are `aria-hidden` texture — outsized
+quote marks and watermark numerals — not type roles.
+
+**Sized for Cormorant Garamond.** It has a small x-height and reads noticeably
+smaller than its nominal size, so this scale sits above where the same ramp
+would land for a workhorse serif. Section headings at 30px against 17px body
+(1.76:1) genuinely did blend into the page; they are 38px (2.24:1) now.
+
+### Three rules
+
+1. **A component takes a role, never a size.** `<HeroTitle role="title">`, not
+   `className="text-title"`. Every drift in this scale started with a caller
+   passing a size.
+2. **A heading's level and its role must agree.** An `<h2>` is a section
+   heading. Something that should look smaller is not an `<h2>` — it is an
+   `<h3>`, or it is not a heading at all (see `point-grid.tsx`, which is a list).
+3. **New `--text-*` token → add it to `TYPE_ROLES` in `src/lib/cn.ts`.**
+   tailwind-merge cannot tell a custom size from a colour and will silently
+   drop one of them. `bun run validate:design` fails if you forget; it has
+   shipped twice without that check (D-043, D-089).
+
+Enforced by `scripts/validate-design-system.mjs` (prebuild) and
+`e2e/typography.spec.ts`.
+
 ## Information architecture (from the mega-menu mockup)
 
 Far larger than the current arsancg.com. Five top-level sections, each with a landing page

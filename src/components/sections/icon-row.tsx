@@ -58,7 +58,7 @@ export function IconRow({
             <div>
               <h2
                 className={cn(
-                  "font-display text-display-md font-semibold text-balance",
+                  "font-display text-heading font-semibold text-balance",
                   dark ? "text-white-warm" : "text-navy-900",
                 )}
               >
@@ -77,7 +77,7 @@ export function IconRow({
           ) : (
             <h2
               className={cn(
-                "text-center font-display text-display-md font-semibold text-balance",
+                "text-center font-display text-heading font-semibold text-balance",
                 dark ? "text-white-warm" : "text-navy-900",
               )}
             >
@@ -114,7 +114,7 @@ export function IconRow({
                   <h3
                     className={cn(
                       beside
-                        ? "font-display text-display-sm font-semibold leading-snug"
+                        ? "font-display text-subheading font-semibold leading-snug"
                         : "text-sm font-semibold",
                       dark ? "text-white-warm" : "text-navy-900",
                     )}

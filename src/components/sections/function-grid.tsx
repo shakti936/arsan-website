@@ -20,7 +20,7 @@ export function FunctionGrid() {
   return (
     <section className="bg-cream-50 section-y">
       <div className="mx-auto w-full max-w-page px-6 sm:px-10">
-        <h2 className="text-center font-display text-display-md font-semibold text-navy-900 text-balance">
+        <h2 className="text-center font-display text-heading font-semibold text-navy-900 text-balance">
           {t("heading")}
         </h2>
         <div

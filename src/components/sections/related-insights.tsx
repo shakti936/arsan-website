@@ -38,7 +38,7 @@ export function RelatedInsights({
     <section className="bg-cream-50 section-y">
       <div className="mx-auto w-full max-w-page px-6 sm:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-display-md font-semibold text-navy-900">
+          <h2 className="font-display text-heading font-semibold text-navy-900">
             {t("related")}
           </h2>
           <ArrowLink href="/insights">{t("viewAll")}</ArrowLink>
@@ -75,7 +75,7 @@ export function RelatedInsights({
                   <p className="eyebrow text-brass-600">
                     {tc(article.categoryKey)}
                   </p>
-                  <h3 className="mt-2 font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                  <h3 className="mt-2 font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                     <Link
                       href={`/insights/${article.slug}`}
                       className="transition-colors after:absolute after:inset-0 group-hover:text-brass-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-500"

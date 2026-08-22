@@ -83,7 +83,7 @@ export function TeamRow({
                   />
                 </div>
                 <div className="max-w-[38ch] lg:max-w-none">
-                  <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900">
+                  <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900">
                     {t(`members.${i}.name`)}
                   </h3>
                   {/* Two lines of room once the columns are narrow enough

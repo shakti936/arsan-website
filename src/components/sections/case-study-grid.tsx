@@ -23,7 +23,7 @@ export function CaseStudyGrid({ locale }: { locale: string }) {
     <section id="case-studies" className="scroll-mt-24 bg-cream-50 section-y">
       <Container>
         <div className="text-center">
-          <h2 className="font-display text-display-md font-semibold text-navy-900 text-balance">
+          <h2 className="font-display text-heading font-semibold text-navy-900 text-balance">
             {t("heading")}
           </h2>
           <div
@@ -55,10 +55,10 @@ export function CaseStudyGrid({ locale }: { locale: string }) {
                       put every unpositioned sibling underneath it */}
                   <div className="relative flex flex-1 flex-col p-7">
                     {/* the badge straddles the photograph's lower edge */}
-                    <p className="-mt-11 mb-5 self-start bg-navy-900 px-3 py-1.5 font-sans text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-cream-50">
+                    <p className="-mt-11 mb-5 self-start bg-navy-900 px-3 py-1.5 badge text-cream-50">
                       {t("badge")}
                     </p>
-                    <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                    <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                       <Link
                         href={`/results/${study.slug}`}
                         className="transition-colors after:absolute after:inset-0 group-hover:text-brass-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-500 motion-reduce:transition-none"

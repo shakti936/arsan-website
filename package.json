@@ -11,8 +11,9 @@
     "typecheck": "tsc --noEmit",
     "validate:messages": "node scripts/validate-messages.mjs",
     "check:launch": "node scripts/launch-gate.mjs",
-    "prebuild": "node scripts/validate-messages.mjs",
-    "test:e2e": "playwright test"
+    "prebuild": "node scripts/validate-messages.mjs && node scripts/validate-design-system.mjs",
+    "test:e2e": "playwright test",
+    "validate:design": "node scripts/validate-design-system.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

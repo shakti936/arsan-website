@@ -114,7 +114,7 @@ export function InsightsIndex({
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 className="font-display text-display-md font-semibold text-navy-900">
+              <h2 className="font-display text-heading font-semibold text-navy-900">
                 {tab === "all" ? t("heading") : tc(tab)}
               </h2>
               <div
@@ -191,7 +191,7 @@ function Card({
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
           {badge && (
-            <p className="absolute left-4 top-4 bg-navy-900 px-3 py-1.5 font-sans text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-cream-50">
+            <p className="absolute left-4 top-4 bg-navy-900 px-3 py-1.5 badge text-cream-50">
               {badge}
             </p>
           )}
@@ -201,7 +201,7 @@ function Card({
           <h3
             className={cn(
               "mt-3 font-display font-semibold leading-snug text-navy-900 text-balance",
-              featured ? "text-display-md" : "text-display-sm",
+              featured ? "text-heading" : "text-subheading",
             )}
           >
             <Link

@@ -39,7 +39,7 @@ export function ArticleBody({ copy }: { copy: ArticleCopy }) {
             {copy.sections.map((section) => (
               <section key={section.heading ?? section.body?.[0] ?? ""}>
                 {section.heading && (
-                  <h2 className="mt-11 font-display text-display-md font-semibold text-navy-900 text-balance">
+                  <h2 className="mt-11 font-display text-heading font-semibold text-navy-900 text-balance">
                     {section.heading}
                   </h2>
                 )}
@@ -63,7 +63,7 @@ export function ArticleBody({ copy }: { copy: ArticleCopy }) {
                           {i + 1}
                         </span>
                         <div>
-                          <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900">
+                          <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900">
                             {step.title}
                           </h3>
                           <ProseText
@@ -103,11 +103,11 @@ export function ArticleBody({ copy }: { copy: ArticleCopy }) {
             <figure>
               <span
                 aria-hidden="true"
-                className="block font-display text-[3rem] leading-[0.6] text-brass-500"
+                className="block font-display text-quote-sm text-brass-500"
               >
                 &ldquo;
               </span>
-              <blockquote className="mt-5 font-display text-display-sm italic leading-relaxed text-navy-900">
+              <blockquote className="mt-5 font-display text-subheading italic leading-relaxed text-navy-900">
                 {copy.pullQuote}
               </blockquote>
               <div
@@ -130,7 +130,7 @@ export function ArticleBody({ copy }: { copy: ArticleCopy }) {
               <div className="mt-10 border border-cream-100 bg-cream-50 p-7">
                 <div className="flex items-center gap-4">
                   <Icons.chart className="h-9 w-9 shrink-0 text-brass-500" />
-                  <p className="font-display text-display-lg font-semibold text-navy-900">
+                  <p className="font-display text-figure font-semibold text-navy-900">
                     {copy.stat.figure}
                   </p>
                 </div>
@@ -143,7 +143,7 @@ export function ArticleBody({ copy }: { copy: ArticleCopy }) {
               <div className="mt-10 border border-cream-100 bg-cream-50 p-7">
                 <div className="flex items-center gap-3">
                   <Icons.compass className="h-7 w-7 shrink-0 text-brass-500" />
-                  <p className="font-display text-display-sm font-semibold leading-snug text-navy-900">
+                  <p className="font-display text-subheading font-semibold leading-snug text-navy-900">
                     {copy.asideHeading}
                   </p>
                 </div>
@@ -165,7 +165,7 @@ export function ArticleBody({ copy }: { copy: ArticleCopy }) {
 
         {/* ---- key takeaways ---- */}
         <div className="mt-16">
-          <h2 className="font-display text-display-md font-semibold text-navy-900">
+          <h2 className="font-display text-heading font-semibold text-navy-900">
             {copy.takeawaysHeading}
           </h2>
           <div aria-hidden="true" className="mt-3 h-0.5 w-10 bg-brass-500" />
@@ -181,7 +181,7 @@ export function ArticleBody({ copy }: { copy: ArticleCopy }) {
                   <article className="flex h-full gap-5 border border-cream-100 bg-cream-50 p-6">
                     <Icon className="h-9 w-9 shrink-0 self-start text-brass-500" />
                     <div>
-                      <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                      <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                         {takeaway.title}
                       </h3>
                       <p className="mt-2 text-sm text-navy-800">

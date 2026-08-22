@@ -104,14 +104,10 @@ export function PageHero({
           {/* the copy column has to stop before the scrim starts clearing at 55%
             of the container, or the intro lands on lit parts of the photograph */}
           <div className="flex max-w-[32rem] flex-col items-start">
-            <HeroTitle
-              text={title}
-              emphasis={emphasis}
-              className="text-display-xl"
-            />
+            <HeroTitle text={title} emphasis={emphasis} role="title" />
             <div aria-hidden="true" className="mt-6 h-0.5 w-10 bg-brass-500" />
             {intro && (
-              <p className="mt-6 max-w-[40ch] text-lg text-cream-100">
+              <p className="mt-6 max-w-[40ch] text-lead text-cream-100">
                 {intro}
               </p>
             )}
@@ -162,7 +158,7 @@ function HeroStats({ stats }: { stats: HeroStat[] }) {
               baseline lands half a line high and everything under it shifts up
               against its neighbours.
             */}
-            <p className="mt-4 font-display text-display-lg font-semibold leading-tight text-white-warm">
+            <p className="mt-4 font-display text-figure font-semibold text-white-warm">
               <span aria-hidden="true" className="inline-block w-0">
                 &#8203;
               </span>

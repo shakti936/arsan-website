@@ -1659,3 +1659,55 @@ URLs, but twelve more prerendered pages and a second route tree for five article
 articles as the closest real thing (Q-26). The area-of-impact strip stays labels rather
 than six links to the same page (Q-28). The site has no external links at all — no
 LinkedIn, no `mailto:`, no `tel:` — which is an absence to fill, not a link to fix (Q-29).
+
+### D-089 · 2026-08-22 · The type scale is named for roles, and enforced
+Drew, Batch 1: *"Increase important section-heading sizes throughout the site"* and
+*"create a clear distinction between eyebrow / page title / marketing headline / section
+heading / supporting copy / body text,"* with two constraints — keep the serif/sans
+pairing and the Direction A palette, and *"do not make hero sections unnecessarily taller."*
+
+**The diagnosis was a ratio, not a taste.** At 1440 the section heading was 30px against
+17px body — 1.76:1 — and set in Cormorant Garamond, which has a small x-height and reads
+smaller than its nominal size. "Headings blend into body text" was measurably true.
+
+**The root cause was the naming.** The scale was `display-xl/lg/md/sm` — named for size.
+`display-lg` was simultaneously a page title, a marketing headline and a stat figure, so
+there was no way to change "how big is a section heading" without changing three unrelated
+things. Both hero components passed `text-display-xl`, so the home marketing headline and
+every page title were the same 48px: the distinction Drew asked me to create already
+existed in the design and had nowhere to live in the code. The five H2s at `display-sm` and
+three at `display-lg` were not sloppiness either — they were a subheading role and a
+marketing-headline role with no names.
+
+So the scale is now one token per ROLE (table in `08-design-system.md`), and components
+take a role: `<HeroTitle role="headline" | "title">` replaces a `className` every caller
+filled in with a size.
+
+**Section headings 30 → 38px (2.24:1).** Marketing headline 48 → 56. Page title stays 48.
+
+**On not making heroes taller — measured, not asserted.** Every page hero got *shorter*
+(622→619, 663→651, 647→640) because the title role carries tighter leading at the same
+size. The home hero wrapped to three lines and grew 70px, so the copy column went 32rem →
+38rem: it had been measured against a 48px headline, and it is still short of the 55%
+mark where the backdrop scrim starts to clear. Net +10px carrying a 17% larger headline.
+`e2e/typography.spec.ts` pins the ceiling per route.
+
+**One bug worth recording.** Renaming the tokens broke the home H1 to navy-on-navy.
+tailwind-merge cannot distinguish a custom `text-*` size from a `text-*` colour, so
+`cn("text-title", "text-white-warm")` dropped the colour. `src/lib/cn.ts` already carried
+a comment saying exactly this (D-043) and I renamed the tokens without updating the list
+under it. It is now `TYPE_ROLES`, exported, and `scripts/validate-design-system.mjs` diffs
+it against the `--text-*` tokens in `globals.css` — the same failure cannot reach a third
+person. That script also rejects arbitrary `text-[...]` sizes and any hex that is not in
+the palette (hex is unavoidable in `themeColor` and the OG images, because Satori resolves
+no CSS variables — so the rule is "no hex the palette does not define", not "no hex").
+
+**Two smaller corrections found by looking.** The chooser card's sub-label was bold sans
+and competed with its own serif title; the comp sets it in the display face, subordinate.
+`point-grid.tsx` marked each of three feature blurbs as an `<h2>` at subheading size,
+which made "h2" mean two sizes across the site and put three blurbs in the document
+outline as sections — it is a `<ul>` now, identical visually.
+
+*Rejected:* resizing the existing tokens without renaming. It fixes the ratio in one edit
+and leaves every cause in place. *Also rejected:* semantic aliases layered over the old
+names — two vocabularies for one role is what caused this.

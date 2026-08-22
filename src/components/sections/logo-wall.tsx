@@ -52,7 +52,7 @@ export function LogoWall() {
           {CLIENTS.map((name) => (
             <span
               key={name}
-              className="whitespace-nowrap font-display text-display-sm font-semibold uppercase tracking-[0.12em] text-navy-700/60"
+              className="whitespace-nowrap font-display text-subheading font-semibold uppercase tracking-[0.12em] text-navy-700/60"
             >
               {name}
             </span>

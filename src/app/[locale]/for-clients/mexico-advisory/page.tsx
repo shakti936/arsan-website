@@ -41,7 +41,7 @@ export default async function Page({ params }: Params) {
       />
       <section className="bg-white-warm section-y">
         <Container>
-          <h2 className="mx-auto max-w-[30ch] text-center font-display text-display-md font-semibold text-navy-900 text-balance">
+          <h2 className="mx-auto max-w-[30ch] text-center font-display text-heading font-semibold text-navy-900 text-balance">
             {tq("heading")}
           </h2>
           <p className="mx-auto mt-5 max-w-[62ch] text-center text-base text-navy-800">
@@ -55,7 +55,7 @@ export default async function Page({ params }: Params) {
                 className="h-full"
               >
                 <div className="h-full border border-cream-100 bg-white-warm p-6 shadow-sm shadow-navy-950/5">
-                  <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                  <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                     {tq(`items.${i}.title`)}
                   </h3>
                   <p className="mt-3 text-base text-navy-800">

@@ -32,6 +32,13 @@ type PlateProps = PlateBase &
     | { src?: never; alt?: never; priority?: never; sizes?: never }
   );
 
+/**
+ * Fades the orthographic grid out toward the plate's edges.
+ * design-system-ignore: a mask, not a colour — #000 is opacity 1 here.
+ */
+const GRID_MASK =
+  "radial-gradient(130% 100% at 30% 20%, #000 10%, transparent 82%)";
+
 export function Plate({
   variant = "a",
   overlay = "light",
@@ -96,8 +103,7 @@ export function Plate({
               backgroundImage:
                 "linear-gradient(to right, rgba(242,239,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(242,239,236,.5) 1px, transparent 1px)",
               backgroundSize: `${grid} ${grid}`,
-              maskImage:
-                "radial-gradient(130% 100% at 30% 20%, #000 10%, transparent 82%)",
+              maskImage: GRID_MASK,
             }}
           />
           {/* registration ticks — corner marks from engineering drawings */}

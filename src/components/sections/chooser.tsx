@@ -49,7 +49,7 @@ export function Chooser({
   return (
     <section className={cn("bg-white-warm section-y", className)}>
       <div className="mx-auto w-full max-w-page px-6 sm:px-10">
-        <h2 className="text-center font-display text-display-md font-semibold text-navy-900 text-balance">
+        <h2 className="text-center font-display text-heading font-semibold text-navy-900 text-balance">
           {t("heading")}
         </h2>
         <div
@@ -69,10 +69,14 @@ export function Chooser({
                   >
                     <Icon className="h-6 w-6" />
                   </span>
-                  <h3 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                  <h3 className="font-display text-subheading font-semibold leading-snug text-navy-900 text-balance">
                     {t(`cards.${i}.need`)}
                   </h3>
-                  <p className="mt-2 text-sm font-semibold text-navy-900 text-balance">
+                  {/* serif, not bold sans: the comp sets this label in the
+                      display face so it sits UNDER the card title. As bold
+                      sans it competed with the title instead of supporting
+                      it — two things shouting at the same level. */}
+                  <p className="mt-2 font-display text-base text-navy-900 text-balance">
                     {t(`cards.${i}.service`)}
                   </p>
                   <p className="mt-4 flex-1 text-sm text-navy-800 text-pretty">
