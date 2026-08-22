@@ -193,7 +193,7 @@
     },
     "values": {
       "heading": "Hemos estado de su lado de la mesa.",
-      "body": "Décadas de experiencia dentro de recursos humanos, manufactura y liderazgo organizacional nos dan una perspectiva distinta. Entendemos la presión detrás de la decisión — no solo la vacante por cubrir.",
+      "body": "Décadas de experiencia dentro de Recursos Humanos, manufactura y liderazgo organizacional nos dan una ventaja única — y una perspectiva distinta.",
       "items": [
         {
           "title": "Gente senior, cerca del trabajo.",
@@ -637,7 +637,8 @@
   "insightsRow": {
     "heading": "Perspectiva para mejores decisiones de talento.",
     "viewAll": "Ver todas las perspectivas",
-    "readingTime": "{minutes} min de lectura"
+    "readingTime": "{minutes} min de lectura",
+    "readArticle": "Leer artículo"
   },
   "whyCall": {
     "heading": "Por qué las organizaciones llaman a ARSAN",

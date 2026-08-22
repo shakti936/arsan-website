@@ -193,7 +193,7 @@
     },
     "values": {
       "heading": "We've sat on your side of the table.",
-      "body": "Decades of experience inside HR, manufacturing and organizational leadership give us a different perspective. We understand the pressure behind the decision — not only the position that needs to be filled.",
+      "body": "Decades of experience inside HR, manufacturing and organizational leadership gives us a unique advantage—and a different perspective.",
       "items": [
         {
           "title": "Senior people stay close to the work.",
@@ -637,7 +637,8 @@
   "insightsRow": {
     "heading": "Perspective for better people decisions.",
     "viewAll": "Explore All Insights",
-    "readingTime": "{minutes} min read"
+    "readingTime": "{minutes} min read",
+    "readArticle": "Read article"
   },
   "whyCall": {
     "heading": "Why organizations call ARSAN",

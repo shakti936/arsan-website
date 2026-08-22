@@ -87,3 +87,13 @@ A visitor cannot tell them from real ones, and the board invites them to act on 
 Also parked: board filter state lives in component state, not the URL, so a filtered board
 cannot be shared or restored with the back button. Worth adding — but against the ATS query,
 not against the current in-memory list.
+
+### Q-26 · Non-blocking · Three mega-nav items the comp has and the site does not
+`refs/dirA-meganav-all-panels.png` lists **Representative Searches** under Results,
+**Podcast & Video** under Insights, and **Our Story** under Why ARSAN. None are built, and
+`nav.ts` holds the rule that every href resolves to a page that exists — so they are absent
+rather than pointing somewhere approximate.
+
+Each needs a decision before it can be added: does Representative Searches mean a separate
+index from Case Studies? Is there a podcast? Is Our Story a section of /why-arsan or its own
+page? **Owner:** Drew.

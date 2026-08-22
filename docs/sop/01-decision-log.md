@@ -1416,3 +1416,59 @@ Built by generalising what already existed rather than adding parallel component
 form `/for-candidates/submit-profile` exists to host. Two places to submit the same profile
 is two to maintain and one more decision than the page should ask a candidate for; both
 closes now point at the one page that owns it.
+
+### D-079 · 2026-08-21 · Nav icons re-picked against the mega-nav comp
+Swapping the renderer to Lucide (D-076) fixed how icons draw, not *which* ones they are.
+Read against `refs/dirA-meganav-all-panels.png`, eight were the wrong glyph — chosen from
+the small hand-drawn set that existed when `nav.ts` was written:
+
+| Item | Was | Comp draws |
+|---|---|---|
+| Enterprise Talent & Leadership Solutions | factory | an office block → `building` |
+| View Opportunities | compass | a briefcase → `briefcase` |
+| Career Resources | document | an open book → `book` |
+| For Candidates feature | shield | a shield with a padlock → `shieldLock` |
+| Case Studies | document | a magnifier → `search` |
+| Latest Perspectives | compass | a lightbulb → `lightbulb` |
+| Mexico Insights | map | a globe → `globe` |
+| Our Difference | target | an award rosette → `award` |
+
+Only `icon:` values changed; hrefs and panel layout are untouched.
+
+**Three items the comp has that the nav does not**: Representative Searches (Results),
+Podcast & Video (Insights), Our Story (Why ARSAN). Not added — `nav.ts` holds the rule that
+every href resolves to a page that exists, and none of those do. Logged in Q-26.
+
+### D-080 · 2026-08-21 · Lucide's `Factory`, at the stroke weight we set
+The chooser's Mexico card read as a blob. First diagnosis was the glyph: Lucide's `Factory`
+draws its three windows as `h.01` zero-length strokes — dots exactly one stroke-width across,
+sitting a few pixels below a heavy outline — and knocked out in white on a filled teal disc
+they crowd together. A side-by-side render put `Warehouse` in its place, which is legible at
+any size.
+
+Drew looked at the glyph on lucide.dev and said it is not wrong, so it stays. He is right
+that the drawing is correct; a bench render across sizes and weights showed the variable is
+ours, not Lucide's — at 24px/1.5 the dots crowd, at 28px/2 (Lucide's design weight) they
+separate cleanly. The site keeps 1.5 because it is right for the typography at the sizes
+most icons render at. Recorded so the next person who sees a dense glyph go muddy at 24px
+knows where to look before reaching for a different icon.
+
+### D-081 · 2026-08-21 · Home differences closed against dirA-home-v2.png
+Three real gaps, plus one that stays open by an earlier decision:
+
+- **The value-props band had no icons.** The comp gives each of its three items one (a group,
+  a cog, a globe). `ValueProps` had no slot for them at all — a missing capability, not a
+  wrong value. Its intro also now carries the comp's own sentence rather than the longer one
+  that had drifted in.
+- **The insights row is photo-left on the home page**, not photo-on-top. `ArticleCards` gained
+  a `layout` prop; /for-candidates and /insights keep `stacked`, which is what their comps
+  draw. The home row also closes on "Read article" rather than a dateline, as the comp does —
+  dates belong on /insights, where a reader is scanning for what is new.
+- **The photo-left card turned its image into a sliver.** Same class of bug as the leadership
+  portraits (D-068): a fixed-width image with `self-stretch` takes its height from the copy
+  beside it, so an unclamped three-line deck stretched a 96px-wide photograph to 260px tall.
+  Widened to 144px and clamped the title and deck to two lines each, which is what the comp
+  sets.
+- **The logo wall stays type, not logos** (D-067). The comp shows eight real client marks;
+  reproducing them is a trademark decision nobody has made, and Drew's 23 names do not fit a
+  static row. Unchanged, still the open item in that decision.

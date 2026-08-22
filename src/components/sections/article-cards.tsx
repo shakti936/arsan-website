@@ -27,6 +27,7 @@ export function ArticleCards({
   withViewAll,
   headingOverride,
   viewAllOverride,
+  layout = "stacked",
   className,
 }: {
   locale: string;
@@ -35,8 +36,16 @@ export function ArticleCards({
   /** /for-candidates frames the same three pieces as "Insights for your career". */
   headingOverride?: string;
   viewAllOverride?: string;
+  /**
+   * `stacked` puts the photograph above the copy — how the comps set the row
+   * on /for-candidates and /insights. `beside` runs it down the left of each
+   * card, which is what refs/dirA-home-v2.png does: the home row sits between
+   * two dense bands and the shorter card keeps the page moving.
+   */
+  layout?: "stacked" | "beside";
   className?: string;
 }) {
+  const beside = layout === "beside";
   const t = useTranslations("insightsRow");
   const format = useFormatter();
   const articles = ARTICLES.slice(0, count);
@@ -62,19 +71,43 @@ export function ArticleCards({
                 delay={(i % 3) * 0.08}
                 className="h-full"
               >
-                <article className="group relative flex h-full flex-col border border-cream-100 bg-white-warm shadow-[0_1px_2px_rgba(6,30,57,.06)] transition-shadow duration-300 hover:shadow-[0_10px_28px_-12px_rgba(6,30,57,.28)] motion-reduce:transition-none">
-                  <div className="relative h-44 overflow-hidden bg-cream-100">
+                <article
+                  className={cn(
+                    "group relative flex h-full border border-cream-100 bg-white-warm shadow-[0_1px_2px_rgba(6,30,57,.06)] transition-shadow duration-300 hover:shadow-[0_10px_28px_-12px_rgba(6,30,57,.28)] motion-reduce:transition-none",
+                    beside ? "flex-row" : "flex-col",
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "relative overflow-hidden bg-cream-100",
+                      beside ? "w-36 shrink-0 self-stretch" : "h-44",
+                    )}
+                  >
                     <Image
                       src={`/images/${article.photo}.jpg`}
                       alt=""
                       fill
-                      sizes="(min-width: 768px) 33vw, 100vw"
+                      sizes={
+                        beside ? "128px" : "(min-width: 768px) 33vw, 100vw"
+                      }
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                     />
                   </div>
-                  <div className="flex flex-1 flex-col p-6">
+                  <div
+                    className={cn(
+                      "flex flex-1 flex-col",
+                      beside ? "p-5" : "p-6",
+                    )}
+                  >
                     <p className="eyebrow text-brass-600">{copy.category}</p>
-                    <h3 className="mt-3 font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
+                    <h3
+                      className={cn(
+                        "mt-3 font-display font-semibold leading-snug text-navy-900 text-balance",
+                        beside
+                          ? "text-lg [&>*]:line-clamp-2"
+                          : "text-display-sm",
+                      )}
+                    >
                       <Link
                         href={`/insights/${article.slug}`}
                         className="transition-colors after:absolute after:inset-0 group-hover:text-brass-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-500"
@@ -82,20 +115,37 @@ export function ArticleCards({
                         {copy.title}
                       </Link>
                     </h3>
-                    <p className="mt-3 flex-1 text-sm text-navy-800">
+                    <p
+                      className={cn(
+                        "mt-3 flex-1 text-sm text-navy-800",
+                        beside && "line-clamp-2",
+                      )}
+                    >
                       {copy.deck}
                     </p>
-                    <p className="mt-5 text-sm text-navy-700">
-                      {format.dateTime(new Date(article.published), {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                      <span aria-hidden="true" className="mx-2">
-                        ·
-                      </span>
-                      {t("readingTime", { minutes: article.readingMinutes })}
-                    </p>
+                    {beside ? (
+                      <p className="mt-5 flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-teal-900">
+                        {t("readArticle")}
+                        <span
+                          aria-hidden="true"
+                          className="transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none"
+                        >
+                          &rarr;
+                        </span>
+                      </p>
+                    ) : (
+                      <p className="mt-5 text-sm text-navy-700">
+                        {format.dateTime(new Date(article.published), {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                        <span aria-hidden="true" className="mx-2">
+                          ·
+                        </span>
+                        {t("readingTime", { minutes: article.readingMinutes })}
+                      </p>
+                    )}
                   </div>
                 </article>
               </Reveal>

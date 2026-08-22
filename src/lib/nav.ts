@@ -49,7 +49,7 @@ export const NAV_SECTIONS: NavSection[] = [
       {
         key: "leadershipSolutions",
         href: "/for-clients/leadership-solutions",
-        icon: "factory",
+        icon: "building",
       },
     ],
     feature: { icon: "globe", href: "/contact", cta: "button" },
@@ -61,7 +61,7 @@ export const NAV_SECTIONS: NavSection[] = [
       {
         key: "opportunities",
         href: "/for-candidates/opportunities",
-        icon: "compass",
+        icon: "briefcase",
       },
       {
         key: "submitProfile",
@@ -74,10 +74,10 @@ export const NAV_SECTIONS: NavSection[] = [
         href: "/for-candidates/talent-network",
         icon: "users",
       },
-      { key: "resources", href: "/insights", icon: "document" },
+      { key: "resources", href: "/insights", icon: "book" },
     ],
     feature: {
-      icon: "shield",
+      icon: "shieldLock",
       href: "/for-candidates/submit-profile",
       cta: "link",
     },
@@ -86,7 +86,7 @@ export const NAV_SECTIONS: NavSection[] = [
     key: "results",
     href: "/results",
     children: [
-      { key: "caseStudies", href: "/results", icon: "document" },
+      { key: "caseStudies", href: "/results", icon: "search" },
       { key: "outcomes", href: "/results", icon: "chart" },
       { key: "testimonials", href: "/results#testimonials", icon: "chat" },
     ],
@@ -101,9 +101,9 @@ export const NAV_SECTIONS: NavSection[] = [
     key: "insights",
     href: "/insights",
     children: [
-      { key: "latest", href: "/insights", icon: "compass" },
+      { key: "latest", href: "/insights", icon: "lightbulb" },
       { key: "manufacturing", href: "/insights", icon: "factory" },
-      { key: "mexico", href: "/insights", icon: "map" },
+      { key: "mexico", href: "/insights", icon: "globe" },
       { key: "reports", href: "/insights", icon: "document" },
     ],
     feature: {
@@ -117,7 +117,7 @@ export const NAV_SECTIONS: NavSection[] = [
     key: "whyArsan",
     href: "/why-arsan",
     children: [
-      { key: "ourDifference", href: "/why-arsan#difference", icon: "target" },
+      { key: "ourDifference", href: "/why-arsan#difference", icon: "award" },
       { key: "ourPeople", href: "/why-arsan#people", icon: "users" },
       { key: "howWeWork", href: "/why-arsan#how-we-work", icon: "handshake" },
     ],

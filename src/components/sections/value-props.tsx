@@ -1,8 +1,10 @@
 import { useTranslations } from "next-intl";
+import { Icons } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-const ITEM_COUNT = 3;
+/** One per item, in the order refs/dirA-home-v2.png sets them. */
+const ITEM_ICONS = ["users", "cog", "globe"] as const;
 
 export function ValueProps() {
   const t = useTranslations("home.values");
@@ -17,18 +19,22 @@ export function ValueProps() {
           </p>
         </Reveal>
         <div className="grid gap-8 sm:grid-cols-3">
-          {Array.from({ length: ITEM_COUNT }, (_, i) => (
-            <Reveal key={t(`items.${i}.title`)} delay={i * 0.08}>
-              <div className="border-t border-brass-500/40 pt-5 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
-                <h3 className="text-sm font-semibold text-navy-900">
-                  {t(`items.${i}.title`)}
-                </h3>
-                <p className="mt-2 text-base text-navy-800">
-                  {t(`items.${i}.body`)}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+          {ITEM_ICONS.map((name, i) => {
+            const Icon = Icons[name];
+            return (
+              <Reveal key={name} delay={i * 0.08}>
+                <div className="border-t border-brass-500/40 pt-5 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
+                  <Icon className="mb-4 h-8 w-8 text-teal-900" />
+                  <h3 className="text-sm font-semibold text-navy-900">
+                    {t(`items.${i}.title`)}
+                  </h3>
+                  <p className="mt-2 text-base text-navy-800">
+                    {t(`items.${i}.body`)}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
