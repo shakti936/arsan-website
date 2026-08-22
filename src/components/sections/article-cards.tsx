@@ -47,6 +47,7 @@ export function ArticleCards({
 }) {
   const beside = layout === "beside";
   const t = useTranslations("insightsRow");
+  const tc = useTranslations("articleCategories");
   const format = useFormatter();
   const articles = ARTICLES.slice(0, count);
 
@@ -99,7 +100,9 @@ export function ArticleCards({
                       beside ? "p-5" : "p-6",
                     )}
                   >
-                    <p className="eyebrow text-brass-600">{copy.category}</p>
+                    <p className="eyebrow text-brass-600">
+                      {tc(article.categoryKey)}
+                    </p>
                     <h3
                       className={cn(
                         "mt-3 font-display font-semibold leading-snug text-navy-900 text-balance",

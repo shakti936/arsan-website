@@ -1,6 +1,10 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
+import lockupCream from "../../../public/logo/arsan-lockup-cream.png";
+import lockupNavy from "../../../public/logo/arsan-lockup-navy.png";
+import wordmarkCream from "../../../public/logo/arsan-wordmark-cream.png";
+import wordmarkNavy from "../../../public/logo/arsan-wordmark-navy.png";
 
 /**
  * The logo is the supplied artwork (`refs/dirA-logo-lockup.png`), used whole.
@@ -33,8 +37,21 @@ type LogoProps = {
   className?: string;
 };
 
-/** Intrinsic ratios of the two trimmed assets. */
-const RATIO = { lockup: 361 / 1350, wordmark: 223 / 1350 } as const;
+/**
+ * Imported rather than referenced by path, so the intrinsic size comes from
+ * the files themselves. It used to be a hand-written ratio taken from the
+ * 1350px source artwork, while the exported assets are 1100 and 900 wide with
+ * ratios that differ in the third decimal — enough that `next/image` warned
+ * about a mismatched box on every page of the site, and enough to reserve
+ * slightly the wrong space before the image loads. A re-export now corrects
+ * itself; a constant would have to be remembered.
+ */
+const ASSETS: Record<string, StaticImageData> = {
+  "lockup-cream": lockupCream,
+  "lockup-navy": lockupNavy,
+  "wordmark-cream": wordmarkCream,
+  "wordmark-navy": wordmarkNavy,
+};
 
 export function Logo({
   tone = "light",
@@ -56,16 +73,17 @@ export function Logo({
       )}
     >
       <Image
-        src={`/logo/arsan-${variant}-${shade}.png`}
+        src={ASSETS[`${variant}-${shade}`] ?? lockupCream}
         alt={
           variant === "lockup"
             ? "ARSAN — Executive Search & Manufacturing Talent Advisory"
             : "ARSAN"
         }
-        width={width}
-        height={Math.round(width * RATIO[variant])}
         priority
         sizes={`${width}px`}
+        // the file carries the intrinsic size; this sets the rendered one, and
+        // `height: auto` is what keeps the ratio honest at any width
+        style={{ width, height: "auto" }}
       />
     </Link>
   );

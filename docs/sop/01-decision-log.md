@@ -1529,3 +1529,52 @@ box and the baseline without rendering anything — not with a `min-height`, whi
 aligned the boxes while leaving the baselines apart.
 
 `detect.mjs --scope type` reports clean on the file. Verified at 1440 and 390 in one pass.
+
+### D-084 · 2026-08-21 · /insights rebuilt to its comp, and article category becomes a code
+Drew: *"make sure our insights page looks like the reference."* The page was hero + a
+six-card grid + the teal CTA band. `refs/dirA-insights-index.png` has a category bar, a
+featured grid, a navy tailored-insights band and the newsletter — three of those did not
+exist.
+
+**Category became a taxonomy code.** `ArticleCopy.category` held a display string per locale,
+which cannot back a filter: a Spanish reader filtering "Liderazgo" and an English reader
+filtering "Leadership" have to hit the same articles, and a translator rewording a label
+would silently empty a tab. `Article.categoryKey` is now one of five codes; labels live in
+`articleCategories` in the message catalogs, and the bar's order and icons live in the
+component that draws it. Six call sites moved over.
+
+**Filtering is client-side over the whole list**, same reasoning as the job board: five
+articles is a few KB, and the alternative is a navigation per click. It moves behind a query
+when the archive is large enough to paginate.
+
+**The featured layout only appears unfiltered.** One large card beside four small ones says
+"start here"; the same shape applied to a category with one article in it says nothing, so a
+filtered view is a plain grid with the category as its heading. For the same reason the
+"All insights" control renders only when a filter is active — offering it on the unfiltered
+view would point a reader at what they are already looking at.
+
+The featured card's photograph is `flex-1`, not a fixed height: it spans two grid rows, and
+a fixed image left a void above the dateline.
+
+### D-085 · 2026-08-21 · Heroes: no eyebrow, and a test that measures them
+Drew, pointing at "RESULTS THAT MATTER": *"remove this from the hero in results… make sure
+all heros have the same text sizes and format."* The eyebrow went, and with it the
+`PageHero` prop — no other hero used it, and an unused prop is an invitation to diverge
+again.
+
+"The same" is now measured rather than asserted. `e2e/hero-uniformity.spec.ts` walks all
+thirteen heroes and compares the computed font-size, weight and family of the headline, the
+brass accent and the intro against the home page. They share a component, but a page can
+still pass a class or a wrapper that changes the rendered size — which is how they drifted
+the first time.
+
+### D-086 · 2026-08-21 · The logo reserved the wrong box on every page
+The dev overlay flagged an issue on every route. `Logo` computed its height from a
+hand-written `RATIO` taken from the 1350px source artwork, while the exported assets are
+1100 and 900 wide with ratios differing in the third decimal — so `next/image` warned about
+a mismatched box, and the space reserved before load was fractionally wrong site-wide.
+
+Fixed by deleting the constant rather than correcting it: the four PNGs are imported as
+static images, so the intrinsic size comes from the files and a re-export corrects itself.
+`style={{ width, height: "auto" }}` sets the rendered size. Verified with a console sweep
+across six routes — clean.

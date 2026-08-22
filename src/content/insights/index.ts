@@ -5,7 +5,7 @@ import { theNewManufacturingLeader } from "./the-new-manufacturing-leader";
 import type { Article, ArticleCopy } from "./types";
 import { whyTheBestCandidatesArentLooking } from "./why-the-best-candidates-arent-looking";
 
-export type { Article, ArticleCopy } from "./types";
+export type { Article, ArticleCopy, CategoryKey } from "./types";
 
 /**
  * Every published article, newest first. This is the only list — the insights

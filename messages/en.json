@@ -368,9 +368,10 @@
       "intro": "Selected stories from searches and advisory work across the U.S. and Mexico. Client names are confidential; outcomes are real."
     },
     "insights": {
-      "title": "Perspective for better people decisions.",
-      "titleEmphasis": "better people decisions",
-      "intro": "Thinking on manufacturing talent, Mexico workforce strategy and leadership — written for decision-makers.",
+      "title": "Insights that drive better hiring and stronger leadership.",
+      "titleEmphasis": "stronger leadership.",
+      "metaTitle": "Insights — Manufacturing Talent and Leadership Perspectives",
+      "intro": "Expert perspectives, market intelligence and practical guidance to help manufacturing leaders and professionals stay ahead.",
       "comingSoon": "Articles are on their way. In the meantime, tell us what you're working through."
     },
     "whyArsan": {
@@ -930,5 +931,25 @@
     "body": "Explore opportunities, submit your profile, or join our Talent Network. We look forward to learning more about your goals.",
     "cta": "Join Our Talent Network",
     "secondary": "or view open opportunities"
+  },
+  "articleCategories": {
+    "all": "All Insights",
+    "market": "Market Insights",
+    "hiring": "Hiring & Talent",
+    "leadership": "Leadership",
+    "trends": "Manufacturing Trends",
+    "caseStudy": "Case Study"
+  },
+  "insightsIndex": {
+    "filterLabel": "Filter insights by category",
+    "all": "All Insights",
+    "heading": "Featured insights",
+    "viewAll": "All insights",
+    "featured": "Featured",
+    "tailored": {
+      "heading": "Want insights tailored to your business and hiring goals?",
+      "body": "Our team can share market intelligence and hiring strategies specific to your industry and needs.",
+      "cta": "Let's Talk"
+    }
   }
 }

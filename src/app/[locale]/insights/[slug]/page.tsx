@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArticleBody } from "@/components/sections/article-body";
 import { ArticleHero } from "@/components/sections/article-hero";
 import { CtaBand } from "@/components/sections/cta-band";
@@ -44,6 +44,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 export default async function Page({ params }: Params) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+  const category = await getTranslations({
+    locale,
+    namespace: "articleCategories",
+  });
 
   const article = getArticle(slug);
   if (!article) notFound();
@@ -73,7 +77,7 @@ export default async function Page({ params }: Params) {
         inLanguage: locale === "es" ? "es-MX" : "en-US",
         datePublished: article.published,
         dateModified: article.published,
-        articleSection: copy.category,
+        articleSection: category(article.categoryKey),
         image: [`${SITE_URL}/images/${article.photo}.jpg`],
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
         author: { "@type": "Organization", name: "ARSAN", url: SITE_URL },
@@ -100,7 +104,7 @@ export default async function Page({ params }: Params) {
           {
             "@type": "ListItem",
             position: 2,
-            name: copy.category,
+            name: category(article.categoryKey),
             item: localeUrl(locale, "/insights"),
           },
           { "@type": "ListItem", position: 3, name: copy.title, item: url },
@@ -114,6 +118,7 @@ export default async function Page({ params }: Params) {
       <JsonLd data={jsonLd} />
       <ArticleHero
         copy={copy}
+        categoryKey={article.categoryKey}
         photo={article.photo}
         published={article.published}
         readingMinutes={article.readingMinutes}

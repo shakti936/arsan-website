@@ -2,12 +2,12 @@ import type { Article } from "./types";
 
 export const theNewManufacturingLeader: Article = {
   slug: "the-new-manufacturing-leader",
+  categoryKey: "leadership",
   photo: "article-leadership-traits",
   published: "2026-08-11",
   readingMinutes: 6,
 
   en: {
-    category: "Leadership",
     title: "The New Manufacturing Leader: 5 Traits That Drive Performance",
     deck: "Manufacturing leadership is evolving. The five traits today's top leaders have in common — and how they build stronger teams and better results.",
     metaTitle: "The New Manufacturing Leader: 5 Traits That Drive Performance",
@@ -93,7 +93,6 @@ export const theNewManufacturingLeader: Article = {
   },
 
   es: {
-    category: "Liderazgo",
     title: "El nuevo líder de manufactura: 5 rasgos que impulsan el desempeño",
     deck: "El liderazgo en manufactura está cambiando. Los cinco rasgos que comparten los mejores líderes de hoy — y cómo construyen equipos más fuertes y mejores resultados.",
     metaTitle: "El nuevo líder de manufactura: 5 rasgos clave de desempeño",

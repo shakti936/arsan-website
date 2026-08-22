@@ -37,7 +37,7 @@ type HeroCta = {
  * refs/dirA-results-page.png draws that hero on flat navy with a wave graphic;
  * the photograph stays because "every page hero carries a photograph" is a
  * rule with a test behind it (D-057), and the substance of the comp's hero is
- * the eyebrow, the headline and the four figures. See Q-27.
+ * the headline and the four figures. See Q-27.
  *
  * `badge` is the one addition to the shared layout: the job board comp sets a
  * circled briefcase and "New opportunities added weekly" beside its headline.
@@ -62,7 +62,6 @@ export type HeroStat = {
 
 export function PageHero({
   title,
-  eyebrow,
   emphasis,
   intro,
   photo,
@@ -72,8 +71,6 @@ export function PageHero({
   stats,
 }: {
   title: string;
-  /** Small caps line over the headline — "Results that matter". */
-  eyebrow?: string;
   /** A phrase inside `title` to set in brass italic, as the comps do. */
   emphasis?: string;
   intro?: string;
@@ -107,15 +104,6 @@ export function PageHero({
           {/* the copy column has to stop before the scrim starts clearing at 55%
             of the container, or the intro lands on lit parts of the photograph */}
           <div className="flex max-w-[32rem] flex-col items-start">
-            {eyebrow && (
-              <>
-                <p className="eyebrow text-cream-100">{eyebrow}</p>
-                <div
-                  aria-hidden="true"
-                  className="mt-3 h-0.5 w-10 bg-teal-400"
-                />
-              </>
-            )}
             <HeroTitle
               text={title}
               emphasis={emphasis}

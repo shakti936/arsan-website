@@ -10,12 +10,12 @@ import type { Article } from "./types";
  */
 export const fromVacantToVictorious: Article = {
   slug: "from-vacant-to-victorious",
+  categoryKey: "caseStudy",
   photo: "story-critical-search",
   published: "2025-06-30",
   readingMinutes: 6,
 
   en: {
-    category: "Case Study",
     title:
       "From Vacant to Victorious: How We Helped a Manufacturer Build a World-Class Team",
     deck: "See how we solved a critical talent gap for a precision components manufacturer—filling hard-to-find roles, strengthening leadership, and driving measurable results.",
@@ -108,7 +108,6 @@ export const fromVacantToVictorious: Article = {
   },
 
   es: {
-    category: "Caso de éxito",
     title:
       "De la vacante al triunfo: cómo ayudamos a un fabricante a formar un equipo de clase mundial",
     deck: "Vea cómo resolvimos una brecha crítica de talento para un fabricante de componentes de precisión: cubriendo puestos difíciles, fortaleciendo el liderazgo y generando resultados medibles.",

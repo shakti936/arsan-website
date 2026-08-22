@@ -2,12 +2,12 @@ import type { Article } from "./types";
 
 export const automationChangingManufacturingJobs: Article = {
   slug: "automation-changing-manufacturing-jobs",
+  categoryKey: "trends",
   photo: "nav-automation",
   published: "2026-08-04",
   readingMinutes: 5,
 
   en: {
-    category: "Manufacturing Trends",
     title: "Automation Is Changing Jobs — Here's How to Stay Ahead",
     deck: "What manufacturers need to know about the skills, roles and strategies shaping the future of work.",
     metaTitle: "Automation Is Changing Manufacturing Jobs — How to Stay Ahead",
@@ -93,7 +93,6 @@ export const automationChangingManufacturingJobs: Article = {
   },
 
   es: {
-    category: "Tendencias de Manufactura",
     title: "La automatización está cambiando los puestos: cómo adelantarse",
     deck: "Lo que los fabricantes deben saber sobre las habilidades, los roles y las estrategias que están definiendo el futuro del trabajo.",
     metaTitle: "Automatización y empleo en manufactura: cómo adelantarse",

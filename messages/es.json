@@ -368,9 +368,10 @@
       "intro": "Historias seleccionadas de búsquedas y asesoría en EE. UU. y México. Los nombres de los clientes son confidenciales; los resultados son reales."
     },
     "insights": {
-      "title": "Perspectiva para mejores decisiones de talento.",
-      "titleEmphasis": "mejores decisiones de talento",
-      "intro": "Ideas sobre talento en manufactura, estrategia laboral en México y liderazgo — escritas para quienes deciden.",
+      "title": "Perspectivas para mejores contrataciones y un liderazgo más fuerte.",
+      "titleEmphasis": "un liderazgo más fuerte.",
+      "metaTitle": "Perspectivas — talento y liderazgo en manufactura",
+      "intro": "Perspectiva experta, inteligencia de mercado y guía práctica para que líderes y profesionales de manufactura vayan un paso adelante.",
       "comingSoon": "Los artículos vienen en camino. Mientras tanto, cuéntenos qué está resolviendo."
     },
     "whyArsan": {
@@ -930,5 +931,25 @@
     "body": "Explore oportunidades, comparta su perfil o únase a nuestra Red de Talento. Nos interesa conocer sus objetivos.",
     "cta": "Únase a Nuestra Red de Talento",
     "secondary": "o vea las oportunidades abiertas"
+  },
+  "articleCategories": {
+    "all": "Todas las perspectivas",
+    "market": "Inteligencia de Mercado",
+    "hiring": "Contratación y Talento",
+    "leadership": "Liderazgo",
+    "trends": "Tendencias de Manufactura",
+    "caseStudy": "Caso de éxito"
+  },
+  "insightsIndex": {
+    "filterLabel": "Filtrar perspectivas por categoría",
+    "all": "Todas las perspectivas",
+    "heading": "Perspectivas destacadas",
+    "viewAll": "Todas las perspectivas",
+    "featured": "Destacada",
+    "tailored": {
+      "heading": "¿Quiere perspectivas a la medida de su negocio y sus objetivos de contratación?",
+      "body": "Nuestro equipo puede compartir inteligencia de mercado y estrategias de contratación específicas para su industria y sus necesidades.",
+      "cta": "Hablemos"
+    }
   }
 }

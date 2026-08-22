@@ -28,6 +28,7 @@ export function RelatedInsights({
   locale: string;
 }) {
   const t = useTranslations("article");
+  const tc = useTranslations("articleCategories");
   const format = useFormatter();
   const related = relatedArticles(currentSlug);
 
@@ -71,7 +72,9 @@ export function RelatedInsights({
                   />
                 </div>
                 <div className="flex flex-col p-5">
-                  <p className="eyebrow text-brass-600">{copy.category}</p>
+                  <p className="eyebrow text-brass-600">
+                    {tc(article.categoryKey)}
+                  </p>
                   <h3 className="mt-2 font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
                     <Link
                       href={`/insights/${article.slug}`}

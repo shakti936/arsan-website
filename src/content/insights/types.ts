@@ -62,8 +62,6 @@ export type ArticleStat = {
 };
 
 export type ArticleCopy = {
-  /** Display label, also the last breadcrumb crumb. */
-  category: string;
   title: string;
   /** Standfirst under the headline. */
   deck: string;
@@ -86,8 +84,23 @@ export type ArticleCopy = {
   stat?: ArticleStat;
 };
 
+/**
+ * The taxonomy behind the /insights filter. A code rather than the display
+ * string, because the string is per-locale and a filter keyed on it would
+ * match nothing the moment a translator rewords a label. Labels live in
+ * `articleCategories` in the message catalogs; the order and icons live in the
+ * component that draws the bar.
+ */
+export type CategoryKey =
+  | "market"
+  | "hiring"
+  | "leadership"
+  | "trends"
+  | "caseStudy";
+
 export type Article = {
   slug: string;
+  categoryKey: CategoryKey;
   /** basename in public/images, shared with the article's OG card */
   photo: string;
   /** ISO date. Feeds `datePublished` in the Article JSON-LD. */

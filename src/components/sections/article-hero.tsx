@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
-import type { ArticleCopy } from "@/content/insights";
+import type { ArticleCopy, CategoryKey } from "@/content/insights";
 
 /**
  * Article hero from refs/dirA-article-*.png: a navy band split down the
@@ -17,16 +17,19 @@ import type { ArticleCopy } from "@/content/insights";
  */
 export function ArticleHero({
   copy,
+  categoryKey,
   photo,
   published,
   readingMinutes,
 }: {
   copy: ArticleCopy;
+  categoryKey: CategoryKey;
   photo: string;
   published: string;
   readingMinutes: number;
 }) {
   const t = useTranslations("article");
+  const category = useTranslations("articleCategories")(categoryKey);
   const format = useFormatter();
 
   return (
@@ -51,11 +54,11 @@ export function ArticleHero({
             items={[
               { label: t("home"), href: "/" },
               { label: t("insights"), href: "/insights" },
-              { label: copy.category },
+              { label: category },
             ]}
           />
 
-          <p className="eyebrow mt-8 text-brass-400">{copy.category}</p>
+          <p className="eyebrow mt-8 text-brass-400">{category}</p>
           <div aria-hidden="true" className="mt-3 h-0.5 w-10 bg-brass-500" />
 
           <h1 className="mt-6 max-w-[20ch] font-display text-display-xl font-semibold text-white-warm text-balance">

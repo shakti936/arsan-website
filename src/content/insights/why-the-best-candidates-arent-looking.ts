@@ -2,12 +2,12 @@ import type { Article } from "./types";
 
 export const whyTheBestCandidatesArentLooking: Article = {
   slug: "why-the-best-candidates-arent-looking",
+  categoryKey: "hiring",
   photo: "article-passive-candidates",
   published: "2026-07-28",
   readingMinutes: 4,
 
   en: {
-    category: "Hiring & Talent",
     title: "Why the Best Candidates Aren't Looking (And How to Reach Them)",
     deck: "Proactive strategies to engage passive talent and build a pipeline of high-impact leaders.",
     metaTitle: "How to Reach Passive Candidates in Manufacturing",
@@ -93,7 +93,6 @@ export const whyTheBestCandidatesArentLooking: Article = {
   },
 
   es: {
-    category: "Contratación y Talento",
     title:
       "Por qué los mejores candidatos no están buscando (y cómo llegar a ellos)",
     deck: "Estrategias proactivas para atraer talento pasivo y construir un pipeline de líderes de alto impacto.",

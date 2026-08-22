@@ -12,12 +12,12 @@ import type { Article } from "./types";
  */
 export const manufacturingTalentMarketUpdate: Article = {
   slug: "manufacturing-talent-market-update",
+  categoryKey: "market",
   photo: "article-market-update",
   published: "2026-08-18",
   readingMinutes: 7,
 
   en: {
-    category: "Market Insights",
     title: "Q3 2026 Manufacturing Talent Market Update",
     deck: "Hiring patterns, compensation pressure and regional shifts shaping the manufacturing labor market — and what leaders should watch in the quarter ahead.",
     metaTitle: "Q3 2026 Manufacturing Talent Market Update | Hiring Trends",
@@ -102,7 +102,6 @@ export const manufacturingTalentMarketUpdate: Article = {
   },
 
   es: {
-    category: "Inteligencia de Mercado",
     title: "Actualización del mercado de talento en manufactura · T3 2026",
     deck: "Patrones de contratación, presión salarial y movimientos regionales que están definiendo el mercado laboral de manufactura — y qué deben vigilar los líderes en el trimestre que viene.",
     metaTitle: "Mercado de talento en manufactura T3 2026 | Tendencias",

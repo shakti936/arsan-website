@@ -52,7 +52,6 @@ export default async function Page({ params }: Params) {
   return (
     <main id="main">
       <PageHero
-        eyebrow={tr("eyebrow")}
         title={t("title")}
         emphasis={t("titleEmphasis")}
         intro={tr("intro")}
