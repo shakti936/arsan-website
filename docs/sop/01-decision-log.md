@@ -1711,3 +1711,76 @@ outline as sections — it is a `<ul>` now, identical visually.
 *Rejected:* resizing the existing tokens without renaming. It fixes the ratio in one edit
 and leaves every cause in place. *Also rejected:* semantic aliases layered over the old
 names — two vocabularies for one role is what caused this.
+
+### D-090 · 2026-08-22 · Sanity owns page content; next-intl keeps the chrome
+Drew, Batch 1: a list of fields that should be editable without code, and one constraint
+that decides the whole design — *"CMS controls should manage content—not allow accidental
+destruction of the core design system."* Plus `bunx sanity@latest --help`: **"we will use
+sanity CMS."**
+
+**Where the boundary goes.** Every item on Drew's list — page title, marketing headline,
+section headings, body copy, featured images, CTA text and destination, testimonials,
+client attribution, SEO title, meta description, social image, display order, show/hide —
+is *page content*. None of it is UI chrome. So Sanity owns page content and next-intl keeps
+nav labels, form validation messages, button microcopy, `aria-label`s and error states.
+That split is not a compromise, it is the same rule this project already runs on GHL and
+Supabase: two stores, one crisp boundary, never conflated. It also keeps
+`validate-messages.mjs` meaningful — Zod needs its validation strings at build time, and a
+nav label is not something anyone edits as routine content.
+
+**How the design system is put out of reach.** Six things, and they are the deliverable:
+
+1. **No style fields anywhere.** No colour, size, alignment, spacing or font picker exists
+   in the schema. There is nothing to set.
+2. **Roles, not sizes.** A field is "Page title" or "Section heading" — a statement about
+   MEANING — and the renderer maps it to `text-title` / `text-heading`. Editors choose
+   roles, the scale chooses sizes, and neither reaches the other. This is why D-089 had to
+   land first: the role vocabulary is the shared contract.
+3. **Portable Text is a whitelist.** Body copy allows `normal`, `h3`, lists, bold, italic
+   and links. No H1 (one per page, and it is a field). No H2 (sections own their headings;
+   one typed into a paragraph flow would render at section size and break the outline).
+   No decorators that carry style.
+4. **Destinations are chosen, not typed.** `src/lib/routes.ts` lists the real routes;
+   articles and case studies are linked by reference. An editor cannot ship a 404, which
+   is the most common way a CMS quietly breaks a site — and the exact defect class the
+   link crawler caught after the fact in D-088. `e2e/links.spec.ts` asserts every offered
+   destination resolves, so the menu cannot go stale either.
+5. **A fixed section catalogue.** A page is an ordered list of KNOWN sections, each with a
+   `hidden` toggle. Drag to reorder, hide without deleting, rewrite every word — and there
+   is no reachable state where the page stops looking like this site. Adding a section
+   type is a code change on purpose.
+6. **Alt text is required, and unapproved testimonials cannot publish.** `approved` is
+   the `@unverified` gate from D-071/Q-23 moved into the CMS, where the person who can
+   actually obtain approval is the one who ticks it — and it is filtered in the GROQ, not
+   in a component, so the words never reach the payload.
+
+**i18n is field-level**, both languages on one document, matching how `src/content/**`
+already models translated copy. An article cannot exist in English and quietly not exist
+in Spanish, because there is no second document to forget. English is required to save;
+`localize.ts` falls back to English so a missing translation is *visible in production*
+rather than a hole.
+
+**The site builds with no Sanity project, and that is load-bearing.** `src/sanity/env.ts`
+treats an unset `NEXT_PUBLIC_SANITY_PROJECT_ID` as a supported state; `/studio` renders
+setup instructions instead of a Studio pointed at nothing. Same seam as `src/lib/jobs/`
+(D-074). A repo that cannot build without a CMS project would block everything else until
+the migration finished.
+
+**Two failures worth recording.** (1) `sanity.config.ts` originally threw on a missing
+project id — an obvious-looking guard that takes the whole build down, because a module
+that throws while evaluating exports nothing, and Turbopack reports it as "Export default
+doesn't exist in target module" a long way from the cause. (2) Importing the config from a
+Server Component drags the Studio into the RSC graph, where `swr` resolves to a
+`react-server` build with no default export. Both fixed at the layer: no throw, and a
+`"use client"` boundary in `studio-client.tsx`.
+
+*Scope.* Schemas, the Studio route, queries and the adapter seam. **No content is migrated
+and no page reads from Sanity yet** — that is Batch 2, and Drew's own framing ("before
+editing individual pages") puts it there. Creating the project needs an interactive
+browser login that cannot be run for him: see Q-31.
+
+*Rejected:* Sanity owning all 377 message keys — nav labels and Zod validation strings are
+not routine content, and it would delete a build-time parity guarantee to gain nothing.
+*Also rejected:* document-level i18n (`@sanity/document-internationalization`) — two linked
+documents per article is a second thing to forget to create, and the existing content model
+is already field-level.

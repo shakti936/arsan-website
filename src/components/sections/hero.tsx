@@ -29,7 +29,7 @@ export function Hero({ namespace }: { namespace: string }) {
           <HeroTitle
             text={`${t("headlineLead")} ${t("headlineEmphasis")} ${t("headlineTail")}`}
             emphasis={t("headlineEmphasis")}
-            role="headline"
+            kind="headline"
           />
           <div aria-hidden="true" className="mt-6 h-0.5 w-10 bg-brass-500" />
           <p className="mt-6 max-w-[40ch] text-lead text-cream-100">

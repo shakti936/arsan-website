@@ -131,3 +131,37 @@ Nothing is broken; this is an absence, not a defect. But an executive search fir
 LinkedIn presence in its footer is conspicuous, and a phone number is the channel a
 Mexico-side client is most likely to use. Needs the real handles and the real number —
 inventing either would be a fabricated claim, so they are not stubbed. **Owner:** Drew.
+
+### Q-30 · Non-blocking · Which pages move to Sanity first, and what happens to `src/content/`
+D-090 put the boundary at page content vs UI chrome, but not the ORDER. The candidates,
+roughly by how often they change:
+
+1. **Articles** — publishing one is the routine content change, and it is self-contained.
+2. **Testimonials** — small, and it unblocks the `approved` gate on Q-23.
+3. **Page marketing copy** — the biggest win for Drew's "no Claude Code for routine
+   changes", and the most work: every page becomes a section renderer.
+4. **Case studies** — the richest structure (six narrative bands), and the schema for them
+   is deliberately thin until one has actually been authored in Sanity.
+
+Open: whether `src/content/**` is deleted after migration or kept as the fallback the
+adapter already supports. Keeping it means two sources of truth for the same words, which
+is the failure mode this project avoids everywhere else — the recommendation is to delete
+each file as its content lands in Sanity, so the fallback shrinks to nothing rather than
+becoming a shadow copy. **Owner:** Drew.
+
+### Q-31 · BLOCKING for the CMS · The Sanity project does not exist yet
+Everything in D-090 is in the repo and validated (`bun run validate:schema` — 0 errors),
+but `sanity login` opens a browser and authenticates a human. It cannot be run on Drew's
+behalf, and no project id means no dataset to write to.
+
+Three commands, in the project root:
+
+```
+bunx sanity login
+bunx sanity init --env .env.local
+bun run dev
+```
+
+`init` writes `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` into
+`.env.local`. The same two values then go into Vercel's environment for deploys.
+`/studio` shows these steps on screen until they are done. **Owner:** Drew.

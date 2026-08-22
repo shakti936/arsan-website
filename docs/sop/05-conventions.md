@@ -61,3 +61,24 @@ records only what's specific to this build or worth restating because it bites.
 - Skipping Biome
 - Secrets in commits, PR bodies, logs, or user-visible output
 - Modeling product data in GHL, or CRM data in Supabase
+
+## `.next/dev/types` is excluded from tsconfig
+
+Next 16 generates route types twice — `.next/types` from `next build` and
+`.next/dev/types` from `next dev` — and its default `include` picks up both.
+They are byte-identical apart from relative path depth, and each one wraps its
+declarations in `declare global`. Two global declarations of `LayoutProps` is
+one too many: TypeScript resolves the duplicate's constraint against the wrong
+`LayoutRoutes` and reports
+
+```
+.next/dev/types/validator.ts: Type 'Route' does not satisfy the constraint '"/[locale]"'.
+```
+
+on a file nobody wrote. It stayed invisible while the site had a single root
+layout, because `LayoutRoutes` was one literal and the two declarations agreed
+trivially. Adding `/studio` made it a union and the disagreement surfaced.
+
+Type-check against one set of generated types. `.next/types` is the one a build
+produces, so `exclude` drops the dev copy. Verified by deleting each in turn:
+either alone is clean, both together is not.

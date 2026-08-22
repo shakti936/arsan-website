@@ -104,7 +104,7 @@ export function PageHero({
           {/* the copy column has to stop before the scrim starts clearing at 55%
             of the container, or the intro lands on lit parts of the photograph */}
           <div className="flex max-w-[32rem] flex-col items-start">
-            <HeroTitle text={title} emphasis={emphasis} role="title" />
+            <HeroTitle text={title} emphasis={emphasis} kind="title" />
             <div aria-hidden="true" className="mt-6 h-0.5 w-10 bg-brass-500" />
             {intro && (
               <p className="mt-6 max-w-[40ch] text-lead text-cream-100">

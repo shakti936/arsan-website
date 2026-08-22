@@ -15,6 +15,10 @@ import { cn } from "@/lib/cn";
  * hero ended up identical: the distinction existed in the design and had
  * nowhere to live in the code. A caller now says what kind of H1 this is and
  * the scale decides how big that is.
+ *
+ * The prop is `kind` rather than the more natural `role` because `role` is the
+ * ARIA attribute — a11y linters read `role="headline"` as an invalid landmark,
+ * and so, reasonably, would anyone reviewing the JSX.
  */
 const ROLE = {
   /** The persuasion moment — the home hero. */
@@ -26,19 +30,20 @@ const ROLE = {
 export function HeroTitle({
   text,
   emphasis,
-  role,
+  kind,
   className,
 }: {
   text: string;
   /** A phrase inside `text` to set in brass italic. */
   emphasis?: string;
-  role: keyof typeof ROLE;
+  /** Which H1 this is. Determines the size; there is no size prop. */
+  kind: keyof typeof ROLE;
   /** Position and colour only — never a size. */
   className?: string;
 }) {
   const base = cn(
     "font-display font-semibold text-white-warm text-balance",
-    ROLE[role],
+    ROLE[kind],
     className,
   );
   const at = emphasis ? text.indexOf(emphasis) : -1;

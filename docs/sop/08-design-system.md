@@ -81,8 +81,8 @@ would land for a workhorse serif. Section headings at 30px against 17px body
 
 ### Three rules
 
-1. **A component takes a role, never a size.** `<HeroTitle role="title">`, not
-   `className="text-title"`. Every drift in this scale started with a caller
+1. **A component takes a role, never a size.** `<HeroTitle kind="title">`, not
+   `className="text-title"`. (`kind`, not `role` — `role` is the ARIA attribute.) Every drift in this scale started with a caller
    passing a size.
 2. **A heading's level and its role must agree.** An `<h2>` is a section
    heading. Something that should look smaller is not an `<h2>` — it is an

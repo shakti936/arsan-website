@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { SITE_ROUTES } from "../src/lib/routes";
 
 /**
  * Every clickable thing has to land somewhere real.
@@ -159,4 +160,27 @@ test("insights category links land filtered", async ({ page }) => {
   // a category nobody asked for falls back to everything rather than to empty
   await page.goto("/insights?category=nonsense");
   expect(await page.locator("article").count()).toBe(all);
+});
+
+/**
+ * `SITE_ROUTES` is the list a Sanity editor picks a CTA destination from, so a
+ * stale entry there is a 404 someone can choose from a dropdown and never
+ * doubt. The crawl above would only catch it once something already linked to
+ * it; this checks the menu itself.
+ */
+test("every route offered as a CMS destination exists", async ({ page }) => {
+  const missing: string[] = [];
+  for (const { path, label } of SITE_ROUTES) {
+    const response = await page.goto(path);
+    const notFound = await page
+      .getByRole("heading", { name: /404|not found|no encontrada/i })
+      .count();
+    if ((response?.status() ?? 0) >= 400 || notFound > 0) {
+      missing.push(`${label} → ${path}`);
+    }
+  }
+  expect(
+    missing,
+    `SITE_ROUTES offers destinations that do not resolve:\n${missing.join("\n")}`,
+  ).toEqual([]);
 });

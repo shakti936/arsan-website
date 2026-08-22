@@ -29,6 +29,26 @@ check whether the project already has something that does the job.
 by D-045: an invisible overlay made the hero CTA unclickable, and no static check (tsc,
 Biome, next build, design detector) could have caught it. Run with `bun run test:e2e`.
 
+## Sanity CMS — installed 2026-08-22 (D-090)
+
+| Package | Version | Why it's here | What breaks without it |
+|---|---|---|---|
+| `sanity` | 6.10.1 | The Studio itself, plus `defineType`/`defineField` used by every file under `src/sanity/schema/`. | No Studio, no schema types. |
+| `next-sanity` | 13.3.3 | `NextStudio` (mounts the Studio at `/studio`), `createClient`, and `defineQuery` for typed GROQ. | The Studio cannot be co-hosted with the site; queries lose their types. |
+| `@sanity/image-url` | 2.1.1 | Builds transformed image URLs from Sanity image refs — width, format, and the hotspot crop an editor sets. | Featured images render at full upload size in whatever format was uploaded. |
+| `@sanity/vision` | 6.10.1 | The GROQ playground inside the Studio. Developer-facing, read-only, behind the same auth. | No way to ask "what is actually in the dataset" without writing a script. |
+
+**Env vars** (names only; values in `.env.local`, and in Vercel for deploys):
+`NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`,
+`SANITY_API_READ_TOKEN` (server-side only, drafts). **All three are optional** —
+`src/sanity/env.ts` treats an unset project id as a supported state and the site
+renders from `src/content/**`. That is deliberate: adding a hard dependency on a
+project that does not exist yet would block every other kind of work.
+
+`bun run validate:schema` runs `sanity schema validate` offline against the
+placeholder project id — it type-checks the whole schema without needing an
+account, which is the only way to verify it before Drew has run `sanity login`.
+
 ## Planned (approved, not yet installed)
 
 - `@supabase/supabase-js`, `@supabase/ssr` — P2+, when AIOS reads begin

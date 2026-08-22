@@ -13,16 +13,21 @@
     "check:launch": "node scripts/launch-gate.mjs",
     "prebuild": "node scripts/validate-messages.mjs && node scripts/validate-design-system.mjs",
     "test:e2e": "playwright test",
-    "validate:design": "node scripts/validate-design-system.mjs"
+    "validate:design": "node scripts/validate-design-system.mjs",
+    "validate:schema": "sanity schema validate --workspace arsan"
   },
   "dependencies": {
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^6.10.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.33.0",
     "motion": "^13.1.1",
     "next": "^16.3.1",
     "next-intl": "^4.13.7",
+    "next-sanity": "^13.3.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "sanity": "^6.10.1",
     "tailwind-merge": "^3.6.0",
     "zod": "^4.4.3"
   },
