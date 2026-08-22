@@ -250,23 +250,28 @@
       "metaTitle": "Executive Search & Talent Advisory for Manufacturers",
       "intro": "Whether you are hiring a critical leader, building an operation in Mexico or navigating organizational change, ARSAN brings senior judgment and manufacturing context to the decisions that matter.",
       "heroCtaPrimary": "Discuss Your Challenge",
+      "helpHeading": "How can ARSAN help?",
       "cards": [
         {
           "title": "Executive & Professional Search",
-          "body": "When the role is too important for a résumé-driven search. We identify and secure leaders and critical professionals who can lead, operate and deliver in the environment they are entering.",
+          "lede": "For critical leadership and professional hiring.",
+          "body": "When the role is too important for a résumé-driven search.",
           "cta": "Explore Executive Search"
         },
         {
           "title": "Mexico Expansion & Workforce Advisory",
-          "body": "For companies entering, launching or expanding operations in Mexico. Build the organization before the operation depends on it.",
+          "lede": "For companies entering, launching or expanding operations in Mexico.",
+          "body": "Build the organization before the operation depends on it.",
           "cta": "Explore Mexico Advisory"
         },
         {
           "title": "Enterprise Talent & Leadership Solutions",
-          "body": "Support the people already inside the business when something important is changing — leadership development, transitions and complex organizational needs.",
-          "cta": "Explore Leadership Solutions"
+          "lede": "For leadership development, transitions and complex organizational needs.",
+          "body": "Support the people already inside the business when something important is changing.",
+          "cta": "Explore Enterprise Solutions"
         }
-      ]
+      ],
+      "storiesHeading": "Selected client stories"
     },
     "executiveSearch": {
       "title": "The right hire changes more than a position.",
@@ -510,6 +515,10 @@
       {
         "title": "A leadership team needs to evolve.",
         "body": "Growth, mergers and transitions demand different leadership than yesterday."
+      },
+      {
+        "title": "A people challenge does not fit a standard HR solution.",
+        "body": "Some problems need judgment and structure, not a requisition."
       }
     ]
   },
@@ -713,5 +722,11 @@
     "errors": {
       "email": "Enter a valid email address."
     }
+  },
+  "ctaBandForClients": {
+    "heading": "Tell us what you're working through.",
+    "body": "Start with the business challenge. We'll help you determine whether — and how — ARSAN can help.",
+    "cta": "Discuss It With Us",
+    "secondary": "Or explore client solutions"
   }
 }

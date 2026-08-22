@@ -22,7 +22,7 @@ export function Stories({
 
   return (
     <section className="bg-white-warm section-y">
-      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
+      <div className="mx-auto w-full max-w-page px-6 sm:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading>{headingOverride ?? t("heading")}</SectionHeading>
           <ArrowLink href="/results">{t("viewAll")}</ArrowLink>

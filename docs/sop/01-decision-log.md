@@ -1169,3 +1169,42 @@ does not exist.
 forms — same Zod schema, same honeypot, same minimum-time gate, same stubbed delivery (D-036).
 A second path would be a second thing to wire, a second thing to fail quietly, and a second
 place a subscriber could land outside the CRM.
+
+### D-069 · 2026-08-21 · /for-clients rebuilt to the comp, and the container widened (closes Q-20)
+Drew, with `refs/dirA-for-clients-landing.png`: *"make for-clients look exactly like this — copy,
+icons, headlines, subheadlines, paragraphs."*
+
+**Sections now match the comp end to end:** hero (D-066), "How can ARSAN help?" as three service
+cards with teal chips in the left gutter, "Why organizations call ARSAN" grown from four items to
+the comp's five, "We've sat on your side of the table", "Selected client stories", and a closing
+band with the comp's own words plus a quieter second way out ("Or explore client solutions").
+Copy is the comp's, verbatim, including the third card's link reading *Enterprise* Solutions
+rather than *Leadership* Solutions.
+
+`CtaBand` took a `namespace` prop rather than being forked. `secondary` is a link and not a
+second button: two buttons of equal weight in a closing band is two primary actions, which is
+none.
+
+**The container went from `max-w-6xl` (72rem) to `--container-page: 80rem`.** This is the answer
+to Q-20 and the reason it is filed here rather than as another tweak.
+
+The same root cause had produced three separate "this doesn't match the reference" reports:
+- the home chooser's "Explore Leadership Solutions" broke across two lines,
+- the leadership row could not fit "Partner, Mexico Practice" beside a portrait (D-065 worked
+  around it by reserving two title lines),
+- the /for-clients service cards wrapped their links.
+
+Each had a local fix available — tighter tracking, a smaller portrait, a reserved line. Two were
+already applied. The common factor is that 72rem puts 1072px of content on a 1440 screen, 74% of
+the viewport, where the comps run 83–86%. 80rem gives 1200px, or 83%. After the change the
+chooser's links fit on one line and the tracking workaround was **removed** rather than left
+stacked on top of the real fix.
+
+One label still wraps: "Explore Enterprise Solutions", the longest on the site, needs ~272px at
+the eyebrow's 0.16em and the service card's gutter leaves ~264. The comp fits it only because
+its type is ~11.5px against our 13px. Chip, gap and padding were tuned to recover most of the
+gap; the last few pixels would cost an off-scale font size on one page, which D-063's uniform
+scale rules out. It balances over two lines with the arrow attached, and that is where it stays.
+
+**Prose got its own measure.** A container is a layout bound, not a reading measure — the article
+body is capped at 72ch so a 1200px grid doesn't set body copy at 85 characters a line.

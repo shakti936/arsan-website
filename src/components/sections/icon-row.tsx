@@ -31,7 +31,7 @@ export function IconRow({
         "scroll-mt-24 section-y",
       )}
     >
-      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
+      <div className="mx-auto w-full max-w-page px-6 sm:px-10">
         {withHeading && (
           <h2
             className={cn(

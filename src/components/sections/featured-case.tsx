@@ -8,7 +8,7 @@ export function FeaturedCase({ namespace }: { namespace: string }) {
 
   return (
     <section className="bg-white-warm section-y">
-      <Reveal className="mx-auto w-full max-w-6xl px-6 sm:px-10">
+      <Reveal className="mx-auto w-full max-w-page px-6 sm:px-10">
         <div className="grid overflow-hidden border border-cream-100 shadow-sm shadow-navy-950/5 lg:grid-cols-[2fr_3fr]">
           <Plate
             variant="c"

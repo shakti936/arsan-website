@@ -250,23 +250,28 @@
       "metaTitle": "Búsqueda de ejecutivos y asesoría de talento para manufactura",
       "intro": "Ya sea que esté contratando a un líder clave, construyendo una operación en México o navegando un cambio organizacional, ARSAN aporta criterio senior y contexto de manufactura a las decisiones que importan.",
       "heroCtaPrimary": "Hablemos de su Reto",
+      "helpHeading": "¿Cómo puede ayudar ARSAN?",
       "cards": [
         {
           "title": "Búsqueda de Ejecutivos y Profesionales",
-          "body": "Cuando el puesto es demasiado importante para una búsqueda basada en currículums. Identificamos y aseguramos líderes y profesionales clave capaces de dirigir, operar y entregar resultados en el entorno al que llegan.",
+          "lede": "Para contrataciones críticas de liderazgo y de perfiles profesionales.",
+          "body": "Cuando el puesto es demasiado importante para una búsqueda guiada por currículums.",
           "cta": "Ver Búsqueda de Ejecutivos"
         },
         {
           "title": "Expansión en México y Asesoría Laboral",
-          "body": "Para empresas que llegan, arrancan o expanden operaciones en México. Construya la organización antes de que la operación dependa de ella.",
+          "lede": "Para empresas que entran, arrancan o expanden operaciones en México.",
+          "body": "Construya la organización antes de que la operación dependa de ella.",
           "cta": "Ver Asesoría México"
         },
         {
           "title": "Talento Empresarial y Soluciones de Liderazgo",
-          "body": "Respalde a las personas que ya están dentro del negocio cuando algo importante está cambiando — desarrollo de liderazgo, transiciones y necesidades organizacionales complejas.",
-          "cta": "Ver Soluciones de Liderazgo"
+          "lede": "Para desarrollo de liderazgo, transiciones y necesidades organizacionales complejas.",
+          "body": "Acompañe a la gente que ya está en el negocio cuando algo importante está cambiando.",
+          "cta": "Ver Soluciones Empresariales"
         }
-      ]
+      ],
+      "storiesHeading": "Casos de clientes seleccionados"
     },
     "executiveSearch": {
       "title": "La contratación correcta cambia más que una posición.",
@@ -510,6 +515,10 @@
       {
         "title": "Un equipo directivo necesita evolucionar.",
         "body": "Crecimiento, fusiones y transiciones exigen un liderazgo distinto al de ayer."
+      },
+      {
+        "title": "Un reto de personas no cabe en una solución de RH estándar.",
+        "body": "Hay problemas que piden criterio y estructura, no una requisición."
       }
     ]
   },
@@ -713,5 +722,11 @@
     "errors": {
       "email": "Ingrese un correo electrónico válido."
     }
+  },
+  "ctaBandForClients": {
+    "heading": "Cuéntenos en qué está trabajando.",
+    "body": "Empiece por el reto de negocio. Le ayudamos a determinar si — y cómo — ARSAN puede aportar.",
+    "cta": "Hablemos con ARSAN",
+    "secondary": "O explore las soluciones para empresas"
   }
 }

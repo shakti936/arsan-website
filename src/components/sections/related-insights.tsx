@@ -31,7 +31,7 @@ export function RelatedInsights({
 
   return (
     <section className="bg-cream-50 section-y">
-      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
+      <div className="mx-auto w-full max-w-page px-6 sm:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="font-display text-display-md font-semibold text-navy-900">
             {t("related")}

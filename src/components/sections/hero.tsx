@@ -19,7 +19,7 @@ export function Hero({ namespace }: { namespace: string }) {
     <section className="relative isolate overflow-hidden bg-navy-900">
       <HeroBackdrop src="/images/hero-executives.jpg" priority />
 
-      <div className="relative mx-auto w-full max-w-6xl section-y px-6 sm:px-10">
+      <div className="relative mx-auto w-full max-w-page section-y px-6 sm:px-10">
         <div className="flex max-w-[32rem] flex-col items-start justify-center">
           <HeroTitle
             text={`${t("headlineLead")} ${t("headlineEmphasis")} ${t("headlineTail")}`}

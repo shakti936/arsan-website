@@ -9,7 +9,7 @@ export default function NotFound() {
       id="main"
       className="flex min-h-[60dvh] flex-col items-start justify-center bg-white-warm px-6 section-y sm:px-10"
     >
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="mx-auto w-full max-w-page">
         <p className="eyebrow text-brass-600">404</p>
         <h1 className="mt-4 max-w-[22ch] font-display text-display-lg font-semibold text-navy-900 text-balance">
           {t("notFoundTitle")}

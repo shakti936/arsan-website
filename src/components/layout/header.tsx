@@ -26,7 +26,7 @@ export function Header() {
         {t("skipToContent")}
       </a>
 
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 sm:px-10 xl:gap-6">
+      <div className="mx-auto flex w-full max-w-page items-center justify-between gap-4 px-6 sm:px-10 xl:gap-6">
         <Logo width={186} className="shrink-0" />
 
         <nav aria-label={t("ariaMain")} className="hidden xl:block">

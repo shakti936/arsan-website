@@ -25,6 +25,23 @@
   /* Display scale — conventional web sizes, mobile → desktop.
      hero 32→48 · page hero 28→40 · section 24→30 · card title 22.
      Line-heights are PAIRED so headings never inherit body leading. */
+  /*
+   * The page container.
+   *
+   * Was `max-w-6xl` (72rem), which puts 1072px of content on a 1440 screen —
+   * 74% of the viewport. The Direction A comps run their content at 83–86%,
+   * and the difference showed up three separate times as "this doesn't match
+   * the reference": the chooser CTA broke across two lines, the leadership row
+   * couldn't fit "Partner, Mexico Practice" beside a portrait, and the service
+   * cards on /for-clients wrapped their links. Each had a local fix; the
+   * container is the thing they all had in common.
+   *
+   * 80rem gives 1200px of content at 1440 — 83%, the low end of the comps.
+   * Prose that would run long at that measure is capped where it is set, not
+   * here: a container is a layout bound, not a reading measure.
+   */
+  --container-page: 80rem;
+
   --text-display-xl: clamp(2rem, 1.35rem + 2.2vw, 3rem);
   --text-display-xl--line-height: 1.18;
   --text-display-lg: clamp(1.75rem, 1.25rem + 1.6vw, 2.5rem);

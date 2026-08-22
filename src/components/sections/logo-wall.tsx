@@ -45,7 +45,7 @@ export function LogoWall() {
   return (
     <section className="border-b border-cream-100 bg-cream-50 py-10">
       <p className="eyebrow px-6 text-center text-navy-700">{t("eyebrow")}</p>
-      <div className="mx-auto mt-7 max-w-6xl px-6 sm:px-10">
+      <div className="mx-auto mt-7 max-w-page px-6 sm:px-10">
         {/* ~3.3x the copy the seven placeholders carried, so the loop runs
             ~3.3x longer to hold the same scroll speed */}
         <Marquee duration={130} pauseOnHover fadeAmount={16}>

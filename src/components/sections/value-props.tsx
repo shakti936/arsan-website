@@ -9,7 +9,7 @@ export function ValueProps() {
 
   return (
     <section className="bg-cream-50 section-y">
-      <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 sm:px-10 lg:grid-cols-[1.1fr_2fr]">
+      <div className="mx-auto grid w-full max-w-page gap-12 px-6 sm:px-10 lg:grid-cols-[1.1fr_2fr]">
         <Reveal>
           <SectionHeading>{t("heading")}</SectionHeading>
           <p className="mt-5 max-w-[48ch] text-base text-navy-800">

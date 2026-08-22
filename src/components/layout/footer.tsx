@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className="bg-navy-950 text-cream-100">
-      <div className="mx-auto w-full max-w-6xl px-6 py-14 sm:px-10">
+      <div className="mx-auto w-full max-w-page px-6 py-14 sm:px-10">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_2fr]">
           <div>
             <Logo variant="wordmark" width={190} />

@@ -35,7 +35,7 @@ export function MegaPanel({ section }: { section: NavSection }) {
             so the pointer can travel down without crossing dead space */}
         <span aria-hidden="true" className="absolute inset-x-0 -top-6 h-6" />
         <div className="border-t-2 border-brass-500 bg-white-warm shadow-xl shadow-navy-950/25">
-          <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-9 sm:px-10 lg:grid-cols-[1.15fr_1fr]">
+          <div className="mx-auto grid w-full max-w-page gap-10 px-6 py-9 sm:px-10 lg:grid-cols-[1.15fr_1fr]">
             {/* Left: item list */}
             <div className="flex flex-col">
               <ul className="divide-y divide-cream-100">

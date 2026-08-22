@@ -19,10 +19,12 @@ import type { ArticleCopy } from "@/content/insights";
 export function ArticleBody({ copy }: { copy: ArticleCopy }) {
   return (
     <section className="bg-white-warm section-y">
-      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
+      <div className="mx-auto w-full max-w-page px-6 sm:px-10">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-14">
-          {/* ---- prose ---- */}
-          <div>
+          {/* ---- prose ----
+              capped at 72ch: the container is 1200px wide now, and the 1.7fr
+              column would otherwise set body copy at ~85 characters a line */}
+          <div className="max-w-[72ch]">
             {copy.lede.map((paragraph) => (
               <ProseText
                 key={paragraph.slice(0, 40)}

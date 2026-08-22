@@ -3,16 +3,10 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/sections/cta-band";
 import { IconRow } from "@/components/sections/icon-row";
 import { PageHero } from "@/components/sections/page-hero";
-import { ArrowLink } from "@/components/ui/arrow-link";
-import { Container } from "@/components/ui/container";
-import { Reveal } from "@/components/ui/reveal";
+import { ServiceCards } from "@/components/sections/service-cards";
+import { Stories } from "@/components/sections/stories";
+import { ValueProps } from "@/components/sections/value-props";
 import { pageMetadata } from "@/lib/site";
-
-const CARD_HREFS = [
-  "/for-clients/executive-search",
-  "/for-clients/mexico-advisory",
-  "/for-clients/leadership-solutions",
-] as const;
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -32,6 +26,7 @@ export default async function Page({ params }: Params) {
   setRequestLocale(locale);
   const t = await getTranslations("subpage.forClients");
   const tn = await getTranslations("nav");
+  const tc = await getTranslations("ctaBandForClients");
 
   return (
     <main id="main">
@@ -44,33 +39,21 @@ export default async function Page({ params }: Params) {
         primary={{ label: t("heroCtaPrimary"), href: "/contact" }}
         secondary={{ label: tn("whyArsan.label"), href: "/why-arsan" }}
       />
-      <section className="bg-white-warm section-y">
-        <Container>
-          <div className="grid gap-6 md:grid-cols-3">
-            {CARD_HREFS.map((href, i) => (
-              <Reveal key={href} delay={i * 0.08} className="h-full">
-                <article className="flex h-full flex-col border border-cream-100 bg-white-warm p-8 shadow-sm shadow-navy-950/5">
-                  <h2 className="font-display text-display-sm font-semibold leading-snug text-navy-900 text-balance">
-                    {t(`cards.${i}.title`)}
-                  </h2>
-                  <p className="mt-4 flex-1 text-base text-navy-800">
-                    {t(`cards.${i}.body`)}
-                  </p>
-                  <div className="mt-6">
-                    <ArrowLink href={href}>{t(`cards.${i}.cta`)}</ArrowLink>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ServiceCards />
       <IconRow
         namespace="whyCall"
-        icons={["shield", "target", "map", "users"]}
+        icons={["shield", "target", "map", "users", "puzzle"]}
         withHeading
       />
-      <CtaBand />
+      <ValueProps />
+      <Stories headingOverride={t("storiesHeading")} />
+      <CtaBand
+        namespace="ctaBandForClients"
+        secondary={{
+          label: tc("secondary"),
+          href: "/for-clients/executive-search",
+        }}
+      />
     </main>
   );
 }

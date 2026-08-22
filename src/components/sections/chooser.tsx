@@ -28,7 +28,7 @@ export function Chooser() {
 
   return (
     <section className="bg-white-warm section-y">
-      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
+      <div className="mx-auto w-full max-w-page px-6 sm:px-10">
         <h2 className="text-center font-display text-display-md font-semibold text-navy-900 text-balance">
           {t("heading")}
         </h2>
@@ -53,15 +53,8 @@ export function Chooser() {
                   <p className="mt-4 flex-1 text-sm text-navy-800 text-pretty">
                     {t(`cards.${i}.body`)}
                   </p>
-                  {/* tighter than the 0.16em eyebrow default: "Explore
-                      Leadership Solutions" set at 0.16em is wider than a third
-                      of a 72rem container, and broke with the arrow stranded
-                      on its own line */}
                   <div className="mt-6 flex justify-center">
-                    <ArrowLink
-                      href={href}
-                      className="tracking-[0.1em] text-balance"
-                    >
+                    <ArrowLink href={href} className="text-balance">
                       {t(`cards.${i}.cta`)}
                     </ArrowLink>
                   </div>
