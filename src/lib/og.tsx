@@ -69,12 +69,15 @@ export async function ogImage({
   locale,
   namespace,
   photo,
+  title: explicitTitle,
 }: {
   locale: string;
   /** `subpage.*` key, or omitted for the site-level card */
   namespace?: string;
   /** basename in public/images */
   photo: string;
+  /** Overrides the namespace lookup — articles keep their copy in a module. */
+  title?: string;
 }) {
   const [fonts, photoData, wordmarkData, tTitle] = await Promise.all([
     loadFonts(),
@@ -86,9 +89,11 @@ export async function ogImage({
   // Subpages carry an editorial `title`. The site-level card takes the hero
   // headline instead of `meta.title`, which only restates the lockup already
   // printed above it.
-  const title = namespace
-    ? tTitle("title")
-    : `${tTitle("headlineLead")} ${tTitle("headlineEmphasis")} ${tTitle("headlineTail")}`;
+  const title =
+    explicitTitle ??
+    (namespace
+      ? tTitle("title")
+      : `${tTitle("headlineLead")} ${tTitle("headlineEmphasis")} ${tTitle("headlineTail")}`);
 
   const src = `data:image/jpeg;base64,${photoData.toString("base64")}`;
   const wordmark = `data:image/png;base64,${wordmarkData.toString("base64")}`;

@@ -1109,3 +1109,63 @@ padded out to look like six.
 Names are rendered exactly as Drew wrote them, parentheticals included —
 "Illinois Tool Works (ITW)" sits four positions from "ITW Automotive", and "(ITW)" next to five
 "ITW …" entries is arguably redundant. Flagged rather than edited: they are his to set.
+
+### D-068 · 2026-08-21 · Four articles, and where article content lives
+Drew: *"can you start adding the articles … write them as if you were the expert in this field
+and your job at ARSAN was to write SEO-optimised and insightful articles."* Four comps:
+`refs/dirA-article-{automation,passive-candidates,leadership-traits,market-update}.png`.
+
+**Content lives in typed modules, not in `messages/*.json`.** The house rule that no user-facing
+string is hardcoded still holds — every field carries `en` and `es`. But a 1,200-word article
+split across forty flat message keys is unwritable, unreviewable in a diff, and hands the
+message validator forty more things to count. `src/content/insights/<slug>.ts` keeps a piece in
+one place in reading order, and the `Article` type turns a missing translation into a build
+error instead of a raw `insights.3.steps.2` on the page.
+
+Prose fields accept exactly one construct, `[label](/path)`, so an article can link into the
+service pages *from inside a sentence*. That is the internal link that carries weight; a rail of
+related links underneath is not the same thing. Nothing else is parsed — every construct added
+is one a translator can break silently.
+
+**The comps' statistics are fabricated and are not shipping.** Each rail card in the comps
+carries a figure with a citation: 67% and 78% to "Deloitte 2025 Manufacturing Industry Outlook",
+70% to "LinkedIn Global Talent Trends 2024", 4.8% to a "Q3 2025 ARSAN Manufacturing Talent
+Market Report". None of those numbers came from those sources; the ARSAN report does not exist.
+Attributing an invented figure to a real research firm — on a site whose readers benchmark
+compensation for a living — is what a competitor screenshots. `stat` is typed, wired and unset
+on all four; the rail carries the article's own questions instead, and a sourced number drops
+straight in when Armida provides one (Q-06).
+
+The market-update piece was hit hardest: the comp is built end to end on numbers that don't
+exist ("+6% YoY postings", "4.8% compensation growth"). Rewritten as observed patterns from live
+searches, which a search firm can say from its own desk, keeping the comp's structure —
+demand, compensation, regional shift, what to watch.
+
+**Dates.** The comps date the articles July 2025. These are new, so they carry 2026 dates, and
+the two titles with a stale year were moved forward rather than published thirteen months old.
+
+**`timeZone: "UTC"` in the i18n request config.** A publication date is a calendar date;
+`new Date("2026-08-04")` is UTC midnight, and formatted in any zone west of UTC — including the
+build machine's — it renders as the 3rd. Pinning the zone makes the printed date the written one
+wherever the site is built or served.
+
+**Cards now read from the same list as the pages.** `ArticleCards` used to render six teasers
+from `messages/*.json` for articles that did not exist, each ending "Article coming soon" — a
+promise the site repeated and never met. Home, /insights and every article's related rail now
+read `ARTICLES`, so publishing a piece adds it in three places at once and a card can never
+point at nothing. The two teasers with no article behind them are retired.
+
+**SEO.** Each article carries a `metaTitle` separate from its editorial headline (a headline is
+a bad `<title>`), a written `metaDescription`, `Article` + `BreadcrumbList` JSON-LD in one graph,
+`og:type=article` with `publishedTime`, its own prerendered OG card built from the same title,
+and a sitemap entry dated to publication rather than to the build — a sitemap that reports every
+URL as modified today teaches a crawler to stop believing `lastmod`.
+
+`author` and `publisher` in the JSON-LD are the organization. These are written by ARSAN's
+editorial team; inventing a named byline to fill a schema field is a claim about a person who
+does not exist.
+
+**Newsletter.** The "Stay informed" band posts through the same server action as the inquiry
+forms — same Zod schema, same honeypot, same minimum-time gate, same stubbed delivery (D-036).
+A second path would be a second thing to wire, a second thing to fail quietly, and a second
+place a subscriber could land outside the CRM.

@@ -489,46 +489,8 @@
   },
   "insightsRow": {
     "heading": "Perspectiva para mejores decisiones de talento.",
-    "viewAll": "Ver Todas las Perspectivas",
-    "comingSoon": "Artículo próximamente",
-    "items": [
-      {
-        "category": "Estrategia de Talento",
-        "title": "Las habilidades directivas que la manufactura más necesita en 2026",
-        "excerpt": "Las capacidades de liderazgo que impulsan desempeño y resiliencia — y cómo contratarlas.",
-        "imageAlt": "Una oficina ejecutiva vacía al anochecer, con la ventana hacia el patio de una planta."
-      },
-      {
-        "category": "Expansión en México",
-        "title": "Qué resolver antes de expandirse a México",
-        "excerpt": "Una guía práctica para construir su base de liderazgo y fuerza laboral.",
-        "imageAlt": "Vista aérea de un parque industrial en el Bajío, con naves y patios de tráileres hasta las montañas."
-      },
-      {
-        "category": "Liderazgo",
-        "title": "Equipos directivos más fuertes en tiempos de cambio",
-        "excerpt": "Cómo los equipos alineados crean claridad, cultura y resultados.",
-        "imageAlt": "Trabajadores que se alejan por un pasillo de lockers hacia una puerta iluminada, en el cambio de turno."
-      },
-      {
-        "category": "Compensación",
-        "title": "Por qué los benchmarks de compensación no cuentan toda la historia",
-        "excerpt": "Lo que los números omiten al atraer talento senior de manufactura entre fronteras.",
-        "imageAlt": "Hojas de cálculo impresas extendidas sobre un escritorio con un lápiz y unos lentes de lectura."
-      },
-      {
-        "category": "Proceso de Contratación",
-        "title": "Lo que los fabricantes de EE. UU. subestiman al contratar en México",
-        "excerpt": "Los supuestos que descarrilan contrataciones transfronterizas — y qué hacer en su lugar.",
-        "imageAlt": "Una fila de tráileres esperando en un cruce fronterizo comercial antes del amanecer."
-      },
-      {
-        "category": "Estrategia de Carrera",
-        "title": "Cómo evaluar el movimiento de liderazgo correcto",
-        "excerpt": "Factores clave al valorar oportunidad, cultura y ajuste de largo plazo.",
-        "imageAlt": "Una carretera al amanecer vista a través del parabrisas, con siluetas de plantas en el horizonte."
-      }
-    ]
+    "viewAll": "Ver todas las perspectivas",
+    "readingTime": "{minutes} min de lectura"
   },
   "whyCall": {
     "heading": "Por qué las organizaciones llaman a ARSAN",
@@ -729,5 +691,27 @@
   },
   "resultsPage": {
     "storiesHeading": "Casos seleccionados"
+  },
+  "article": {
+    "breadcrumbLabel": "Ruta de navegación",
+    "home": "Inicio",
+    "insights": "Perspectivas",
+    "byline": "Por {author}",
+    "readingTime": "{minutes} min de lectura",
+    "related": "Perspectivas relacionadas",
+    "viewAll": "Ver todas las perspectivas"
+  },
+  "newsletter": {
+    "heading": "Manténgase informado",
+    "body": "Reciba nuestra lectura sobre contratación en manufactura, liderazgo y el mercado de talento en México — algunas veces por trimestre, cuando tengamos algo que valga la pena enviar.",
+    "label": "Correo de trabajo",
+    "placeholder": "Su correo de trabajo",
+    "cta": "Suscribirse",
+    "pending": "Enviando…",
+    "success": "Ya está en la lista. Le escribiremos cuando el siguiente material valga su tiempo.",
+    "privacy": "Respetamos su privacidad. Puede darse de baja cuando quiera.",
+    "errors": {
+      "email": "Ingrese un correo electrónico válido."
+    }
   }
 }

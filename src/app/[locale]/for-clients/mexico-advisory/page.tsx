@@ -72,7 +72,7 @@ export default async function Page({ params }: Params) {
         icons={["target", "chart", "star", "globe"]}
         withHeading
       />
-      <ArticleCards namespace="insightsRow" withViewAll />
+      <ArticleCards locale={locale} withViewAll />
       <CtaBand />
     </main>
   );

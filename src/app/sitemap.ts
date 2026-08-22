@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { ARTICLES } from "@/content/insights";
 import { routing } from "@/i18n/routing";
 import { localeUrl } from "@/lib/site";
 
@@ -18,11 +19,22 @@ const PATHS = [
   "/contact",
 ];
 
+/**
+ * Articles carry their real publication date rather than the build date. A
+ * sitemap that reports every URL as modified today teaches a crawler to stop
+ * believing `lastmod`, which is the one signal it is there to provide.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return PATHS.flatMap((path) =>
+  const pages = PATHS.map((path) => ({ path, lastModified: new Date() }));
+  const articles = ARTICLES.map((article) => ({
+    path: `/insights/${article.slug}`,
+    lastModified: new Date(article.published),
+  }));
+
+  return [...pages, ...articles].flatMap(({ path, lastModified }) =>
     routing.locales.map((locale) => ({
       url: localeUrl(locale, path),
-      lastModified: new Date(),
+      lastModified,
       alternates: {
         languages: Object.fromEntries(
           routing.locales.map((l) => [l, localeUrl(l, path)]),

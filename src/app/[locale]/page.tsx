@@ -51,7 +51,7 @@ export default function HomePage({
       <QuoteBand namespace="home.quote" />
       <Stories />
       <TeamRow withViewAll />
-      <ArticleCards namespace="insightsRow" withViewAll />
+      <ArticleCards locale={locale} withViewAll />
       <CtaBand />
     </main>
   );

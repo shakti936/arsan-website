@@ -6,6 +6,7 @@ import {
   clientInquirySchema,
   type LeadFormState,
   MIN_SUBMIT_MS,
+  newsletterSchema,
 } from "@/lib/lead-schema";
 
 /**
@@ -13,9 +14,15 @@ import {
  * production-final; delivery is stubbed until Drew + Marianna approve
  * the forms. The approved GHL design (upsert -> additive tags -> fields
  * -> note; n8n failure webhook) plugs in at deliverLead() only.
+ *
+ * The newsletter goes through the same door on purpose. A second delivery
+ * path would be a second thing to wire, a second thing to fail quietly, and
+ * a second place a subscriber could land outside the CRM.
  */
+type LeadKind = "client" | "candidate" | "newsletter";
+
 async function deliverLead(
-  kind: "client" | "candidate",
+  kind: LeadKind,
   _data: Record<string, unknown>,
 ): Promise<void> {
   // GHL wiring lands here. Metadata-only log until then (no PII).
@@ -29,7 +36,7 @@ function spamChecks(loadedAt: number): boolean {
 
 async function handle<S extends z.ZodType>(
   schema: S,
-  kind: "client" | "candidate",
+  kind: LeadKind,
   formData: FormData,
 ): Promise<LeadFormState> {
   const raw = Object.fromEntries(formData.entries());
@@ -66,4 +73,11 @@ export async function submitCandidateInquiry(
   formData: FormData,
 ): Promise<LeadFormState> {
   return handle(candidateInquirySchema, "candidate", formData);
+}
+
+export async function subscribeToInsights(
+  _prev: LeadFormState,
+  formData: FormData,
+): Promise<LeadFormState> {
+  return handle(newsletterSchema, "newsletter", formData);
 }

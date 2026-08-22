@@ -47,12 +47,15 @@ export function pageMetadata({
   path,
   title,
   description,
+  publishedTime,
 }: {
   locale: string;
   /** Route path starting with "/", or "/" for the home page */
   path: string;
   title: string;
   description: string;
+  /** ISO date. Present means this is an article, not a page. */
+  publishedTime?: string;
 }): Metadata {
   const url = localeUrl(locale, path);
   return {
@@ -60,7 +63,9 @@ export function pageMetadata({
     description,
     alternates: alternatesFor(locale, path),
     openGraph: {
-      type: "website",
+      ...(publishedTime
+        ? { type: "article" as const, publishedTime }
+        : { type: "website" as const }),
       siteName: "ARSAN",
       locale: locale === "es" ? "es_MX" : "en_US",
       url,

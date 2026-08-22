@@ -490,45 +490,7 @@
   "insightsRow": {
     "heading": "Perspective for better people decisions.",
     "viewAll": "Explore All Insights",
-    "comingSoon": "Article coming soon",
-    "items": [
-      {
-        "category": "Talent Strategy",
-        "title": "The C-suite skills manufacturers need most in 2026",
-        "excerpt": "The leadership capabilities driving performance and resilience — and how to hire for them.",
-        "imageAlt": "An empty executive office at dusk, its window looking out over a plant yard."
-      },
-      {
-        "category": "Mexico Expansion",
-        "title": "What to get right before you expand to Mexico",
-        "excerpt": "A practical guide to building your leadership and workforce foundation.",
-        "imageAlt": "An aerial view of an industrial park in the Bajío, plants and truck yards laid out to the mountains."
-      },
-      {
-        "category": "Leadership",
-        "title": "Building stronger leadership teams in times of change",
-        "excerpt": "How aligned leadership teams create clarity, culture and results.",
-        "imageAlt": "Workers walking away down a locker-lined corridor toward a bright doorway at shift change."
-      },
-      {
-        "category": "Compensation",
-        "title": "Why compensation benchmarks alone don't tell the whole story",
-        "excerpt": "What the numbers miss about attracting senior manufacturing talent across borders.",
-        "imageAlt": "Printed spreadsheet pages fanned across a desk with a pencil and reading glasses."
-      },
-      {
-        "category": "Hiring Process",
-        "title": "What U.S. manufacturers underestimate when hiring in Mexico",
-        "excerpt": "The assumptions that quietly derail cross-border hires — and what to do instead.",
-        "imageAlt": "A queue of freight trailers waiting at a commercial border crossing before dawn."
-      },
-      {
-        "category": "Career Strategy",
-        "title": "How to evaluate the right leadership move",
-        "excerpt": "Key factors when assessing opportunity, culture and long-term fit.",
-        "imageAlt": "A highway at dawn seen through a windscreen, plant silhouettes on the horizon."
-      }
-    ]
+    "readingTime": "{minutes} min read"
   },
   "whyCall": {
     "heading": "Why organizations call ARSAN",
@@ -729,5 +691,27 @@
   },
   "resultsPage": {
     "storiesHeading": "Selected case studies"
+  },
+  "article": {
+    "breadcrumbLabel": "Breadcrumb",
+    "home": "Home",
+    "insights": "Insights",
+    "byline": "By {author}",
+    "readingTime": "{minutes} min read",
+    "related": "Related Insights",
+    "viewAll": "View all insights"
+  },
+  "newsletter": {
+    "heading": "Stay informed",
+    "body": "Get our perspective on manufacturing hiring, leadership and the Mexico talent market — a few times a quarter, when we have something worth sending.",
+    "label": "Work email",
+    "placeholder": "Your work email",
+    "cta": "Subscribe",
+    "pending": "Sending…",
+    "success": "You're on the list. We'll be in touch when the next piece is worth your time.",
+    "privacy": "We respect your privacy. Unsubscribe at any time.",
+    "errors": {
+      "email": "Enter a valid email address."
+    }
   }
 }

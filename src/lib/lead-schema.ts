@@ -42,6 +42,18 @@ export const candidateInquirySchema = z.object({
     .max(160, "currentTitle"),
 });
 
+/**
+ * The insights newsletter. Same honeypot and same minimum-time gate as the
+ * inquiry forms — an email field on every article page is the most scraped
+ * surface on the site, and a subscribe box with no gate becomes a list of
+ * bots inside a week.
+ */
+export const newsletterSchema = z.object({
+  email: base.email,
+  website: base.website,
+  loadedAt: base.loadedAt,
+});
+
 export type LeadFormState = {
   status: "idle" | "success" | "error";
   /** field name -> error message KEY under forms.errors */
