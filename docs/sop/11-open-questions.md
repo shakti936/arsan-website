@@ -164,3 +164,37 @@ Remaining, and deliberately not done yet — see `10-deploy-and-ops.md`: the two
 not in Vercel, and the production domain is not in Sanity's CORS allowlist. Neither
 matters until a page actually reads from Sanity (Batch 2); production currently renders
 from `src/content/**`, which is correct.
+
+### Q-32 · Non-blocking · Translation needs two credentials nobody has created yet
+The **Translate to Spanish** action is built and wired but inert until both exist:
+
+- `ANTHROPIC_API_KEY` — an Anthropic API key. Cost is roughly a cent per page and is only
+  incurred when the button is pressed; a repeat press with nothing changed makes no API
+  call at all.
+- `SANITY_API_WRITE_TOKEN` — a Sanity token with **Editor** scope, from
+  manage.sanity.io → API → Tokens. The existing `SANITY_API_READ_TOKEN` is viewer-only and
+  cannot write.
+
+Both are server-side only and belong in `.env.local` locally and in Vercel for deploys.
+Note the Production-environment permission wall in `10-deploy-and-ops.md` applies here
+too — a Kaizen Gods Owner/Admin has to add them to Production.
+
+Until they exist the action reports "translation is not configured" and changes nothing.
+Editing copy, click-to-edit preview and publishing are all unaffected. The Spanish already
+in the dataset came from `messages/es.json` and is hand-written, so nothing is missing
+today — this only matters the first time Drew edits an English string and wants its
+Spanish to follow.
+
+### Q-33 · Non-blocking · A Sanity hiccup at build time can fail a deploy
+Observed once on 2026-08-22: `bun run build` failed with
+`Error occurred prerendering page "/en/insights/from-vacant-to-victorious"`, and the
+identical build succeeded on the next run. A transient fetch failure, not a code fault.
+
+Page *copy* is immune to this — `pageCopyOverrides` catches everything and falls back to
+the catalogue. Articles are not: `src/lib/articles.ts` lets a fetch error propagate, which
+is correct for a page that has nothing to render without its content, but it does mean a
+CDN blip during a Vercel build fails the deploy rather than the page.
+
+Not worth solving until it recurs. If it does, the options are a retry around the article
+fetch or ISR for article routes instead of full prerender. Noting it so the next person to
+see a one-off deploy failure re-runs it before debugging.

@@ -1986,3 +1986,95 @@ attribute is injected into `<body>` by the ColorZilla extension before React hyd
 Next's own error text names extensions as a cause. `suppressHydrationWarning` on the two
 `<body>` elements is the intended escape valve and is precisely scoped: it suppresses the
 element's own attributes and still reports mismatches inside the tree.
+
+### D-096 · 2026-08-22 · Page copy is a merge layer over next-intl, not a move into Sanity
+Drew asked to be able to change the copy on each page. The obvious build is to move the
+copy into Sanity and render pages from documents — and it is the wrong one here.
+
+**Why not the obvious one.** Every page was built against a Direction A comp, and its copy
+is delivered by ~30 components that each call `useTranslations(namespace)`. Rebuilding
+those as generic section renderers would make the *layout* editable, which nobody asked
+for, at the cost of the comp fidelity this whole build has been about.
+
+**What was built instead.** `src/i18n/request.ts` is a single seam — messages come from
+one `await import()`. Sanity-authored copy is deep-merged over the catalogue there. Every
+string on every page became editable and **no component changed**. `messages/*.json` stays
+the structural source of truth: it defines which keys exist, it is what
+`validate-messages.mjs` checks, and it is the fallback for anything not overridden. Sanity
+supplies values, not shape. `pageCopyOverrides` returns `{}` on any failure, so a CMS that
+is slow, down or mid-deploy renders the catalogue rather than an empty page.
+
+The 34 document types are generated from `messages/en.json` by
+`scripts/generate-copy-schema.mjs`. Hand-writing a schema for ~270 keys would be a second
+declaration of the same shape, guaranteed to drift.
+
+### D-097 · 2026-08-22 · The namespace map is a separate module with no imports
+The build broke with `swr` having no default export — the same RSC-graph leak as the
+Studio bug, in a new disguise. `page-copy.ts` imported `COPY_NAMESPACES` from the schema
+index, which drags all 34 schema modules, and therefore `sanity`, into the server graph.
+
+The map is *data*; it only lived beside schema. It now lives in
+`src/sanity/schema/copy/namespaces.ts` with **no imports at all**, and
+`scripts/validate-design-system.mjs` fails the build on any app-code import of
+`sanity/schema` outside that one path. Verified by deliberately breaking it. Second
+occurrence of this leak, hence a guard rather than a fix.
+
+### D-098 · 2026-08-22 · Field groups are document-level only
+The structure tool crashed with `Field group 'en' is not defined in schema for type
+'undefined'`. The generator declared `groups: [{name: "en"}, {name: "es"}]` on the
+document and assigned `group: "en"` to fields nested one level down inside `copy`. Groups
+only apply to a document's own top-level fields.
+
+Sanity does **not** reject this at `schema validate` time — it validated clean, then
+crashed when a human opened the form. Replaced with `collapsible` objects, which give the
+same one-language-at-a-time reading without the failure mode.
+
+### D-099 · 2026-08-22 · Every string is seeded into Sanity, so click-to-edit covers the page
+Drew asked for Wix/GHL-style click-the-headline-and-edit-it. That is the Presentation
+tool's visual editing, and the plumbing already existed — but it only works on strings
+that came *from* Sanity, because the clickable region comes from a stega pointer encoded
+into the string itself. With copy still in the catalogue, the editor would meet a page
+where some paragraphs are editable and others silently are not.
+
+So `scripts/seed-page-copy.ts` pushes both catalogues into the dataset. The JSON becomes
+what it should be: the fallback that renders a correct site when the CMS is unreachable.
+Re-runs never overwrite — `setIfMissing` only backfills keys added since.
+
+**Verified rather than assumed.** Two of the checks along the way were measuring the wrong
+thing and both said "broken" when it was not:
+- The stega detector scanned Unicode TAG characters (U+E0000–E007F). Sanity's stega uses
+  *zero-width* characters. Every "0 markers" reading was the detector, not the encoding.
+- Draft mode could not be enabled by curl at all: `defineEnableDraftMode` requires a signed
+  secret and correctly returned 401, so those page fetches were never previews.
+
+What was actually proven: a stega pointer survives next-intl's ICU parser and still
+*decodes* — for a plain string, one with a `{count}` placeholder, and one with `<b>` tags —
+with the visible text left clean.
+
+**Spanish, without doing the work twice.** Drew writes English; a "Translate to Spanish"
+action fills the Spanish. The rule that makes it safe lives in `translation-state.ts`,
+which records two hashes per string: the English it was translated *from*, and the Spanish
+the machine *produced*. With only the first we would refresh stale copy and silently
+destroy every correction an editor made; with only the second we could protect corrections
+but never notice the English had moved on. Together: **regenerate what the machine wrote
+and the author has since changed; never touch what a human wrote.** The seed records the
+catalogue pairing, so the professional Spanish already in `messages/es.json` is protected
+while still refreshing when its English changes.
+
+`/api/studio/translate` takes a **document id and nothing else**, validated against the
+generated namespace map. "Send text, get text back" would have turned a route on a public
+marketing site into a free translation API billed to our Anthropic account. Reading the
+English out of our own dataset means the only thing a caller can request is a
+retranslation of copy we already own — and because the staleness check runs first, a
+repeat call returns before it ever reaches Anthropic. Spanish is written to the *draft*,
+so it is reviewed before it goes live.
+
+Both `ANTHROPIC_API_KEY` and `SANITY_API_WRITE_TOKEN` are optional: unset, the action
+reports that translation is not configured and changes nothing. Everything else about the
+CMS works without them.
+
+*Upstream quirks worth knowing:* `useToast` is untypeable in @sanity/ui 4.0.6 — its
+`ToastContextValue` is declared `never` — so results are reported in the action's own
+dialog. And @sanity/icons 5 dropped named icon exports for one `Icon` component plus a
+symbol registry; its types resolve loosely enough that importing a name that no longer
+exists still typechecks and fails at bundle time instead.

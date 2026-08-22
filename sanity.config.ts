@@ -2,6 +2,7 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
+import { translateAction } from "@/sanity/actions/translate";
 import {
   apiVersion,
   dataset,
@@ -36,6 +37,15 @@ export default defineConfig({
   basePath: "/studio",
   projectId: projectId ?? PLACEHOLDER_PROJECT_ID,
   dataset,
+  document: {
+    /**
+     * The Translate action belongs only on page-copy documents. Articles and
+     * case studies are authored per language by a person; offering a machine
+     * translation there would imply an automation that does not exist.
+     */
+    actions: (prev, context) =>
+      context.schemaType.startsWith("copy") ? [...prev, translateAction] : prev,
+  },
   schema: { types: schemaTypes },
   plugins: [
     presentationTool({

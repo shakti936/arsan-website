@@ -85,6 +85,19 @@ const files = [];
   }
 })(join(ROOT, "src"));
 
+/**
+ * Sanity SCHEMA modules import `sanity`, which is the Studio. Pulling one into
+ * app code drags the Studio into the server graph, where `swr` resolves to a
+ * react-server build with no default export — and the build dies pointing at a
+ * file in node_modules that nobody wrote. This has happened twice: once via the
+ * Studio route (D-090) and once via the generated copy schema (D-097).
+ *
+ * `.../schema/copy/namespaces` is the exception by design: pure data, no
+ * imports, which is exactly why it was split out.
+ */
+const SCHEMA_IMPORT =
+  /from\s+["'][^"']*sanity\/schema(?!\/copy\/namespaces)([^"']*)["']/;
+
 /** `text-[0.5em]` scales a unit suffix to its figure — relative, so allowed. */
 const RELATIVE = /^text-\[[\d.]+em\]$/;
 const DEAD_VOCAB = /\btext-display-(?:xl|lg|md|sm)\b/;
@@ -121,6 +134,13 @@ for (const file of files) {
               `      headline · title · heading · subheading · figure · lead · badge.`,
           );
         }
+      }
+      if (!where.startsWith("src/sanity/schema/") && SCHEMA_IMPORT.test(line)) {
+        errors.push(
+          `${at}\n      imports Sanity SCHEMA from app code. That pulls the Studio into the\n` +
+            `      server bundle and breaks the build in node_modules. Import the data you\n` +
+            `      need from a Studio-free module (see src/sanity/schema/copy/namespaces.ts).`,
+        );
       }
       if (DEAD_VOCAB.test(line)) {
         errors.push(

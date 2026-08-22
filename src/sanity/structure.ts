@@ -1,4 +1,5 @@
 import type { StructureResolver } from "sanity/structure";
+import { COPY_NAMESPACES } from "./schema/copy/namespaces";
 
 /**
  * The Studio's left-hand navigation.
@@ -15,7 +16,7 @@ import type { StructureResolver } from "sanity/structure";
  *     in the CMS and invisible on the site. Without this split that is a
  *     silent state — a row that looks published and is not. "Awaiting
  *     approval" is a to-do list with a real consequence at the end of it.
- *   - **Pages last**, because they are the least-touched type.
+ *   - **Page copy** under a divider: every page's words, one entry per page.
  *
  * `S.documentTypeListItem` is used where the default is right; only the two
  * lists that need an order or a filter are spelled out.
@@ -64,5 +65,25 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
-      S.documentTypeListItem("page").title("Pages"),
+      /**
+       * Page copy. One entry per page, each a single document — an editor
+       * clicks the page they mean and edits its words, which is the mental
+       * model they already have. Generated types, so this list cannot drift
+       * from the schema.
+       *
+       * `documentTypeList(...).showIcons(false)` is not used: each of these is
+       * effectively a singleton, so the child goes straight to the document
+       * rather than to a list containing one row.
+       */
+      S.listItem()
+        .title("Page copy")
+        .child(
+          S.list()
+            .title("Page copy")
+            .items(
+              Object.keys(COPY_NAMESPACES).map((type) =>
+                S.documentTypeListItem(type),
+              ),
+            ),
+        ),
     ]);

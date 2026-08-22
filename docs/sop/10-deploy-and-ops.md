@@ -1,4 +1,4 @@
-# 10 — Deploy & Ops
+![alt text](image.png)# 10 — Deploy & Ops
 
 **Last updated:** 2026-08-20 · **Status:** repo live at
 `github.com/shakti936/arsan-website` (Marianna's account, Drew collaborator — mirrors

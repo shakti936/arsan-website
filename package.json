@@ -15,7 +15,9 @@
     "test:e2e": "playwright test",
     "validate:design": "node scripts/validate-design-system.mjs",
     "validate:schema": "sanity schema validate --workspace arsan",
-    "seed:sanity": "bun scripts/seed-sanity.ts"
+    "seed:sanity": "bun scripts/seed-sanity.ts",
+    "generate:copy": "node scripts/generate-copy-schema.mjs",
+    "seed:copy": "bun scripts/seed-page-copy.ts"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",

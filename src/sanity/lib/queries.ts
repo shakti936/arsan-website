@@ -27,8 +27,6 @@ const HREF = /* groq */ `"href": select(
   null
 )`;
 
-const CTA = /* groq */ `{ "label": coalesce(label[$locale], label.en), ${HREF} }`;
-
 const IMAGE = /* groq */ `{
   "url": asset->url,
   "lqip": asset->metadata.lqip,
@@ -95,41 +93,5 @@ export const testimonialsQuery = defineQuery(`
     "quote": coalesce(quote[$locale], quote.en),
     "role": coalesce(role[$locale], role.en),
     "org": coalesce(org[$locale], org.en)
-  }
-`);
-
-export const pageQuery = defineQuery(`
-  *[_type == "page" && route == $route][0]{
-    route,
-    "title": coalesce(title[$locale], title.en),
-    "emphasis": coalesce(emphasis[$locale], emphasis.en),
-    "intro": coalesce(intro[$locale], intro.en),
-    "heroImage": heroImage${IMAGE},
-    "primaryCta": primaryCta${CTA},
-    "secondaryCta": secondaryCta${CTA},
-    "sections": sections[!(hidden == true)]{
-      _type, _key,
-      "heading": coalesce(heading[$locale], heading.en),
-      "body": ${BODY("body")},
-      "image": image${IMAGE},
-      "cta": cta${CTA},
-      "cards": cards[]{
-        "title": coalesce(title[$locale], title.en),
-        "body": coalesce(body[$locale], body.en),
-        "cta": cta${CTA}
-      },
-      "testimonial": testimonial->{
-        clientName,
-        "quote": coalesce(quote[$locale], quote.en),
-        "role": coalesce(role[$locale], role.en),
-        "org": coalesce(org[$locale], org.en),
-        approved
-      }
-    },
-    "seo": seo{
-      "title": coalesce(title[$locale], title.en),
-      "description": coalesce(description[$locale], description.en),
-      "ogImage": ogImage${IMAGE}
-    }
   }
 `);

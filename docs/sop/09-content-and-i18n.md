@@ -56,3 +56,51 @@ framing. Lead with the transformation, not the mechanism.
 
 Where P1 content lives (typed content files vs. CMS): typed content files, per
 [02-stack.md](02-stack.md). Revisit only if someone non-technical needs to edit.
+
+## Editing page copy (from 2026-08-22)
+
+Every user-facing string on every page is editable in the Studio, in two ways:
+
+**Click-to-edit.** `/studio` → **Presentation**. The live page sits beside the form; click
+a headline or paragraph and its field opens. This is text editing, not layout editing —
+sections cannot be reordered or moved, which is deliberate (D-099).
+
+**Form editing.** `/studio` → **Structure** → *Page copy* → the page. Same fields, grouped
+the way the page reads.
+
+### How the layers fit
+
+```
+messages/en.json  ─┐
+                   ├─ deep merge in src/i18n/request.ts → useTranslations()
+Sanity copy docs  ─┘   (Sanity wins; catalogue fills every gap)
+```
+
+The catalogue defines **which keys exist**; Sanity supplies **values**. Adding a *new*
+string is still a code change — add it to `messages/*.json`, run `bun run generate:copy`
+and `bun run seed:copy`. Changing the wording of an existing one is not.
+
+If Sanity is unreachable the catalogue renders alone, so the site cannot be taken down by
+the CMS.
+
+### Spanish
+
+Write English and press **Translate to Spanish**. The Spanish lands in the *draft* for
+review, never straight to live.
+
+It will not overwrite Spanish you wrote by hand. The rule is exact: a string the machine
+produced and whose English has since changed is regenerated; a string you edited yourself
+is yours permanently, whatever happens to the English. So correct a translation freely —
+that correction is durable.
+
+Requires `ANTHROPIC_API_KEY` and `SANITY_API_WRITE_TOKEN` on the server. Without them the
+action says so and changes nothing; everything else still works.
+
+### Commands
+
+| Command | What it does |
+|---|---|
+| `bun run generate:copy` | Regenerates the 34 Studio schemas from `messages/en.json`. Run after adding a key. |
+| `bun run seed:copy --dry-run` | Reports what would be created or backfilled. |
+| `bun run seed:copy --ndjson > f.ndjson` | Emits documents for `bunx sanity dataset import f.ndjson --dataset production --missing` — uses your own CLI login, no write token. |
+| `bun run seed:copy` | Same, writing directly. Needs `SANITY_API_WRITE_TOKEN`. Never overwrites existing values. |
